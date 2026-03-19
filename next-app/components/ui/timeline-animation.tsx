@@ -1,5 +1,5 @@
 import { motion, useInView } from "motion/react"
-import type React from "react"
+import React from "react"
 import type { Variants } from "motion/react"
 
 type TimelineContentProps = {
@@ -41,21 +41,19 @@ export const TimelineContent = ({
   }
 
   const sequenceVariants = customVariants || defaultSequenceVariants
-
   const isInView = useInView(timelineRef, { once })
-
   const MotionTag = motion[as as keyof typeof motion] as React.ElementType
 
-  return (
-    <MotionTag
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      custom={animationNum}
-      variants={sequenceVariants}
-      className={className}
-      {...props}
-    >
-      {children}
-    </MotionTag>
+  return React.createElement(
+    MotionTag,
+    {
+      initial: "hidden",
+      animate: isInView ? "visible" : "hidden",
+      custom: animationNum,
+      variants: sequenceVariants,
+      className,
+      ...props,
+    },
+    children
   )
 }
