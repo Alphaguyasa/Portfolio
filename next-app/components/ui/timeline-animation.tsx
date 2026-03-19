@@ -46,7 +46,7 @@ export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
     once
   })
 
-  const MotionComponent = motion[as || "div"] as React.ElementType
+  const MotionComponent = motion[as || "div"] as React.ComponentType<Record<string, unknown>>
 
   return (
     <MotionComponent
