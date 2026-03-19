@@ -115,7 +115,7 @@ export default function AboutSection3({ isDark }: AboutProps) {
                 preserveAspectRatio="xMidYMid meet"
                 width={"100%"}
                 height={"100%"}
-                xlinkHref="/images/image.png"
+                xlinkHref="/images/images.png"
               ></image>
             </svg>
           </TimelineContent>

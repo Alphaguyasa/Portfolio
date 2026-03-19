@@ -1,27 +1,28 @@
-import { type HTMLMotionProps, motion, useInView } from "motion/react"
-import type React from "react"
+import { motion, useInView } from "motion/react"
+import React from "react"
 import type { Variants } from "motion/react"
 
-type TimelineContentProps<T extends keyof HTMLElementTagNameMap> = {
+type TimelineContentProps = {
   children?: React.ReactNode
   animationNum: number
   className?: string
   timelineRef: React.RefObject<HTMLElement | null>
-  as?: T
+  as?: string
   customVariants?: Variants
   once?: boolean
-} & HTMLMotionProps<T>
+  [key: string]: unknown
+}
 
-export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
+export const TimelineContent = ({
   children,
   animationNum,
   timelineRef,
   className,
-  as,
+  as = "div",
   customVariants,
-  once=false,
+  once = false,
   ...props
-}: TimelineContentProps<T>) => {
+}: TimelineContentProps) => {
   const defaultSequenceVariants = {
     visible: (i: number) => ({
       filter: "blur(0px)",
@@ -39,25 +40,20 @@ export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
     },
   }
 
-  // Use custom variants if provided, otherwise use default
   const sequenceVariants = customVariants || defaultSequenceVariants
+  const isInView = useInView(timelineRef, { once })
+  const MotionTag = motion[as as keyof typeof motion] as React.ElementType
 
-  const isInView = useInView(timelineRef, {
-    once
-  })
-
-  const MotionComponent = motion[as || "div"] as unknown as React.FC<React.PropsWithChildren<Record<string, unknown>>>
-
-  return (
-    <MotionComponent
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      custom={animationNum}
-      variants={sequenceVariants}
-      className={className}
-      {...props}
-      children={children}
-    />
+  return React.createElement(
+    MotionTag,
+    {
+      initial: "hidden",
+      animate: isInView ? "visible" : "hidden",
+      custom: animationNum,
+      variants: sequenceVariants,
+      className,
+      ...props,
+    },
+    children
   )
 }
-
