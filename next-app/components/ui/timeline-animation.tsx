@@ -56,9 +56,8 @@ export const TimelineContent = <T extends keyof HTMLElementTagNameMap = "div">({
       variants={sequenceVariants}
       className={className}
       {...props}
-    >
-      {children}
-    </MotionComponent>
+      children={children}
+    />
   )
 }
 
