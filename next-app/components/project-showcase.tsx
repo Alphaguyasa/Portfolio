@@ -15,17 +15,17 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "SecureNet Scanner",
+    title: "Vulnerability Scanner Website",
     description: "A web-based network vulnerability scanner built for penetration testers.",
     year: "2024",
-    link: "https://github.com/Alphaguyasa",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    link: "https://github.com/vulnerability-scanner-website/Final-year-project",
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&auto=format&fit=crop",
   },
   {
     title: "PortfolioOS",
     description: "This portfolio — a fully responsive Next.js personal site with dark/light mode.",
     year: "2024",
-    link: "https://github.com/Alphaguyasa",
+    link: "https://github.com/Alphaguyasa/Portfolio",
     image: "/images/alphav.jpg",
   },
   {
@@ -36,11 +36,11 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
   },
   {
-    title: "UniConnect",
-    description: "A student collaboration platform built for Haramaya University.",
-    year: "2023",
-    link: "#",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&auto=format&fit=crop",
+    title: "Alpha Digital Coin",
+    description: "A cryptocurrency web app for tracking and managing digital assets built with modern web technologies.",
+    year: "2024",
+    link: "https://github.com/Alphaguyasa/Alpha-digital-coin",
+    image: "/images/image.png",
   },
 ]
 
