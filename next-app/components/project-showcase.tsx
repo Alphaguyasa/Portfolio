@@ -29,11 +29,11 @@ const projects: Project[] = [
     image: "/images/alphav.jpg",
   },
   {
-    title: "CTF Toolkit",
-    description: "A collection of custom scripts and tools used in Capture The Flag competitions.",
+    title: "RoboCore",
+    description: "A robotics-themed web application built with modern web technologies.",
     year: "2024",
-    link: "#",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop",
+    link: "https://robocore-swart.vercel.app/",
+    image: "/images/Screenshot_21-3-2026_162754_robocore-swart.vercel.app (1).jpeg",
   },
   {
     title: "Alpha Digital Coin",
