@@ -43,11 +43,17 @@ the design reference used by hand.
 
 ### Contact form
 
-Client-only: it composes a `mailto:` draft and hands off to the visitor's mail
-client, matching the design reference. There is no server dependency, so the site
-deploys anywhere. To take submissions server-side instead, replace the handler in
-`components/ContactForm.tsx` with a `POST` to a route handler backed by Resend or
-similar.
+`components/ContactForm.tsx` POSTs to `app/api/contact/route.ts`, which sends the
+mail through [Resend](https://resend.com). Copy `.env.example` to `.env.local` and
+set `RESEND_API_KEY`; the same variable has to exist on the host.
+
+The default sender is Resend's shared `onboarding@resend.dev`, which can **only**
+deliver to the address that owns the Resend account. Verify a domain at
+resend.com/domains and set `CONTACT_FROM` to lift that restriction.
+
+The route trims and length-caps every field, checks the email shape, and drops
+submissions that fill in the hidden `company` honeypot. Replies go to the
+sender's address via `replyTo`. There is no rate limit yet — see the repo notes.
 
 ## Deploy
 
