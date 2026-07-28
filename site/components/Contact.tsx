@@ -42,7 +42,7 @@ export default function Contact() {
       </div>
 
       <div className="border-t border-bg/20">
-        <div className="mx-auto flex max-w-[1180px] flex-wrap justify-between gap-4 px-7 py-[22px] font-mono text-[11px] tracking-[0.1em] uppercase text-bg/58">
+        <div className="mx-auto flex max-w-[1180px] flex-wrap justify-between gap-4 px-7 py-[22px] font-mono text-[11px] tracking-[0.1em] uppercase text-bg/70">
           <span>© 2026 Alpha Guyasa</span>
           <span>Built by hand · Addis Ababa, Ethiopia</span>
           <a href="#top" className="transition-colors duration-240 hover:text-accent">

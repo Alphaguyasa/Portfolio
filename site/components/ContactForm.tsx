@@ -3,10 +3,10 @@
 import { FormEvent, useState } from "react";
 import { EMAIL } from "@/lib/data";
 
-const labelClass = "font-mono text-[11px] tracking-[0.12em] uppercase text-bg/60";
+const labelClass = "font-mono text-[11px] tracking-[0.12em] uppercase text-bg/70";
 
 const fieldClass =
-  "border-0 border-b border-bg/30 bg-transparent px-[2px] py-[10px] text-[17px] text-bg outline-none transition-colors duration-240 placeholder:text-bg/35 focus:border-accent disabled:opacity-50";
+  "border-0 border-b border-bg/50 bg-transparent px-[2px] py-[10px] text-[17px] text-bg outline-none transition-colors duration-240 placeholder:text-bg/50 focus:border-accent disabled:opacity-50";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -113,7 +113,7 @@ export default function ContactForm() {
 
       <p
         aria-live="polite"
-        className="font-mono text-[11px] leading-[1.6] tracking-[0.06em] text-bg/55"
+        className="font-mono text-[11px] leading-[1.6] tracking-[0.06em] text-bg/70"
       >
         {status === "sent" ? (
           `That's landed in Alpha's inbox. You'll hear back within a day.`
