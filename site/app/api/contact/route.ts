@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { EMAIL } from "@/lib/data";
+import { clientKey, rateLimit } from "@/lib/rateLimit";
 
 /**
  * Sends the contact form through Resend.
@@ -16,6 +17,8 @@ const FROM = process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>";
 
 const MAX = { name: 120, email: 200, message: 5000 };
 
+const RATE = { limit: 5, windowMs: 15 * 60 * 1000 };
+
 function clean(value: unknown, limit: number) {
   return typeof value === "string" ? value.trim().slice(0, limit) : "";
 }
@@ -25,6 +28,14 @@ export async function POST(request: Request) {
   if (!apiKey) {
     console.error("contact: RESEND_API_KEY is not set");
     return NextResponse.json({ error: "Email is not configured." }, { status: 500 });
+  }
+
+  const { allowed, retryAfter } = rateLimit(clientKey(request), RATE.limit, RATE.windowMs);
+  if (!allowed) {
+    return NextResponse.json(
+      { error: "That's a lot of messages. Try again shortly." },
+      { status: 429, headers: { "Retry-After": String(retryAfter) } },
+    );
   }
 
   let payload: unknown;
