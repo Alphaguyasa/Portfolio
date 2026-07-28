@@ -25,15 +25,28 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+/** Override per-environment with NEXT_PUBLIC_SITE_URL once a custom domain exists. */
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alpha-guyasa-portfolio.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Alpha Guyasa — Frontend & Full-Stack Engineer",
   description:
     "Alpha Guyasa is a frontend and full-stack engineer in Ethiopia. BSc Computer Science, Haramaya University. First place, HU x INSA Capture-the-Flag. Leader of the Haramaya University Cyber Club.",
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Alpha Guyasa — Frontend & Full-Stack Engineer",
     description:
       "Interfaces built with a security engineer's instincts. BSc Computer Science, Haramaya University.",
+    url: "/",
+    siteName: "Alpha Guyasa",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alpha Guyasa — Frontend & Full-Stack Engineer",
+    description:
+      "Interfaces built with a security engineer's instincts. BSc Computer Science, Haramaya University.",
   },
 };
 
