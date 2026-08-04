@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette — see the handoff's Design Tokens table */
+  --color-accent: #ff4a17;
+  --color-ink: #0a0a0a;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f4f4;
+  --color-surface-alt2: #f7f7f7;
+  --color-body: #5b5b5b;
+  --color-muted: #6b6b6b;
+  --color-muted2: #4a4a4a;
+  --color-on-dark: #b8b8b8;
+  --color-on-dark2: #d6d6d6;
+  --color-on-dark3: #b6b6b6;
+  --color-bar-text: #c9c9c9;
+  --color-hairline: #eaeaea;
+  --color-hairline2: #efefef;
+  --color-ghost: #f1f1f1;
+  --color-tick-off: #fbd9ce;
+  --color-track: #e4e4e4;
+  --color-tag-border: #3a3a3a;
+  --color-placeholder: #a8a8a8;
+
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* The handoff specifies the full desktop composition from 1290px up, so `xl:` is
+     retuned from its 1280px default. It MUST be expressed in rem: Tailwind orders
+     breakpoint media queries by the raw value, and a px value sorts ahead of the
+     rem-based defaults, which would emit `xl:` before `sm:` and lose every conflict.
+     80.625rem = 1290px at the 16px root size. */
+  --breakpoint-xl: 80.625rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Sticky nav is ~92px tall; keep anchored sections clear of it. */
+  scroll-padding-top: 108px;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-placeholder);
+}
+
+/* Keep focus rings visible for keyboard users without boxing every mouse click. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes spin-badge {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+.animate-badge {
+  animation: spin-badge 14s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Halt the decorative loops rather than slowing them — they never stop otherwise. */
+  .animate-marquee,
+  .animate-badge {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
