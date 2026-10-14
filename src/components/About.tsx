@@ -1,9 +1,17 @@
 import Image from "next/image";
 import { Envelope, MapPin, Shield, Star } from "@/components/icons";
 import { Accent, Container, Eyebrow, SectionTitle } from "@/components/ui";
-import { site, stats } from "@/data/site";
+import { bioStats, site } from "@/data/site";
+import { portfolioStats } from "@/lib/projects";
 
 export default function About() {
+  const counts = portfolioStats();
+  // Project counts are derived from the data; the rest are biographical.
+  const stats = [
+    { value: String(counts.shipped), label: "Projects Shipped" },
+    { value: String(counts.inDevelopment), label: "In Development" },
+    ...bioStats,
+  ];
   return (
     <section id="about" className="bg-surface-alt py-20 xl:py-25">
       <Container className="grid items-center gap-14 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
@@ -24,8 +32,8 @@ export default function About() {
             <span className="mx-auto flex size-10 items-center justify-center rounded-full bg-accent text-white">
               <Shield size={20} />
             </span>
-            <p className="mt-2 font-sans text-sm text-muted">Public Repos</p>
-            <p className="font-display text-[26px] font-bold">8</p>
+            <p className="mt-2 font-sans text-sm text-muted">Public Project Repos</p>
+            <p className="font-display text-[26px] font-bold">{counts.publicRepos}</p>
           </div>
 
           <div className="absolute bottom-8 left-[12%] z-3 flex items-center gap-3 rounded-[40px] bg-white py-2.5 pl-3 pr-5 shadow-[0_10px_30px_rgba(0,0,0,.08)]">
@@ -51,7 +59,7 @@ export default function About() {
             sources or say nothing.
           </p>
 
-          <dl className="mt-8 flex flex-wrap gap-10 xl:gap-15">
+          <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label}>
                 <dd className="font-display text-3xl font-bold xl:text-[38px]">
