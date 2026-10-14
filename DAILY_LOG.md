@@ -20,4 +20,28 @@ Phase 0 (PR `claude/setup`):
   advisory (patched to 16.3.8); accent colour failed WCAG AA contrast (~85 elements).
 - Wrote CLAUDE.md, ROADMAP.md (13 items), NEEDS_APPROVAL.md (9 items).
 
-Next: roadmap items 1 and 2 (honesty fixes on the home page).
+Phase 1 (roadmap items):
+- **Item 1** — PR #2 (merged, `v2026-10-14-2`): the Portfolio section renders from
+  `data/projects.json` + the sync snapshot (status badges, real last-commit dates, top
+  results). Only Mezgeb has a real screenshot; the other six stand-in illustrations
+  are gone. About's counts are derived (2 shipped, 5 in development, 8 public repos)
+  instead of the hard-coded "8 Projects Shipped".
+- **Item 2** — PR #3 (merged, `v2026-10-14-3`): skill percentages replaced by
+  "N listed projects" derived from the data; the two draft testimonials are hidden
+  behind a `confirmed` flag (NEEDS_APPROVAL A2); unwritten notes and their stand-in
+  images hidden until a post exists; nav no longer links to hidden sections.
+- Tests: 70 passing (facts, copy, privacy, portfolio, claims).
+
+Phase 2: daily cloud task created for 09:30 Africa/Nairobi (see report).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Setup (PR #1), roadmap item 1 (PR #2), item 2 (PR #3) |
+| Merged | #1 yes `v2026-10-14-1` · #2 yes `v2026-10-14-2` · #3 yes `v2026-10-14-3` |
+| Failed or blocked | Nothing failed. Branch protection is unavailable on a private free repo, so the merge policy is self-enforced. |
+| Roadmap | 11 items open; no replan needed (first audit written today) |
+| Model | Opus 5.5 (newest Opus). ACTION FOR ALPHA: set the task to "Automatically approve" |
+| Needs approval | A1–A9 in NEEDS_APPROVAL.md (testimonials, pricing, bio claims, paused statuses, Adey/erko, accent colour, cloud GitHub token) |
+| Next | Sync step, then item 3 (a page per project) and item 4 (Recently shipped feed) |

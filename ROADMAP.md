@@ -14,32 +14,6 @@ Last replan: 2026-10-14 (first audit).
 
 ## Open
 
-### 1. [P0 · M] Portfolio section from data/projects.json, with no stand-in images
-The home page's project cards come from `src/data/site.ts` and six of the seven use
-stand-in illustrations (`proj-*.png`) presented as product shots, which breaks the
-honesty rules. Some specs are unverified ("Sub-100ms sale", "Signed production APK"
-for a project whose role was one screen).
-- Render the Portfolio section from `data/projects.json`: name, tagline, status badge,
-  real last-commit date from `data/sync/index.json`, top results, stack, repo link.
-- A project with no real screenshot shows no image and an "In development" / status
-  badge, not an illustration.
-- Replace the hard-coded stats ("8 Projects Shipped", "Public Repos 8") with counts
-  derived from the data (shipped projects, public repos synced).
-- Tests: no component references a `STAND_IN_IMAGES` file; stats equal the derived
-  counts; every project in the data is rendered.
-
-### 2. [P0 · S] Remove unverifiable claims from the home page
-- Tool tiles show skill percentages (95%, 92%, ...): invented metrics. Show the tools
-  without numbers (or with the number of listed projects that use each, derived from
-  the data).
-- Testimonials are drafts written for layout (README says so) and are labelled "Client
-  Testimonials" although neither person is a client. Hide the section until Alpha
-  confirms real wording (NEEDS_APPROVAL A3); keep the data behind a `confirmed` flag.
-- Engineering notes are unwritten posts with stand-in images. Remove the images and
-  label them "Planned", or hide the section until a post exists.
-- Tests: `tools` has no percentages; only `confirmed` testimonials render; no note
-  image is a stand-in.
-
 ### 3. [P1 · M] A page per project: /projects/[slug]
 Problem, approach, stack, real results, what broke and what I learned, status with
 note, last commit, latest tag, CI status on main, npm version, links, screenshots with
@@ -73,7 +47,7 @@ Add `@lhci/cli` (free, local, no upload) against the built site, asserting 90+ o
 four categories for `/` and one project page, at mobile settings.
 
 ### 9. [P2 · S] Remove dead assets
-After items 1 and 2, delete `public/assets/proj-*.png` and `note-*.png` (stand-ins),
+Items 1 and 2 are done, so delete `public/assets/proj-*.png` and `note-*.png` (stand-ins),
 with this entry as the reason. They remain in `../design_handoff_portfolio`.
 
 ### 10. [P2 · S] README refresh
@@ -104,4 +78,7 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
-(none yet)
+- **[P0] Portfolio section from data/projects.json, no stand-in images** — PR #2, `v2026-10-14-2`.
+- **[P0] Remove unverifiable claims from the home page** (skill percentages, draft
+  testimonials, unwritten notes with stand-in images) — PR #3, `v2026-10-14-3`.
+- **Setup:** sync, fact checks, CI, context files — PR #1, `v2026-10-14-1`.

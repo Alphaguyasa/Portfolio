@@ -13,14 +13,14 @@ export const site = {
   location: "Addis Ababa, Ethiopia",
 } as const;
 
-export const navLinks = [
+// Nav entries for sections that may be hidden are added at the bottom of this
+// file, once the testimonials and notes data are known.
+const baseNavLinks = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Blogs", href: "#blogs" },
-  { label: "Testimonials", href: "#testimonials" },
-] as const;
+];
 
 export const heroChips = [
   { label: "Next.js", tone: "ink" },
@@ -87,7 +87,7 @@ export const services: Service[] = [
       "Room & WorkManager",
       "Progressive Web Apps",
     ],
-    body: "Android apps built to Play policy, shipped signed and minified — including one that reads mobile-money notifications with no network permission at all.",
+    body: "Android apps built to Play policy, with signed, R8-minified release builds — including one that reads mobile-money notifications with no network permission at all.",
     image: {
       src: "/assets/mobile-service.png",
       alt: "Two Mezgeb Android screens: the teach-a-rule flow and the daily ledger view",
@@ -120,13 +120,17 @@ export const bioStats = [
   { value: "1+", label: "Year in AI" },
 ] as const;
 
+/**
+ * No skill percentages: they are not measurable. The tile shows how many listed
+ * projects use the tool instead, counted from data/projects.json via `matches`.
+ */
 export const tools = [
-  { name: "Next.js", pct: "95%", logo: "nextjs" },
-  { name: "React", pct: "92%", logo: "react" },
-  { name: "TypeScript", pct: "90%", logo: "typescript" },
-  { name: "Flutter", pct: "88%", logo: "flutter" },
-  { name: "Kotlin", pct: "85%", logo: "kotlin" },
-  { name: "PostgreSQL", pct: "87%", logo: "postgresql" },
+  { name: "Next.js", logo: "nextjs", matches: ["Next.js"] },
+  { name: "React", logo: "react", matches: ["React"] },
+  { name: "TypeScript", logo: "typescript", matches: ["TypeScript"] },
+  { name: "Flutter", logo: "flutter", matches: ["Flutter"] },
+  { name: "Kotlin", logo: "kotlin", matches: ["Kotlin"] },
+  { name: "PostgreSQL", logo: "postgresql", matches: ["PostgreSQL", "Postgres"] },
 ] as const;
 
 export type TimelineRow = {
@@ -225,13 +229,25 @@ export const budgetOptions = [
   "$5,000+",
 ] as const;
 
-export const testimonials = [
+/**
+ * Only quotes with `confirmed: true` are shown: the person approved the exact
+ * wording and the label is accurate. These two were drafted for layout and are
+ * not confirmed yet, so the section is hidden.
+ */
+export const testimonials: {
+  name: string;
+  role: string;
+  photo: string;
+  quote: string;
+  confirmed: boolean;
+}[] = [
   {
     name: "Melkias Teshome",
     role: "Full Stack Developer",
     photo: "/assets/testimonial-melkias.jpeg",
     quote:
       "Alpha thinks about the failure case first. On the offline-first work he had the sync path designed before a line of UI existed, and that is why it never lost a sale in testing.",
+    confirmed: false,
   },
   {
     name: "Abdi Fekeda",
@@ -239,39 +255,35 @@ export const testimonials = [
     photo: "/assets/testimonial-abdi.jpg",
     quote:
       "We built HU News together. He took the hardest screen, documented every decision, and reviewed the rest of our code without being asked. An easy person to ship with.",
+    confirmed: false,
   },
 ];
 
-export const notes = [
+/**
+ * Planned posts. A note is shown only once it is published (`href` set); until
+ * then the section and its nav link are hidden rather than showing unlinked cards.
+ */
+export const notes: { tags: string[]; title: string; excerpt: string; href: string | null }[] = [
   {
     tags: ["Offline-First", "Sync"],
     title: "Sync Movements, Never Quantities",
     excerpt:
       "Why two offline tills that both sell the last case of water can only stay correct if you append deltas instead of writing totals.",
-    image: {
-      src: "/assets/note-sync.png",
-      alt: "Abstract diagram of stock deltas over time",
-    },
+    href: null,
   },
   {
     tags: ["Android", "Policy"],
     title: "Reading Payments Without READ_SMS",
     excerpt:
       "Play won’t grant restricted SMS permissions to a finance app. What a notification listener buys you, and what it costs.",
-    image: {
-      src: "/assets/note-sms.png",
-      alt: "Abstract shield and checkmark illustration",
-    },
+    href: null,
   },
   {
     tags: ["AI", "Evaluation"],
     title: "What a 91-Question Eval Can’t Tell You",
     excerpt:
       "Three of four retrieval experiments did nothing. The most useful finding came from the breakdown nobody reads.",
-    image: {
-      src: "/assets/note-eval.png",
-      alt: "Abstract chart of evaluation results",
-    },
+    href: null,
   },
 ];
 
@@ -302,10 +314,16 @@ export const faqs = [
   },
 ];
 
+export const confirmedTestimonials = testimonials.filter((t) => t.confirmed);
+export const publishedNotes = notes.filter((n) => n.href !== null);
+
+export const navLinks = [
+  ...baseNavLinks,
+  ...(publishedNotes.length ? [{ label: "Blogs", href: "#blogs" }] : []),
+  ...(confirmedTestimonials.length ? [{ label: "Testimonials", href: "#testimonials" }] : []),
+];
+
 export const footerNav = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Notes", href: "#blogs" },
-] as const;
+  ...baseNavLinks,
+  ...(publishedNotes.length ? [{ label: "Notes", href: "#blogs" }] : []),
+];

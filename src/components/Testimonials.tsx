@@ -1,23 +1,25 @@
 import Image from "next/image";
 import { QuoteMark, Star } from "@/components/icons";
 import { Accent, Container, Eyebrow, SectionTitle } from "@/components/ui";
-import { testimonials } from "@/data/site";
+import { confirmedTestimonials } from "@/data/site";
 
 export default function Testimonials() {
+  // Unconfirmed quotes are never published; with none confirmed there is no section.
+  if (confirmedTestimonials.length === 0) return null;
   return (
     <section id="testimonials" className="bg-surface py-20 xl:py-25">
       <Container className="text-center">
         <div className="inline-block">
-          <Eyebrow center>Client Testimonials</Eyebrow>
+          <Eyebrow center>Testimonials</Eyebrow>
         </div>
         <SectionTitle>
-          What My <Accent>Clients Are Saying</Accent>
+          What People <Accent>Say About My Work</Accent>
         </SectionTitle>
 
         {/* The mock shows three pagination bars for two quotes and wires none of
             them; dead controls are worse than none, so they are dropped. */}
         <ul className="mt-10 grid gap-7 text-left lg:grid-cols-2 xl:mt-12">
-          {testimonials.map((person) => (
+          {confirmedTestimonials.map((person) => (
             <li
               key={person.name}
               className="rounded-[22px] bg-surface-alt px-8 py-7.5"
