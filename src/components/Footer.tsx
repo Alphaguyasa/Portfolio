@@ -100,7 +100,7 @@ export default function Footer() {
       <div className="bg-ink py-5.5">
         <Container className="flex flex-col items-center gap-2 text-center font-sans text-base text-bar-text sm:flex-row sm:justify-between sm:text-left">
           <p>
-            Copyright © 2026 <span className="text-accent">Alpha Guyasa.</span>{" "}
+            Copyright © 2026 <span className="text-accent-bright">Alpha Guyasa.</span>{" "}
             All Rights Reserved.
           </p>
           <p>Built in Addis Ababa</p>

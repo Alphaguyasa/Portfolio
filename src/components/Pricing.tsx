@@ -46,7 +46,7 @@ export default function Pricing() {
                     <li
                       key={feature}
                       className={`flex items-center gap-3.5 font-sans text-base xl:text-[17px] ${
-                        included ? "text-ink" : "text-bar-text"
+                        included ? "text-ink" : "text-muted line-through"
                       }`}
                     >
                       <span

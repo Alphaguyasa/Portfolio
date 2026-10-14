@@ -1,0 +1,253 @@
+{
+  "$comment": "Single source of truth for every project on the site. Every number in any text field must appear in one of the project's facts[].quote, and every quote must appear verbatim in the synced docs (data/sync/docs/<repo>/<path>) or, with path '@description', in the repo description. Live facts (last commit, tags, CI, npm version) are never written here: the site reads them from data/sync/index.json at build time. A 'since <Month> <Year>' phrase must match the synced last commit. CI runs scripts/verify-facts.mjs.",
+  "projects": [
+    {
+      "slug": "mezgeb",
+      "name": "Mezgeb",
+      "tagline": "Offline mobile-money ledger for Ethiopian shops",
+      "repo": "Alphaguyasa/Mezgeb",
+      "status": "building",
+      "statusNote": "Under active development. Builds and tests pass in CI; not yet published on the Play Store.",
+      "featured": true,
+      "platform": "Android",
+      "stack": ["Kotlin", "Jetpack Compose", "Room", "Hilt", "WorkManager"],
+      "problem": "Small shops in Ethiopia take payment through mobile money and bank apps, and the confirmations arrive as notifications nobody reconciles against who owes the shop.",
+      "approach": "A notification listener captures payment notifications, because Google Play does not grant READ_SMS to finance apps. A JSON-defined rule engine parses them into a ledger. When no rule matches, the message goes to a review queue, and the shopkeeper teaches a new rule by highlighting the amount.",
+      "results": [
+        "375 unit tests on the Play flavor, 382 on the sideload flavor, 83 on the parser module.",
+        "No INTERNET permission in either flavor, checked against the merged release manifest.",
+        "Release APK is 3.07 MB."
+      ],
+      "learned": [
+        "The parser scores 100.00% on its holdout (23/23), and the README says plainly that this is worth less than it looks: all samples come from 3 senders and 13 message templates from one person's account.",
+        "RECEIVE_SMS was carried for several sessions and then removed, because nothing used it. A restricted permission has to be justified, not kept just in case.",
+        "Coverage is 36.1% instruction / 46.1% line, reported rather than gated."
+      ],
+      "images": [
+        {
+          "src": "/assets/mezgeb-showcase.png",
+          "alt": "Three Mezgeb Android screens showing the daily view, ledger and reports",
+          "source": "Alphaguyasa/Mezgeb docs/media, captured from the app's demo mode"
+        }
+      ],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Mezgeb" }],
+      "facts": [
+        { "path": "README.md", "quote": "375 unit tests on `play`, 382 on `direct`, 83 on `:parser`." },
+        { "path": "README.md", "quote": "Release APK size is 3.07 MB for both flavors." },
+        { "path": "README.md", "quote": "Accuracy: 100.00% on the holdout (23/23)" },
+        { "path": "README.md", "quote": "both splits come from the same 3 senders and 13 message templates, from one person's account" },
+        { "path": "README.md", "quote": "Coverage is 36.1% instruction / 46.1% line, reported rather than gated" },
+        { "path": "README.md", "quote": "No `android.permission.INTERNET`, in either flavor." }
+      ]
+    },
+    {
+      "slug": "suq",
+      "name": "Suq",
+      "tagline": "Offline-first point of sale and inventory",
+      "repo": "Alphaguyasa/Suq",
+      "status": "building",
+      "statusNote": "Under active development. CI passes on every merge; no public deployment is linked from the repo.",
+      "featured": true,
+      "platform": "Web (PWA)",
+      "stack": ["Next.js", "TypeScript", "Dexie (IndexedDB)", "Supabase", "Serwist"],
+      "problem": "A shop till has to keep selling when the internet and the power go out, and two offline tablets must not overwrite each other's sales when they reconnect.",
+      "approach": "IndexedDB is the source of truth and Supabase is a replica. Stock is never synced as a quantity: each device appends stock movements, and stock on hand is their sum, so concurrent offline sales commute. Sales are append-only; a mistake becomes a void row, not a deletion.",
+      "results": [
+        "A sale writes to IndexedDB in one transaction and never touches the network.",
+        "A sync test suite covers the five failure modes that only appear across multiple devices, including two tablets selling the last unit while offline.",
+        "Amharic-first UI, ETB pricing and 80mm thermal receipts."
+      ],
+      "learned": [
+        "Last-write-wins silently destroys a sale when two devices sync absolute quantities. Append-only rows avoid the conflict instead of resolving it.",
+        "Free hosting tiers have limits that matter for a live shop: Supabase free projects pause after 7 days of inactivity."
+      ],
+      "images": [],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Suq" }],
+      "facts": [
+        { "path": "README.md", "quote": "Completing a sale never touches the network. It writes to IndexedDB in one transaction" },
+        { "path": "README.md", "quote": "covers the five failure modes that only appear across multiple devices" },
+        { "path": "README.md", "quote": "Amharic-first UI, ETB pricing, 80mm thermal receipts" },
+        { "path": "README.md", "quote": "Supabase free projects pause after 7 days of inactivity." }
+      ]
+    },
+    {
+      "slug": "docsearch",
+      "name": "DocSearch → Not Alone",
+      "tagline": "Cited answers from documents, now pivoting to a scripture app",
+      "repo": "Alphaguyasa/docsearch",
+      "status": "building",
+      "statusNote": "Pivoting. The cited-retrieval engine is being repurposed into Not Alone, a scripture app; the original DocSearch evaluation work is complete.",
+      "featured": true,
+      "platform": "Web",
+      "stack": ["Next.js", "TypeScript", "Postgres + pgvector", "Voyage embeddings", "Anthropic / Gemini"],
+      "problem": "Question answering over documents is only useful if every claim can be traced to a source, and if the system refuses when the documents do not cover the question.",
+      "approach": "Hybrid retrieval: vector search and Postgres full-text search fused with Reciprocal Rank Fusion. Every claim in the streamed answer carries an inline citation to its source chunk. An evaluation harness measures retrieval and answer quality against a human-reviewed golden set. The pivot, Not Alone, answers a described struggle with the cited story of a holy person who fell the same way and was restored.",
+      "results": [
+        "91 human-reviewed evaluation questions.",
+        "One of four LLM judges validated against human labels: Cohen's kappa 0.80 on a random sample.",
+        "Answer correctness 52.4% on the dev split; 24 of 63 answerable questions get a refusal."
+      ],
+      "learned": [
+        "Three of four retrieval experiments did nothing, and the config was left unchanged rather than shipping an unmeasured win.",
+        "The measurement was wrong three times: a truncated labelling UI, a contaminated unanswerable bucket, and a rubric with no answer for refusals. Each first looked like a system failure."
+      ],
+      "images": [],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/docsearch" }],
+      "facts": [
+        { "path": "README.md", "quote": "91 human-reviewed questions" },
+        { "path": "README.md", "quote": "One of four LLM judges is validated. `correctness` at Cohen's kappa 0.80 (random sample)" },
+        { "path": "README.md", "quote": "`correctness` 52.4%" },
+        { "path": "README.md", "quote": "24 of 63 answerable questions get a refusal." },
+        { "path": "README.md", "quote": "Three of four retrieval experiments did nothing" },
+        { "path": "README.md", "quote": "The measurement was wrong three times" }
+      ]
+    },
+    {
+      "slug": "nullchat",
+      "name": "NullChat",
+      "tagline": "Peer-to-peer messaging with no network",
+      "repo": "Alphaguyasa/NullChat",
+      "status": "building",
+      "statusNote": "Under active development. Unit tests pass in CI; instrumented tests run only on a physical phone so far.",
+      "featured": false,
+      "platform": "Android",
+      "stack": ["Kotlin", "Jetpack Compose", "Bluetooth LE", "Wi-Fi Direct", "Room"],
+      "problem": "People need to exchange messages during blackouts, in dead zones and during shutdowns, when there is no network at all.",
+      "approach": "Android phones talk directly over Bluetooth LE and Wi-Fi Direct and relay text and photos between peers, with no server and no internet connection.",
+      "results": [
+        "231 JVM unit tests passing."
+      ],
+      "learned": [
+        "Open security gap, tracked on the roadmap: when a peer's agreement key is not yet known, a direct message is not yet held back from being sent in the clear."
+      ],
+      "images": [],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/NullChat" }],
+      "facts": [
+        { "path": "@description", "quote": "Peer-to-peer Android messaging over Bluetooth LE and Wi-Fi Direct. Text and photos, no network connection required." },
+        { "path": "ROADMAP.md", "quote": "Baseline: 231 JVM unit tests passing; instrumented tests exist but only run on a physical phone." },
+        { "path": "ROADMAP.md", "quote": "No plaintext direct messages. When no agreement key is known, keep the message PENDING instead of sending it in the clear" }
+      ]
+    },
+    {
+      "slug": "meret",
+      "name": "Meret",
+      "tagline": "Offline maps and GPS logging for field teams",
+      "repo": "Alphaguyasa/Meret",
+      "status": "building",
+      "statusNote": "Early. The project skeleton, core model, database and location engine are done; tracking, maps and forms are next.",
+      "featured": false,
+      "platform": "Android",
+      "stack": ["Kotlin", "Jetpack Compose", "Room", "multi-module Gradle"],
+      "problem": "Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded.",
+      "approach": "An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved.",
+      "results": [
+        "Phases 1–4 of the build plan are done: skeleton, core model, database, location engine."
+      ],
+      "learned": [
+        "Phase 0, the offline tile pack, is only partly done, and acceptance criteria that need a physical phone are not claimed by CI."
+      ],
+      "images": [],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Meret" }],
+      "facts": [
+        { "path": "ROADMAP.md", "quote": "Phases 1–4 are done" },
+        { "path": "ROADMAP.md", "quote": "Phase 0 (tile pack) is only partly done" },
+        { "path": "docs/README.md", "quote": "It works with the aeroplane mode on, all day" }
+      ]
+    },
+    {
+      "slug": "ethiopic-text",
+      "name": "ethiopic-text",
+      "tagline": "Search and normalization for Ethiopic script",
+      "repo": "Alphaguyasa/ethiopic-text",
+      "status": "shipped",
+      "statusNote": "Published on npm. Released as 0.x on purpose while linguistic choices wait for a native reader's review.",
+      "featured": false,
+      "platform": "npm library",
+      "stack": ["TypeScript"],
+      "problem": "Ethiopic has homophone consonants that writers use interchangeably, so the same word is spelled two ways and string search silently misses one of them.",
+      "approach": "Fold the homophone families with codepoint arithmetic rather than a lookup table, in independently importable modules for folding, search, fuzzy matching, transliteration, Geez numerals, phone numbers and money.",
+      "results": [
+        "Zero runtime dependencies; the core is 0.49 KB gzipped.",
+        "100% coverage."
+      ],
+      "learned": [
+        "Over-collapsing is a worse failure than under-collapsing, so negative tests assert that genuinely different words stay distinct."
+      ],
+      "images": [],
+      "links": [
+        { "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/ethiopic-text" },
+        { "label": "Package on npm", "href": "https://www.npmjs.com/package/ethiopic-text" }
+      ],
+      "facts": [
+        { "path": "README.md", "quote": "TypeScript, zero runtime dependencies, 0.49 KB gzipped for the core." },
+        { "path": "CHANGELOG.md", "quote": "Zero runtime dependencies, dual ESM/CJS, 100% coverage." },
+        { "path": "CHANGELOG.md", "quote": "Published as 0.x deliberately" },
+        { "path": "README.md", "quote": "Negative tests carry equal weight: over-collapsing is a worse failure than under-collapsing" }
+      ]
+    },
+    {
+      "slug": "hu-news",
+      "name": "HU News",
+      "tagline": "Haramaya University news app",
+      "repo": "Alphaguyasa/HUnews",
+      "status": "shipped",
+      "statusNote": "Team project. A signed release APK is in the repo; no commits since the release.",
+      "featured": false,
+      "platform": "Android (Flutter)",
+      "stack": ["Flutter", "Dart", "WordPress REST API"],
+      "problem": "Bring Haramaya University's news to students' phones.",
+      "approach": "A Flutter app that reads Haramaya University's WordPress REST API: featured carousel, full article view, search, video playback and dark mode. My part was the home screen.",
+      "results": [
+        "Signed release APK committed to the repo."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/HUnews" }],
+      "facts": [
+        { "path": "README.md", "quote": "A Flutter mobile application delivering real-time news from Haramaya University" },
+        { "path": "README.md", "quote": "app-release.apk # Signed production build" },
+        { "path": "README.md", "quote": "Home Screen" }
+      ]
+    },
+    {
+      "slug": "security-scanner",
+      "name": "Security Scanner",
+      "tagline": "Web vulnerability scanning dashboard",
+      "repo": "vulnerability-scanner-website/Final-year-project",
+      "status": "paused",
+      "statusNote": "University final-year team project, hosted in the team's organisation. No commits since May 2026.",
+      "featured": false,
+      "platform": "Web",
+      "stack": ["Next.js", "Fastify", "PostgreSQL", "Docker", "OWASP ZAP", "Nuclei", "Nikto"],
+      "problem": "Running several open-source scanners by hand produces findings nobody tracks.",
+      "approach": "OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.",
+      "results": [],
+      "learned": [],
+      "images": [],
+      "links": [{ "label": "Team repo on GitHub", "href": "https://github.com/vulnerability-scanner-website/Final-year-project" }],
+      "facts": [
+        { "path": "README.md", "quote": "Integrates OWASP ZAP and Nuclei for automated vulnerability detection." }
+      ]
+    },
+    {
+      "slug": "alpha-coin",
+      "name": "Alpha Coin",
+      "tagline": "Token dashboard on the Internet Computer",
+      "repo": "Alphaguyasa/Alpha-digital-coin",
+      "status": "paused",
+      "statusNote": "No commits since March 2026.",
+      "featured": false,
+      "platform": "Web + ICP canister",
+      "stack": ["Motoko", "Next.js", "TypeScript", "Internet Identity"],
+      "problem": "Explore wallet sign-in and token transfers on the Internet Computer.",
+      "approach": "A Motoko token canister with Internet Identity sign-in: check a balance, claim tokens once per principal, and transfer to another principal.",
+      "results": [],
+      "learned": [],
+      "images": [],
+      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Alpha-digital-coin" }],
+      "facts": [
+        { "path": "README.md", "quote": "A decentralized token dashboard built on the Internet Computer Protocol (ICP) with Internet Identity authentication." }
+      ]
+    }
+  ]
+}

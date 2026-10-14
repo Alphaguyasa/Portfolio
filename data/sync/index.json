@@ -1,0 +1,830 @@
+{
+  "owner": "Alphaguyasa",
+  "syncedAt": "2026-10-14T15:47:36.579Z",
+  "repos": [
+    {
+      "name": "Alpha-digital-coin",
+      "fullName": "Alphaguyasa/Alpha-digital-coin",
+      "url": "https://github.com/Alphaguyasa/Alpha-digital-coin",
+      "private": false,
+      "description": "",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "JavaScript",
+        "CSS",
+        "Motoko"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-03-19T20:51:04Z",
+      "pushedAt": "2026-03-20T13:02:26Z",
+      "lastCommitAt": "2026-03-20T13:01:39Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": null,
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".dfx",
+        ".gitignore",
+        ".prettierignore",
+        ".prettierrc",
+        "DEPLOYMENT.md",
+        "QUICKSTART.md",
+        "README.md",
+        "app",
+        "components",
+        "components.json",
+        "deps",
+        "dfx.json",
+        "eslint.config.mjs",
+        "hooks",
+        "lib",
+        "next.config.mjs",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.mjs",
+        "public",
+        "src",
+        "tsconfig.json"
+      ],
+      "docs": [
+        "README.md"
+      ]
+    },
+    {
+      "name": "docsearch",
+      "fullName": "Alphaguyasa/docsearch",
+      "url": "https://github.com/Alphaguyasa/docsearch",
+      "private": false,
+      "description": "Ask questions about your PDFs and get streamed, cited answers grounded in the documents (hybrid vector + keyword retrieval, refuses when uncovered).",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "CSS",
+        "PLpgSQL",
+        "Python",
+        "JavaScript",
+        "HTML"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-07-24T21:55:03Z",
+      "pushedAt": "2026-10-14T15:31:50Z",
+      "lastCommitAt": "2026-10-14T15:31:49Z",
+      "latestRelease": null,
+      "tags": [
+        "v2026-10-14-3",
+        "v2026-10-14-2",
+        "v2026-10-14-1",
+        "v1-docsearch"
+      ],
+      "ci": {
+        "workflow": "ci",
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-10-14T15:28:52Z"
+      },
+      "mergedPulls": [
+        {
+          "number": 100,
+          "title": "Deploy and run the data pipelines from main; no Fable",
+          "mergedAt": "2026-10-14T15:28:49Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/100"
+        },
+        {
+          "number": 99,
+          "title": "Setup: CI, lint, project-rule tests, and the daily run's memory files",
+          "mergedAt": "2026-10-14T14:43:30Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/99"
+        },
+        {
+          "number": 7,
+          "title": "Scripture pivot (Not Alone)",
+          "mergedAt": "2026-10-14T13:00:17Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/7"
+        },
+        {
+          "number": 98,
+          "title": "Hudade companion: a person a day through the Great Lent",
+          "mergedAt": "2026-10-12T14:19:36Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/98"
+        },
+        {
+          "number": 97,
+          "title": "A 7-day walk on Telegram, and \"Stories like mine\"",
+          "mergedAt": "2026-10-12T14:17:28Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/97"
+        },
+        {
+          "number": 96,
+          "title": "A private repentance journal, kept only on the phone",
+          "mergedAt": "2026-10-12T14:03:58Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/96"
+        },
+        {
+          "number": 95,
+          "title": "Today in the Ethiopian Church",
+          "mergedAt": "2026-10-12T14:01:02Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/95"
+        },
+        {
+          "number": 94,
+          "title": "Theudas and Nakor, from Baralam and Yewasef",
+          "mergedAt": "2026-10-12T13:52:21Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/94"
+        },
+        {
+          "number": 92,
+          "title": "Add Baralam and Yewasef (Budge 1923) for the Ethiopian Church",
+          "mergedAt": "2026-09-30T16:02:51Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/92"
+        },
+        {
+          "number": 90,
+          "title": "Add the Discourses of Philoxenus of Mabbogh (Budge 1894)",
+          "mergedAt": "2026-09-29T17:17:51Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/90"
+        }
+      ],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        ".vercelignore",
+        "CLAUDE.md",
+        "DAILY_LOG.md",
+        "NEEDS_APPROVAL.md",
+        "PIVOT_PLAN.md",
+        "README.md",
+        "ROADMAP.md",
+        "SOURCES.md",
+        "assets",
+        "corpus",
+        "data",
+        "docs",
+        "eslint.config.mjs",
+        "eval",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.mjs",
+        "public",
+        "schema.sql",
+        "scripts",
+        "src",
+        "supabase",
+        "tests",
+        "tsconfig.json",
+        "vercel.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/EVAL_HARNESS.md",
+        "docs/EVAL_RESULTS.md",
+        "docs/NOT_ALONE.md",
+        "docs/PIVOT.md",
+        "docs/SESSIONS.md",
+        "docs/SWEEP.md",
+        "docs/WRITEUP.md"
+      ]
+    },
+    {
+      "name": "ethiopic-text",
+      "fullName": "Alphaguyasa/ethiopic-text",
+      "url": "https://github.com/Alphaguyasa/ethiopic-text",
+      "private": false,
+      "description": "Search, matching and normalization for Ethiopic script. Makes \"???\" match \"???\". TypeScript, zero dependencies.",
+      "homepage": "https://ethiopic-text.vercel.app",
+      "topics": [
+        "amharic",
+        "ethiopic",
+        "geez",
+        "i18n",
+        "normalization",
+        "search",
+        "tigrinya",
+        "typescript",
+        "unicode"
+      ],
+      "license": "MIT",
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-08-05T14:14:26Z",
+      "pushedAt": "2026-08-05T17:16:25Z",
+      "lastCommitAt": "2026-08-05T17:16:05Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-08-05T17:16:27Z"
+      },
+      "mergedPulls": [],
+      "npm": {
+        "name": "ethiopic-text",
+        "latest": "0.1.0",
+        "publishedAt": "2026-08-05T17:39:22.895Z"
+      },
+      "rootFiles": [
+        ".changeset",
+        ".gitattributes",
+        ".github",
+        ".gitignore",
+        "CHANGELOG.md",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "README.md",
+        "RELEASING.md",
+        "biome.json",
+        "data",
+        "docs",
+        "package-lock.json",
+        "package.json",
+        "playground",
+        "scripts",
+        "src",
+        "test",
+        "tsconfig.json",
+        "tsup.config.ts",
+        "typedoc.json",
+        "vercel.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "CHANGELOG.md",
+        "README.md",
+        "docs/DESIGN.md",
+        "docs/LINGUISTIC-REVIEW.md"
+      ]
+    },
+    {
+      "name": "HUnews",
+      "fullName": "Alphaguyasa/HUnews",
+      "url": "https://github.com/Alphaguyasa/HUnews",
+      "private": false,
+      "description": "Haramaya University news application ",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "Dart",
+      "languages": [
+        "Dart",
+        "C++",
+        "CMake",
+        "Swift",
+        "C",
+        "HTML",
+        "Kotlin",
+        "Objective-C"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-04-30T06:05:38Z",
+      "pushedAt": "2026-05-02T20:16:28Z",
+      "lastCommitAt": "2026-05-02T20:16:17Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": null,
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".gitignore",
+        ".metadata",
+        "README.md",
+        "analysis_options.yaml",
+        "android",
+        "apk",
+        "application_app",
+        "ios",
+        "lib",
+        "linux",
+        "macos",
+        "pubspec.lock",
+        "pubspec.yaml",
+        "test",
+        "web",
+        "windows"
+      ],
+      "docs": [
+        "README.md"
+      ]
+    },
+    {
+      "name": "Meret",
+      "fullName": "Alphaguyasa/Meret",
+      "url": "https://github.com/Alphaguyasa/Meret",
+      "private": false,
+      "description": "",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "Kotlin",
+      "languages": [
+        "Kotlin",
+        "JavaScript",
+        "Shell"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-08-09T13:40:40Z",
+      "pushedAt": "2026-10-14T15:07:42Z",
+      "lastCommitAt": "2026-10-14T15:07:41Z",
+      "latestRelease": null,
+      "tags": [
+        "v2026-10-14-3",
+        "v2026-10-14-2",
+        "v2026-10-14-1"
+      ],
+      "ci": {
+        "workflow": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-10-14T14:10:25Z"
+      },
+      "mergedPulls": [
+        {
+          "number": 6,
+          "title": "Model policy: Opus line only (routine switched from Fable 5.1 to Opus 5.5)",
+          "mergedAt": "2026-10-14T15:07:42Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/6"
+        },
+        {
+          "number": 5,
+          "title": "Resolve A1: routines have no approval setting",
+          "mergedAt": "2026-10-14T15:04:08Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/5"
+        },
+        {
+          "number": 4,
+          "title": "Log 2026-10-14 run; mark roadmap items 1–2 done",
+          "mergedAt": "2026-10-14T14:17:11Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/4"
+        },
+        {
+          "number": 3,
+          "title": "Forbid loggers and stdout in production code (no personal data in logs)",
+          "mergedAt": "2026-10-14T14:10:22Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/3"
+        },
+        {
+          "number": 2,
+          "title": "Keep survey records out of backup and device-to-device transfer",
+          "mergedAt": "2026-10-14T14:03:36Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/2"
+        },
+        {
+          "number": 1,
+          "title": "Autonomous-development setup: context files and faster CI",
+          "mergedAt": "2026-10-14T12:51:04Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/1"
+        }
+      ],
+      "npm": null,
+      "rootFiles": [
+        ".editorconfig",
+        ".gitattributes",
+        ".github",
+        ".gitignore",
+        "CLAUDE.md",
+        "DAILY_LOG.md",
+        "NEEDS_APPROVAL.md",
+        "ROADMAP.md",
+        "app",
+        "build-logic",
+        "build.gradle.kts",
+        "config",
+        "core",
+        "docs",
+        "domain",
+        "feature",
+        "gradle",
+        "gradle.properties",
+        "gradlew",
+        "gradlew.bat",
+        "local.properties.example",
+        "peer",
+        "settings.gradle.kts",
+        "sync",
+        "tools"
+      ],
+      "docs": [
+        "ROADMAP.md",
+        "docs/ARCHITECTURE.md",
+        "docs/BUILD_PLAN.md",
+        "docs/DATA_MODEL.md",
+        "docs/DESIGN_SYSTEM.md",
+        "docs/LOCATION_ENGINE.md",
+        "docs/MAPS_OFFLINE.md",
+        "docs/README.md",
+        "docs/SESSION_PROMPTS.md"
+      ]
+    },
+    {
+      "name": "Mezgeb",
+      "fullName": "Alphaguyasa/Mezgeb",
+      "url": "https://github.com/Alphaguyasa/Mezgeb",
+      "private": false,
+      "description": "Mobile money reconciliation for Android. Kotlin, Compose, Hilt, Room, with a pure-JVM parser module.",
+      "homepage": "",
+      "topics": [],
+      "license": "MIT",
+      "primaryLanguage": "Kotlin",
+      "languages": [
+        "Kotlin",
+        "PowerShell"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-08-02T20:15:54Z",
+      "pushedAt": "2026-10-14T15:26:29Z",
+      "lastCommitAt": "2026-10-14T15:26:17Z",
+      "latestRelease": null,
+      "tags": [
+        "v2026-10-14-5",
+        "v2026-10-14-4",
+        "v2026-10-14-3",
+        "v2026-10-14-2",
+        "v2026-10-14-1"
+      ],
+      "ci": {
+        "workflow": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-10-14T15:26:21Z"
+      },
+      "mergedPulls": [
+        {
+          "number": 5,
+          "title": "docs: Opus-only model policy; daily routine created",
+          "mergedAt": "2026-10-14T15:26:18Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/5"
+        },
+        {
+          "number": 4,
+          "title": "docs: log the 2026-10-14 setup run",
+          "mergedAt": "2026-10-14T15:12:32Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/4"
+        },
+        {
+          "number": 3,
+          "title": "Parser: never read a value from a cut-off message",
+          "mergedAt": "2026-10-14T15:05:22Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/3"
+        },
+        {
+          "number": 2,
+          "title": "Scope provider-reference dedup to the channel and include deleted rows",
+          "mergedAt": "2026-10-14T14:46:20Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/2"
+        },
+        {
+          "number": 1,
+          "title": "Set up CI and the autonomous operating docs",
+          "mergedAt": "2026-10-14T14:31:44Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/1"
+        }
+      ],
+      "npm": null,
+      "rootFiles": [
+        ".github",
+        ".gitignore",
+        "ARCHITECTURE.md",
+        "CLAUDE.md",
+        "CONVENTIONS.md",
+        "CORPUS.md",
+        "DAILY_LOG.md",
+        "LICENSE",
+        "NEEDS_APPROVAL.md",
+        "NOTES.md",
+        "README.md",
+        "ROADMAP.md",
+        "app",
+        "build.gradle.kts",
+        "docs",
+        "gradle",
+        "gradle.properties",
+        "gradlew",
+        "gradlew.bat",
+        "parser",
+        "settings.gradle.kts",
+        "tools"
+      ],
+      "docs": [
+        "ARCHITECTURE.md",
+        "CORPUS.md",
+        "NOTES.md",
+        "README.md",
+        "ROADMAP.md",
+        "docs/00-README-START-HERE.md",
+        "docs/01-CONVENTIONS.md",
+        "docs/02-SPEC.md",
+        "docs/03-ARCHITECTURE.md",
+        "docs/04-SMS-SAMPLE-COLLECTION.md",
+        "docs/05-BUILD-SESSIONS.md",
+        "docs/06-PORTFOLIO-AND-PITCH.md"
+      ]
+    },
+    {
+      "name": "NullChat",
+      "fullName": "Alphaguyasa/NullChat",
+      "url": "https://github.com/Alphaguyasa/NullChat",
+      "private": false,
+      "description": "Peer-to-peer Android messaging over Bluetooth LE and Wi-Fi Direct. Text and photos, no network connection required.",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "Kotlin",
+      "languages": [
+        "Kotlin"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-07-24T08:47:54Z",
+      "pushedAt": "2026-10-14T15:02:05Z",
+      "lastCommitAt": "2026-10-14T15:01:43Z",
+      "latestRelease": null,
+      "tags": [
+        "v2026-10-14-6",
+        "v2026-10-14-5",
+        "v2026-10-14-4",
+        "v2026-10-14-3",
+        "v2026-10-14-2",
+        "v2026-10-14-1",
+        "v0.2",
+        "v0.1"
+      ],
+      "ci": {
+        "workflow": "Android CI",
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-10-14T15:01:47Z"
+      },
+      "mergedPulls": [
+        {
+          "number": 6,
+          "title": "Resolve auto-approve item in NEEDS_APPROVAL",
+          "mergedAt": "2026-10-14T15:01:44Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/6"
+        },
+        {
+          "number": 5,
+          "title": "Log 2026-10-14 run; notification and cloud-run notes",
+          "mergedAt": "2026-10-14T14:07:36Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/5"
+        },
+        {
+          "number": 4,
+          "title": "Never render undecryptable ciphertext as text",
+          "mergedAt": "2026-10-14T13:09:54Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/4"
+        },
+        {
+          "number": 3,
+          "title": "Send text longer than one packet as fragments",
+          "mergedAt": "2026-10-14T13:00:32Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/3"
+        },
+        {
+          "number": 2,
+          "title": "Send and honour delivery receipts (ACK)",
+          "mergedAt": "2026-10-14T12:41:57Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/2"
+        },
+        {
+          "number": 1,
+          "title": "Project context files and Android CI",
+          "mergedAt": "2026-10-14T12:30:29Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/1"
+        }
+      ],
+      "npm": null,
+      "rootFiles": [
+        ".github",
+        ".gitignore",
+        ".idea",
+        "CLAUDE.md",
+        "DAILY_LOG.md",
+        "NEEDS_APPROVAL.md",
+        "ROADMAP.md",
+        "app",
+        "build.gradle.kts",
+        "gradle",
+        "gradle.properties",
+        "gradlew",
+        "gradlew.bat",
+        "ic_launcher_foreground.svg",
+        "settings.gradle.kts"
+      ],
+      "docs": [
+        "ROADMAP.md"
+      ]
+    },
+    {
+      "name": "Suq",
+      "fullName": "Alphaguyasa/Suq",
+      "url": "https://github.com/Alphaguyasa/Suq",
+      "private": false,
+      "description": "Offline-first point-of-sale and inventory PWA for Ethiopian shops. Next.js 15, Dexie, Supabase, Serwist.",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "CSS",
+        "Shell",
+        "JavaScript"
+      ],
+      "defaultBranch": "master",
+      "createdAt": "2026-08-01T09:14:12Z",
+      "pushedAt": "2026-10-14T14:51:45Z",
+      "lastCommitAt": "2026-10-14T14:50:49Z",
+      "latestRelease": null,
+      "tags": [
+        "v2026-10-14-2",
+        "v2026-10-14-1"
+      ],
+      "ci": {
+        "workflow": "CI",
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-10-14T14:50:54Z"
+      },
+      "mergedPulls": [
+        {
+          "number": 2,
+          "title": "docs: 2026-10-14 daily log and report",
+          "mergedAt": "2026-10-14T14:50:50Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/2"
+        },
+        {
+          "number": 1,
+          "title": "chore: project setup — CI, Playwright offline e2e, docs for autonomous runs",
+          "mergedAt": "2026-10-14T14:31:14Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/1"
+        }
+      ],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".gitattributes",
+        ".githooks",
+        ".github",
+        ".gitignore",
+        "CLAUDE.md",
+        "DAILY_LOG.md",
+        "NEEDS_APPROVAL.md",
+        "README.md",
+        "ROADMAP.md",
+        "app",
+        "components",
+        "docs",
+        "e2e",
+        "eslint.config.mjs",
+        "lib",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "playwright.config.ts",
+        "postcss.config.mjs",
+        "public",
+        "scripts",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.mts",
+        "vitest.setup.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/BUILD_GUIDE.md",
+        "docs/DEMO_SCRIPT.md",
+        "docs/PROJECT_AMHARIC.md",
+        "docs/RULES.md"
+      ]
+    },
+    {
+      "name": "Final-year-project",
+      "fullName": "vulnerability-scanner-website/Final-year-project",
+      "url": "https://github.com/vulnerability-scanner-website/Final-year-project",
+      "private": false,
+      "description": "This Website Vulnerability Scanner is a lightweight yet powerful web application designed to identify and report common security flaws in websites. Built with a focus on usability and accuracy, it helps developers, security analysts, and system administrators proactively safeguard their applications against potential threats.",
+      "homepage": "",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "JavaScript",
+      "languages": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "PHP",
+        "Batchfile",
+        "Dockerfile"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-02-23T11:47:12Z",
+      "pushedAt": "2026-05-12T20:23:43Z",
+      "lastCommitAt": "2026-05-12T20:23:43Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": null,
+      "mergedPulls": [
+        {
+          "number": 126,
+          "title": "fix some issues",
+          "mergedAt": "2026-05-12T20:23:43Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/126"
+        },
+        {
+          "number": 125,
+          "title": "finalize some things",
+          "mergedAt": "2026-05-12T05:24:21Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/125"
+        },
+        {
+          "number": 124,
+          "title": "add adminer as database gui",
+          "mergedAt": "2026-05-11T12:48:25Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/124"
+        },
+        {
+          "number": 123,
+          "title": "edit scanner for admin",
+          "mergedAt": "2026-05-09T18:07:43Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/123"
+        },
+        {
+          "number": 122,
+          "title": "add coorporate sunscription plan",
+          "mergedAt": "2026-05-09T17:14:42Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/122"
+        },
+        {
+          "number": 121,
+          "title": "edit some file",
+          "mergedAt": "2026-05-09T12:58:55Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/121"
+        },
+        {
+          "number": 120,
+          "title": " edit some file and add maintainance mode",
+          "mergedAt": "2026-05-09T07:38:26Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/120"
+        },
+        {
+          "number": 119,
+          "title": "fix some issues",
+          "mergedAt": "2026-05-06T13:07:18Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/119"
+        },
+        {
+          "number": 118,
+          "title": "add payment generation page",
+          "mergedAt": "2026-05-06T12:19:12Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/118"
+        },
+        {
+          "number": 117,
+          "title": "correct pdf generation",
+          "mergedAt": "2026-05-06T11:34:48Z",
+          "url": "https://github.com/vulnerability-scanner-website/Final-year-project/pull/117"
+        }
+      ],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".gitignore",
+        "DOCKER.md",
+        "GOOGLE_OAUTH_SETUP.md",
+        "README.md",
+        "SETUP.md",
+        "TESTING_COMPLETE.md",
+        "backend",
+        "backend_logs.txt",
+        "docker-compose.yml",
+        "frontend",
+        "keep-targets-running.bat",
+        "query",
+        "scanner",
+        "test-api.bat",
+        "test-zap.bat",
+        "vulnerable-app"
+      ],
+      "docs": [
+        "README.md"
+      ]
+    }
+  ]
+}

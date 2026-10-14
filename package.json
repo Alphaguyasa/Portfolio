@@ -6,23 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "verify:facts": "node scripts/verify-facts.mjs",
+    "check:site": "node scripts/check-site.mjs",
+    "sync": "node scripts/sync-github.mjs && node scripts/generate-copy.mjs && node scripts/verify-facts.mjs",
+    "copy": "node scripts/generate-copy.mjs"
   },
   "dependencies": {
-    "next": "16.3.0",
+    "next": "^16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "24.19.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.3.0",
+    "eslint-config-next": "^16.3.8",
+    "playwright": "1.63.0",
     "sharp": "^0.35.3",
     "simple-icons": "^16.28.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "5.0.2"
   }
 }

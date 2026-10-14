@@ -1,0 +1,18 @@
+{
+  "$comment": "Controls what the GitHub sync reads and what the site may publish. Public repos are included by default unless listed in 'skip'. A private repo is included ONLY if listed in 'include', and then only the 'publicSummary' written here is used; its contents are never read.",
+  "owner": "Alphaguyasa",
+  "skip": ["Alphaguyasa", "Portfolio"],
+  "include": {},
+  "extraPublicRepos": ["vulnerability-scanner-website/Final-year-project"],
+  "npmPackages": { "ethiopic-text": "ethiopic-text" },
+  "docPaths": ["README.md", "ROADMAP.md", "ARCHITECTURE.md", "CORPUS.md", "NOTES.md", "CHANGELOG.md"],
+  "docDirs": ["docs"],
+  "maxDocBytes": 80000,
+  "public": {
+    "email": "alphaguyasa@gmail.com",
+    "github": "https://github.com/Alphaguyasa",
+    "linkedin": "https://www.linkedin.com/in/alpha-guyasa-a2b567328",
+    "leetcode": "https://leetcode.com/u/alphaguyasa123CS/",
+    "location": "Addis Ababa, Ethiopia"
+  }
+}

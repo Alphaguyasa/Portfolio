@@ -27,13 +27,14 @@ export default function Recognitions() {
                 key={item.title}
                 className="relative overflow-hidden rounded-[22px] bg-white p-7.5"
               >
-                {/* Ghost numeral sits behind the content */}
+                {/* Ghost numeral sits behind the content. It is decorative, so it is
+                    drawn as generated content rather than as text a contrast
+                    checker or screen reader would read. */}
                 <span
                   aria-hidden
-                  className="absolute right-3.5 top-4.5 font-display text-8xl font-extrabold leading-none text-ghost"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                  data-numeral={String(i + 1).padStart(2, "0")}
+                  className="absolute right-3.5 top-4.5 font-display text-8xl font-extrabold leading-none text-ghost before:content-[attr(data-numeral)]"
+                />
                 <span
                   className={`relative flex size-23 items-center justify-center rounded-full text-white ${
                     item.tone === "accent" ? "bg-accent" : "bg-ink"

@@ -53,7 +53,7 @@ export default function Faq() {
                     </button>
                   </h3>
                   <div id={panelId} hidden={!isOpen} className="px-6 pb-6 xl:px-7">
-                    <p className="font-sans text-base leading-[1.6] opacity-85 xl:text-[17px]">
+                    <p className="font-sans text-base leading-[1.6] xl:text-[17px]">
                       {faq.a}
                     </p>
                   </div>

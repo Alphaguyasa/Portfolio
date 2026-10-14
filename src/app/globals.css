@@ -2,7 +2,12 @@
 
 @theme {
   /* Palette — see the handoff's Design Tokens table */
-  --color-accent: #ff4a17;
+  /* Deepened from the handoff's #ff4a17, which is 3.4:1 against white text and
+     fails WCAG AA for body-size text. #c2410c is 5.2:1 on white and 4.7:1 on the
+     #f4f4f4 surface. */
+  --color-accent: #c2410c;
+  /* The original handoff orange, kept for text on ink, where it is 5.9:1. */
+  --color-accent-bright: #ff4a17;
   --color-ink: #0a0a0a;
   --color-surface: #ffffff;
   --color-surface-alt: #f4f4f4;
