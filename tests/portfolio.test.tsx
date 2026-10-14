@@ -34,10 +34,10 @@ describe("Portfolio section", () => {
   });
 });
 
-describe("no project stand-in illustrations anywhere in the site source", () => {
+describe("no stand-in illustrations anywhere in the site source", () => {
   it.each(srcFiles)("%s", (file) => {
     const text = readFileSync(path.join(root, file), "utf8");
-    for (const src of STAND_IN_IMAGES.filter((s: string) => s.includes("/proj-"))) expect(text).not.toContain(src);
+    for (const src of STAND_IN_IMAGES) expect(text).not.toContain(src);
   });
 });
 
