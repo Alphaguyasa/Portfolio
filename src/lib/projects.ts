@@ -1,0 +1,88 @@
+/**
+ * Typed access to data/projects.json (claims, checked by verify-facts) and
+ * data/sync/index.json (live repo facts). Components read projects only through here.
+ */
+import projectsData from "../../data/projects.json";
+import syncData from "../../data/sync/index.json";
+
+export type Status = "idea" | "building" | "shipped" | "maintained" | "paused";
+
+export type Project = {
+  slug: string;
+  name: string;
+  tagline: string;
+  repo: string;
+  status: Status;
+  statusNote: string;
+  featured: boolean;
+  platform: string;
+  stack: string[];
+  problem: string;
+  approach: string;
+  results: string[];
+  learned: string[];
+  images: { src: string; alt: string; source: string }[];
+  links: { label: string; href: string }[];
+  facts: { path: string; quote: string }[];
+};
+
+type SyncRepo = {
+  name: string;
+  fullName: string;
+  url?: string;
+  private: boolean;
+  lastCommitAt?: string | null;
+  latestRelease?: { tag: string; publishedAt: string } | null;
+  tags?: string[];
+  ci?: { workflow: string; status: string; conclusion: string | null; at: string } | null;
+  npm?: { name: string; latest: string | null; publishedAt: string | null } | null;
+};
+
+export const projects = projectsData.projects as Project[];
+const repos = syncData.repos as SyncRepo[];
+export const syncedAt: string = syncData.syncedAt;
+
+export const STATUS_LABEL: Record<Status, string> = {
+  idea: "Idea",
+  building: "In development",
+  shipped: "Shipped",
+  maintained: "Maintained",
+  paused: "Paused",
+};
+
+export type LiveFacts = {
+  lastCommitAt: string | null;
+  latestTag: string | null;
+  ciPassing: boolean | null;
+  npmVersion: string | null;
+};
+
+export function liveFacts(project: Project): LiveFacts {
+  const repo = repos.find((r) => r.fullName === project.repo);
+  return {
+    lastCommitAt: repo?.lastCommitAt ?? null,
+    latestTag: repo?.latestRelease?.tag ?? repo?.tags?.[0] ?? null,
+    ciPassing: repo?.ci ? repo.ci.conclusion === "success" : null,
+    npmVersion: repo?.npm?.latest ?? null,
+  };
+}
+
+/** "14 Oct 2026", in UTC so the build machine's timezone cannot shift the day. */
+export function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/** Counts shown on the page, derived from the data rather than typed in. */
+export function portfolioStats() {
+  const owner = syncData.owner;
+  return {
+    shipped: projects.filter((p) => p.status === "shipped" || p.status === "maintained").length,
+    inDevelopment: projects.filter((p) => p.status === "building").length,
+    publicRepos: repos.filter((r) => !r.private && r.fullName.startsWith(`${owner}/`)).length,
+  };
+}
