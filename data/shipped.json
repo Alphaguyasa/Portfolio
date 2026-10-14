@@ -1,0 +1,162 @@
+[
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Deploy and run the data pipelines from main; no Fable",
+    "date": "2026-10-14T15:28:49Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/100"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "Parser: never read a value from a cut-off message",
+    "date": "2026-10-14T15:05:22Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "Scope provider-reference dedup to the channel and include deleted rows",
+    "date": "2026-10-14T14:46:20Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/2"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Setup: CI, lint, project-rule tests, and the daily run's memory files",
+    "date": "2026-10-14T14:43:30Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/99"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "Set up CI and the autonomous operating docs",
+    "date": "2026-10-14T14:31:44Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/1"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Forbid loggers and stdout in production code (no personal data in logs)",
+    "date": "2026-10-14T14:10:22Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/3"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Keep survey records out of backup and device-to-device transfer",
+    "date": "2026-10-14T14:03:36Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/2"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Never render undecryptable ciphertext as text",
+    "date": "2026-10-14T13:09:54Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/4"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Send text longer than one packet as fragments",
+    "date": "2026-10-14T13:00:32Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/3"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Scripture pivot (Not Alone)",
+    "date": "2026-10-14T13:00:17Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/7"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Autonomous-development setup: context files and faster CI",
+    "date": "2026-10-14T12:51:04Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/1"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Send and honour delivery receipts (ACK)",
+    "date": "2026-10-14T12:41:57Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/2"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Project context files and Android CI",
+    "date": "2026-10-14T12:30:29Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/1"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "tag",
+    "title": "v2026-10-14-2",
+    "date": "2026-10-14T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/Suq/tree/v2026-10-14-2"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "tag",
+    "title": "v2026-10-14-3",
+    "date": "2026-10-14T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/tree/v2026-10-14-3"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "tag",
+    "title": "v2026-10-14-3",
+    "date": "2026-10-14T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/Meret/tree/v2026-10-14-3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "tag",
+    "title": "v2026-10-14-5",
+    "date": "2026-10-14T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/tree/v2026-10-14-5"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-10-14-6",
+    "date": "2026-10-14T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-14-6"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Hudade companion: a person a day through the Great Lent",
+    "date": "2026-10-12T14:19:36Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/98"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "A 7-day walk on Telegram, and \"Stories like mine\"",
+    "date": "2026-10-12T14:17:28Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/97"
+  }
+]

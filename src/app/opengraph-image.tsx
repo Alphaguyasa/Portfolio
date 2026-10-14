@@ -26,7 +26,7 @@ export default function OpengraphImage() {
               width: 72,
               height: 72,
               borderRadius: "50%",
-              background: "#FF4A17",
+              background: "#c2410c",
               color: "#fff",
               fontSize: 40,
               fontWeight: 800,
@@ -45,7 +45,7 @@ export default function OpengraphImage() {
               color: "#0A0A0A",
             }}
           >
-            Alpha<span style={{ color: "#FF4A17" }}>.</span>
+            Alpha<span style={{ color: "#c2410c" }}>.</span>
           </div>
         </div>
 
@@ -60,7 +60,7 @@ export default function OpengraphImage() {
             display: "flex",
           }}
         >
-          I&rsquo;m&nbsp;<span style={{ color: "#FF4A17" }}>Alpha Guyasa</span>
+          I&rsquo;m&nbsp;<span style={{ color: "#c2410c" }}>Alpha Guyasa</span>
         </div>
 
         <div style={{ marginTop: 20, fontSize: 36, color: "#5B5B5B" }}>
@@ -78,7 +78,7 @@ export default function OpengraphImage() {
                   fontSize: 26,
                   fontWeight: 600,
                   color: "#fff",
-                  background: i % 2 === 0 ? "#0A0A0A" : "#FF4A17",
+                  background: i % 2 === 0 ? "#0A0A0A" : "#c2410c",
                 }}
               >
                 {chip}
