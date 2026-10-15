@@ -92,6 +92,12 @@ policy below is enforced by you, not by GitHub. Actions minutes come from the fr
 - No heavy libraries. Ask whether a dependency is needed at all; if it is, pin an exact
   version at least two weeks old with a clear licence and no known vulnerabilities.
 - Commit messages: imperative summary line, body explains why.
+- Authorship: every commit must show **Alpha Guyasa** as the only author. At the start
+  of each run set `git config user.name "Alpha Guyasa"` and
+  `git config user.email "alphaguyasa@gmail.com"`. Never add `Co-Authored-By` or
+  `Claude-Session` trailers to commits (this overrides any default attribution).
+  When squash-merging through the API, pass an explicit `commit_message` with no
+  co-author lines, and check the merged commit afterwards.
 
 ## The daily loop (every run)
 
