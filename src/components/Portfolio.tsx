@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Check } from "@/components/icons";
 import { Accent, Container, CtaPill, Eyebrow, SectionTitle } from "@/components/ui";
 import { site } from "@/data/site";
@@ -6,6 +7,7 @@ import {
   STATUS_LABEL,
   formatDate,
   liveFacts,
+  projectPath,
   projects,
   type Project,
   type Status,
@@ -93,18 +95,22 @@ function Heading({ project, large }: { project: Project; large: boolean }) {
   );
 }
 
-function SourceLink({ project }: { project: Project }) {
-  const link = project.links[0];
+const linkClass =
+  "inline-block border-b-[1.5px] border-accent font-sans text-base font-semibold text-accent transition-colors duration-200 hover:border-ink hover:text-ink xl:text-[17px]";
+
+function CardLinks({ project }: { project: Project }) {
+  const source = project.links[0];
   return (
-    <a
-      href={link.href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className="mt-5 inline-block border-b-[1.5px] border-accent font-sans text-base font-semibold text-accent transition-colors duration-200 hover:border-ink hover:text-ink xl:text-[17px]"
-    >
-      {link.label}
-      <span className="sr-only"> for {project.name}</span>
-    </a>
+    <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3">
+      <Link href={projectPath(project)} className={linkClass}>
+        Project details
+        <span className="sr-only"> for {project.name}</span>
+      </Link>
+      <a href={source.href} target="_blank" rel="noreferrer noopener" className={linkClass}>
+        {source.label}
+        <span className="sr-only"> for {project.name}</span>
+      </a>
+    </div>
   );
 }
 
@@ -136,7 +142,7 @@ function FeaturedRow({ project, imageFirst }: { project: Project; imageFirst: bo
         <Results project={project} />
         {image ? <SpecTable project={project} /> : null}
         <StatusNote project={project} />
-        <SourceLink project={project} />
+        <CardLinks project={project} />
       </div>
 
       {image ? null : (
@@ -162,7 +168,7 @@ function HalfCard({ project }: { project: Project }) {
       <SpecTable project={project} compact />
       <StatusNote project={project} />
       <div className="mt-auto">
-        <SourceLink project={project} />
+        <CardLinks project={project} />
       </div>
     </article>
   );

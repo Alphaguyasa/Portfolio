@@ -24,8 +24,8 @@ export default function NotFound() {
           This page doesn’t exist
         </h1>
         <p className="mt-4 max-w-[460px] font-sans text-[17px] leading-[1.6] text-body">
-          The portfolio is a single page — whatever you were after is most likely
-          somewhere on it.
+          Whatever you were after is most likely on the home page, with every project
+          linked from there.
         </p>
         <Link
           href="/"
