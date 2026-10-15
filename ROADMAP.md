@@ -8,21 +8,11 @@ When an item is done, move it to "Done" with its PR number and release tag. Repl
 clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 **Effort:** S = under half a run · M = about one run · L = split into several PRs first.
 
-Last replan: 2026-10-14 (first audit).
+Last replan: 2026-10-14 (first audit). 9 items open on 2026-10-15; no replan needed.
 
 ---
 
 ## Open
-
-### 3. [P1 · M] A page per project: /projects/[slug]
-Problem, approach, stack, real results, what broke and what I learned, status with
-note, last commit, latest tag, CI status on main, npm version, links, screenshots with
-source. Statically generated from the data; added to the sitemap; linked from the
-cards. check:site crawls them automatically.
-
-### 4. [P1 · S] "Recently shipped" feed on the home page
-Render `data/shipped.json` (merged PRs and release tags across projects, already
-filtered of housekeeping PRs) as a compact list with dates and links.
 
 ### 5. [P1 · M] Real screenshots from the project repos
 Mezgeb (`docs/media/screen-*.png`) and DocSearch (`docs/screenshots/*.png`) have real
@@ -78,6 +68,10 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P1] "Recently shipped" feed on the home page** — PR #5 (2026-10-15).
+- **[P1] A page per project: /projects/[slug]** — PR #4 (2026-10-15). Release tag
+  `v2026-10-15-1` could not be pushed from the cloud session (NEEDS_APPROVAL A10);
+  roll back to squash commit `f30bf71` if needed.
 - **[P0] Portfolio section from data/projects.json, no stand-in images** — PR #2, `v2026-10-14-2`.
 - **[P0] Remove unverifiable claims from the home page** (skill percentages, draft
   testimonials, unwritten notes with stand-in images) — PR #3, `v2026-10-14-3`.

@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-15 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus; no switch needed.
+
+- **Main:** CI green on the last 3 runs.
+- **Sync step: skipped.** The cloud session's GitHub access is scoped to this repo, so
+  `/users/Alphaguyasa/repos` returns 403. Not worked around; logged as NEEDS_APPROVAL
+  A11. `data/sync/` is still the 2026-10-14 snapshot.
+- **Item 3** — PR #4 (merged, squash `f30bf71`): `/projects/<slug>` for all 9 projects,
+  statically generated; live facts from the sync; in the sitemap; linked from every
+  card; check:site now crawls 10 pages. 34 new tests.
+- **Item 4** — PR #5: "Recently shipped" section on the home page from
+  `data/shipped.json` (newest 8 items, linked to the project page and to the PR/tag).
+- **Tags:** pushing `v2026-10-15-*` is refused by the session proxy (git push and REST
+  both 403). NEEDS_APPROVAL A10 has the commands. Rollback point: the squash commits.
+- **Branches:** the cloud routine is pinned to one working branch
+  (`alpha/cool-bardeen-bxivoq`), so PRs came from it instead of `claude/<name>`; main
+  was merged back into it between PRs (no force-push).
+- Local check:site needed Playwright pointed at the preinstalled Chromium; CI is
+  unaffected.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Item 3 project pages (PR #4), item 4 Recently-shipped feed (PR #5) |
+| Merged | #4 yes (no tag: A10) · #5 see PR |
+| Failed or blocked | Sync skipped (A11: repo-scoped token). Release tags not pushable (A10). |
+| Roadmap | 9 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A11 sync access, A10 tags, plus A2–A8 from yesterday |
+| Next | Sync if A11 is fixed; items 5 (real screenshots, needs other repos readable) or 6 (About / How I work) and 7 (contact-form tests) |
+
+---
+
 ## 2026-10-14 — setup run (interactive, Phase 0)
 
 **Model:** Opus 5.5 (`claude-opus-5-5`), the newest Opus available.
