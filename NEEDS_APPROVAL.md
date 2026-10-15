@@ -5,10 +5,24 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
-### A1. ACTION FOR ALPHA: set the daily task to "Automatically approve" (2026-10-14)
-The cloud scheduled task runs with nobody to approve tool calls. Open the task's
-settings in the Claude app and switch permissions to **Automatically approve**,
-otherwise every run will stall at its first action.
+### A11. Cloud run cannot read your other repos, so the daily sync is skipped (2026-10-15)
+The scheduled cloud session's GitHub access is scoped to this repo only. The sync's
+first call (`/users/Alphaguyasa/repos`) returns 403 "sessions are bound to their
+configured repositories". Per CLAUDE.md the sync was skipped, not worked around, so
+`data/sync/` still holds the 2026-10-14 snapshot (last commits, CI, tags may be stale).
+To fix (free): add the public repos (Mezgeb, Suq, docsearch, NullChat, Meret,
+ethiopic-text, HUnews, Alpha-digital-coin, vulnerability-scanner-website/Final-year-project)
+to the routine's repository list in the Claude app, or run `npm run sync` locally and
+push the result. The repo-listing endpoint may still be blocked even then; if so, the
+sync script needs a fallback to a fixed repo list in portfolio.config.json (I can add
+that once you confirm which way you want to go).
+
+### A10. Release tags cannot be pushed from the cloud run (2026-10-15)
+The session's git proxy allows pushing only the working branch, and the REST API
+refuses creating refs. PR #4 and PR #5 are merged, but their tags were not created.
+To create them yourself:
+`git fetch origin && git tag v2026-10-15-1 f30bf71 && git tag v2026-10-15-2 <PR #5 squash commit> && git push origin --tags`.
+Alternatively, accept "squash commit SHA in DAILY_LOG" as the rollback point for cloud runs.
 
 ### A2. Placeholder testimonials (2026-10-14)
 The two quotes (Melkias Teshome, Abdi Fekeda) were drafted for layout and approved
@@ -51,11 +65,9 @@ accessibility check in ~85 places. The accent is now `#c2410c` (5.2:1); the orig
 orange is kept for text on black. Reply "revert accent" if you prefer the original,
 but the a11y check would then fail and block every merge.
 
-### A9. Cloud run GitHub access (2026-10-14)
-The sync needs a GitHub token (~115 API calls per run). The first scheduled run will
-confirm whether the cloud environment provides one. If it does not, the run will log
-it here and skip the sync rather than work around it.
-
 ## Resolved
 
-(none yet)
+- **A1. Daily task permissions** (2026-10-14) — the 2026-10-15 scheduled run executed
+  without stalling, so permissions are set correctly.
+- **A9. Cloud run GitHub access** (2026-10-14) — answered by the 2026-10-15 run: a
+  token exists but is scoped to this repo only. Follow-up is A11.

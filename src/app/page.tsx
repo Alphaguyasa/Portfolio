@@ -9,6 +9,7 @@ import Nav from "@/components/Nav";
 import Notes from "@/components/Notes";
 import Portfolio from "@/components/Portfolio";
 import Pricing from "@/components/Pricing";
+import RecentlyShipped from "@/components/RecentlyShipped";
 import Recognitions from "@/components/Recognitions";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
@@ -29,6 +30,7 @@ export default function Home() {
         <Education />
         <Marquee items={marquees.projects} />
         <Portfolio />
+        <RecentlyShipped />
         <Recognitions />
         <Pricing />
         <Marquee items={marquees.availability} />
