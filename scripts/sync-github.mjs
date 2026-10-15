@@ -20,10 +20,22 @@
  * Auth: GITHUB_TOKEN / GH_TOKEN, else `gh auth token`, else unauthenticated
  * (60 requests/hour, which is not enough for a full run).
  */
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { selectRepos } from "./lib/repos.mjs";
+
+// Node's fetch ignores HTTPS_PROXY unless NODE_USE_ENV_PROXY is set. Behind a proxy
+// (the scheduled cloud run) a direct request never gets the proxy's credentials, so
+// re-run this script once with the variable set. No-op without a proxy.
+if ((process.env.HTTPS_PROXY || process.env.https_proxy) && !process.env.NODE_USE_ENV_PROXY) {
+  const child = spawnSync(process.execPath, process.argv.slice(1), {
+    stdio: "inherit",
+    env: { ...process.env, NODE_USE_ENV_PROXY: "1" },
+  });
+  process.exit(child.status ?? 1);
+}
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = path.join(root, "data", "sync");
@@ -66,7 +78,9 @@ async function gh(pathname, { raw = false, allow404 = false } = {}) {
   });
   if (res.status === 404 && allow404) return null;
   if (!res.ok) {
-    throw new Error(`GitHub ${res.status} for ${pathname}: ${await res.text()}`);
+    const err = new Error(`GitHub ${res.status} for ${pathname}: ${await res.text()}`);
+    err.status = res.status;
+    throw err;
   }
   return raw ? res.text() : res.json();
 }
@@ -169,20 +183,9 @@ async function syncRepo(repo, config) {
 
 async function main() {
   const config = JSON.parse(await readFile(path.join(root, "portfolio.config.json"), "utf8"));
-  const skip = new Set(config.skip.map((s) => s.toLowerCase()));
-
   // /users/:user/repos lists public repos only, which is what we want: private
   // repos come in through config.include and are never read.
-  const owned = await gh(`/users/${config.owner}/repos?type=owner&per_page=100`);
-  const extra = [];
-  for (const full of config.extraPublicRepos ?? []) {
-    const r = await gh(`/repos/${full}`, { allow404: true });
-    if (r && !r.private) extra.push(r);
-  }
-
-  const repos = [...owned, ...extra].filter(
-    (r) => !r.fork && !r.archived && !r.private && !skip.has(r.name.toLowerCase()),
-  );
+  const { repos } = await selectRepos(gh, config, (msg) => console.warn(msg));
 
   // Empty data/sync/docs rather than deleting it: on Windows a directory that is
   // some process's cwd cannot be removed, and the result is the same.

@@ -1,8 +1,18 @@
 {
-  "$comment": "Controls what the GitHub sync reads and what the site may publish. Public repos are included by default unless listed in 'skip'. A private repo is included ONLY if listed in 'include', and then only the 'publicSummary' written here is used; its contents are never read.",
+  "$comment": "Controls what the GitHub sync reads and what the site may publish. Public repos are included by default unless listed in 'skip'. A private repo is included ONLY if listed in 'include', and then only the 'publicSummary' written here is used; its contents are never read. 'knownPublicRepos' is the fallback when listing the owner's repos is refused (403); add new public repos to it.",
   "owner": "Alphaguyasa",
   "skip": ["Alphaguyasa", "Portfolio"],
   "include": {},
+  "knownPublicRepos": [
+    "Alphaguyasa/Alpha-digital-coin",
+    "Alphaguyasa/docsearch",
+    "Alphaguyasa/ethiopic-text",
+    "Alphaguyasa/HUnews",
+    "Alphaguyasa/Meret",
+    "Alphaguyasa/Mezgeb",
+    "Alphaguyasa/NullChat",
+    "Alphaguyasa/Suq"
+  ],
   "extraPublicRepos": ["vulnerability-scanner-website/Final-year-project"],
   "npmPackages": { "ethiopic-text": "ethiopic-text" },
   "docPaths": ["README.md", "ROADMAP.md", "ARCHITECTURE.md", "CORPUS.md", "NOTES.md", "CHANGELOG.md"],

@@ -13,9 +13,11 @@ configured repositories". Per CLAUDE.md the sync was skipped, not worked around,
 To fix (free): add the public repos (Mezgeb, Suq, docsearch, NullChat, Meret,
 ethiopic-text, HUnews, Alpha-digital-coin, vulnerability-scanner-website/Final-year-project)
 to the routine's repository list in the Claude app, or run `npm run sync` locally and
-push the result. The repo-listing endpoint may still be blocked even then; if so, the
-sync script needs a fallback to a fixed repo list in portfolio.config.json (I can add
-that once you confirm which way you want to go).
+push the result. Done on Alpha's go-ahead (2026-10-15): when listing the repos is
+refused, the sync now reads the repos named in `portfolio.config.json`
+`knownPublicRepos` (add any new public repo there), and it routes through the
+session proxy. If any listed repo still cannot be read, the sync stops and keeps the
+previous snapshot.
 
 ### A10. Release tags cannot be pushed from the cloud run (2026-10-15)
 The session's git proxy allows pushing only the working branch, and the REST API
