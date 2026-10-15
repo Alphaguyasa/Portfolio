@@ -31,6 +31,7 @@ type SyncRepo = {
   fullName: string;
   url?: string;
   private: boolean;
+  defaultBranch?: string;
   lastCommitAt?: string | null;
   latestRelease?: { tag: string; publishedAt: string } | null;
   tags?: string[];
@@ -54,6 +55,8 @@ export type LiveFacts = {
   lastCommitAt: string | null;
   latestTag: string | null;
   ciPassing: boolean | null;
+  ciAt: string | null;
+  defaultBranch: string | null;
   npmVersion: string | null;
 };
 
@@ -63,8 +66,18 @@ export function liveFacts(project: Project): LiveFacts {
     lastCommitAt: repo?.lastCommitAt ?? null,
     latestTag: repo?.latestRelease?.tag ?? repo?.tags?.[0] ?? null,
     ciPassing: repo?.ci ? repo.ci.conclusion === "success" : null,
+    ciAt: repo?.ci?.at ?? null,
+    defaultBranch: repo?.defaultBranch ?? null,
     npmVersion: repo?.npm?.latest ?? null,
   };
+}
+
+export function projectBySlug(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
+}
+
+export function projectPath(project: Project): string {
+  return `/projects/${project.slug}`;
 }
 
 /** "14 Oct 2026", in UTC so the build machine's timezone cannot shift the day. */

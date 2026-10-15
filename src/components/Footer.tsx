@@ -2,7 +2,8 @@ import SubscribeField from "@/components/SubscribeField";
 import { Accent, Container, CtaPill, Logo, SocialLinks } from "@/components/ui";
 import { footerNav, site } from "@/data/site";
 
-export default function Footer() {
+/** `basePath="/"` on pages other than home, so the section links point back to it. */
+export default function Footer({ basePath = "" }: { basePath?: string }) {
   return (
     <footer className="bg-surface pt-14">
       <Container>
@@ -41,7 +42,7 @@ export default function Footer() {
               {footerNav.map((link) => (
                 <li key={link.href}>
                   <a
-                    href={link.href}
+                    href={`${basePath}${link.href}`}
                     className="text-muted2 transition-colors duration-200 hover:text-accent"
                   >
                     {link.label}
