@@ -8,7 +8,7 @@ When an item is done, move it to "Done" with its PR number and release tag. Repl
 clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 **Effort:** S = under half a run · M = about one run · L = split into several PRs first.
 
-Last replan: 2026-10-14 (first audit). 9 items open on 2026-10-15; no replan needed.
+Last replan: 2026-10-14 (first audit). 8 items open on 2026-10-16; no replan needed.
 
 ---
 
@@ -20,11 +20,6 @@ files, pre-planned prompts, AI-assisted development with verification, CI as the
 gatekeeper) backed by numbers derived from the sync (`methodEvidence`: repos with
 CLAUDE.md, repos with CI). Link to this repo's own CLAUDE.md flow as a worked example
 (description only; the repo is private).
-
-### 7. [P1 · S] Restore the contact-form tests lost in the rebuild
-Commit f361113 had 15 tests (rate limiter, contact route validation / honeypot /
-missing key / provider failure, form states); the 7b99ee9 rebuild removed them. Port
-the rate-limiter and route tests to the new code.
 
 ### 8. [P2 · S] Lighthouse check in CI
 Add `@lhci/cli` (free, local, no upload) against the built site, asserting 90+ on all
@@ -42,6 +37,12 @@ Document the data flow (sync → projects.json → verify → site/copy).
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
+
+### 14. [P2 · S] Honeypot field on the contact form
+The pre-rebuild form (f361113) had a hidden honeypot field the route silently
+accepted without sending; the current form and route have none, so the only spam
+guard is the per-instance rate limit. Add the field (visually hidden, `tabIndex=-1`,
+`autoComplete="off"`, not announced to screen readers) and a route test.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -62,11 +63,17 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P1] Restore the contact-form tests** — PR #9 (2026-10-16). 14 tests: rate
+  limiter windows and key extraction; route success, validation (422), malformed body,
+  unconfigured delivery (mailto fallback), provider rejection and network failure
+  (502), and rate limiting (429). The honeypot test was not ported: the current form
+  has no honeypot (new item 14). Form-state tests need a DOM test environment; left out.
 - **[P1] Real screenshots from the project repos** — PR #8 (2026-10-16).
   `npm run screenshots` copies every image with `from: { repo, path }` in projects.json
   from the project's own public repo (raw.githubusercontent.com, read-only) to
   `public/assets/projects/<slug>/` as WebP. Mezgeb: six phone screens; DocSearch: three
   screens of the original interface. verify-facts checks repo, path, src and source.
+  Squash `97c1b89`; tag `v2026-10-16-1` not pushable (A10).
 - **[P1] "Recently shipped" feed on the home page** — PR #5 (2026-10-15).
 - **[P1] A page per project: /projects/[slug]** — PR #4 (2026-10-15). Release tag
   `v2026-10-15-1` could not be pushed from the cloud session (NEEDS_APPROVAL A10);
