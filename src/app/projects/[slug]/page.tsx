@@ -82,6 +82,7 @@ const prose = "font-sans text-base leading-[1.7] text-body xl:text-[17px]";
 export default async function ProjectPage({ params }: Params) {
   const project = projectBySlug((await params).slug);
   if (!project) notFound();
+  const phoneShots = project.images.filter((image) => image.shape === "phone");
 
   return (
     <>
@@ -112,21 +113,46 @@ export default async function ProjectPage({ params }: Params) {
       <main id="main" className="pb-20">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-14">
           <div>
-            {project.images.map((image) => (
-              <figure key={image.src} className="mt-12">
-                {/* Screenshots differ in shape: a fixed frame with object-contain avoids layout shift. */}
-                <div className="relative aspect-[14/9] overflow-hidden rounded-2xl bg-surface-alt">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 1023px) 100vw, 800px"
-                    className="object-contain"
-                  />
-                </div>
-                <figcaption className="mt-2 font-sans text-sm text-muted">Source: {image.source}</figcaption>
-              </figure>
-            ))}
+            {project.images
+              .filter((image) => image.shape !== "phone")
+              .map((image) => (
+                <figure key={image.src} className="mt-12">
+                  {/* Screenshots differ in shape: a fixed frame with object-contain avoids layout shift. */}
+                  <div className="relative aspect-[14/9] overflow-hidden rounded-2xl bg-surface-alt">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(max-width: 1023px) 100vw, 800px"
+                      className="object-contain"
+                    />
+                  </div>
+                  <figcaption className="mt-2 font-sans text-sm text-muted">Source: {image.source}</figcaption>
+                </figure>
+              ))}
+
+            {phoneShots.length > 0 && (
+              <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6" aria-label="Screens">
+                {phoneShots.map((image) => (
+                  <li key={image.src}>
+                    <figure>
+                      <div className="relative aspect-[9/18.5] overflow-hidden rounded-2xl bg-surface-alt">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          sizes="(max-width: 639px) 50vw, 260px"
+                          className="object-contain"
+                        />
+                      </div>
+                      <figcaption className="mt-2 break-words font-sans text-xs leading-[1.4] text-muted">
+                        Source: {image.source}
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            )}
 
             <Section title="The problem">
               <p className={prose}>{project.problem}</p>
