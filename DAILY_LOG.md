@@ -4,6 +4,38 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-16 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last 3 runs.
+- **Sync step: skipped again.** The new knownPublicRepos fallback ran, but each named
+  repo also returns 403 from the API; the sync stopped without touching `data/sync/`
+  (still the 2026-10-14 snapshot). NEEDS_APPROVAL A11 updated.
+- **Item 5** — PR #8 (merged, squash `97c1b89`): real screenshots copied read-only from
+  the project repos by `npm run screenshots`; Mezgeb's six phone screens in a grid,
+  DocSearch's three screens of the original interface. verify-facts checks every
+  screenshot traces to a file in the project's own repo. 9 new tests.
+- **Item 7** — PR #9: contact-form tests restored (14 tests: rate limiter and route).
+  Found the honeypot is gone from the current form; added roadmap item 14.
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- check:site run locally against the preinstalled Chromium (10 pages pass).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Item 5 real screenshots (PR #8), item 7 contact-form tests (PR #9) |
+| Merged | #8 yes, `97c1b89` (tag not pushable: A10) · #9 see PR |
+| Failed or blocked | Sync skipped (A11: API 403 for every repo). Release tags not pushable (A10). |
+| Roadmap | 8 items open (new: 14 honeypot); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A11 sync access, A10 tags, A2–A8 |
+| Next | Sync if A11 is fixed; item 6 (About / How I work) and item 8 (Lighthouse in CI) |
+
+---
+
 ## 2026-10-15 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
