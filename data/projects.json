@@ -28,7 +28,13 @@
           "src": "/assets/mezgeb-showcase.png",
           "alt": "Three Mezgeb Android screens showing the daily view, ledger and reports",
           "source": "Alphaguyasa/Mezgeb docs/media, captured from the app's demo mode"
-        }
+        },
+        { "src": "/assets/projects/mezgeb/screen-today.webp", "alt": "Mezgeb's Today screen: the day's captured payments, in and out", "source": "Alphaguyasa/Mezgeb docs/media/screen-today.png, demo mode", "from": { "repo": "Alphaguyasa/Mezgeb", "path": "docs/media/screen-today.png" }, "shape": "phone" },
+        { "src": "/assets/projects/mezgeb/screen-ledger.webp", "alt": "Mezgeb's Ledger screen: every transaction, grouped and filterable", "source": "Alphaguyasa/Mezgeb docs/media/screen-ledger.png, demo mode", "from": { "repo": "Alphaguyasa/Mezgeb", "path": "docs/media/screen-ledger.png" }, "shape": "phone" },
+        { "src": "/assets/projects/mezgeb/screen-customers.webp", "alt": "Mezgeb's Customers screen: who owes the shop, and for how long", "source": "Alphaguyasa/Mezgeb docs/media/screen-customers.png, demo mode", "from": { "repo": "Alphaguyasa/Mezgeb", "path": "docs/media/screen-customers.png" }, "shape": "phone" },
+        { "src": "/assets/projects/mezgeb/screen-reports.webp", "alt": "Mezgeb's Reports screen: totals by channel and category", "source": "Alphaguyasa/Mezgeb docs/media/screen-reports.png, demo mode", "from": { "repo": "Alphaguyasa/Mezgeb", "path": "docs/media/screen-reports.png" }, "shape": "phone" },
+        { "src": "/assets/projects/mezgeb/screen-review.webp", "alt": "Mezgeb's review queue: messages no rule could read yet", "source": "Alphaguyasa/Mezgeb docs/media/screen-review.png, demo mode", "from": { "repo": "Alphaguyasa/Mezgeb", "path": "docs/media/screen-review.png" }, "shape": "phone" },
+        { "src": "/assets/projects/mezgeb/screen-teach.webp", "alt": "Mezgeb's teach-a-rule screen: a new parsing rule induced from a real message", "source": "Alphaguyasa/Mezgeb docs/media/screen-teach.png, demo mode", "from": { "repo": "Alphaguyasa/Mezgeb", "path": "docs/media/screen-teach.png" }, "shape": "phone" }
       ],
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Mezgeb" }],
       "facts": [
@@ -91,7 +97,11 @@
         "Three of four retrieval experiments did nothing, and the config was left unchanged rather than shipping an unmeasured win.",
         "The measurement was wrong three times: a truncated labelling UI, a contaminated unanswerable bucket, and a rubric with no answer for refusals. Each first looked like a system failure."
       ],
-      "images": [],
+      "images": [
+        { "src": "/assets/projects/docsearch/search-answer.webp", "alt": "DocSearch answering a question about webhook signatures, each claim followed by a citation to its source document", "source": "Alphaguyasa/docsearch docs/screenshots/search-answer.png, the original DocSearch interface", "from": { "repo": "Alphaguyasa/docsearch", "path": "docs/screenshots/search-answer.png"  } },
+        { "src": "/assets/projects/docsearch/search-idle.webp", "alt": "DocSearch's search page with example questions", "source": "Alphaguyasa/docsearch docs/screenshots/search-idle.png, the original DocSearch interface", "from": { "repo": "Alphaguyasa/docsearch", "path": "docs/screenshots/search-idle.png"  } },
+        { "src": "/assets/projects/docsearch/documents.webp", "alt": "DocSearch's documents page listing the demo corpus with page and chunk counts", "source": "Alphaguyasa/docsearch docs/screenshots/documents.png, the original DocSearch interface", "from": { "repo": "Alphaguyasa/docsearch", "path": "docs/screenshots/documents.png"  } }
+      ],
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/docsearch" }],
       "facts": [
         { "path": "README.md", "quote": "91 human-reviewed questions" },

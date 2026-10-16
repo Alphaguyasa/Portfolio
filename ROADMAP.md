@@ -14,12 +14,6 @@ Last replan: 2026-10-14 (first audit). 9 items open on 2026-10-15; no replan nee
 
 ## Open
 
-### 5. [P1 · M] Real screenshots from the project repos
-Mezgeb (`docs/media/screen-*.png`) and DocSearch (`docs/screenshots/*.png`) have real
-screenshots in their public repos. Add a script that copies listed screenshots from
-the repos (read-only, raw.githubusercontent.com) into `public/assets/projects/<slug>/`,
-optimises them with sharp, and records the source path in projects.json.
-
 ### 6. [P1 · M] About page and "How I work" section
 /about: background, what Alpha builds, and the development method (CLAUDE.md context
 files, pre-planned prompts, AI-assisted development with verification, CI as the
@@ -68,6 +62,11 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P1] Real screenshots from the project repos** — PR #8 (2026-10-16).
+  `npm run screenshots` copies every image with `from: { repo, path }` in projects.json
+  from the project's own public repo (raw.githubusercontent.com, read-only) to
+  `public/assets/projects/<slug>/` as WebP. Mezgeb: six phone screens; DocSearch: three
+  screens of the original interface. verify-facts checks repo, path, src and source.
 - **[P1] "Recently shipped" feed on the home page** — PR #5 (2026-10-15).
 - **[P1] A page per project: /projects/[slug]** — PR #4 (2026-10-15). Release tag
   `v2026-10-15-1` could not be pushed from the cloud session (NEEDS_APPROVAL A10);

@@ -4,6 +4,8 @@
  * rules run in CI (scripts/verify-facts.mjs) and in the unit tests.
  */
 
+import { checkFrom } from "./screenshots.mjs";
+
 export const STATUSES = ["idea", "building", "shipped", "maintained", "paused"];
 
 /**
@@ -21,6 +23,8 @@ export const STAND_IN_IMAGES = [
   "/assets/note-sms.png",
   "/assets/note-eval.png",
 ];
+
+const SHAPES = ["phone"];
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -138,6 +142,8 @@ export function verifyProjects(data, sync, readDoc, assetExists) {
       if (!img.source) fail(`images[${i}] needs a "source" saying where the screenshot came from`);
       if (!img.alt) fail(`images[${i}] needs alt text`);
       if (!assetExists(img.src)) fail(`images[${i}] ${img.src} does not exist in public/`);
+      if (img.shape !== undefined && !SHAPES.includes(img.shape)) fail(`images[${i}] shape must be one of ${SHAPES.join(", ")}`);
+      for (const problem of checkFrom(p, img)) fail(`images[${i}] ${problem}`);
     }
 
     for (const [i, link] of p.links.entries()) {
