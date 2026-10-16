@@ -12,7 +12,8 @@
     "verify:facts": "node scripts/verify-facts.mjs",
     "check:site": "node scripts/check-site.mjs",
     "sync": "node scripts/sync-github.mjs && node scripts/generate-copy.mjs && node scripts/verify-facts.mjs",
-    "copy": "node scripts/generate-copy.mjs"
+    "copy": "node scripts/generate-copy.mjs",
+    "screenshots": "node scripts/fetch-screenshots.mjs"
   },
   "dependencies": {
     "next": "^16.3.8",

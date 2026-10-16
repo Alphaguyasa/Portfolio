@@ -7,6 +7,16 @@ import syncData from "../../data/sync/index.json";
 
 export type Status = "idea" | "building" | "shipped" | "maintained" | "paused";
 
+export type ProjectImage = {
+  src: string;
+  alt: string;
+  source: string;
+  /** Set when the file was copied from the repo by scripts/fetch-screenshots.mjs. */
+  from?: { repo: string; path: string };
+  /** Phone screenshots are shown side by side in a grid on the project page. */
+  shape?: "phone";
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -21,7 +31,7 @@ export type Project = {
   approach: string;
   results: string[];
   learned: string[];
-  images: { src: string; alt: string; source: string }[];
+  images: ProjectImage[];
   links: { label: string; href: string }[];
   facts: { path: string; quote: string }[];
 };
