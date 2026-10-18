@@ -128,14 +128,15 @@
         "231 JVM unit tests passing."
       ],
       "learned": [
-        "Open security gap, tracked on the roadmap: when a peer's agreement key is not yet known, a direct message is not yet held back from being sent in the clear."
+        "Closed a security gap: a direct message is now held until the peer's agreement key is known instead of being sent in plaintext. The receiving side still accepts plaintext from older builds, tracked on the roadmap."
       ],
       "images": [],
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/NullChat" }],
       "facts": [
         { "path": "@description", "quote": "Peer-to-peer Android messaging over Bluetooth LE and Wi-Fi Direct. Text and photos, no network connection required." },
         { "path": "ROADMAP.md", "quote": "Baseline: 231 JVM unit tests passing; instrumented tests exist but only run on a physical phone." },
-        { "path": "ROADMAP.md", "quote": "No plaintext direct messages. When no agreement key is known, keep the message PENDING instead of sending it in the clear" }
+        { "path": "ROADMAP.md", "quote": "#6 No plaintext direct messages (held until keyed)" },
+        { "path": "ROADMAP.md", "quote": "Receiving side still accepts plaintext direct messages from older builds" }
       ]
     },
     {

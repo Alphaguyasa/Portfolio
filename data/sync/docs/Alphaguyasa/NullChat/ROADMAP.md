@@ -11,14 +11,6 @@ exist but only run on a physical phone.
 
 | # | Item | Pri | Effort | Notes |
 |---|---|---|---|---|
-| 4 | **Instrumented tests in CI.** Run the Room DAO/migration and crypto androidTests on an emulator in GitHub Actions (free for public repos). Required before any schema migration. | P0 | M | Infra. |
-| 5 | **Persist peers' X25519 agreement key.** Room migration 3→4 adds `agreementKey` to `peers`; warm `PublicKeyDirectory` with it at start. Today, after a restart, nothing can be encrypted to a peer until they re-announce. | P0 | M | DB migration: needs migration test (#4 first). |
-| 6 | **No plaintext direct messages.** When no agreement key is known, keep the message PENDING instead of sending it in the clear; flush pending rows for a peer when their ANNOUNCE arrives. | P0 | M | Security. Depends on #5. |
-| 7 | **Hop count on delivered messages.** The ACK already carries the hops the recipient observed (since #1); store it (Room migration, needs #4) and show `delivered · 2 hops`. | P1 | S | Depends on #4. |
-| 8 | **Incoming message notifications.** Own channel, tap opens the thread, content hidden on lock screen, silent while the thread is open. | P1 | M | |
-| 9 | **Unread counts** on peer list rows (`lastReadAt` already exists). | P1 | S | |
-| 10 | **Failed state + retry.** Surface FAILED in bubbles, long-press to resend; expire PENDING rows whose queue entry expired. Long text and images (fragmented, not store-and-forwarded) fail when nobody is in range, so retry matters more now. | P1 | M | |
-| 11 | **Settings screen + display name.** Fourth destination; name carried in ANNOUNCE (new field, versioned), shown on radar and peer list. | P1 | L | Wire format change → split PRs. |
 | 12 | **Release build hardening.** Enable R8 with keep rules for Tink/Nearby/Room/Hilt, measure APK size, add `assembleRelease` (unsigned) to CI. | P1 | M | No keystore in repo. |
 | 13 | **Dependabot** for Gradle and GitHub Actions (weekly, grouped). | P2 | S | Free. |
 | 14 | **Message actions.** Long-press: copy, delete locally, reply with quote. | P2 | M | |
@@ -34,7 +26,8 @@ exist but only run on a physical phone.
 
 ### Tech debt (slot into light days)
 
-- Stale KDoc: `MeshCoordinator` references a `flushPending` that no longer exists and a deleted `TESTING.md`; `KeyManager` says the X25519 key is "unused until SessionCipher lands".
+- Stale KDoc: `KeyManager` says the X25519 key is "unused until SessionCipher lands". (`MeshCoordinator`'s `flushPending`/`TESTING.md` references were fixed in #9.)
+- Receiving side still accepts plaintext direct messages from older builds (`openedBody` fallback). Once every phone runs a build with #9, consider rejecting them.
 - Delete `ExampleUnitTest` and `ExampleInstrumentedTest`.
 - `MeshCoordinator` is 745 lines; extract inbound handling (`InboundHandler`) once #1 and #2 land.
 - `MainActivityPreview` composes `MeshChatScreen`, which needs Hilt ViewModels; replace with a stateless preview.
@@ -46,3 +39,12 @@ exist but only run on a physical phone.
 | 2026-10-14 | #1 Delivery receipts (ACK) | #2 | v2026-10-14-2 |
 | 2026-10-14 | #2 Long text messages (up to 1000 bytes) | #3 | v2026-10-14-3 |
 | 2026-10-14 | #3 Undecryptable message placeholder | #4 | v2026-10-14-4 |
+| 2026-10-15 | #4 Instrumented tests in CI (API 34 emulator, 100 tests) | #7 | — (see NEEDS_APPROVAL, resolved) |
+| 2026-10-15 | #5 Persist peers' agreement keys (Room 3→4) | #8 | v2026-10-15-2 |
+| 2026-10-15 | #6 No plaintext direct messages (held until keyed) | #9 | v2026-10-15-3 |
+| 2026-10-15 | #24 Release tags from CI (`release-tag.yml`) | #11, #12 | v2026-10-15-5 |
+| 2026-10-16 | #7 Hop count on delivered messages (Room 4→5) | #14 | v2026-10-16-1 |
+| 2026-10-16 | #8 Incoming message notifications (direct messages) | #15 | v2026-10-16-2 |
+| 2026-10-16 | #9 Unread counts by local receive time (Room 5→6) | #16 | v2026-10-16-3 |
+| 2026-10-18 | #10 Failed state + resend; queued rows expire with the queue | #17 | v2026-10-18-1 |
+| 2026-10-18 | #11 Settings screen + display names (PROFILE packet, type 6) | #18, #19 | v2026-10-18-2, v2026-10-18-3 |

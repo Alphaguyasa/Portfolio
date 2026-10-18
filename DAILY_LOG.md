@@ -25,6 +25,11 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   /about method, its evidence (CLAUDE.md count replaced by ROADMAP.md count) and the
   "How I work" line in PORTFOLIO_COPY.md were rewritten; a test now fails on such
   wording anywhere on the site or in the copy. Recorded in CLAUDE.md.
+- **Sync (later the same day):** Alpha added the project repos to the routine
+  (A11 resolved). The sync read all 9 repos: last commits refreshed (five projects
+  active today), statuses unchanged. One claim fell out of date: NullChat's "open
+  security gap" was closed by NullChat #9 (`v2026-10-15-3`); the lesson now says so
+  and cites the roadmap. Copy and Recently-shipped feed regenerated.
 - **Vercel:** a second Vercel project (`portfolio`, root directory `next-app`) fails
   on every PR since at least #8; the deploying project succeeds. Logged as A12.
 - Local checks used the preinstalled Chromium; a leftover local server briefly skewed
@@ -36,11 +41,11 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
 |---|---|
 | Done | Item 6 About / How I work (PR #10), item 8 Lighthouse in CI (PR #11) |
 | Merged | #10 yes, `ccac03c` (tag not pushable: A10) · #11 see PR |
-| Failed or blocked | Sync skipped (A11: API 403 for every repo). Release tags not pushable (A10). |
+| Failed or blocked | Release tags not pushable (A10). Sync was blocked until Alpha fixed the routine's repos (A11, resolved the same day). |
 | Roadmap | 6 items open; no replan needed |
 | Model | Opus 5.5, newest Opus; no action needed |
-| Needs approval | A12 failing second Vercel project, A11 sync access, A10 tags, A2–A8 |
-| Next | Sync if A11 is fixed; item 9 (remove dead assets) and item 10 (README refresh) |
+| Needs approval | A12 failing second Vercel project, A10 tags, A2–A8 (A11 resolved) |
+| Next | Daily sync; item 9 (remove dead assets) and item 10 (README refresh) |
 
 ---
 
