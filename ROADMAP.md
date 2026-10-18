@@ -8,22 +8,11 @@ When an item is done, move it to "Done" with its PR number and release tag. Repl
 clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 **Effort:** S = under half a run · M = about one run · L = split into several PRs first.
 
-Last replan: 2026-10-14 (first audit). 8 items open on 2026-10-16; no replan needed.
+Last replan: 2026-10-14 (first audit). 6 items open on 2026-10-18; no replan needed.
 
 ---
 
 ## Open
-
-### 6. [P1 · M] About page and "How I work" section
-/about: background, what Alpha builds, and the development method (CLAUDE.md context
-files, pre-planned prompts, AI-assisted development with verification, CI as the
-gatekeeper) backed by numbers derived from the sync (`methodEvidence`: repos with
-CLAUDE.md, repos with CI). Link to this repo's own CLAUDE.md flow as a worked example
-(description only; the repo is private).
-
-### 8. [P2 · S] Lighthouse check in CI
-Add `@lhci/cli` (free, local, no upload) against the built site, asserting 90+ on all
-four categories for `/` and one project page, at mobile settings.
 
 ### 9. [P2 · S] Remove dead assets
 Items 1 and 2 are done, so delete `public/assets/proj-*.png` and `note-*.png` (stand-ins),
@@ -63,6 +52,18 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] Lighthouse check in CI** — PR #11 (2026-10-18). `npm run check:lighthouse`
+  runs Lighthouse 13.5.0 (Apache-2.0, dev-only; `lighthouse` itself rather than
+  `@lhci/cli`, whose latest release bundles an older Lighthouse) against the built
+  site at default mobile settings, median of 3 runs, on `/` and `/projects/mezgeb`;
+  any of the four categories under 90 fails CI. To pass, the home page's mobile
+  performance (83–89) was raised: the hero portrait now loads eagerly at high fetch
+  priority with accurate `sizes`, and unused font files (Poppins 400, DM Sans italic)
+  are no longer preloaded. Measured locally: `/` 91, project page 93, others 100.
+- **[P1] About page and "How I work"** — PR #10 (2026-10-18), squash `ccac03c`
+  (tag `v2026-10-18-1` not pushable: A10). `/about`: every project with its status,
+  the four-step method, and counts from the sync (5 of 9 listed projects carry a
+  CLAUDE.md, 6 have CI), each with the projects linked and the snapshot date.
 - **[P1] Restore the contact-form tests** — PR #9 (2026-10-16). 14 tests: rate
   limiter windows and key extraction; route success, validation (422), malformed body,
   unconfigured delivery (mailto fallback), provider rejection and network failure

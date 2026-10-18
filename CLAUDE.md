@@ -32,6 +32,7 @@ scripts/
   generate-copy.mjs   data -> PORTFOLIO_COPY.md + data/shipped.json
   verify-facts.mjs    CI gate: every claim in projects.json is backed by data/sync
   check-site.mjs      post-build link check + axe accessibility check (Playwright)
+  check-lighthouse.mjs post-build Lighthouse gate (lib/lighthouse.mjs, unit-tested)
   lib/facts.mjs       the honesty rules (pure, unit-tested)
   lib/copy.mjs        copy + feed builders (pure, unit-tested)
 src/
@@ -69,6 +70,7 @@ npm test                  # vitest: honesty, privacy, copy, unit tests
 npm run verify:facts      # every claim in data/projects.json backed by data/sync
 npm run build             # production build
 npm run check:site        # after build: link check + axe a11y (needs `npx playwright install chromium`)
+npm run check:lighthouse  # after build: Lighthouse 90+ on all four categories, / and a project page (mobile)
 npm run sync              # sync GitHub -> data/sync, regenerate copy + feed, verify facts
 npm run copy              # regenerate PORTFOLIO_COPY.md + data/shipped.json only
 ```
@@ -78,7 +80,7 @@ so unauthenticated (60/hour) is not enough. If no token is available in a run, d
 work around it: log it in NEEDS_APPROVAL.md and skip the sync for that run.
 
 CI (`.github/workflows/ci.yml`) runs on PRs and on main: production `npm audit`
-(high+), lint, typecheck, tests, verify:facts, build, check:site. The repo is private on
+(high+), lint, typecheck, tests, verify:facts, build, check:site, check:lighthouse. The repo is private on
 a free plan: there is **no branch protection** (GitHub requires Pro), so the merge
 policy below is enforced by you, not by GitHub. Actions minutes come from the free
 2,000/month; keep CI lean.
