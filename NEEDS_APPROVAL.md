@@ -5,11 +5,6 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
-### A14. Testimonial approval (2026-10-18)
-Alpha says "my friend approved" the testimonial. Still needed before it goes live:
-which of the two (Melkias Teshome or Abdi Fekeda), and that they approved the exact
-quote in `src/data/site.ts` (both were drafted for layout).
-
 ### A12. A second Vercel project fails on every PR (2026-10-18)
 **Update:** from PR #14 on, the failing `portfolio` project no longer posts; it looks
 fixed. Close this once Alpha confirms.
@@ -34,8 +29,8 @@ Still refused on 2026-10-16; also missing: `git tag v2026-10-16-1 97c1b89` (PR #
 ## Resolved
 
 Answered by Alpha on 2026-10-18:
-- **A2. Testimonials** — not approved by the two people (university classmates and
-  teammates). They stay hidden; if they approve later, label them as teammates.
+- **A2 / A14. Testimonials** — both people (university classmates and teammates)
+  approved their exact quotes (Alpha, 2026-10-18); shown, labelled as such.
 - **A3. Pricing** — Alpha asked for a recommended rate: now $20/hour, $1,500/month,
   $4,000/quarter (was $15 / $1,200 / $3,200).
 - **A4. Biography** — all confirmed: 1st place University CTF (HU × INSA),

@@ -277,10 +277,8 @@ export const budgetOptions = [
 
 /**
  * Only quotes with `confirmed: true` are shown: the person approved the exact
- * wording and the label is accurate. These two were drafted for layout; both are
- * Alpha's university classmates and teammates and have not approved the wording
- * (Alpha, 2026-10-18), so the section stays hidden. If they approve, label them
- * as teammates, never clients.
+ * wording and the label is accurate. Both are Alpha's university classmates and
+ * teammates, never clients; both approved these exact quotes (Alpha, 2026-10-18).
  */
 export const testimonials: {
   name: string;
@@ -295,7 +293,7 @@ export const testimonials: {
     photo: "/assets/testimonial-melkias.jpeg",
     quote:
       "Alpha thinks about the failure case first. On the offline-first work he had the sync path designed before a line of UI existed, and that is why it never lost a sale in testing.",
-    confirmed: false,
+    confirmed: true,
   },
   {
     name: "Abdi Fekeda",
@@ -303,7 +301,7 @@ export const testimonials: {
     photo: "/assets/testimonial-abdi.jpg",
     quote:
       "We built HU News together. He took the hardest screen, documented every decision, and reviewed the rest of our code without being asked. An easy person to ship with.",
-    confirmed: false,
+    confirmed: true,
   },
 ];
 
