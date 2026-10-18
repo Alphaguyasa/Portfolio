@@ -197,7 +197,7 @@ export const work: TimelineRow[] = [
     pill: "Past",
   },
   {
-    title: "Leyo",
+    title: "Leyu",
     subtitle: "Focal Person, Data Contribution (contractor)",
     pill: "Current",
   },
@@ -239,8 +239,8 @@ export const recognitions: {
   {
     icon: "person",
     tone: "ink",
-    title: "Focal Person — Leyo",
-    body: "Focal person for data contribution at Leyo as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
+    title: "Focal Person — Leyu",
+    body: "Focal person for data contribution at Leyu as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
   },
 ];
 

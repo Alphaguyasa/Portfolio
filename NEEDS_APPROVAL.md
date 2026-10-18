@@ -5,10 +5,10 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
-### A14. Testimonial approval and company spelling (2026-10-18)
+### A14. Testimonial approval (2026-10-18)
 Alpha says "my friend approved" the testimonial. Still needed before it goes live:
 which of the two (Melkias Teshome or Abdi Fekeda), and that they approved the exact
-quote in `src/data/site.ts` (both were drafted for layout). Also: "Leyo" or "Leyu"?
+quote in `src/data/site.ts` (both were drafted for layout).
 
 ### A12. A second Vercel project fails on every PR (2026-10-18)
 **Update:** from PR #14 on, the failing `portfolio` project no longer posts; it looks
@@ -40,7 +40,7 @@ Answered by Alpha on 2026-10-18:
   $4,000/quarter (was $15 / $1,200 / $3,200).
 - **A4. Biography** — all confirmed: 1st place University CTF (HU × INSA),
   chairperson of the HU Cyber Security Club, 2+ years full-stack, 1+ year in AI, BSc
-  Computer Science (Haramaya). Leyo: still focal person, as a contractor (site now
+  Computer Science (Haramaya). Leyu (spelling confirmed by Alpha; the site said "Leyo"): still focal person, as a contractor (site now
   says "Current"). Links pending as A13.
 - **A5. Alpha Coin and Security Scanner** — both finished, with more planned. New
   status "completed", allowed only with `statusConfirmed: "Alpha, <date>"`. The
