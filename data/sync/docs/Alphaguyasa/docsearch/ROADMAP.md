@@ -8,37 +8,25 @@ Last replan: 2026-10-14 (first audit, after main became Not Alone).
 
 ## Open
 
-0. **[P0, S] Upgrade Next.js 15.5.21 → 15.5.27 (security).** `npm audit` reports two
-   critical unauthenticated RCE advisories (GHSA-p293-qw3h-jr36, GHSA-2xp9-vwfh-vxw4,
-   fixed in 15.5.24) and two cache-poisoning advisories (fixed in 15.5.27). It's a patch
-   upgrade that also lifts the bundled sharp/postcss. Remaining audit items (vitest
-   moderate, nanoid, source-map-js) go to item 10.
-1. **[P0, S] Make "Oriental Orthodox" a real filter.** Today the default picker choice
-   `all` sends no tradition filter, so it means "everything in the database". Once
-   Western books return (item 4), they would appear under the label "Oriental Orthodox".
-   Add an `oriental_orthodox` choice that maps to the tags Oriental churches read,
-   keep it as the default, and make an old saved `all` value fall back to it. Test that
-   Protestant-only and Catholic-only sources are excluded from the default.
-2. **[P0, S] Opt-in picker for the other traditions.** Add Eastern Orthodox, Catholic and
-   Protestant to the church picker (English and Amharic labels) after Oriental Orthodox
-   and Ethiopian Tewahedo. The Protestant filter must exclude the deuterocanon; there is
-   already a canon test for that, so extend it to the picker → filter mapping.
 3. **[P1, M] Split the `orthodox` tag into Eastern and Oriental.** `data/canon.json` and
    the source rules use one `orthodox` tag for both communions. Their canons differ
    (e.g. 3 Maccabees, Psalm 151, Prayer of Manasseh; Ethiopian broader canon), and
-   Chalcedon divides them. Add `eastern_orthodox` / `oriental_orthodox` tags with an
-   additive migration (new array values only, no rewrite of existing rows until approved),
-   and document every book's assignment with a reason in canon.json.
+   Chalcedon divides them. Add `eastern_orthodox` / `oriental_orthodox` tags (keep
+   `orthodox` until Alpha approves removing it), document every book's assignment with
+   a reason in canon.json, then point the `orthodox` and `oriental_orthodox` choices in
+   `tradition-choice.ts` at the new tags. Ingest now retags done rows in place (3a,
+   2026-10-18), so a canon.json change reaches the DB without re-embedding.
+   **Decided 2026-10-18:** a book gets `oriental_orthodox` only when all six Oriental
+   churches (Coptic, Syriac, Armenian, Ethiopian, Eritrean, Malankara) read it as
+   scripture; Ethiopian-only books keep only `ethiopian_orthodox`, so the default view
+   no longer shows them. Each assignment cites its source; unsure ones are marked
+   NEEDS REVIEW and left out of the tag.
 4. **[P1, M] Bring back the Western sources removed in PR #78.** *The Imitation of
    Christ* (Catholic) and Bunyan's *Grace Abounding* (Protestant, a first-person story of
    sin and restoration) are public domain. *The Pilgrim's Progress* is allegory, not a
    life, so re-add it only as clearly labelled allegory or leave it out. Recover the
    source rules from git history (`git show 58fbf1f^:corpus/scripture/sources.json`
    and the PR #78 diff), re-tag them, and let fetch/ingest re-run.
-5. **[P1, S] Show where traditions differ.** When an answer cites a book that is scripture
-   for some traditions but not others (e.g. the deuterocanon, Enoch), label it in the
-   citation panel ("Scripture for Catholic and Orthodox; not in the Protestant canon")
-   from `canon.json`, with a test.
 7. **[P2, S] Port the paper-search eval gate to the scripture app.** `eval.yml` grades the
    retired arXiv corpus, so it is now manual-only. Make `scripture-eval` a PR gate,
    retrieval-only (no Gemini calls) in CI.
@@ -55,6 +43,13 @@ Last replan: 2026-10-14 (first audit, after main became Not Alone).
     cache them, so builds stay fast and don't time out on Vercel.
 
 ## Done
+
+- 2026-10-18: Item 5. Cited scripture outside some canons is labelled ("In the Catholic, Orthodox and Ethiopian Tewahedo canons; not in the Protestant canon."), EN and AM.
+- 2026-10-18: Item 3a. Ingest retags done rows whose tags changed (no re-embed); before, canon.json tag edits never reached the DB.
+- 2026-10-16: Item 2. Picker offers Eastern Orthodox, Catholic, Protestant (opt-in); the Telegram bot sends the default church.
+- 2026-10-16: Item 1. "Oriental Orthodox" is a real choice (`oriental_orthodox` → tags orthodox + ethiopian_orthodox); saved "all" falls back to it.
+- 2026-10-15: Item 0b. ingest-scripture chains with GITHUB_TOKEN + workflow dispatch; no INGEST_PAT.
+- 2026-10-15: PR #102. Next.js 15.5.21 → 15.5.27, critical RCE advisories fixed (tag v2026-10-15-1).
 
 - 2026-10-14: Data and deploy workflows run from `main`; old eval.yml manual-only (approved by Alpha).
 - 2026-10-14: PR #99. Setup: CI, lint, project-rule tests, memory files (tag v2026-10-14-2).

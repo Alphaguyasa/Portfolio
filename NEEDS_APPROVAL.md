@@ -14,28 +14,6 @@ hosting misconfiguration, not a failing check, so merges continue. Hosting setti
 are yours to change: delete or disconnect the `portfolio` project in Vercel, or set
 its root directory to the repo root. Nothing was changed on Vercel.
 
-### A11. Cloud run cannot read your other repos, so the daily sync is skipped (2026-10-15)
-The scheduled cloud session's GitHub access is scoped to this repo only. The sync's
-first call (`/users/Alphaguyasa/repos`) returns 403 "sessions are bound to their
-configured repositories". Per CLAUDE.md the sync was skipped, not worked around, so
-`data/sync/` still holds the 2026-10-14 snapshot (last commits, CI, tags may be stale).
-To fix (free): add the public repos (Mezgeb, Suq, docsearch, NullChat, Meret,
-ethiopic-text, HUnews, Alpha-digital-coin, vulnerability-scanner-website/Final-year-project)
-to the routine's repository list in the Claude app, or run `npm run sync` locally and
-push the result. Done on Alpha's go-ahead (2026-10-15): when listing the repos is
-refused, the sync now reads the repos named in `portfolio.config.json`
-`knownPublicRepos` (add any new public repo there), and it routes through the
-session proxy. If any listed repo still cannot be read, the sync stops and keeps the
-previous snapshot.
-**2026-10-16:** still blocked. The knownPublicRepos fallback ran, but every named repo
-returned 403 from the API too, so the sync stopped and kept the 2026-10-14 snapshot.
-Plain git reads of the public repos do work (used for the screenshots), but the sync
-needs the API for releases, CI, PRs and npm. The fix is still yours: add the repos
-above to the routine's repository list.
-**2026-10-18:** still blocked, same 403 for all 8 repos. The session can clone public
-repos anonymously but not use the API for them; attaching them needs credentials
-added to the routine, which only you can do.
-
 ### A10. Release tags cannot be pushed from the cloud run (2026-10-15)
 The session's git proxy allows pushing only the working branch, and the REST API
 refuses creating refs. PR #4 and PR #5 are merged, but their tags were not created.
@@ -89,6 +67,11 @@ but the a11y check would then fail and block every merge.
 
 ## Resolved
 
+- **A11. Sync could not read the other repos** (2026-10-15 → 2026-10-18) — Alpha added
+  the project repos to the routine on 2026-10-18; the sync then read all 9 repos (122
+  API requests). Listing the owner's repos is still refused, so the sync reads
+  `knownPublicRepos`: a new public repo must be added there (and to the routine)
+  before it can appear on the site.
 - **A1. Daily task permissions** (2026-10-14) — the 2026-10-15 scheduled run executed
   without stalling, so permissions are set correctly.
 - **A9. Cloud run GitHub access** (2026-10-14) — answered by the 2026-10-15 run: a

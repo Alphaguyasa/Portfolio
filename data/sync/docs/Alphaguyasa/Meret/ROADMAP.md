@@ -1,7 +1,7 @@
 # ROADMAP.md
 
 Prioritized backlog. The daily run takes the **top open item** first. Mark an item done by
-moving it to "Done" with its PR number and release tag. Replan (see CLAUDE.md, daily loop
+moving it to "Done" with its PR number and squash commit SHA. Replan (see CLAUDE.md, daily loop
 step 5) when fewer than 5 items are open.
 
 **Priority:** P0 = data safety / privacy / broken build · P1 = next phase of the core
@@ -19,50 +19,20 @@ Acceptance criteria that need a physical phone are not claimed by CI. They are l
 
 ## Open
 
-### 3. [P1 · M] Phase 5a — Persist the active tracking session
-`TrackingSessionStore` in `:core:datastore`: active track id, current segment, paused flag,
-start time (wall clock plus elapsed-realtime). This is what lets a restarted service resume
-the same track instead of starting a new one (CLAUDE.md invariant 7).
-- Tests: write, read back, clear; a new store instance on the same file sees the session
-  (process-death simulation); corrupt or missing values read as "no active session".
-
-### 4. [P1 · M] Phase 5b — TrackRecorder: fixes to Room in batches
-Consumes `LocationEngine.fixes` through a `Channel`, runs `FixPipeline` on
-`Dispatchers.Default`, writes `TrackPointDao.appendBatch` at 20 points or 10 s, and flushes
-immediately on pause and stop. Outliers are stored with `is_outlier = 1`, never dropped.
-- Tests (Robolectric, in-memory Room, `ReplayLocationEngine`): every replayed fix is in
-  Room after stop; outliers stored and flagged; the batch boundary never loses the tail;
-  the raw columns equal the fixture exactly.
-
-### 5. [P1 · M] Phase 5c — TrackingService (foreground, type location)
-Service + manifest (`FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_LOCATION`,
-`POST_NOTIFICATIONS`, `WAKE_LOCK`), `startForeground` on every path, `START_STICKY`
-resuming from `TrackingSessionStore`, partial wakelock held only while recording, live
-notification with Pause/Stop actions, keeps running in `onTaskRemoved`. Strings in `en` and
-`am`.
-- Tests (Robolectric): start → foreground with a notification; stop → wakelock released and
-  session cleared; restart with a persisted session → resumes the same track id.
-
-### 6. [P1 · S] Phase 5d — TrackingHealthMonitor
-Pure logic: expected vs actual fixes per 10-minute window, and a `tracking_gap` event when
-a gap exceeds 3× the sampling interval while recording (not while paused).
-- Tests with synthetic timelines: no gap, one gap, gap during pause ignored.
-
-### 7. [P1 · S] Phase 5e — DeviceCompat OEM guidance
-`oemGuidanceFor(manufacturer)` for Tecno/Infinix/Itel, Xiaomi, Oppo, Vivo, Huawei,
-Samsung, OnePlus, and a generic fallback. Deep-link launch wrapped in try/catch with a
-`ManualSteps` fallback. Step text in `en` and `am`.
-- Tests: manufacturer string matching (case, whitespace, sub-brands); a missing activity
-  falls back to manual steps.
-
-### 8. [P1 · M] Phase 5f — Permission onboarding flow
-Staged: fine location → notifications (13+) → background location (with rationale screen)
-→ battery optimisation → OEM autostart. Handles the coarse-only grant on 12+.
-`REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` added to the manifest here.
-- Tests: the state machine that picks the next step, as a pure unit test per API level.
+### 8b. [P1 · M] Phase 5f, part 2 — Permission onboarding screens
+Compose screens driven by `OnboardingStepPicker` (`:domain`, done in 8a): one screen per
+`OnboardingStep`, a rationale screen before background location, the precise-location
+explanation for the coarse-only grant on 12+, and the OEM screen using `DeviceCompat`
+(`:core:location`, item 7). Skipped steps persisted in DataStore. Manifest entries go with
+the code that requests them: `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` and
+`ACCESS_BACKGROUND_LOCATION`. Read a fresh `PermissionSnapshot` on every resume.
+- Tests: the snapshot reader against Robolectric's shadow permissions; the ViewModel's
+  state for each step; en and am strings complete.
 
 ### 9. [P1 · M] Phase 5g — Diagnostics screen
-Everything in `LOCATION_ENGINE.md` §Diagnostics, plus "copy report". The report must hold
+Everything in `LOCATION_ENGINE.md` §Diagnostics, plus "copy report". Wire
+`TrackingHealthMonitor` (item 6, `:core:common`) into `TrackingService`: feed it state
+changes and fixes, poll `check()`, and show `windowHealth()` here. The report must hold
 no personal data: no coordinates, no names, no form answers. Counts, states, and versions
 only.
 - Tests: report builder output for a fixture state, and a test asserting no lat/lon appears.
@@ -110,8 +80,16 @@ low-end phones, key in Android Keystore, migration of existing plaintext DBs).
 
 ## Done
 
-| Item | PR | Tag |
+| Item | PR | Tag / squash commit |
 |---|---|---|
 | Phase 0 setup: context files, CI rewrite, doc drift fixes | #1 | v2026-10-14-1 |
 | 1. Keep personal data out of backups and device transfer | #2 | v2026-10-14-2 |
 | 2. Guard against personal data in logs | #3 | v2026-10-14-3 |
+| 3. Persist the active tracking session (`TrackingSessionStore`) | #7 | `98a3728` |
+| 4. TrackRecorder: fixes to Room in batches | #8 | `14d760f` |
+| 5a. TrackingController: one owner for a recording | #12 | `cd17fe0` |
+| Fix: double-encoded Amharic strings in 3 feature modules (found during item 5) | #13 | `13c9546` |
+| 6. TrackingHealthMonitor: fix-gap detection | #15 | `9db0ff8` |
+| 5b. TrackingService, foreground type location | #14 | `19bf20a` |
+| 7. DeviceCompat OEM guidance | #17 | `d784d20` |
+| 8a. OnboardingStepPicker: permission flow order per API level | #18 | `704dbe8` |
