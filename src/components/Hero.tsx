@@ -77,9 +77,12 @@ export default function Hero() {
                 src="/assets/hero-portrait.png"
                 alt="Alpha Guyasa"
                 fill
-                sizes="(max-width: 1289px) 420px, 470px"
+                // The image box is 80.8% of the portrait column (max 420px, 470px at xl).
+                sizes="(max-width: 467px) calc(81vw - 39px), (max-width: 1289px) 340px, 380px"
                 className="object-cover object-top"
-                priority
+                // The LCP element: load it eagerly at high priority (`priority` is deprecated in Next 16).
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
             {/* w-max is required: an absolutely-positioned box with only `left`

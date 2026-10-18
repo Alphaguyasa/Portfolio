@@ -4,6 +4,40 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-18 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last 3 runs.
+- **Sync step: skipped again.** All 8 repos in `knownPublicRepos` still return 403 from
+  the API; `data/sync/` is still the 2026-10-14 snapshot. NEEDS_APPROVAL A11 updated.
+- **Item 6** — PR #10 (merged, squash `ccac03c`): `/about` with every project and its
+  status, the four-step method, and counts derived from the sync (5 of 9 listed
+  projects carry a CLAUDE.md, 6 have CI), each linked. Linked from the home About
+  section, the footer and the sitemap. 9 new tests.
+- **Item 8** — PR #11: Lighthouse gate in CI (`npm run check:lighthouse`, median of 3
+  mobile runs, `/` and `/projects/mezgeb`, all four categories 90+). The home page
+  measured 83–89 on mobile performance, so the hero image now loads eagerly at high
+  priority with accurate `sizes`, and unused font files are dropped. 4 new tests.
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- Local checks used the preinstalled Chromium; a leftover local server briefly skewed
+  one Lighthouse measurement (stale build), re-run clean.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Item 6 About / How I work (PR #10), item 8 Lighthouse in CI (PR #11) |
+| Merged | #10 yes, `ccac03c` (tag not pushable: A10) · #11 see PR |
+| Failed or blocked | Sync skipped (A11: API 403 for every repo). Release tags not pushable (A10). |
+| Roadmap | 6 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A11 sync access, A10 tags, A2–A8 |
+| Next | Sync if A11 is fixed; item 9 (remove dead assets) and item 10 (README refresh) |
+
+---
+
 ## 2026-10-16 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

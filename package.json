@@ -11,6 +11,7 @@
     "test": "vitest run",
     "verify:facts": "node scripts/verify-facts.mjs",
     "check:site": "node scripts/check-site.mjs",
+    "check:lighthouse": "node scripts/check-lighthouse.mjs",
     "sync": "node scripts/sync-github.mjs && node scripts/generate-copy.mjs && node scripts/verify-facts.mjs",
     "copy": "node scripts/generate-copy.mjs",
     "screenshots": "node scripts/fetch-screenshots.mjs"
@@ -28,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.3.8",
+    "lighthouse": "13.5.0",
     "playwright": "1.63.0",
     "sharp": "^0.35.3",
     "simple-icons": "^16.28.0",

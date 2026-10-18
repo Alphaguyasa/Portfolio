@@ -20,7 +20,7 @@ env:
 
 jobs:
   checks:
-    name: audit · lint · typecheck · test · facts · build · links · a11y
+    name: audit · lint · typecheck · test · facts · build · links · a11y · lighthouse
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -69,3 +69,6 @@ jobs:
 
       - name: Link check and accessibility check (built site)
         run: npm run check:site
+
+      - name: Lighthouse 90+ on all four categories (mobile, median of 3)
+        run: npm run check:lighthouse

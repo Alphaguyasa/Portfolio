@@ -23,6 +23,9 @@ returned 403 from the API too, so the sync stopped and kept the 2026-10-14 snaps
 Plain git reads of the public repos do work (used for the screenshots), but the sync
 needs the API for releases, CI, PRs and npm. The fix is still yours: add the repos
 above to the routine's repository list.
+**2026-10-18:** still blocked, same 403 for all 8 repos. The session can clone public
+repos anonymously but not use the API for them; attaching them needs credentials
+added to the routine, which only you can do.
 
 ### A10. Release tags cannot be pushed from the cloud run (2026-10-15)
 The session's git proxy allows pushing only the working branch, and the REST API
@@ -31,7 +34,8 @@ To create them yourself:
 `git fetch origin && git tag v2026-10-15-1 f30bf71 && git tag v2026-10-15-2 <PR #5 squash commit> && git push origin --tags`.
 Alternatively, accept "squash commit SHA in DAILY_LOG" as the rollback point for cloud runs.
 Still refused on 2026-10-16; also missing: `git tag v2026-10-16-1 97c1b89` (PR #8) and
-`v2026-10-16-2` on the PR #9 squash commit.
+`v2026-10-16-2 92c9e97` (PR #9). Still refused on 2026-10-18; also missing:
+`v2026-10-18-1 ccac03c` (PR #10) and `v2026-10-18-2` on the PR #11 squash commit.
 
 ### A2. Placeholder testimonials (2026-10-14)
 The two quotes (Melkias Teshome, Abdi Fekeda) were drafted for layout and approved
