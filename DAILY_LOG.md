@@ -21,6 +21,8 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   measured 83–89 on mobile performance, so the hero image now loads eagerly at high
   priority with accurate `sizes`, and unused font files are dropped. 4 new tests.
 - **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- **Vercel:** a second Vercel project (`portfolio`, root directory `next-app`) fails
+  on every PR since at least #8; the deploying project succeeds. Logged as A12.
 - Local checks used the preinstalled Chromium; a leftover local server briefly skewed
   one Lighthouse measurement (stale build), re-run clean.
 
@@ -33,7 +35,7 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
 | Failed or blocked | Sync skipped (A11: API 403 for every repo). Release tags not pushable (A10). |
 | Roadmap | 6 items open; no replan needed |
 | Model | Opus 5.5, newest Opus; no action needed |
-| Needs approval | A11 sync access, A10 tags, A2–A8 |
+| Needs approval | A12 failing second Vercel project, A11 sync access, A10 tags, A2–A8 |
 | Next | Sync if A11 is fixed; item 9 (remove dead assets) and item 10 (README refresh) |
 
 ---

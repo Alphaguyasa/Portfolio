@@ -5,6 +5,15 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
+### A12. A second Vercel project fails on every PR (2026-10-18)
+Each PR gets two Vercel statuses. `portfolio-8ybl` builds and deploys fine (it is the
+one that deploys main). The other, Vercel project `portfolio`, has its root directory
+set to `next-app`, which does not exist in this repo, so it fails on every PR (seen
+on #8, #9, #10, #11). GitHub Actions CI is green; the merge policy treats this as a
+hosting misconfiguration, not a failing check, so merges continue. Hosting settings
+are yours to change: delete or disconnect the `portfolio` project in Vercel, or set
+its root directory to the repo root. Nothing was changed on Vercel.
+
 ### A11. Cloud run cannot read your other repos, so the daily sync is skipped (2026-10-15)
 The scheduled cloud session's GitHub access is scoped to this repo only. The sync's
 first call (`/users/Alphaguyasa/repos`) returns 403 "sessions are bound to their
