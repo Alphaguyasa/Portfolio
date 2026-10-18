@@ -111,3 +111,16 @@ describe("helpers", () => {
     expect(numbersIn("1,190 ms, 3.07 MB, 100.00% and 23/23")).toEqual(["1190", "3.07", "100.00", "23", "23"]);
   });
 });
+
+describe("completed status", () => {
+  it("needs Alpha's dated confirmation, because a repo cannot show it", () => {
+    const data = readJson<Data>("data/projects.json");
+    const sync = readJson<Sync>("data/sync/index.json");
+    const coin = data.projects.find((p) => p.slug === "alpha-coin") as Data["projects"][number] & { statusConfirmed?: string };
+    coin.status = "completed";
+    delete coin.statusConfirmed;
+    expect(verifyProjects(data, sync, readDoc, assetExists).join("\n")).toMatch(/alpha-coin: status "completed" needs statusConfirmed/);
+    coin.statusConfirmed = "Alpha, 2026-10-18";
+    expect(verifyProjects(data, sync, readDoc, assetExists)).toEqual([]);
+  });
+});

@@ -8,6 +8,7 @@ export const STATUS_LABEL = {
   building: "In development",
   shipped: "Shipped",
   maintained: "Shipped, maintained",
+  completed: "Completed",
   paused: "Paused",
 };
 

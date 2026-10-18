@@ -18,6 +18,7 @@ const statusClass: Record<Status, string> = {
   building: "bg-accent text-white",
   shipped: "bg-ink text-white",
   maintained: "bg-ink text-white",
+  completed: "bg-white text-ink ring-1 ring-ink",
   paused: "bg-white text-muted ring-1 ring-hairline",
 };
 

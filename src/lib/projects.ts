@@ -5,7 +5,7 @@
 import projectsData from "../../data/projects.json";
 import syncData from "../../data/sync/index.json";
 
-export type Status = "idea" | "building" | "shipped" | "maintained" | "paused";
+export type Status = "idea" | "building" | "shipped" | "maintained" | "completed" | "paused";
 
 export type ProjectImage = {
   src: string;
@@ -34,6 +34,8 @@ export type Project = {
   images: ProjectImage[];
   links: { label: string; href: string }[];
   facts: { path: string; quote: string }[];
+  /** "Alpha, YYYY-MM-DD": required for statuses a repo cannot show, such as completed. */
+  statusConfirmed?: string;
 };
 
 type SyncRepo = {
@@ -59,6 +61,7 @@ export const STATUS_LABEL: Record<Status, string> = {
   building: "In development",
   shipped: "Shipped",
   maintained: "Maintained",
+  completed: "Completed",
   paused: "Paused",
 };
 

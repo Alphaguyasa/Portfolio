@@ -5,6 +5,12 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
+### A13. Public links for the CTF win and the club chairmanship (2026-10-18)
+Alpha confirmed both and says Haramaya University posted them on its main Telegram
+channel. Paste the post links (t.me/<channel>/<number>) in a session; they will be
+linked from the Recognitions section. Also confirm the company's spelling: the site
+says "Leyo"; Alpha wrote "Leyu".
+
 ### A12. A second Vercel project fails on every PR (2026-10-18)
 Each PR gets two Vercel statuses. `portfolio-8ybl` builds and deploys fine (it is the
 one that deploys main). The other, Vercel project `portfolio`, has its root directory
@@ -24,49 +30,30 @@ Still refused on 2026-10-16; also missing: `git tag v2026-10-16-1 97c1b89` (PR #
 `v2026-10-16-2 92c9e97` (PR #9). Still refused on 2026-10-18; also missing:
 `v2026-10-18-1 ccac03c` (PR #10) and `v2026-10-18-2` on the PR #11 squash commit.
 
-### A2. Placeholder testimonials (2026-10-14)
-The two quotes (Melkias Teshome, Abdi Fekeda) were drafted for layout and approved
-only as placeholders (old README). They are also labelled "Client Testimonials",
-though both are described as fellow developers. Under the honesty rules they will be
-hidden (roadmap item 2) until you confirm: (a) each person approved the exact wording,
-and (b) how they should be labelled (colleague / teammate / client).
-
-### A3. Pricing on the public site (2026-10-14)
-The Pricing section shows $15/hour, $1,200/month, $3,200/quarter. The privacy rules
-forbid publishing "prices I quoted". I read these as your public rate card, not quotes
-to a client, so they stay for now. Confirm, or say "remove pricing" and it goes.
-
-### A4. Biographical claims that the repos cannot verify (2026-10-14)
-Kept as you supplied them in the design, but nothing in GitHub backs them:
-"1st place, University CTF (HU × INSA)", "Head & Chairperson, Cyber Security Club",
-"Focal Person, Leyo, 1 year", "2+ Years Full-Stack", "1+ Year in AI", "BSc Computer
-Science, Haramaya University 2023–2026". Confirm they are accurate, and if you can,
-add a public link (certificate, news post) to `src/data/site.ts` or tell me where it is.
-
-### A5. Status of Alpha Coin and Security Scanner (2026-10-14)
-No commits since March 2026 (Alpha Coin) and May 2026 (Security Scanner, a team
-final-year project). I marked both **paused** (the lower claim). If they are finished
-rather than paused, say so and I will add a "completed" status.
-
-### A6. Adey and the private "erko" repo (2026-10-14)
+### A6. Adey (answered, see Resolved; open until the follow-up PR lands) and the private "erko" repo (2026-10-14)
 No public repo named Adey exists. There is a private repo `erko` ("a classifieds
 marketplace for Ethiopia"). Private repos are not shown. If erko is Adey (paused) and
 you want it listed, add it to `include` in `portfolio.config.json` with a public
 summary, e.g. `"erko": { "name": "Adey", "status": "paused", "summary": "..." }`.
 
-### A7. NullChat = the Bluetooth LE / Wi-Fi Direct mesh chat? (2026-10-14)
-NullChat's repo description is "Peer-to-peer Android messaging over Bluetooth LE and
-Wi-Fi Direct", and I found no second mesh-chat repo, so I list them as one project.
-Tell me if there is a separate repo.
-
-### A8. Brand accent darkened for accessibility (2026-10-14)
-The handoff orange `#ff4a17` is 3.4:1 against white text and failed the new
-accessibility check in ~85 places. The accent is now `#c2410c` (5.2:1); the original
-orange is kept for text on black. Reply "revert accent" if you prefer the original,
-but the a11y check would then fail and block every merge.
-
 ## Resolved
 
+Answered by Alpha on 2026-10-18:
+- **A2. Testimonials** — not approved by the two people (university classmates and
+  teammates). They stay hidden; if they approve later, label them as teammates.
+- **A3. Pricing** — Alpha asked for a recommended rate: now $20/hour, $1,500/month,
+  $4,000/quarter (was $15 / $1,200 / $3,200).
+- **A4. Biography** — all confirmed: 1st place University CTF (HU × INSA),
+  chairperson of the HU Cyber Security Club, 2+ years full-stack, 1+ year in AI, BSc
+  Computer Science (Haramaya). Leyo: still focal person, as a contractor (site now
+  says "Current"). Links pending as A13.
+- **A5. Alpha Coin and Security Scanner** — both finished, with more planned. New
+  status "completed", allowed only with `statusConfirmed: "Alpha, <date>"`. The
+  scanner is described as similar to online pentesting platforms.
+- **A6. erko** — list it as "Adey" (paused) with a public summary only; done in a
+  follow-up PR (private repos are not rendered yet).
+- **A7. NullChat** — it is the only mesh-chat repo.
+- **A8. Accent colour** — keep `#c2410c`.
 - **A11. Sync could not read the other repos** (2026-10-15 → 2026-10-18) — Alpha added
   the project repos to the routine on 2026-10-18; the sync then read all 9 repos (122
   API requests). Listing the owner's repos is still refused, so the sync reads
