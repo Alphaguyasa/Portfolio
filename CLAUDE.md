@@ -9,9 +9,11 @@ memory. Read all four before doing anything.
 
 The site's job is to present Alpha's real work honestly and stay in sync,
 automatically, with everything he builds. Alpha is a freelance full-stack and Android
-developer in Ethiopia building an Upwork and direct-client base. His development
-method (CLAUDE.md context files, pre-planned prompts, AI-assisted development with
-verification, CI as the gatekeeper) is part of what he sells, so show it truthfully.
+developer in Ethiopia building an Upwork and direct-client base. On the site and in
+PORTFOLIO_COPY.md, his method is shown as written plans, documented rules, tested
+changes and CI as the gatekeeper. Alpha's decision (2026-10-18): never describe his
+work as AI-assisted, prompt-driven or AI-written, and never cite CLAUDE.md files as
+evidence. "AI retrieval" is a kind of system he builds and stays (test: claims).
 
 ## Architecture
 

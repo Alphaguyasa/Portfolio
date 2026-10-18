@@ -131,16 +131,16 @@ export const aboutPage = {
   ],
   method: [
     {
-      title: "Context files",
-      body: "Each repo carries a CLAUDE.md: the architecture, the commands, the rules that must never break, and how work is merged. Any session, human or AI, starts from the same written context.",
+      title: "Plan in writing",
+      body: "Work starts from a written roadmap with priorities. Each change is scoped before it is built: what changes, why, and how to test it.",
     },
     {
-      title: "Pre-planned prompts",
-      body: "Work is planned before it is built: a roadmap with priorities, and each change written up as a scoped task with what to change, why, and how to test it.",
+      title: "Document the rules",
+      body: "Each repo records its architecture, its commands, and the rules that must never break, so the next change starts from the same written context.",
     },
     {
-      title: "AI-assisted, then verified",
-      body: "I build with AI assistance and treat its output as a draft until the tests and CI confirm it. Changes ship with the tests that prove them.",
+      title: "Test every change",
+      body: "Changes ship with the tests that prove them. A change is done when the tests pass, not when it looks right.",
     },
     {
       title: "CI as the gatekeeper",
@@ -148,7 +148,7 @@ export const aboutPage = {
     },
   ],
   thisSite:
-    "This portfolio is built the same way. A scheduled session reads my public repos read-only and updates the project data; a CI check fails the build when any claim on this site has no matching quote in the repo it describes. The site's own repo is private, so this is a description rather than a link.",
+    "This portfolio is built the same way. A scheduled job reads my public repos read-only and updates the project data; a CI check fails the build when any claim on this site has no matching quote in the repo it describes. The site's own repo is private, so this is a description rather than a link.",
 } as const;
 
 /**

@@ -18,22 +18,22 @@ describe("about page", () => {
   it("counts the method evidence the same way as PORTFOLIO_COPY.md", () => {
     const site = methodEvidence();
     const copy = copyMethodEvidence(projectsData.projects, syncData);
-    expect({ total: site.total, withContext: site.withContext.length, withCi: site.withCi.length }).toEqual(copy);
+    expect({ total: site.total, withRoadmap: site.withRoadmap.length, withCi: site.withCi.length }).toEqual(copy);
   });
 
   it("derives the counts from the sync snapshot", () => {
     const repos = syncData.repos as { fullName: string; rootFiles?: string[]; ci?: unknown }[];
-    const { withContext, withCi } = methodEvidence();
-    for (const p of withContext) expect(repos.find((r) => r.fullName === p.repo)?.rootFiles).toContain("CLAUDE.md");
+    const { withRoadmap, withCi } = methodEvidence();
+    for (const p of withRoadmap) expect(repos.find((r) => r.fullName === p.repo)?.rootFiles).toContain("ROADMAP.md");
     for (const p of withCi) expect(repos.find((r) => r.fullName === p.repo)?.ci).toBeTruthy();
   });
 
   it("shows the derived counts, the snapshot date, and links each counted project", () => {
     const m = methodEvidence();
-    expect(text).toContain(`${m.withContext.length} of ${m.total} listed projects carry a CLAUDE.md`);
+    expect(text).toContain(`${m.withRoadmap.length} of ${m.total} listed projects keep a written roadmap`);
     expect(text).toContain(`${m.withCi.length} of ${m.total} listed projects have CI on GitHub Actions`);
     expect(html).toContain(formatDate(syncedAt));
-    for (const p of [...m.withContext, ...m.withCi]) expect(html).toContain(`href="${projectPath(p)}"`);
+    for (const p of [...m.withRoadmap, ...m.withCi]) expect(html).toContain(`href="${projectPath(p)}"`);
   });
 
   it("lists every project with its real status", () => {

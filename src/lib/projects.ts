@@ -113,7 +113,7 @@ export function portfolioStats() {
 
 /**
  * Evidence for the development method, read from the sync: which listed projects
- * carry a CLAUDE.md context file and which have CI. Mirrors methodEvidence in
+ * keep a written roadmap (ROADMAP.md) and which have CI. Mirrors methodEvidence in
  * scripts/lib/copy.mjs, so the site and PORTFOLIO_COPY.md give the same counts.
  */
 export function methodEvidence() {
@@ -122,7 +122,7 @@ export function methodEvidence() {
     .filter((entry): entry is { project: Project; repo: SyncRepo } => Boolean(entry.repo));
   return {
     total: listed.length,
-    withContext: listed.filter(({ repo }) => (repo.rootFiles ?? []).includes("CLAUDE.md")).map(({ project }) => project),
+    withRoadmap: listed.filter(({ repo }) => (repo.rootFiles ?? []).includes("ROADMAP.md")).map(({ project }) => project),
     withCi: listed.filter(({ repo }) => repo.ci).map(({ project }) => project),
   };
 }

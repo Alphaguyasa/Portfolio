@@ -31,7 +31,7 @@ Selected work:
 - **Security Scanner** (Paused): Web vulnerability scanning dashboard.
 - **Alpha Coin** (Paused): Token dashboard on the Internet Computer.
 
-How I work: 5 of my 9 listed projects carry a CLAUDE.md context file and 6 have CI on GitHub Actions. I plan work as written prompts, build with AI assistance, verify the output, and treat CI as the gatekeeper: in those repos a change merges only when its checks pass.
+How I work: 5 of my 9 listed projects keep a written roadmap and 6 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
 
 ### Portfolio entries
 
@@ -115,7 +115,7 @@ Full-stack and Android developer in Addis Ababa. Offline-first web apps (Next.js
 
 ### About (long)
 
-I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 5 of my 9 listed projects carry a CLAUDE.md context file and 6 have CI on GitHub Actions. I plan work as written prompts, build with AI assistance, verify the output, and treat CI as the gatekeeper: in those repos a change merges only when its checks pass. Open to freelance and contract work.
+I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 5 of my 9 listed projects keep a written roadmap and 6 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
 
 ### Projects section
 

@@ -17,7 +17,7 @@ describe("PORTFOLIO_COPY.md and data/shipped.json", () => {
   it("states no number that the verified project data does not", () => {
     const allowed = new Set(data.projects.flatMap((p) => proseOf(p).flatMap(([, t]: [string, string]) => numbersIn(t))));
     const m = methodEvidence(data.projects, sync);
-    for (const n of [m.total, m.withContext, m.withCi]) allowed.add(String(n));
+    for (const n of [m.total, m.withRoadmap, m.withCi]) allowed.add(String(n));
 
     const copy = buildCopy(data.projects, sync).replace(/\d{4}-\d{2}-\d{2}/g, "").replace(/@[\d.]+/g, "");
     const npmVersions = sync.repos.flatMap((r) => (r.npm?.latest ? numbersIn(r.npm.latest) : []));

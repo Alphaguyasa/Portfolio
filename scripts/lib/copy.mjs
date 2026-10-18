@@ -17,12 +17,12 @@ function repoOf(sync, project) {
   return sync.repos.find((r) => r.fullName === project.repo) ?? null;
 }
 
-/** Repos that show the development method: a CLAUDE.md context file and CI. */
+/** Repos that show the development method: a written roadmap (ROADMAP.md) and CI. */
 export function methodEvidence(projects, sync) {
   const repos = projects.map((p) => repoOf(sync, p)).filter(Boolean);
-  const withContext = repos.filter((r) => (r.rootFiles ?? []).includes("CLAUDE.md"));
+  const withRoadmap = repos.filter((r) => (r.rootFiles ?? []).includes("ROADMAP.md"));
   const withCi = repos.filter((r) => r.ci);
-  return { total: repos.length, withContext: withContext.length, withCi: withCi.length };
+  return { total: repos.length, withRoadmap: withRoadmap.length, withCi: withCi.length };
 }
 
 function statusLine(project, sync) {
@@ -48,8 +48,8 @@ export function buildCopy(projects, sync) {
   out();
 
   const method =
-    `${m.withContext} of my ${m.total} listed projects carry a CLAUDE.md context file and ${m.withCi} have CI on GitHub Actions. ` +
-    "I plan work as written prompts, build with AI assistance, verify the output, and treat CI as the gatekeeper: in those repos a change merges only when its checks pass.";
+    `${m.withRoadmap} of my ${m.total} listed projects keep a written roadmap and ${m.withCi} have CI on GitHub Actions. ` +
+    "I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.";
 
   out("## Upwork");
   out();

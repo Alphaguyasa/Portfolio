@@ -62,8 +62,10 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
   are no longer preloaded. Measured locally: `/` 91, project page 93, others 100.
 - **[P1] About page and "How I work"** — PR #10 (2026-10-18), squash `ccac03c`
   (tag `v2026-10-18-1` not pushable: A10). `/about`: every project with its status,
-  the four-step method, and counts from the sync (5 of 9 listed projects carry a
-  CLAUDE.md, 6 have CI), each with the projects linked and the snapshot date.
+  the four-step method, and counts from the sync, each with the projects linked and
+  the snapshot date. Revised the same day on Alpha's instruction: no mention of
+  AI-assisted work or prompts on the site or in the copy; the evidence is now
+  "5 of 9 keep a written roadmap, 6 have CI".
 - **[P1] Restore the contact-form tests** — PR #9 (2026-10-16). 14 tests: rate
   limiter windows and key extraction; route success, validation (422), malformed body,
   unconfigured delivery (mailto fallback), provider rejection and network failure
