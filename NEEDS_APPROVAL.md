@@ -5,11 +5,10 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
-### A13. Public links for the CTF win and the club chairmanship (2026-10-18)
-Alpha confirmed both and says Haramaya University posted them on its main Telegram
-channel. Paste the post links (t.me/<channel>/<number>) in a session; they will be
-linked from the Recognitions section. Also confirm the company's spelling: the site
-says "Leyo"; Alpha wrote "Leyu".
+### A14. Testimonial approval and company spelling (2026-10-18)
+Alpha says "my friend approved" the testimonial. Still needed before it goes live:
+which of the two (Melkias Teshome or Abdi Fekeda), and that they approved the exact
+quote in `src/data/site.ts` (both were drafted for layout). Also: "Leyo" or "Leyu"?
 
 ### A12. A second Vercel project fails on every PR (2026-10-18)
 **Update:** from PR #14 on, the failing `portfolio` project no longer posts; it looks
@@ -48,6 +47,11 @@ Answered by Alpha on 2026-10-18:
   scanner is described as similar to online pentesting platforms.
 - **A6. erko** — listed as "Adey" (paused) under "Private work", from the summary
   in `portfolio.config.json` only; the repo is never read, named or linked.
+- **A13. Proof links** — Alpha supplied public Telegram posts: HU Cyber Club
+  (t.me/HU_CYBER_CLUB/445, chairperson; represented campus, club and department in
+  Bahir Dar) and INSA (t.me/insagovet/3068 Cyber Security Month at HU, 3079 photos of
+  him presenting his CTF-winning Java code). The cloud session cannot open t.me, so
+  the posts were not read; they are linked with neutral labels.
 - **A7. NullChat** — it is the only mesh-chat repo.
 - **A8. Accent colour** — keep `#c2410c`.
 - **A11. Sync could not read the other repos** (2026-10-15 → 2026-10-18) — Alpha added

@@ -208,22 +208,37 @@ export const work: TimelineRow[] = [
   },
 ];
 
-export const recognitions = [
+/**
+ * Each claim was confirmed by Alpha (2026-10-18). `sources` are public posts he
+ * supplied as proof; labels say only what each post is, not what it shows.
+ */
+export const recognitions: {
+  icon: "star" | "bulb" | "person";
+  tone: "accent" | "ink";
+  title: string;
+  body: string;
+  sources?: { label: string; href: string }[];
+}[] = [
   {
-    icon: "star" as const,
-    tone: "accent" as const,
+    icon: "star",
+    tone: "accent",
     title: "1st Place — University CTF",
     body: "First at university level in the capture-the-flag competition run by Haramaya University in collaboration with INSA.",
+    sources: [
+      { label: "INSA post: Cyber Security Month at Haramaya University", href: "https://t.me/insagovet/3068" },
+      { label: "INSA photos from the event", href: "https://t.me/insagovet/3079" },
+    ],
   },
   {
-    icon: "bulb" as const,
-    tone: "ink" as const,
+    icon: "bulb",
+    tone: "ink",
     title: "Led the Cyber Security Club",
-    body: "Served as head and chairperson of the Cyber Security Club at Haramaya University, running training and competition prep for members.",
+    body: "Served as head and chairperson of the Cyber Security Club at Haramaya University, running training and competition prep for members, and represented the campus, the club and the department in Bahir Dar.",
+    sources: [{ label: "HU Cyber Club post", href: "https://t.me/HU_CYBER_CLUB/445" }],
   },
   {
-    icon: "person" as const,
-    tone: "ink" as const,
+    icon: "person",
+    tone: "ink",
     title: "Focal Person — Leyo",
     body: "Focal person for data contribution at Leyo as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
   },
