@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SubscribeField from "@/components/SubscribeField";
 import { Accent, Container, CtaPill, Logo, SocialLinks } from "@/components/ui";
 import { footerNav, site } from "@/data/site";
@@ -49,6 +50,11 @@ export default function Footer({ basePath = "" }: { basePath?: string }) {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link href="/about" className="text-muted2 transition-colors duration-200 hover:text-accent">
+                  How I Work
+                </Link>
+              </li>
             </ul>
           </nav>
 

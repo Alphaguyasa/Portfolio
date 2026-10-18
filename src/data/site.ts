@@ -121,6 +121,37 @@ export const bioStats = [
 ] as const;
 
 /**
+ * The /about page. No biographical figures here: those wait on Alpha's confirmation
+ * (see bioStats). The method's counts come from the sync via methodEvidence().
+ */
+export const aboutPage = {
+  intro: [
+    "I'm Alpha, a full-stack and Android developer in Addis Ababa, Ethiopia. Most of what I build targets one constraint: connectivity you cannot count on.",
+    "That means offline-first web apps that keep working through a blackout, Android apps that need no network at all, and retrieval systems that cite their sources or refuse to answer.",
+  ],
+  method: [
+    {
+      title: "Context files",
+      body: "Each repo carries a CLAUDE.md: the architecture, the commands, the rules that must never break, and how work is merged. Any session, human or AI, starts from the same written context.",
+    },
+    {
+      title: "Pre-planned prompts",
+      body: "Work is planned before it is built: a roadmap with priorities, and each change written up as a scoped task with what to change, why, and how to test it.",
+    },
+    {
+      title: "AI-assisted, then verified",
+      body: "I build with AI assistance and treat its output as a draft until the tests and CI confirm it. Changes ship with the tests that prove them.",
+    },
+    {
+      title: "CI as the gatekeeper",
+      body: "A GitHub Actions workflow runs the checks. The latest result on each repo's default branch is shown on its project page, passing or failing.",
+    },
+  ],
+  thisSite:
+    "This portfolio is built the same way. A scheduled session reads my public repos read-only and updates the project data; a CI check fails the build when any claim on this site has no matching quote in the repo it describes. The site's own repo is private, so this is a description rather than a link.",
+} as const;
+
+/**
  * No skill percentages: they are not measurable. The tile shows how many listed
  * projects use the tool instead, counted from data/projects.json via `matches`.
  */

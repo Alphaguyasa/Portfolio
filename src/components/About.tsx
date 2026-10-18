@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Envelope, MapPin, Shield, Star } from "@/components/icons";
+import Link from "next/link";
+import { ArrowRight, Envelope, MapPin, Shield, Star } from "@/components/icons";
 import { Accent, Container, Eyebrow, SectionTitle } from "@/components/ui";
 import { bioStats, site } from "@/data/site";
 import { portfolioStats } from "@/lib/projects";
@@ -58,6 +59,13 @@ export default function About() {
             selling through a blackout, and retrieval systems that cite their
             sources or say nothing.
           </p>
+          <Link
+            href="/about"
+            className="mt-4 flex w-fit items-center gap-2 font-sans text-base font-semibold text-accent hover:text-ink xl:text-[17px]"
+          >
+            How I work, with the evidence
+            <ArrowRight size={16} />
+          </Link>
 
           <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
             {stats.map((stat) => (
