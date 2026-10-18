@@ -2,9 +2,10 @@ import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import Notes from "@/components/Notes";
+import Recognitions from "@/components/Recognitions";
 import Testimonials from "@/components/Testimonials";
 import Tools, { projectsUsing } from "@/components/Tools";
-import { confirmedTestimonials, footerNav, navLinks, notes, publishedNotes, testimonials, tools } from "@/data/site";
+import { confirmedTestimonials, footerNav, navLinks, notes, publishedNotes, recognitions, testimonials, tools } from "@/data/site";
 import AboutPage from "@/app/about/page";
 import Home from "@/app/page";
 import { projects } from "@/lib/projects";
@@ -76,5 +77,20 @@ describe("how Alpha works", () => {
 
   it("still allows AI retrieval as a skill", () => {
     expect("AI retrieval that cites its sources").not.toMatch(AI_CODING);
+  });
+});
+
+describe("recognitions", () => {
+  it("link every public source Alpha supplied, opening in a new tab", () => {
+    const html = renderToStaticMarkup(<Recognitions />);
+    for (const r of recognitions) {
+      for (const s of r.sources ?? []) {
+        expect(s.href).toMatch(/^https:\/\/t\.me\/[A-Za-z0-9_]+\/\d+$/);
+        expect(html).toContain(`href="${s.href}"`);
+      }
+    }
+    expect(html.match(/target="_blank" rel="noreferrer noopener"/g)?.length).toBe(
+      recognitions.flatMap((r) => r.sources ?? []).length,
+    );
   });
 });

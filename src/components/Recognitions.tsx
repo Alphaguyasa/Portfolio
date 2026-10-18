@@ -48,6 +48,22 @@ export default function Recognitions() {
                 <p className="relative mt-2.5 font-sans text-base leading-[1.55] text-muted xl:text-[17px]">
                   {item.body}
                 </p>
+                {item.sources && (
+                  <ul className="relative mt-4 flex flex-col gap-2">
+                    {item.sources.map((source) => (
+                      <li key={source.href}>
+                        <a
+                          href={source.href}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="border-b-[1.5px] border-accent font-sans text-[15px] font-semibold text-accent transition-colors duration-200 hover:border-ink hover:text-ink"
+                        >
+                          {source.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             );
           })}

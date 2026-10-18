@@ -5,12 +5,6 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
-### A13. Public links for the CTF win and the club chairmanship (2026-10-18)
-Alpha confirmed both and says Haramaya University posted them on its main Telegram
-channel. Paste the post links (t.me/<channel>/<number>) in a session; they will be
-linked from the Recognitions section. Also confirm the company's spelling: the site
-says "Leyo"; Alpha wrote "Leyu".
-
 ### A12. A second Vercel project fails on every PR (2026-10-18)
 **Update:** from PR #14 on, the failing `portfolio` project no longer posts; it looks
 fixed. Close this once Alpha confirms.
@@ -35,19 +29,24 @@ Still refused on 2026-10-16; also missing: `git tag v2026-10-16-1 97c1b89` (PR #
 ## Resolved
 
 Answered by Alpha on 2026-10-18:
-- **A2. Testimonials** — not approved by the two people (university classmates and
-  teammates). They stay hidden; if they approve later, label them as teammates.
+- **A2 / A14. Testimonials** — both people (university classmates and teammates)
+  approved their exact quotes (Alpha, 2026-10-18); shown, labelled as such.
 - **A3. Pricing** — Alpha asked for a recommended rate: now $20/hour, $1,500/month,
   $4,000/quarter (was $15 / $1,200 / $3,200).
 - **A4. Biography** — all confirmed: 1st place University CTF (HU × INSA),
   chairperson of the HU Cyber Security Club, 2+ years full-stack, 1+ year in AI, BSc
-  Computer Science (Haramaya). Leyo: still focal person, as a contractor (site now
+  Computer Science (Haramaya). Leyu (spelling confirmed by Alpha; the site said "Leyo"): still focal person, as a contractor (site now
   says "Current"). Links pending as A13.
 - **A5. Alpha Coin and Security Scanner** — both finished, with more planned. New
   status "completed", allowed only with `statusConfirmed: "Alpha, <date>"`. The
   scanner is described as similar to online pentesting platforms.
 - **A6. erko** — listed as "Adey" (paused) under "Private work", from the summary
   in `portfolio.config.json` only; the repo is never read, named or linked.
+- **A13. Proof links** — Alpha supplied public Telegram posts: HU Cyber Club
+  (t.me/HU_CYBER_CLUB/445, chairperson; represented campus, club and department in
+  Bahir Dar) and INSA (t.me/insagovet/3068 Cyber Security Month at HU, 3079 photos of
+  him presenting his CTF-winning Java code). The cloud session cannot open t.me, so
+  the posts were not read; they are linked with neutral labels.
 - **A7. NullChat** — it is the only mesh-chat repo.
 - **A8. Accent colour** — keep `#c2410c`.
 - **A11. Sync could not read the other repos** (2026-10-15 → 2026-10-18) — Alpha added

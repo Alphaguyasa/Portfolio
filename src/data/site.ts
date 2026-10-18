@@ -197,7 +197,7 @@ export const work: TimelineRow[] = [
     pill: "Past",
   },
   {
-    title: "Leyo",
+    title: "Leyu",
     subtitle: "Focal Person, Data Contribution (contractor)",
     pill: "Current",
   },
@@ -208,24 +208,39 @@ export const work: TimelineRow[] = [
   },
 ];
 
-export const recognitions = [
+/**
+ * Each claim was confirmed by Alpha (2026-10-18). `sources` are public posts he
+ * supplied as proof; labels say only what each post is, not what it shows.
+ */
+export const recognitions: {
+  icon: "star" | "bulb" | "person";
+  tone: "accent" | "ink";
+  title: string;
+  body: string;
+  sources?: { label: string; href: string }[];
+}[] = [
   {
-    icon: "star" as const,
-    tone: "accent" as const,
+    icon: "star",
+    tone: "accent",
     title: "1st Place — University CTF",
     body: "First at university level in the capture-the-flag competition run by Haramaya University in collaboration with INSA.",
+    sources: [
+      { label: "INSA post: Cyber Security Month at Haramaya University", href: "https://t.me/insagovet/3068" },
+      { label: "INSA photos from the event", href: "https://t.me/insagovet/3079" },
+    ],
   },
   {
-    icon: "bulb" as const,
-    tone: "ink" as const,
+    icon: "bulb",
+    tone: "ink",
     title: "Led the Cyber Security Club",
-    body: "Served as head and chairperson of the Cyber Security Club at Haramaya University, running training and competition prep for members.",
+    body: "Served as head and chairperson of the Cyber Security Club at Haramaya University, running training and competition prep for members, and represented the campus, the club and the department in Bahir Dar.",
+    sources: [{ label: "HU Cyber Club post", href: "https://t.me/HU_CYBER_CLUB/445" }],
   },
   {
-    icon: "person" as const,
-    tone: "ink" as const,
-    title: "Focal Person — Leyo",
-    body: "Focal person for data contribution at Leyo as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
+    icon: "person",
+    tone: "ink",
+    title: "Focal Person — Leyu",
+    body: "Focal person for data contribution at Leyu as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
   },
 ];
 
@@ -262,10 +277,8 @@ export const budgetOptions = [
 
 /**
  * Only quotes with `confirmed: true` are shown: the person approved the exact
- * wording and the label is accurate. These two were drafted for layout; both are
- * Alpha's university classmates and teammates and have not approved the wording
- * (Alpha, 2026-10-18), so the section stays hidden. If they approve, label them
- * as teammates, never clients.
+ * wording and the label is accurate. Both are Alpha's university classmates and
+ * teammates, never clients; both approved these exact quotes (Alpha, 2026-10-18).
  */
 export const testimonials: {
   name: string;
@@ -280,7 +293,7 @@ export const testimonials: {
     photo: "/assets/testimonial-melkias.jpeg",
     quote:
       "Alpha thinks about the failure case first. On the offline-first work he had the sync path designed before a line of UI existed, and that is why it never lost a sale in testing.",
-    confirmed: false,
+    confirmed: true,
   },
   {
     name: "Abdi Fekeda",
@@ -288,7 +301,7 @@ export const testimonials: {
     photo: "/assets/testimonial-abdi.jpg",
     quote:
       "We built HU News together. He took the hardest screen, documented every decision, and reviewed the rest of our code without being asked. An easy person to ship with.",
-    confirmed: false,
+    confirmed: true,
   },
 ];
 
