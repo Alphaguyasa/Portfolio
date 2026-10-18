@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import About from "@/components/About";
 import Portfolio from "@/components/Portfolio";
-import { portfolioStats, projects } from "@/lib/projects";
+import { STATUS_LABEL, portfolioStats, projects } from "@/lib/projects";
 import { STAND_IN_IMAGES } from "../scripts/lib/facts.mjs";
 import { readJson, root, type Sync } from "./helpers";
 
@@ -23,8 +23,7 @@ describe("Portfolio section", () => {
 
   it("shows each project's real status and links to its code", () => {
     for (const p of projects) expect(html).toContain(p.links[0].href);
-    expect(html).toContain("In development");
-    expect(html).toContain("Paused");
+    for (const p of projects) expect(html).toContain(STATUS_LABEL[p.status]);
   });
 
   it("shows only real screenshots, and none for projects without one", () => {

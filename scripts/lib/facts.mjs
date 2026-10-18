@@ -6,7 +6,7 @@
 
 import { checkFrom } from "./screenshots.mjs";
 
-export const STATUSES = ["idea", "building", "shipped", "maintained", "paused"];
+export const STATUSES = ["idea", "building", "shipped", "maintained", "completed", "paused"];
 
 /**
  * Cover images from the design handoff that are illustrations, not product
@@ -134,6 +134,11 @@ export function verifyProjects(data, sync, readDoc, assetExists) {
       const evidence =
         repo.latestRelease || repo.npm?.latest || quotes.some((q) => /release apk|signed production build/i.test(q));
       if (!evidence) fail(`status "${p.status}" needs a release, an npm version or a documented release build`);
+    }
+
+    // "Completed" cannot be seen in a repo, so it needs Alpha's dated confirmation.
+    if (p.status === "completed" && !/^Alpha, \d{4}-\d{2}-\d{2}$/.test(p.statusConfirmed ?? "")) {
+      fail('status "completed" needs statusConfirmed: "Alpha, YYYY-MM-DD"');
     }
 
     // Only real screenshots, each with a stated source.

@@ -28,8 +28,8 @@ Selected work:
 - **Meret** (In development): Offline maps and GPS logging for field teams. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.
 - **ethiopic-text** (Shipped): Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped.
 - **HU News** (Shipped): Haramaya University news app. Signed release APK committed to the repo.
-- **Security Scanner** (Paused): Web vulnerability scanning dashboard.
-- **Alpha Coin** (Paused): Token dashboard on the Internet Computer.
+- **Security Scanner** (Completed): Automated web vulnerability scanner, similar to online pentesting platforms.
+- **Alpha Coin** (Completed): Token dashboard on the Internet Computer.
 
 How I work: 5 of my 9 listed projects keep a written roadmap and 6 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
 
@@ -91,11 +91,11 @@ How I work: 5 of my 9 listed projects keep a written roadmap and 6 have CI on Gi
 - **Skills:** Flutter, Dart, WordPress REST API
 - **Link:** https://github.com/Alphaguyasa/HUnews
 
-#### Security Scanner: Web vulnerability scanning dashboard
+#### Security Scanner: Automated web vulnerability scanner, similar to online pentesting platforms
 
-- **Short:** Web vulnerability scanning dashboard. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose..
+- **Short:** Automated web vulnerability scanner, similar to online pentesting platforms. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose..
 - **Long:** Running several open-source scanners by hand produces findings nobody tracks. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.
-- **Status:** Paused · last commit 2026-05-12. University final-year team project, hosted in the team's organisation. No commits since May 2026.
+- **Status:** Completed · last commit 2026-05-12. University final-year team project, hosted in the team's organisation. Finished; the team plans to extend it. No commits since May 2026.
 - **Skills:** Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto
 - **Link:** https://github.com/vulnerability-scanner-website/Final-year-project
 
@@ -103,7 +103,7 @@ How I work: 5 of my 9 listed projects keep a written roadmap and 6 have CI on Gi
 
 - **Short:** Token dashboard on the Internet Computer. A Motoko token canister with Internet Identity sign-in: check a balance, claim tokens once per principal, and transfer to another principal..
 - **Long:** Explore wallet sign-in and token transfers on the Internet Computer. A Motoko token canister with Internet Identity sign-in: check a balance, claim tokens once per principal, and transfer to another principal.
-- **Status:** Paused · last commit 2026-03-20. No commits since March 2026.
+- **Status:** Completed · last commit 2026-03-20. Finished; more features are planned. No commits since March 2026.
 - **Skills:** Motoko, Next.js, TypeScript, Internet Identity
 - **Link:** https://github.com/Alphaguyasa/Alpha-digital-coin
 
@@ -126,8 +126,8 @@ I build software for places where the network fails: point of sale that keeps se
 - **Meret**: Offline maps and GPS logging for field teams. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine. (In development · last commit 2026-10-18) https://github.com/Alphaguyasa/Meret
 - **ethiopic-text**: Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped. (Shipped · npm 0.1.0 · last commit 2026-08-05) https://github.com/Alphaguyasa/ethiopic-text
 - **HU News**: Haramaya University news app. Signed release APK committed to the repo. (Shipped · last commit 2026-05-02) https://github.com/Alphaguyasa/HUnews
-- **Security Scanner**: Web vulnerability scanning dashboard. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.. (Paused · last commit 2026-05-12) https://github.com/vulnerability-scanner-website/Final-year-project
-- **Alpha Coin**: Token dashboard on the Internet Computer. A Motoko token canister with Internet Identity sign-in: check a balance, claim tokens once per principal, and transfer to another principal.. (Paused · last commit 2026-03-20) https://github.com/Alphaguyasa/Alpha-digital-coin
+- **Security Scanner**: Automated web vulnerability scanner, similar to online pentesting platforms. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.. (Completed · last commit 2026-05-12) https://github.com/vulnerability-scanner-website/Final-year-project
+- **Alpha Coin**: Token dashboard on the Internet Computer. A Motoko token canister with Internet Identity sign-in: check a balance, claim tokens once per principal, and transfer to another principal.. (Completed · last commit 2026-03-20) https://github.com/Alphaguyasa/Alpha-digital-coin
 
 ## CV project list
 
@@ -138,5 +138,5 @@ I build software for places where the network fails: point of sale that keeps se
 - **Meret** — Offline maps and GPS logging for field teams. Kotlin, Jetpack Compose, Room, multi-module Gradle. In development · last commit 2026-10-18.
 - **ethiopic-text** — Search and normalization for Ethiopic script. TypeScript. Shipped · npm 0.1.0 · last commit 2026-08-05.
 - **HU News** — Haramaya University news app. Flutter, Dart, WordPress REST API. Shipped · last commit 2026-05-02.
-- **Security Scanner** — Web vulnerability scanning dashboard. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Paused · last commit 2026-05-12.
-- **Alpha Coin** — Token dashboard on the Internet Computer. Motoko, Next.js, TypeScript, Internet Identity. Paused · last commit 2026-03-20.
+- **Security Scanner** — Automated web vulnerability scanner, similar to online pentesting platforms. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Completed · last commit 2026-05-12.
+- **Alpha Coin** — Token dashboard on the Internet Computer. Motoko, Next.js, TypeScript, Internet Identity. Completed · last commit 2026-03-20.

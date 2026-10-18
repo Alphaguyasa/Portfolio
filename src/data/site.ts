@@ -114,7 +114,7 @@ export const services: Service[] = [
   },
 ];
 
-/** Biographical figures supplied by Alpha; GitHub cannot verify these, so they are pending his confirmation. */
+/** Biographical figures GitHub cannot verify; confirmed by Alpha on 2026-10-18. */
 export const bioStats = [
   { value: "2+", label: "Years Full-Stack" },
   { value: "1+", label: "Year in AI" },
@@ -198,8 +198,8 @@ export const work: TimelineRow[] = [
   },
   {
     title: "Leyo",
-    subtitle: "Focal Person, Data Contribution",
-    pill: "1 Year",
+    subtitle: "Focal Person, Data Contribution (contractor)",
+    pill: "Current",
   },
   {
     title: "Independent",
@@ -225,7 +225,7 @@ export const recognitions = [
     icon: "person" as const,
     tone: "ink" as const,
     title: "Focal Person — Leyo",
-    body: "Led data-contribution coordination at Leyo for a year, owning quality and throughput for the contributor pipeline.",
+    body: "Focal person for data contribution at Leyo as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
   },
 ];
 
@@ -240,9 +240,9 @@ export const pricingFeatures = [
 ] as const;
 
 export const pricingTiers = [
-  { tier: "Hourly", price: "$15", unit: "/ Hour", included: 3 },
-  { tier: "Monthly", price: "$1,200", unit: "/ Month", included: 5 },
-  { tier: "Quarterly", price: "$3,200", unit: "/ Qtr.", included: 7 },
+  { tier: "Hourly", price: "$20", unit: "/ Hour", included: 3 },
+  { tier: "Monthly", price: "$1,500", unit: "/ Month", included: 5 },
+  { tier: "Quarterly", price: "$4,000", unit: "/ Qtr.", included: 7 },
 ] as const;
 
 export const interestOptions = [
@@ -262,8 +262,10 @@ export const budgetOptions = [
 
 /**
  * Only quotes with `confirmed: true` are shown: the person approved the exact
- * wording and the label is accurate. These two were drafted for layout and are
- * not confirmed yet, so the section is hidden.
+ * wording and the label is accurate. These two were drafted for layout; both are
+ * Alpha's university classmates and teammates and have not approved the wording
+ * (Alpha, 2026-10-18), so the section stays hidden. If they approve, label them
+ * as teammates, never clients.
  */
 export const testimonials: {
   name: string;
@@ -274,7 +276,7 @@ export const testimonials: {
 }[] = [
   {
     name: "Melkias Teshome",
-    role: "Full Stack Developer",
+    role: "University classmate and teammate",
     photo: "/assets/testimonial-melkias.jpeg",
     quote:
       "Alpha thinks about the failure case first. On the offline-first work he had the sync path designed before a line of UI existed, and that is why it never lost a sale in testing.",
@@ -282,7 +284,7 @@ export const testimonials: {
   },
   {
     name: "Abdi Fekeda",
-    role: "Full Stack Developer",
+    role: "University classmate and teammate",
     photo: "/assets/testimonial-abdi.jpg",
     quote:
       "We built HU News together. He took the hardest screen, documented every decision, and reviewed the rest of our code without being asked. An easy person to ship with.",
