@@ -50,11 +50,19 @@ type SyncRepo = {
   ci?: { workflow: string; status: string; conclusion: string | null; at: string } | null;
   npm?: { name: string; latest: string | null; publishedAt: string | null } | null;
   rootFiles?: string[];
+  /** Private repos only: the summary Alpha wrote in portfolio.config.json "include". */
+  publicSummary?: { name: string; status: Status; summary: string };
 };
 
 export const projects = projectsData.projects as Project[];
 const repos = syncData.repos as SyncRepo[];
 export const syncedAt: string = syncData.syncedAt;
+
+/**
+ * Private repos Alpha chose to list. Only the name, status and summary he wrote are
+ * shown: never the repo name, a link, or anything read from the repo.
+ */
+export const privateProjects = repos.flatMap((r) => (r.private && r.publicSummary ? [r.publicSummary] : []));
 
 export const STATUS_LABEL: Record<Status, string> = {
   idea: "Idea",

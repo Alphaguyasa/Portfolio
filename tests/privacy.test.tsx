@@ -1,8 +1,11 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+import Portfolio from "@/components/Portfolio";
 import { site } from "@/data/site";
+import { privateProjects } from "@/lib/projects";
 import { readJson, root } from "./helpers";
 
 const tracked = execFileSync("git", ["ls-files", "-co", "--exclude-standard"], { cwd: root, encoding: "utf8" })
@@ -49,5 +52,31 @@ describe("privacy rules", () => {
     expect(site.linkedin).toBe(pub.linkedin);
     expect(site.leetcode).toBe(pub.leetcode);
     expect(site.location).toBe(pub.location);
+  });
+});
+
+describe("private work", () => {
+  type Include = Record<string, { name: string; status: string; summary: string }>;
+  const include = readJson<{ include: Include }>("portfolio.config.json").include;
+  const html = renderToStaticMarkup(<Portfolio />);
+
+  it("shows only the name, status and summary Alpha wrote for each listed private repo", () => {
+    expect(privateProjects).toEqual(Object.values(include));
+    for (const p of privateProjects) {
+      expect(html).toContain(p.name);
+      expect(html).toContain(p.summary.replace(/'/g, "&#x27;"));
+    }
+  });
+
+  it("never names, links or reads a private repo", () => {
+    for (const repo of Object.keys(include)) {
+      expect(html).not.toMatch(new RegExp(`github\\.com/[^"]*/${repo}\\b`, "i"));
+      expect(html).not.toMatch(new RegExp(`>${repo}<`, "i"));
+      expect(existsSync(path.join(root, "data/sync/docs/Alphaguyasa", repo))).toBe(false);
+    }
+  });
+
+  it("claims no status a private repo cannot back", () => {
+    for (const p of privateProjects) expect(["idea", "building", "paused"]).toContain(p.status);
   });
 });

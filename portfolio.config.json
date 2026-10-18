@@ -2,7 +2,13 @@
   "$comment": "Controls what the GitHub sync reads and what the site may publish. Public repos are included by default unless listed in 'skip'. A private repo is included ONLY if listed in 'include', and then only the 'publicSummary' written here is used; its contents are never read. 'knownPublicRepos' is the fallback when listing the owner's repos is refused (403); add new public repos to it.",
   "owner": "Alphaguyasa",
   "skip": ["Alphaguyasa", "Portfolio"],
-  "include": {},
+  "include": {
+    "erko": {
+      "name": "Adey",
+      "status": "paused",
+      "summary": "A classifieds marketplace for Ethiopia. The code is in a private repository, so only this summary is shown."
+    }
+  },
   "knownPublicRepos": [
     "Alphaguyasa/Alpha-digital-coin",
     "Alphaguyasa/docsearch",

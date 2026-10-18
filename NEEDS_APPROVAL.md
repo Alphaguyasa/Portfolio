@@ -12,6 +12,8 @@ linked from the Recognitions section. Also confirm the company's spelling: the s
 says "Leyo"; Alpha wrote "Leyu".
 
 ### A12. A second Vercel project fails on every PR (2026-10-18)
+**Update:** from PR #14 on, the failing `portfolio` project no longer posts; it looks
+fixed. Close this once Alpha confirms.
 Each PR gets two Vercel statuses. `portfolio-8ybl` builds and deploys fine (it is the
 one that deploys main). The other, Vercel project `portfolio`, has its root directory
 set to `next-app`, which does not exist in this repo, so it fails on every PR (seen
@@ -30,12 +32,6 @@ Still refused on 2026-10-16; also missing: `git tag v2026-10-16-1 97c1b89` (PR #
 `v2026-10-16-2 92c9e97` (PR #9). Still refused on 2026-10-18; also missing:
 `v2026-10-18-1 ccac03c` (PR #10) and `v2026-10-18-2` on the PR #11 squash commit.
 
-### A6. Adey (answered, see Resolved; open until the follow-up PR lands) and the private "erko" repo (2026-10-14)
-No public repo named Adey exists. There is a private repo `erko` ("a classifieds
-marketplace for Ethiopia"). Private repos are not shown. If erko is Adey (paused) and
-you want it listed, add it to `include` in `portfolio.config.json` with a public
-summary, e.g. `"erko": { "name": "Adey", "status": "paused", "summary": "..." }`.
-
 ## Resolved
 
 Answered by Alpha on 2026-10-18:
@@ -50,8 +46,8 @@ Answered by Alpha on 2026-10-18:
 - **A5. Alpha Coin and Security Scanner** — both finished, with more planned. New
   status "completed", allowed only with `statusConfirmed: "Alpha, <date>"`. The
   scanner is described as similar to online pentesting platforms.
-- **A6. erko** — list it as "Adey" (paused) with a public summary only; done in a
-  follow-up PR (private repos are not rendered yet).
+- **A6. erko** — listed as "Adey" (paused) under "Private work", from the summary
+  in `portfolio.config.json` only; the repo is never read, named or linked.
 - **A7. NullChat** — it is the only mesh-chat repo.
 - **A8. Accent colour** — keep `#c2410c`.
 - **A11. Sync could not read the other repos** (2026-10-15 → 2026-10-18) — Alpha added
