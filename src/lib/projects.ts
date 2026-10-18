@@ -47,6 +47,7 @@ type SyncRepo = {
   tags?: string[];
   ci?: { workflow: string; status: string; conclusion: string | null; at: string } | null;
   npm?: { name: string; latest: string | null; publishedAt: string | null } | null;
+  rootFiles?: string[];
 };
 
 export const projects = projectsData.projects as Project[];
@@ -107,5 +108,21 @@ export function portfolioStats() {
     shipped: projects.filter((p) => p.status === "shipped" || p.status === "maintained").length,
     inDevelopment: projects.filter((p) => p.status === "building").length,
     publicRepos: repos.filter((r) => !r.private && r.fullName.startsWith(`${owner}/`)).length,
+  };
+}
+
+/**
+ * Evidence for the development method, read from the sync: which listed projects
+ * carry a CLAUDE.md context file and which have CI. Mirrors methodEvidence in
+ * scripts/lib/copy.mjs, so the site and PORTFOLIO_COPY.md give the same counts.
+ */
+export function methodEvidence() {
+  const listed = projects
+    .map((project) => ({ project, repo: repos.find((r) => r.fullName === project.repo) }))
+    .filter((entry): entry is { project: Project; repo: SyncRepo } => Boolean(entry.repo));
+  return {
+    total: listed.length,
+    withContext: listed.filter(({ repo }) => (repo.rootFiles ?? []).includes("CLAUDE.md")).map(({ project }) => project),
+    withCi: listed.filter(({ repo }) => repo.ci).map(({ project }) => project),
   };
 }
