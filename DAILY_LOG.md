@@ -30,6 +30,10 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   active today), statuses unchanged. One claim fell out of date: NullChat's "open
   security gap" was closed by NullChat #9 (`v2026-10-15-3`); the lesson now says so
   and cites the roadmap. Copy and Recently-shipped feed regenerated.
+- **Alpha's answers (A2–A8):** PR #14 (testimonials stay hidden and are relabelled,
+  pricing $20/h · $1,500/mo · $4,000/qtr, bio confirmed, Alpha Coin and Security
+  Scanner "completed" with a confirmation rule). PR #15: Adey (private erko) shown as
+  "Private work" from its config summary only.
 - **Vercel:** a second Vercel project (`portfolio`, root directory `next-app`) fails
   on every PR since at least #8; the deploying project succeeds. Logged as A12.
 - Local checks used the preinstalled Chromium; a leftover local server briefly skewed

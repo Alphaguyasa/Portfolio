@@ -7,6 +7,7 @@ import {
   STATUS_LABEL,
   formatDate,
   liveFacts,
+  privateProjects,
   projectPath,
   projects,
   type Project,
@@ -206,6 +207,21 @@ export default function Portfolio() {
               <HalfCard key={project.slug} project={project} />
             ))}
           </div>
+
+          {privateProjects.length > 0 && (
+            <div>
+              <h3 className="font-display text-xl font-bold xl:text-[26px]">Private work</h3>
+              <ul className="mt-4 grid gap-7 lg:grid-cols-2">
+                {privateProjects.map((p) => (
+                  <li key={p.name} className="flex flex-col items-start gap-3 rounded-3xl bg-surface-alt p-5.5">
+                    <StatusBadge status={p.status} />
+                    <span className="font-display text-xl font-bold xl:text-[26px]">{p.name}</span>
+                    <p className="font-sans text-base leading-[1.6] text-body xl:text-[17px]">{p.summary}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </Container>
     </section>

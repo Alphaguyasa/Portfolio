@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-10-18T16:56:20.645Z",
+  "syncedAt": "2026-10-18T17:23:34.143Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -956,6 +956,16 @@
       "docs": [
         "README.md"
       ]
+    },
+    {
+      "name": "erko",
+      "fullName": "Alphaguyasa/erko",
+      "private": true,
+      "publicSummary": {
+        "name": "Adey",
+        "status": "paused",
+        "summary": "A classifieds marketplace for Ethiopia. The code is in a private repository, so only this summary is shown."
+      }
     }
   ]
 }
