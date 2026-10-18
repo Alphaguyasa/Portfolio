@@ -21,6 +21,10 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   measured 83–89 on mobile performance, so the hero image now loads eagerly at high
   priority with accurate `sizes`, and unused font files are dropped. 4 new tests.
 - **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- **Follow-up from Alpha:** remove anything that presents his work as AI-assisted. The
+  /about method, its evidence (CLAUDE.md count replaced by ROADMAP.md count) and the
+  "How I work" line in PORTFOLIO_COPY.md were rewritten; a test now fails on such
+  wording anywhere on the site or in the copy. Recorded in CLAUDE.md.
 - **Vercel:** a second Vercel project (`portfolio`, root directory `next-app`) fails
   on every PR since at least #8; the deploying project succeeds. Logged as A12.
 - Local checks used the preinstalled Chromium; a leftover local server briefly skewed

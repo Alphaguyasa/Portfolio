@@ -8,7 +8,7 @@ import { aboutPage } from "@/data/site";
 import { formatDate, methodEvidence, projectPath, projects, syncedAt, type Project } from "@/lib/projects";
 
 const description =
-  "Alpha Guyasa, full-stack and Android developer in Addis Ababa: what he builds and how, with context files, planned prompts, verified AI-assisted work and CI.";
+  "Alpha Guyasa, full-stack and Android developer in Addis Ababa: what he builds and how: written plans, documented rules, tested changes and CI.";
 
 export const metadata: Metadata = {
   title: "About and how I work",
@@ -119,12 +119,12 @@ export default function AboutPage() {
             </p>
             <div className="mt-5 grid gap-4 lg:grid-cols-2">
               <div className="rounded-3xl bg-surface-alt p-5.5">
-                <Eyebrow>Context files</Eyebrow>
+                <Eyebrow>Written roadmaps</Eyebrow>
                 <p className="mt-3 font-sans text-base xl:text-[17px]">
-                  <strong className="font-display text-3xl font-bold">{evidence.withContext.length}</strong> of{" "}
-                  {evidence.total} listed projects carry a CLAUDE.md
+                  <strong className="font-display text-3xl font-bold">{evidence.withRoadmap.length}</strong> of{" "}
+                  {evidence.total} listed projects keep a written roadmap
                 </p>
-                <ProjectList items={evidence.withContext} />
+                <ProjectList items={evidence.withRoadmap} />
               </div>
               <div className="rounded-3xl bg-surface-alt p-5.5">
                 <Eyebrow>Continuous integration</Eyebrow>
