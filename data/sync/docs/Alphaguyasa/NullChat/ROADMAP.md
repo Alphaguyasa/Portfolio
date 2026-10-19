@@ -11,9 +11,7 @@ exist but only run on a physical phone.
 
 | # | Item | Pri | Effort | Notes |
 |---|---|---|---|---|
-| 12 | **Release build hardening.** Enable R8 with keep rules for Tink/Nearby/Room/Hilt, measure APK size, add `assembleRelease` (unsigned) to CI. | P1 | M | No keystore in repo. |
-| 13 | **Dependabot** for Gradle and GitHub Actions (weekly, grouped). | P2 | S | Free. |
-| 14 | **Message actions.** Long-press: copy, delete locally, reply with quote. | P2 | M | |
+| 14 | **Message actions, part 2: reply with quote.** Copy and delete shipped in #22. | P2 | M | Needs a payload format; the quote must fit the 1000-byte budget. |
 | 15 | **Panic wipe.** Delete keys, database and attachments, then restart as a new identity. | P2 | M | Deletes user data on request only; confirm dialog. |
 | 16 | **App lock.** Optional biometric/device-credential lock. | P2 | M | |
 | 17 | **Disappearing messages** per conversation, swept by WorkManager. | P2 | M | |
@@ -48,3 +46,6 @@ exist but only run on a physical phone.
 | 2026-10-16 | #9 Unread counts by local receive time (Room 5→6) | #16 | v2026-10-16-3 |
 | 2026-10-18 | #10 Failed state + resend; queued rows expire with the queue | #17 | v2026-10-18-1 |
 | 2026-10-18 | #11 Settings screen + display names (PROFILE packet, type 6) | #18, #19 | v2026-10-18-2, v2026-10-18-3 |
+| 2026-10-19 | #12 Release build: R8 on, unsigned `assembleRelease` + APK size in CI | #21 | v2026-10-19-1 |
+| 2026-10-19 | #14 part 1: copy and delete-for-me (tombstones stop replays) | #22 | v2026-10-19-2 |
+| 2026-10-19 | #13 Dependabot (Gradle + Actions, weekly, grouped) | #23 | see log |
