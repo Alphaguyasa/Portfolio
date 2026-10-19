@@ -19,7 +19,10 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
 - **Item 10** — PR #19: README rewritten around the data flow and the full command list.
 - **Replan:** 4 items were left, so three were added from a short audit: security
   headers (15), a body-size cap on the contact route (16), and finding new public repos
-  without the owner listing (17). Dev-only audit still 5 high; production audit clean.
+  without the owner listing (17).
+- **Lighthouse variance:** PR #19 (Markdown only) failed CI on home-page mobile
+  performance 87, where the same build scored 92 on #18. Not caused by the PR; logged
+  as item 18 (P1, win back a margin), and CI ran again on the push that added it. Dev-only audit still 5 high; production audit clean.
 - **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
 - Local check:site used the preinstalled Chromium through a symlinked browsers path
   (Playwright now expects build 1243); 11 pages pass. CI is unaffected.
@@ -30,11 +33,11 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
 |---|---|
 | Done | Sync (PR #17), item 9 dead assets (PR #18), item 10 README (PR #19) |
 | Merged | #17 yes, `594e4fb` · #18 yes, `545f37a` · #19 see PR (tags not pushable: A10) |
-| Failed or blocked | Release tags not pushable (A10) |
-| Roadmap | 7 items open; replan done (items 15–17 added) |
+| Failed or blocked | Release tags not pushable (A10). Lighthouse home performance is flaky around 90 (item 18). |
+| Roadmap | 7 items open; replan done (items 15–18 added) |
 | Model | Opus 5.5, newest Opus; no action needed |
 | Needs approval | A10 tags, A12 confirm the second Vercel project is gone |
-| Next | Daily sync; item 11 re-check, then item 14 (honeypot) and item 15 (security headers) |
+| Next | Daily sync; item 18 (Lighthouse margin), then item 14 (honeypot) |
 
 ---
 

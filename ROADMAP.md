@@ -8,11 +8,18 @@ When an item is done, move it to "Done" with its PR number and release tag. Repl
 clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 **Effort:** S = under half a run · M = about one run · L = split into several PRs first.
 
-Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–17).
+Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ---
 
 ## Open
+
+### 18. [P1 · S] Lighthouse margin on the home page
+The home page's mobile performance swings between runners: 92 on PR #18 and 87 on
+PR #19 for the same site build (#19 changed only Markdown), so the 90+ gate fails at
+random. Find the largest cost in the home page's LCP/TBT (hero image size, the marquee
+and font work on first paint, client JS for the contact form and accordions) and win
+back a margin of several points; do not lower the threshold.
 
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
