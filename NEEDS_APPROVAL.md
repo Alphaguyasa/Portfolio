@@ -25,6 +25,8 @@ Alternatively, accept "squash commit SHA in DAILY_LOG" as the rollback point for
 Still refused on 2026-10-16; also missing: `git tag v2026-10-16-1 97c1b89` (PR #8) and
 `v2026-10-16-2 92c9e97` (PR #9). Still refused on 2026-10-18; also missing:
 `v2026-10-18-1 ccac03c` (PR #10) and `v2026-10-18-2` on the PR #11 squash commit.
+Still refused on 2026-10-19; also missing: `v2026-10-19-1 594e4fb` (PR #17) and
+`v2026-10-19-2`, `-3` on the PR #18 and #19 squash commits.
 
 ## Resolved
 

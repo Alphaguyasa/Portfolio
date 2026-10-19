@@ -1,43 +1,90 @@
 # Alpha Guyasa — Portfolio
 
-Single-page portfolio for Alpha Guyasa, built from the `design_handoff_portfolio`
-bundle. Next.js 16 (App Router) · TypeScript · Tailwind CSS v4.
+Developer portfolio for Alpha Guyasa: a home page, an About page and one page per
+project, kept in sync with the real repositories. Next.js 16 (App Router) · React 19 ·
+TypeScript strict · Tailwind CSS v4. Deployed on Vercel from `main`.
+
+The design comes from the `design_handoff_portfolio` bundle.
 
 ## Running it
 
 ```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
+npm ci                    # Node 24
+npm run dev               # http://localhost:3000
 npm run lint
+npm run typecheck
+npm test                  # vitest
+npm run verify:facts      # every claim in data/projects.json backed by the sync
+npm run build
+npm run check:site        # after build: link check + axe, 1440px and 375px
+npm run check:lighthouse  # after build: Lighthouse 90+ in all four categories
 ```
 
-## How it is put together
+`check:site` and `check:lighthouse` need a Chromium (`npx playwright install chromium`).
+CI (`.github/workflows/ci.yml`) runs all of the above, plus a production `npm audit`,
+on every PR and on `main`.
+
+## How the content flows
 
 ```
+GitHub repos ──npm run sync──▶ data/sync/index.json      repo metadata, last commit, tags, CI, npm, merged PRs
+  (read-only)                  data/sync/docs/<repo>/    verbatim README / ROADMAP / docs
+                                        │
+data/projects.json ◀── edited by hand, every claim quotes data/sync/docs
+        │
+        ├── npm run verify:facts   CI gate: quotes, numbers, statuses, dates, images
+        ├── npm run copy           PORTFOLIO_COPY.md + data/shipped.json
+        └── next build             the site (live facts read from data/sync at build time)
+```
+
+1. **Sync.** `scripts/sync-github.mjs` reads the repos named in
+   `portfolio.config.json` (public repos by default; a private repo only when listed
+   under `include`, and then only its written summary) and writes `data/sync/`. It needs
+   `GITHUB_TOKEN`, `GH_TOKEN` or `gh auth token`; a run uses about 120 requests.
+2. **Projects.** `data/projects.json` holds all project content. Each project lists
+   `facts: [{ path, quote }]`; a quote must appear verbatim in that repo's synced doc
+   (or its description, for `@description`). Every number shown on the site must
+   appear in one of the project's quotes. The rules are in `scripts/lib/facts.mjs`.
+3. **Verify.** `npm run verify:facts` fails CI on any unbacked claim, a status the
+   sync does not support, a stale "since" date, or an image that is not a real
+   screenshot from the project's own repo.
+4. **Copy and feed.** `npm run copy` regenerates `PORTFOLIO_COPY.md` (Upwork, LinkedIn
+   and CV text) and the Recently-shipped feed. Both are generated: edit the data,
+   not the output.
+5. **Screenshots.** `npm run screenshots` copies the images listed with
+   `from: { repo, path }` from each project's public repo into
+   `public/assets/projects/<slug>/` as WebP.
+
+`npm run sync` runs steps 1, 3 and 4 in one go.
+
+## Where things live
+
+```
+data/                 projects.json, sync snapshot, shipped feed
+portfolio.config.json which repos are read; public contacts; private-repo summaries
+PORTFOLIO_COPY.md     generated copy to paste into profiles
+scripts/              sync, copy, verify-facts, check-site, check-lighthouse, screenshots
+  lib/                the pure, unit-tested rules (facts, copy, screenshots, lighthouse)
 src/
-  app/
-    layout.tsx        fonts, metadata, JSON-LD
-    page.tsx          section order — the 20 bands from the handoff
-    globals.css       design tokens (@theme), marquee/badge keyframes
-    api/contact/      contact form endpoint
+  app/                layout, home page (section order), /about, /projects/[slug],
+                      /api/contact, Open Graph image, sitemap, robots
   components/         one file per section, plus ui.tsx and icons.tsx
-  data/site.ts        ALL page copy and content
-  lib/                shared contact validation
-scripts/              one-off asset + logo generation
+  data/site.ts        non-project copy: hero, services, pricing, FAQ, contacts
+  lib/                contact validation, rate limiter
+tests/                vitest: honesty, privacy, copy, pages, contact route
 ```
 
-**All copy lives in `src/data/site.ts`.** Editing text, projects, pricing or FAQs
-means editing that file — the components are layout only.
+Content lives in data (`data/projects.json`, `src/data/site.ts`); components are
+layout only.
 
 ### Things worth knowing
 
 - **The `xl:` breakpoint is 1290px, not the Tailwind default 1280px**, and it is
-  declared in `rem` (`80.625rem`) in `globals.css`. This matters: Tailwind orders
-  breakpoint media queries by raw value, and a `px` value sorts ahead of the
-  `rem`-based defaults — which silently emits `xl:` *before* `sm:` and makes it
-  lose every conflict. `xl:` is where the handoff's exact desktop composition
-  kicks in; everything below it is the responsive adaptation.
+  declared in `rem` (`80.625rem`) in `globals.css`. Tailwind orders breakpoint media
+  queries by raw value, and a `px` value sorts ahead of the `rem`-based defaults,
+  which silently emits `xl:` *before* `sm:` and makes it lose every conflict.
+- **Accent colour** is `#c2410c` (WCAG AA on white). `accent-bright` `#ff4a17` is only
+  for text on the dark ink background.
 - **Fonts** (Poppins, DM Sans) are self-hosted by `next/font` at build time. No
   runtime request to Google Fonts.
 - **Brand logos** in the tool tiles are vendored from the `simple-icons` package
@@ -47,31 +94,24 @@ means editing that file — the components are layout only.
   `prefers-reduced-motion: reduce`.
 - Accordions are real `<button>` elements with `aria-expanded`/`aria-controls`,
   so they work from the keyboard.
+- No analytics.
 
 ## Contact form
 
 `POST /api/contact` validates server-side using the same rules as the client
-(`src/lib/contact-schema.ts`), then sends via Resend.
+(`src/lib/contact-schema.ts`), applies a per-instance rate limit, then sends via Resend.
 
 Without `RESEND_API_KEY` set, the route returns `{ delivery: "unconfigured" }`
 and the form falls back to opening the visitor's mail client with everything
 prefilled. To enable real server-side sending, add `RESEND_API_KEY` to the Vercel
 project's environment variables and redeploy. See `.env.example`.
 
-## Still outstanding (carried over from the handoff)
+## Still outstanding
 
-- **Nine project/note cover images are stand-ins**, not product shots:
-  `proj-suq`, `proj-docsearch`, `proj-scanner`, `proj-hunews`, `proj-alphacoin`,
-  `proj-nullchat`, `note-sync`, `note-sms`, `note-eval`. Capture real screens and
-  replace the files in `public/assets/` — the filenames can stay the same.
-  `mezgeb-showcase.png` and `mobile-service.png` *are* real.
-- **The two testimonial quotes were drafted for layout and approved as
-  placeholders.** Confirm the wording with Melkias Teshome and Abdi Fekeda before
-  treating them as real endorsements.
 - **The hero portrait is the original photo**, clipped into the arch. A
-  background-removed cut-out PNG would read better — drop it in as
+  background-removed cut-out PNG would read better; drop it in as
   `public/assets/hero-portrait.png`.
-- The three engineering notes are unlinked because the posts do not exist yet.
+- The engineering notes stay hidden until the posts exist.
 - The footer subscribe field opens a prefilled email; wire it to a real list
   provider when there is one.
 
@@ -80,5 +120,8 @@ project's environment variables and redeploy. See `.env.example`.
 - The nav is sticky (the handoff recommended it). It carries the hero's grey at
   rest and goes transparent with a backdrop blur once scrolled, so the grey band
   does not travel over the white sections.
+- The handoff's stand-in project and note illustrations are not used: a project
+  without real screenshots is shown without images. The files remain in the handoff
+  bundle.
 - The testimonials' three pagination bars were dropped. There are two quotes and
   the mock wired no carousel; dead controls are worse than none.
