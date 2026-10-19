@@ -10,7 +10,9 @@ export const STATUSES = ["idea", "building", "shipped", "maintained", "completed
 
 /**
  * Cover images from the design handoff that are illustrations, not product
- * screenshots. They must never be presented as a project's screens.
+ * screenshots. They must never be presented as a project's screens. The files
+ * were deleted from public/assets (ROADMAP item 9); the list stays so that
+ * copying them back from the handoff bundle still fails verify-facts.
  */
 export const STAND_IN_IMAGES = [
   "/assets/proj-suq.png",
