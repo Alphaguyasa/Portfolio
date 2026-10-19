@@ -8,30 +8,42 @@ When an item is done, move it to "Done" with its PR number and release tag. Repl
 clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 **Effort:** S = under half a run · M = about one run · L = split into several PRs first.
 
-Last replan: 2026-10-14 (first audit). 6 items open on 2026-10-18; no replan needed.
+Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–17).
 
 ---
 
 ## Open
 
-### 9. [P2 · S] Remove dead assets
-Items 1 and 2 are done, so delete `public/assets/proj-*.png` and `note-*.png` (stand-ins),
-with this entry as the reason. They remain in `../design_handoff_portfolio`.
-
-### 10. [P2 · S] README refresh
-README still describes a single-page site where all copy is in `src/data/site.ts`.
-Document the data flow (sync → projects.json → verify → site/copy).
-
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
+Still 5 high (dev-only) on 2026-10-19; production audit clean.
 
 ### 14. [P2 · S] Honeypot field on the contact form
 The pre-rebuild form (f361113) had a hidden honeypot field the route silently
 accepted without sending; the current form and route have none, so the only spam
 guard is the per-instance rate limit. Add the field (visually hidden, `tabIndex=-1`,
 `autoComplete="off"`, not announced to screen readers) and a route test.
+
+### 15. [P2 · S] Security headers
+`next.config.ts` sets no headers. Add `X-Content-Type-Options: nosniff`,
+`Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY` /
+`frame-ancestors 'none'`, a `Permissions-Policy` that turns off camera, microphone and
+geolocation, and a Content-Security-Policy that the static pages pass (next/font is
+self-hosted; check inline styles and the JSON-LD script). Test: a unit test on the
+header list, and check:site must still pass with no CSP console errors.
+
+### 16. [P2 · S] Cap the contact request body before parsing
+`/api/contact` calls `request.json()` on any body; field limits are checked only after
+the whole body is parsed. Reject a `Content-Length` over ~16 KB (413) and read with a
+size guard. Route test for the 413.
+
+### 17. [P3 · S] Find new public repos without the owner listing
+Listing Alphaguyasa's repos returns 403 in the cloud run, so a new public repo appears
+only once it is added to `knownPublicRepos` by hand. Try the search API
+(`user:Alphaguyasa fork:false`) as a second fallback, and log any repo it finds that is
+not in the config, instead of adding it silently. Unit test on the merge of the lists.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -51,6 +63,12 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **Meret:** no repo description is set on GitHub.
 
 ## Done
+
+- **[P2] README refresh** — PR #19 (2026-10-19). Documents the data flow (sync →
+  projects.json → verify-facts → site and copy), every command, and the current
+  outstanding list.
+- **[P2] Remove dead assets** — PR #18 (2026-10-19). The nine stand-in illustrations
+  are deleted from `public/assets`; `STAND_IN_IMAGES` stays as a guard.
 
 - **[P2] Lighthouse check in CI** — PR #11 (2026-10-18). `npm run check:lighthouse`
   runs Lighthouse 13.5.0 (Apache-2.0, dev-only; `lighthouse` itself rather than
