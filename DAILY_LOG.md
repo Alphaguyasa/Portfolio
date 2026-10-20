@@ -23,6 +23,10 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   today. No status changed; every quoted fact still verifies; `projects.json` unchanged.
 - **Item 14** — honeypot PR (this one): a hidden `company` field on the form; a
   filled one is answered as sent and delivers nothing. Two route tests.
+- **Later the same day (Alpha's request):** two Udacity Nanodegree certificates are added
+  to the Recognitions section and to PORTFOLIO_COPY.md, each linked to Udacity's own
+  verification page. The details come from Alpha's screenshots; the session cannot
+  reach udacity.com.
 - **Audit:** dev-only still 5 high (item 11); production audit clean.
 - **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
 - Local check:site and check:lighthouse used the preinstalled Chromium (symlinked

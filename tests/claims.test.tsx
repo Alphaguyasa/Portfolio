@@ -85,7 +85,10 @@ describe("recognitions", () => {
     const html = renderToStaticMarkup(<Recognitions />);
     for (const r of recognitions) {
       for (const s of r.sources ?? []) {
-        expect(s.href).toMatch(/^https:\/\/t\.me\/[A-Za-z0-9_]+\/\d+$/);
+        // Public posts Alpha supplied, or the issuer's own certificate page.
+        expect(s.href).toMatch(
+          /^https:\/\/(t\.me\/[A-Za-z0-9_]+\/\d+|www\.udacity\.com\/certificate\/e\/[0-9a-f-]{36})$/,
+        );
         expect(html).toContain(`href="${s.href}"`);
       }
     }
