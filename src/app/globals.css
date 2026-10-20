@@ -99,6 +99,17 @@ textarea::placeholder {
   animation: spin-badge 14s linear infinite;
 }
 
+/* The Sparkle4 path, painted in the accent colour after each marquee item. */
+.marquee-item::after {
+  content: "";
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background-color: var(--color-accent);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M11 0c1 5 2 6 7 7-5 1-6 2-7 7-1-5-2-6-7-7 5-1 6-2 7-7z'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

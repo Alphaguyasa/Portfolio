@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Education from "@/components/Education";
@@ -23,23 +24,26 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Marquee items={marquees.disciplines} />
-        <Services />
-        <About />
-        <Tools />
-        <Marquee items={marquees.stack} />
-        <Education />
-        <Marquee items={marquees.projects} />
-        <Portfolio />
-        <RecentlyShipped />
-        <Recognitions />
-        <Pricing />
-        <Marquee items={marquees.availability} />
-        <Contact />
-        <Marquee items={marquees.disciplinesShort} />
-        <Testimonials />
-        <Notes />
-        <Faq />
-        <Marquee items={marquees.closing} />
+        {/* Nothing below the first screen suspends; the boundaries let React hydrate
+            each section as its own short task instead of one long one, which cuts
+            the page's blocking time on phones. */}
+        <Suspense><Services /></Suspense>
+        <Suspense><About /></Suspense>
+        <Suspense><Tools /></Suspense>
+        <Suspense><Marquee items={marquees.stack} /></Suspense>
+        <Suspense><Education /></Suspense>
+        <Suspense><Marquee items={marquees.projects} /></Suspense>
+        <Suspense><Portfolio /></Suspense>
+        <Suspense><RecentlyShipped /></Suspense>
+        <Suspense><Recognitions /></Suspense>
+        <Suspense><Pricing /></Suspense>
+        <Suspense><Marquee items={marquees.availability} /></Suspense>
+        <Suspense><Contact /></Suspense>
+        <Suspense><Marquee items={marquees.disciplinesShort} /></Suspense>
+        <Suspense><Testimonials /></Suspense>
+        <Suspense><Notes /></Suspense>
+        <Suspense><Faq /></Suspense>
+        <Suspense><Marquee items={marquees.closing} /></Suspense>
       </main>
       <Footer />
     </>

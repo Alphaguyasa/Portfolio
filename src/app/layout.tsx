@@ -10,6 +10,7 @@ const poppins = Poppins({
   weight: ["500", "600", "700", "800"],
   style: ["normal", "italic"],
   display: "swap",
+  preload: false,
 });
 
 const dmSans = DM_Sans({
