@@ -59,6 +59,13 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P1] Udacity certificates** (Alpha's request, 2026-10-20). Two Nanodegree certificates
+  (Artificial Intelligence Fundamentals, Android Developer Fundamentals, both issued
+  2025-08-22) are in `data/certificates.json`. They appear as a fourth Recognitions card
+  that links to Udacity's verification pages, and as a "Certificates" section in
+  PORTFOLIO_COPY.md. The details come from Alpha's screenshots, because the cloud
+  session cannot reach udacity.com.
+
 - **[P2] Honeypot field on the contact form** (item 14), from the PR after #21 (2026-10-20).
   The form has a hidden `company` field: off-screen, `aria-hidden`, `tabIndex=-1`,
   `autoComplete="off"`. The route answers a filled one as sent and delivers nothing.

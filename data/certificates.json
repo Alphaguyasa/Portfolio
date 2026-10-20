@@ -1,0 +1,19 @@
+{
+  "note": "Certificates Alpha supplied on 2026-10-20 (links plus screenshots of each certificate). Udacity confirms each one at its link.",
+  "certificates": [
+    {
+      "title": "Artificial Intelligence Fundamentals",
+      "kind": "Nanodegree program",
+      "issuer": "Udacity",
+      "issued": "2025-08-22",
+      "href": "https://www.udacity.com/certificate/e/7ef7f212-7f2c-11f0-b260-ff6010499aa0"
+    },
+    {
+      "title": "Android Developer Fundamentals",
+      "kind": "Nanodegree program",
+      "issuer": "Udacity",
+      "issued": "2025-08-22",
+      "href": "https://www.udacity.com/certificate/e/ea344350-32ec-11f0-89da-1bae85159fc4"
+    }
+  ]
+}

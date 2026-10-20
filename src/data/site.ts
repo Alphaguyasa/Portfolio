@@ -3,6 +3,8 @@
  * Copy is carried over verbatim from the approved design handoff.
  */
 
+import certificatesData from "../../data/certificates.json";
+
 export const site = {
   url: "https://alpha-guyasa-portfolio.vercel.app",
   email: "alphaguyasa@gmail.com",
@@ -208,12 +210,22 @@ export const work: TimelineRow[] = [
   },
 ];
 
+/** Verifiable certificates; also listed in PORTFOLIO_COPY.md. */
+export const certificates = certificatesData.certificates;
+
+const certificateMonth = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
 /**
- * Each claim was confirmed by Alpha (2026-10-18). `sources` are public posts he
- * supplied as proof; labels say only what each post is, not what it shows.
+ * Each claim was confirmed by Alpha (2026-10-18; certificates 2026-10-20). `sources`
+ * are public links he supplied as proof; labels say only what each link is.
  */
 export const recognitions: {
-  icon: "star" | "bulb" | "person";
+  icon: "star" | "bulb" | "person" | "cap";
   tone: "accent" | "ink";
   title: string;
   body: string;
@@ -241,6 +253,18 @@ export const recognitions: {
     tone: "ink",
     title: "Focal Person — Leyu",
     body: "Focal person for data contribution at Leyu as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
+  },
+  {
+    icon: "cap",
+    tone: "accent",
+    title: "Udacity Nanodegree Certificates",
+    body: `Completed two ${certificates[0].issuer} Nanodegree programs: ${certificates
+      .map((c) => c.title)
+      .join(" and ")}, ${certificateMonth(certificates[0].issued)}.`,
+    sources: certificates.map((c) => ({
+      label: `Verify: ${c.title}`,
+      href: c.href,
+    })),
   },
 ];
 

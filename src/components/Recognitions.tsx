@@ -1,4 +1,4 @@
-import { Bulb, Person, Star } from "@/components/icons";
+import { Bulb, GraduationCap, Person, Star } from "@/components/icons";
 import { Accent, Container, Eyebrow, SectionTitle } from "@/components/ui";
 import { recognitions } from "@/data/site";
 
@@ -6,6 +6,7 @@ const glyphs = {
   star: Star,
   bulb: Bulb,
   person: Person,
+  cap: GraduationCap,
 };
 
 export default function Recognitions() {
@@ -19,7 +20,7 @@ export default function Recognitions() {
           My <Accent>Recognitions</Accent> So Far
         </SectionTitle>
 
-        <ul className="mt-10 grid gap-6.5 text-left sm:grid-cols-2 lg:grid-cols-3 xl:mt-12">
+        <ul className="mt-10 grid gap-6.5 text-left sm:grid-cols-2 xl:mt-12 xl:grid-cols-4">
           {recognitions.map((item, i) => {
             const Glyph = glyphs[item.icon];
             return (

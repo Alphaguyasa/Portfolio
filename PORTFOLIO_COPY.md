@@ -140,3 +140,8 @@ I build software for places where the network fails: point of sale that keeps se
 - **HU News** — Haramaya University news app. Flutter, Dart, WordPress REST API. Shipped · last commit 2026-05-02.
 - **Security Scanner** — Automated web vulnerability scanner, similar to online pentesting platforms. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Completed · last commit 2026-05-12.
 - **Alpha Coin** — Token dashboard on the Internet Computer. Motoko, Next.js, TypeScript, Internet Identity. Completed · last commit 2026-03-20.
+
+## Certificates
+
+- **Artificial Intelligence Fundamentals** — Udacity Nanodegree program, issued 2025-08-22. https://www.udacity.com/certificate/e/7ef7f212-7f2c-11f0-b260-ff6010499aa0
+- **Android Developer Fundamentals** — Udacity Nanodegree program, issued 2025-08-22. https://www.udacity.com/certificate/e/ea344350-32ec-11f0-89da-1bae85159fc4

@@ -34,7 +34,7 @@ function statusLine(project, sync) {
   return parts.join(" · ");
 }
 
-export function buildCopy(projects, sync) {
+export function buildCopy(projects, sync, certificates = []) {
   const ordered = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured));
   const m = methodEvidence(projects, sync);
   const lines = [];
@@ -127,6 +127,16 @@ export function buildCopy(projects, sync) {
     out(`- **${p.name}** — ${p.tagline}. ${p.stack.join(", ")}. ${statusLine(p, sync)}.`);
   }
   out();
+
+  if (certificates.length) {
+    // For the CV and LinkedIn's "Licenses & certifications"; each link is the issuer's own proof.
+    out("## Certificates");
+    out();
+    for (const c of certificates) {
+      out(`- **${c.title}** — ${c.issuer} ${c.kind}, issued ${c.issued}. ${c.href}`);
+    }
+    out();
+  }
   return lines.join("\n");
 }
 
