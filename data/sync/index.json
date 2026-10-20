@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-10-19T06:41:29.520Z",
+  "syncedAt": "2026-10-20T07:37:04.320Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -75,8 +75,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-10-19T04:04:06Z",
-      "lastCommitAt": "2026-10-19T04:04:05Z",
+      "pushedAt": "2026-10-20T04:11:43Z",
+      "lastCommitAt": "2026-10-20T04:11:42Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -86,12 +86,24 @@
         "v1-docsearch"
       ],
       "ci": {
-        "workflow": "deploy-not-alone",
+        "workflow": "ci",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-19T04:00:46Z"
+        "at": "2026-10-20T03:51:29Z"
       },
       "mergedPulls": [
+        {
+          "number": 114,
+          "title": "Run the scripture eval as a retrieval-only PR gate, with no LLM calls",
+          "mergedAt": "2026-10-20T03:51:26Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/114"
+        },
+        {
+          "number": 113,
+          "title": "Bring back The Imitation of Christ and Grace Abounding as opt-in Western sources",
+          "mergedAt": "2026-10-20T03:45:21Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/113"
+        },
         {
           "number": 112,
           "title": "Fix the 11 ESLint warnings and fail lint on any new one",
@@ -139,18 +151,6 @@
           "title": "Make \"Oriental Orthodox\" a real church filter",
           "mergedAt": "2026-10-16T03:52:59Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/105"
-        },
-        {
-          "number": 104,
-          "title": "CLAUDE.md: commits are authored by Alpha only",
-          "mergedAt": "2026-10-15T08:15:02Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/104"
-        },
-        {
-          "number": 103,
-          "title": "Chain scripture ingestion with the default token instead of INGEST_PAT",
-          "mergedAt": "2026-10-15T07:00:41Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/103"
         }
       ],
       "npm": null,
@@ -342,8 +342,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-10-19T04:57:29Z",
-      "lastCommitAt": "2026-10-19T04:57:29Z",
+      "pushedAt": "2026-10-20T04:57:33Z",
+      "lastCommitAt": "2026-10-20T04:57:33Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -354,9 +354,33 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-19T04:57:05Z"
+        "at": "2026-10-20T04:56:51Z"
       },
       "mergedPulls": [
+        {
+          "number": 26,
+          "title": "docs: log run 6, mark items 9 and 10 done, add items 16-17",
+          "mergedAt": "2026-10-20T04:57:33Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/26"
+        },
+        {
+          "number": 25,
+          "title": "Boot receiver: offer to resume an open track (roadmap item 10)",
+          "mergedAt": "2026-10-20T04:56:48Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/25"
+        },
+        {
+          "number": 24,
+          "title": "Diagnostics screen and copy report (roadmap item 9, part 2)",
+          "mergedAt": "2026-10-20T04:52:23Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/24"
+        },
+        {
+          "number": 23,
+          "title": "Tracking health and diagnostics report (roadmap item 9, part 1)",
+          "mergedAt": "2026-10-20T04:48:15Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/23"
+        },
         {
           "number": 22,
           "title": "docs: log run 5, mark 8b done (#20, #21), extend A9",
@@ -392,30 +416,6 @@
           "title": "DeviceCompat: OEM battery-manager guidance (roadmap item 7)",
           "mergedAt": "2026-10-18T14:24:44Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/17"
-        },
-        {
-          "number": 16,
-          "title": "docs: log run 3, mark items 5-6 done, add A9",
-          "mergedAt": "2026-10-16T05:09:13Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/16"
-        },
-        {
-          "number": 14,
-          "title": "TrackingService, foreground type location (roadmap item 5, part 2)",
-          "mergedAt": "2026-10-16T05:08:24Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/14"
-        },
-        {
-          "number": 15,
-          "title": "TrackingHealthMonitor: fix-gap detection (roadmap item 6)",
-          "mergedAt": "2026-10-16T05:06:34Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/15"
-        },
-        {
-          "number": 13,
-          "title": "Fix double-encoded Amharic strings in tracking, waypoint and tiles",
-          "mergedAt": "2026-10-16T05:00:50Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/13"
         }
       ],
       "npm": null,
@@ -474,8 +474,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-10-19T05:40:28Z",
-      "lastCommitAt": "2026-10-19T05:40:28Z",
+      "pushedAt": "2026-10-20T05:32:13Z",
+      "lastCommitAt": "2026-10-20T05:32:13Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -488,9 +488,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-19T05:40:31Z"
+        "at": "2026-10-20T05:32:16Z"
       },
       "mergedPulls": [
+        {
+          "number": 27,
+          "title": "docs: log the 2026-10-20 run and update the roadmap",
+          "mergedAt": "2026-10-20T05:32:13Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/27"
+        },
+        {
+          "number": 26,
+          "title": "feat: say so when the user refuses to let the app read past messages (R16)",
+          "mergedAt": "2026-10-20T05:26:51Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/26"
+        },
+        {
+          "number": 24,
+          "title": "test: accessibility semantics on Today, the keypad and the review queue (R8)",
+          "mergedAt": "2026-10-20T05:19:36Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/24"
+        },
         {
           "number": 25,
           "title": "docs: log the 2026-10-19 run and update the roadmap",
@@ -532,24 +550,6 @@
           "title": "feat: reconciliation names possible duplicates in the period (R13)",
           "mergedAt": "2026-10-16T05:22:24Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/11"
-        },
-        {
-          "number": 10,
-          "title": "ci: weekly Dependabot updates for Gradle and GitHub Actions (R4)",
-          "mergedAt": "2026-10-16T05:16:04Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/10"
-        },
-        {
-          "number": 9,
-          "title": "docs: commits show Alpha as the only author",
-          "mergedAt": "2026-10-15T08:20:20Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/9"
-        },
-        {
-          "number": 8,
-          "title": "docs: log the 2026-10-15 run and update the roadmap",
-          "mergedAt": "2026-10-15T05:33:10Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/8"
         }
       ],
       "npm": null,
@@ -607,28 +607,46 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-10-19T03:41:54Z",
-      "lastCommitAt": "2026-10-19T03:36:55Z",
+      "pushedAt": "2026-10-20T03:38:48Z",
+      "lastCommitAt": "2026-10-20T03:38:39Z",
       "latestRelease": null,
       "tags": [
+        "v2026-10-20-3",
+        "v2026-10-20-2",
+        "v2026-10-20-1",
         "v2026-10-19-3",
         "v2026-10-19-2",
         "v2026-10-19-1",
         "v2026-10-18-4",
         "v2026-10-18-3",
         "v2026-10-18-2",
-        "v2026-10-18-1",
-        "v2026-10-16-3",
-        "v2026-10-16-2",
-        "v2026-10-16-1"
+        "v2026-10-18-1"
       ],
       "ci": {
-        "workflow": "gradle in /. - Update #1635372502",
+        "workflow": "Android CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-19T03:37:28Z"
+        "at": "2026-10-20T03:38:42Z"
       },
       "mergedPulls": [
+        {
+          "number": 30,
+          "title": "Panic wipe: erase identity, messages and images from Settings",
+          "mergedAt": "2026-10-20T03:38:40Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/30"
+        },
+        {
+          "number": 29,
+          "title": "Message actions, part 2: reply with quote",
+          "mergedAt": "2026-10-20T03:32:10Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/29"
+        },
+        {
+          "number": 28,
+          "title": "CI: bump GitHub Actions to their Node 24 majors",
+          "mergedAt": "2026-10-20T03:22:28Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/28"
+        },
         {
           "number": 23,
           "title": "Dependabot for Gradle and GitHub Actions; log 2026-10-19",
@@ -670,24 +688,6 @@
           "title": "Let the user resend a failed message, and stop queued ones waiting forever",
           "mergedAt": "2026-10-18T13:36:37Z",
           "url": "https://github.com/Alphaguyasa/NullChat/pull/17"
-        },
-        {
-          "number": 16,
-          "title": "Count unread messages by when they arrived, not the sender's clock",
-          "mergedAt": "2026-10-16T03:34:21Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/16"
-        },
-        {
-          "number": 15,
-          "title": "Notify about direct messages that arrive in the background",
-          "mergedAt": "2026-10-16T03:27:00Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/15"
-        },
-        {
-          "number": 14,
-          "title": "Show how many hops a delivered message travelled",
-          "mergedAt": "2026-10-16T03:19:35Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/14"
         }
       ],
       "npm": null,
@@ -724,15 +724,15 @@
       "primaryLanguage": "TypeScript",
       "languages": [
         "TypeScript",
-        "CSS",
         "PLpgSQL",
         "Shell",
+        "CSS",
         "JavaScript"
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-10-19T04:23:26Z",
-      "lastCommitAt": "2026-10-19T04:23:26Z",
+      "pushedAt": "2026-10-20T04:21:51Z",
+      "lastCommitAt": "2026-10-20T04:21:51Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -742,9 +742,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-19T04:23:29Z"
+        "at": "2026-10-20T04:21:54Z"
       },
       "mergedPulls": [
+        {
+          "number": 20,
+          "title": "docs: log 2026-10-20 run, report, roadmap",
+          "mergedAt": "2026-10-20T04:21:52Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/20"
+        },
+        {
+          "number": 19,
+          "title": "fix(sync): server keeps the newer product edit (last-write-wins trigger)",
+          "mergedAt": "2026-10-20T04:19:12Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/19"
+        },
+        {
+          "number": 18,
+          "title": "security: run the secret scanner for real (executable hook + CI scan)",
+          "mergedAt": "2026-10-20T04:14:36Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/18"
+        },
         {
           "number": 17,
           "title": "docs: log 2026-10-19 run, report, roadmap",
@@ -786,24 +804,6 @@
           "title": "docs: log 2026-10-16 run, report, approvals",
           "mergedAt": "2026-10-16T04:51:50Z",
           "url": "https://github.com/Alphaguyasa/Suq/pull/11"
-        },
-        {
-          "number": 10,
-          "title": "feat(storage): request persistent storage on first run and show it in Settings",
-          "mergedAt": "2026-10-16T04:45:55Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/10"
-        },
-        {
-          "number": 9,
-          "title": "fix(sync): pull on a server-stamped received_at so late-pushed rows reach every till",
-          "mergedAt": "2026-10-16T04:39:56Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/9"
-        },
-        {
-          "number": 8,
-          "title": "docs: record paused Supabase outage and connector gap",
-          "mergedAt": "2026-10-15T11:45:26Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/8"
         }
       ],
       "npm": null,
