@@ -31,6 +31,8 @@ export default function ContactForm() {
     "idle",
   );
   const [notice, setNotice] = useState("");
+  // Honeypot: people never see or reach this field, form-filling bots usually fill it.
+  const [company, setCompany] = useState("");
 
   const set = (key: keyof ContactFields) => (value: string) => {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -61,7 +63,7 @@ export default function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, company }),
       });
       const data = await response.json().catch(() => ({}));
 
@@ -134,7 +136,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit} noValidate className="relative">
       <div className="grid gap-5.5 sm:grid-cols-2 sm:gap-x-6.5">
         <div>
           <label className={labelClass} htmlFor={`${uid}-name`}>
@@ -275,6 +277,19 @@ export default function ContactForm() {
           aria-describedby={describedBy("message")}
         />
         <FieldError id={`${uid}-message-error`} message={errors.message} />
+      </div>
+
+      <div aria-hidden className="absolute -left-[10000px] size-px overflow-hidden">
+        <label htmlFor={`${uid}-company`}>Company (leave this empty)</label>
+        <input
+          id={`${uid}-company`}
+          name="company"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
       </div>
 
       <button

@@ -9,29 +9,17 @@ clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 **Effort:** S = under half a run · M = about one run · L = split into several PRs first.
 
 Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
+2026-10-20: 6 items open after items 18 and 14, so no replan.
 
 ---
 
 ## Open
 
-### 18. [P1 · S] Lighthouse margin on the home page
-The home page's mobile performance swings between runners: 92 on PR #18 and 87 on
-PR #19 for the same site build (#19 changed only Markdown), so the 90+ gate fails at
-random. Find the largest cost in the home page's LCP/TBT (hero image size, the marquee
-and font work on first paint, client JS for the contact form and accordions) and win
-back a margin of several points; do not lower the threshold.
-
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
-Still 5 high (dev-only) on 2026-10-19; production audit clean.
-
-### 14. [P2 · S] Honeypot field on the contact form
-The pre-rebuild form (f361113) had a hidden honeypot field the route silently
-accepted without sending; the current form and route have none, so the only spam
-guard is the per-instance rate limit. Add the field (visually hidden, `tabIndex=-1`,
-`autoComplete="off"`, not announced to screen readers) and a route test.
+Still 5 high (dev-only) on 2026-10-20; production audit clean.
 
 ### 15. [P2 · S] Security headers
 `next.config.ts` sets no headers. Add `X-Content-Type-Options: nosniff`,
@@ -70,6 +58,19 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **Meret:** no repo description is set on GitHub.
 
 ## Done
+
+- **[P2] Honeypot field on the contact form** (item 14), from the PR after #21 (2026-10-20).
+  The form has a hidden `company` field: off-screen, `aria-hidden`, `tabIndex=-1`,
+  `autoComplete="off"`. The route answers a filled one as sent and delivers nothing.
+  Two route tests.
+- **[P1] Lighthouse margin on the home page** (item 18), PR #20 (2026-10-20), squash
+  `b8db769`. Poppins is no longer preloaded: all eight of its files had been preloaded,
+  competing with the hero image. Below-the-fold sections sit in Suspense boundaries
+  (hydration runs as shorter tasks), and the marquee sparkle is CSS. CI scored `/` at
+  96 (main had been 84–92). Locally the median of 9–15 runs only moved from 89 to 90.
+  The rest of the cost is the page's size: with JS, CSS and fonts blocked, LCP is
+  still 2.3 s. If the gate turns flaky again, the next lever is fewer sections on `/`,
+  which is a content decision for Alpha.
 
 - **[P2] README refresh** — PR #19 (2026-10-19). Documents the data flow (sync →
   projects.json → verify-facts → site and copy), every command, and the current
