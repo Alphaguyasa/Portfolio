@@ -4,6 +4,45 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-20 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main was red:** the push run for #19 failed the Lighthouse gate (`/` performance
+  84). The cause was item 18's variance, not #19 (Markdown only). Fixing it was the
+  first task.
+- **Item 18** — PR #20 (merged, squash `b8db769`): Poppins is no longer preloaded (all
+  eight of its files had been preloaded, three of them never used), below-the-fold sections
+  sit in Suspense boundaries, and the marquee sparkle is CSS. CI scored `/` at 96 and
+  main is green again. Honest note: locally the gain was small (median of 9–15 runs, 89 → 90).
+  Tried and dropped: inline CSS, AVIF hero, a lower hero quality, content-visibility,
+  no font preloads at all, and serving the check over HTTP/2.
+- **Sync** — PR #21 (merged, squash `c70e31e`): all 9 repos read (122 API requests;
+  owner listing still 403). docsearch, Meret, Mezgeb, NullChat and Suq were active
+  today. No status changed; every quoted fact still verifies; `projects.json` unchanged.
+- **Item 14** — honeypot PR (this one): a hidden `company` field on the form; a
+  filled one is answered as sent and delivers nothing. Two route tests.
+- **Audit:** dev-only still 5 high (item 11); production audit clean.
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- Local check:site and check:lighthouse used the preinstalled Chromium (symlinked
+  browsers path for Playwright 1.63). PageSpeed Insights for the live site could not
+  be read (the shared API quota was used up).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Item 18 Lighthouse margin (PR #20), sync (PR #21), item 14 honeypot (see PR) |
+| Merged | #20 yes, `b8db769` · #21 yes, `c70e31e` · honeypot PR see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10). Local Lighthouse margin is thin (90); CI measured 96. |
+| Roadmap | 6 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A10 tags, A12 confirm the second Vercel project is gone |
+| Next | Daily sync; item 11 re-check, then item 15 (security headers) and 16 (body-size cap) |
+
+---
+
 ## 2026-10-19 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

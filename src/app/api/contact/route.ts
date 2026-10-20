@@ -19,6 +19,9 @@ const WINDOW_MS = 10 * 60 * 1000;
  * and the client falls back to opening a prefilled mail client, so the form is never
  * a dead end. Set RESEND_API_KEY (and optionally CONTACT_FROM, which must be an
  * address on a domain verified in Resend) to switch on real delivery.
+ *
+ * A filled-in `company` field is the form's hidden honeypot: the post is answered as
+ * if it were sent, so a bot learns nothing, and nothing is delivered.
  */
 export async function POST(request: Request) {
   // Keeps one script from hammering the form and burning the Resend quota.
@@ -44,6 +47,11 @@ export async function POST(request: Request) {
   const values = payload as ContactFields;
   if (typeof values !== "object" || values === null) {
     return NextResponse.json({ error: "Malformed request body." }, { status: 400 });
+  }
+
+  const { company } = payload as { company?: unknown };
+  if (typeof company === "string" && company.trim() !== "") {
+    return NextResponse.json({ delivery: "sent" }, { status: 200 });
   }
 
   const errors = validateContact({

@@ -58,6 +58,19 @@ describe("POST /api/contact", () => {
     expect(payload.text).toContain("Are you free for a contract in March?");
   });
 
+  it("answers a filled honeypot as sent but delivers nothing", async () => {
+    const response = await post({ ...valid, company: "Acme Bots" });
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ delivery: "sent" });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("sends normally when the honeypot is present but empty", async () => {
+    const response = await post({ ...valid, company: "" });
+    expect(response.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
   it("rejects missing fields with per-field errors", async () => {
     const response = await post({ ...valid, message: "   " });
     expect(response.status).toBe(422);
