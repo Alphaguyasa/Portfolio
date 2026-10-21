@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-21 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last 3 runs.
+- **Sync** — PR #24 (merged, squash `0910c86`): all 9 repos read (122 API requests;
+  owner listing still 403). verify:facts failed on one stale quote: Meret's ROADMAP
+  replaced "Phase 0 (tile pack) is only partly done" with "Phase 0 (tile pack) tooling
+  is done" and "A real Ethiopia pack has not been built yet" (Meret #28). Meret's lesson
+  now says exactly that. No status changed; copy and feed regenerated.
+- **Item 15** — PR #25 (merged, squash `e50a330`): security headers on every route, and
+  check:site now fails on a missing CSP or a CSP violation (11 pages clean locally).
+- **Item 16** — PR #26 (this one): the contact route refuses bodies over 32 KB with 413
+  before parsing. Three route tests.
+- **Item 11:** re-checked; still 5 high in dev-only tooling, production audit clean.
+- **Replan:** 4 items were left, so three were added: refuse cross-site posts to the
+  contact route (19), fail check:site on page errors (20), contact form state tests (21).
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- Local check:site used the preinstalled Chromium build 1194 through symlinks named as
+  the 1243 headless shell that Playwright 1.63 expects. CI is unaffected.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #24), item 15 security headers (PR #25), item 16 body-size cap (PR #26) |
+| Merged | #24 yes, `0910c86` · #25 yes, `e50a330` · #26 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 7 items open; replan done (items 19–21 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A10 tags, A12 confirm the second Vercel project is gone |
+| Next | Daily sync; item 11 re-check, then item 19 (cross-site posts) and 20 (page errors) |
+
+---
+
 ## 2026-10-20 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
