@@ -3,6 +3,110 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
+    "title": "test: accessibility checks on the ledger and customer screens (R17, part 1)",
+    "date": "2026-10-21T05:39:26Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/28"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "feat: ledger filter for possible duplicates (R14)",
+    "date": "2026-10-21T05:25:09Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/29"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Map style, glyphs, sprite and preview tools (roadmap item 12)",
+    "date": "2026-10-21T04:53:32Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/28"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Dependabot for Gradle and GitHub Actions (roadmap item 11)",
+    "date": "2026-10-21T04:50:49Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/27"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "fix(a11y): readable ochre and green text, announced sale and sync state",
+    "date": "2026-10-21T04:22:58Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/22"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "feat(i18n): remember the language choice across reloads",
+    "date": "2026-10-21T04:19:08Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/21"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Patch 7 of 9 npm audit advisories with in-range upgrades; replan the roadmap",
+    "date": "2026-10-21T03:52:01Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/117"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Grow the scripture golden set for Catholic, Protestant and Eastern Orthodox readers",
+    "date": "2026-10-21T03:49:01Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/116"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Stop the scripture eval cutting generated answers off at 900 tokens",
+    "date": "2026-10-21T03:44:26Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/115"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "App lock: system fingerprint / face / screen lock",
+    "date": "2026-10-21T03:40:19Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/33"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "compileSdk 37 + androidx bumps (core 1.19.1, Compose BOM 2026.09, Room 2.8.5)",
+    "date": "2026-10-21T03:31:11Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/32"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Toolchain bump: AGP 9.4.1, Gradle 9.8.1, Kotlin 2.4.21, KSP 2.3.12 + libraries",
+    "date": "2026-10-21T03:21:34Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/31"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-10-21-3",
+    "date": "2026-10-21T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-21-3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
     "title": "feat: say so when the user refuses to let the app read past messages (R16)",
     "date": "2026-10-20T05:26:51Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/26"
@@ -54,109 +158,5 @@
     "title": "security: run the secret scanner for real (executable hook + CI scan)",
     "date": "2026-10-20T04:14:36Z",
     "url": "https://github.com/Alphaguyasa/Suq/pull/18"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Run the scripture eval as a retrieval-only PR gate, with no LLM calls",
-    "date": "2026-10-20T03:51:26Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/114"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Bring back The Imitation of Christ and Grace Abounding as opt-in Western sources",
-    "date": "2026-10-20T03:45:21Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/113"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Panic wipe: erase identity, messages and images from Settings",
-    "date": "2026-10-20T03:38:40Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/30"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Message actions, part 2: reply with quote",
-    "date": "2026-10-20T03:32:10Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/29"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-10-20-3",
-    "date": "2026-10-20T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-20-3"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "test: drive the onboarding permission flow in both flavors (R7)",
-    "date": "2026-10-19T05:19:48Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/23"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Permission onboarding screens (roadmap item 8b, part 2)",
-    "date": "2026-10-19T04:57:03Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/21"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Onboarding state: skipped steps, permission snapshot, ViewModel (roadmap item 8b, part 1)",
-    "date": "2026-10-19T04:53:00Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/20"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "perf(sync): find the worst outbox row by index instead of reading the whole queue",
-    "date": "2026-10-19T04:19:52Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/16"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix(receipts): never reuse receipt numbers after a device reset or prefix change",
-    "date": "2026-10-19T04:15:47Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/15"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Fix the 11 ESLint warnings and fail lint on any new one",
-    "date": "2026-10-19T04:00:44Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/112"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Default view reads oriental_orthodox; Eastern Orthodox reads eastern_orthodox",
-    "date": "2026-10-19T03:57:02Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/111"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Tag books eastern_orthodox / oriental_orthodox, each with a cited basis",
-    "date": "2026-10-19T03:45:18Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/110"
   }
 ]
