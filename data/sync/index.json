@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-10-20T07:37:04.320Z",
+  "syncedAt": "2026-10-21T06:41:21.223Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -75,8 +75,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-10-20T04:11:43Z",
-      "lastCommitAt": "2026-10-20T04:11:42Z",
+      "pushedAt": "2026-10-21T04:12:28Z",
+      "lastCommitAt": "2026-10-21T04:12:27Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -89,9 +89,27 @@
         "workflow": "ci",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-20T03:51:29Z"
+        "at": "2026-10-21T03:52:03Z"
       },
       "mergedPulls": [
+        {
+          "number": 117,
+          "title": "Patch 7 of 9 npm audit advisories with in-range upgrades; replan the roadmap",
+          "mergedAt": "2026-10-21T03:52:01Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/117"
+        },
+        {
+          "number": 116,
+          "title": "Grow the scripture golden set for Catholic, Protestant and Eastern Orthodox readers",
+          "mergedAt": "2026-10-21T03:49:01Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/116"
+        },
+        {
+          "number": 115,
+          "title": "Stop the scripture eval cutting generated answers off at 900 tokens",
+          "mergedAt": "2026-10-21T03:44:26Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/115"
+        },
         {
           "number": 114,
           "title": "Run the scripture eval as a retrieval-only PR gate, with no LLM calls",
@@ -133,24 +151,6 @@
           "title": "Label cited scripture that not every church reads",
           "mergedAt": "2026-10-18T14:43:21Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/108"
-        },
-        {
-          "number": 107,
-          "title": "Retag scripture rows in place when their church tags change",
-          "mergedAt": "2026-10-18T14:39:17Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/107"
-        },
-        {
-          "number": 106,
-          "title": "Offer Eastern Orthodox, Catholic and Protestant in the church picker",
-          "mergedAt": "2026-10-16T04:01:10Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/106"
-        },
-        {
-          "number": 105,
-          "title": "Make \"Oriental Orthodox\" a real church filter",
-          "mergedAt": "2026-10-16T03:52:59Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/105"
         }
       ],
       "npm": null,
@@ -338,12 +338,14 @@
       "languages": [
         "Kotlin",
         "JavaScript",
-        "Shell"
+        "Shell",
+        "Python",
+        "HTML"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-10-20T04:57:33Z",
-      "lastCommitAt": "2026-10-20T04:57:33Z",
+      "pushedAt": "2026-10-21T05:18:37Z",
+      "lastCommitAt": "2026-10-21T04:54:22Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -354,9 +356,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-20T04:56:51Z"
+        "at": "2026-10-21T04:53:35Z"
       },
       "mergedPulls": [
+        {
+          "number": 29,
+          "title": "docs: log run 7, mark items 11 and 12 done (#27, #28), add item 18",
+          "mergedAt": "2026-10-21T04:54:22Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/29"
+        },
+        {
+          "number": 28,
+          "title": "Map style, glyphs, sprite and preview tools (roadmap item 12)",
+          "mergedAt": "2026-10-21T04:53:32Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/28"
+        },
+        {
+          "number": 27,
+          "title": "Dependabot for Gradle and GitHub Actions (roadmap item 11)",
+          "mergedAt": "2026-10-21T04:50:49Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/27"
+        },
         {
           "number": 26,
           "title": "docs: log run 6, mark items 9 and 10 done, add items 16-17",
@@ -398,24 +418,6 @@
           "title": "Onboarding state: skipped steps, permission snapshot, ViewModel (roadmap item 8b, part 1)",
           "mergedAt": "2026-10-19T04:53:00Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/20"
-        },
-        {
-          "number": 19,
-          "title": "docs: log run 4, mark items 7 and 8a done, add 8b",
-          "mergedAt": "2026-10-18T14:28:22Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/19"
-        },
-        {
-          "number": 18,
-          "title": "OnboardingStepPicker: permission flow order per API level (roadmap item 8, part 1)",
-          "mergedAt": "2026-10-18T14:27:26Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/18"
-        },
-        {
-          "number": 17,
-          "title": "DeviceCompat: OEM battery-manager guidance (roadmap item 7)",
-          "mergedAt": "2026-10-18T14:24:44Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/17"
         }
       ],
       "npm": null,
@@ -474,8 +476,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-10-20T05:32:13Z",
-      "lastCommitAt": "2026-10-20T05:32:13Z",
+      "pushedAt": "2026-10-21T05:44:54Z",
+      "lastCommitAt": "2026-10-21T05:44:53Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -488,9 +490,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-20T05:32:16Z"
+        "at": "2026-10-21T05:44:56Z"
       },
       "mergedPulls": [
+        {
+          "number": 30,
+          "title": "docs: log the 2026-10-21 run and update the roadmap",
+          "mergedAt": "2026-10-21T05:44:54Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/30"
+        },
+        {
+          "number": 28,
+          "title": "test: accessibility checks on the ledger and customer screens (R17, part 1)",
+          "mergedAt": "2026-10-21T05:39:26Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/28"
+        },
+        {
+          "number": 29,
+          "title": "feat: ledger filter for possible duplicates (R14)",
+          "mergedAt": "2026-10-21T05:25:09Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/29"
+        },
         {
           "number": 27,
           "title": "docs: log the 2026-10-20 run and update the roadmap",
@@ -532,24 +552,6 @@
           "title": "fix: triage the lint warnings (R6)",
           "mergedAt": "2026-10-18T15:53:16Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/19"
-        },
-        {
-          "number": 20,
-          "title": "ci: write and upload the coverage report on every build (R9)",
-          "mergedAt": "2026-10-18T15:39:40Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/20"
-        },
-        {
-          "number": 16,
-          "title": "docs: log the 2026-10-16 run and update the roadmap",
-          "mergedAt": "2026-10-16T05:31:01Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/16"
-        },
-        {
-          "number": 11,
-          "title": "feat: reconciliation names possible duplicates in the period (R13)",
-          "mergedAt": "2026-10-16T05:22:24Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/11"
         }
       ],
       "npm": null,
@@ -607,28 +609,46 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-10-20T03:38:48Z",
-      "lastCommitAt": "2026-10-20T03:38:39Z",
+      "pushedAt": "2026-10-21T03:40:27Z",
+      "lastCommitAt": "2026-10-21T03:40:18Z",
       "latestRelease": null,
       "tags": [
+        "v2026-10-21-3",
+        "v2026-10-21-2",
+        "v2026-10-21-1",
         "v2026-10-20-3",
         "v2026-10-20-2",
         "v2026-10-20-1",
         "v2026-10-19-3",
         "v2026-10-19-2",
         "v2026-10-19-1",
-        "v2026-10-18-4",
-        "v2026-10-18-3",
-        "v2026-10-18-2",
-        "v2026-10-18-1"
+        "v2026-10-18-4"
       ],
       "ci": {
-        "workflow": "Android CI",
+        "workflow": "Release tag",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-20T03:38:42Z"
+        "at": "2026-10-21T03:40:22Z"
       },
       "mergedPulls": [
+        {
+          "number": 33,
+          "title": "App lock: system fingerprint / face / screen lock",
+          "mergedAt": "2026-10-21T03:40:19Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/33"
+        },
+        {
+          "number": 32,
+          "title": "compileSdk 37 + androidx bumps (core 1.19.1, Compose BOM 2026.09, Room 2.8.5)",
+          "mergedAt": "2026-10-21T03:31:11Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/32"
+        },
+        {
+          "number": 31,
+          "title": "Toolchain bump: AGP 9.4.1, Gradle 9.8.1, Kotlin 2.4.21, KSP 2.3.12 + libraries",
+          "mergedAt": "2026-10-21T03:21:34Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/31"
+        },
         {
           "number": 30,
           "title": "Panic wipe: erase identity, messages and images from Settings",
@@ -670,24 +690,6 @@
           "title": "Log: tags for #18/#19 and #18's failed first CI run",
           "mergedAt": "2026-10-18T13:56:06Z",
           "url": "https://github.com/Alphaguyasa/NullChat/pull/20"
-        },
-        {
-          "number": 19,
-          "title": "Display names, part 2: settings screen, own name, send PROFILE",
-          "mergedAt": "2026-10-18T13:51:26Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/19"
-        },
-        {
-          "number": 18,
-          "title": "Display names, part 1: PROFILE packet, received names on the peer list",
-          "mergedAt": "2026-10-18T13:46:06Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/18"
-        },
-        {
-          "number": 17,
-          "title": "Let the user resend a failed message, and stop queued ones waiting forever",
-          "mergedAt": "2026-10-18T13:36:37Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/17"
         }
       ],
       "npm": null,
@@ -725,14 +727,14 @@
       "languages": [
         "TypeScript",
         "PLpgSQL",
-        "Shell",
         "CSS",
+        "Shell",
         "JavaScript"
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-10-20T04:21:51Z",
-      "lastCommitAt": "2026-10-20T04:21:51Z",
+      "pushedAt": "2026-10-21T04:25:51Z",
+      "lastCommitAt": "2026-10-21T04:25:51Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -742,9 +744,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-20T04:21:54Z"
+        "at": "2026-10-21T04:25:54Z"
       },
       "mergedPulls": [
+        {
+          "number": 23,
+          "title": "docs: log 2026-10-21 run, report, roadmap",
+          "mergedAt": "2026-10-21T04:25:52Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/23"
+        },
+        {
+          "number": 22,
+          "title": "fix(a11y): readable ochre and green text, announced sale and sync state",
+          "mergedAt": "2026-10-21T04:22:58Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/22"
+        },
+        {
+          "number": 21,
+          "title": "feat(i18n): remember the language choice across reloads",
+          "mergedAt": "2026-10-21T04:19:08Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/21"
+        },
         {
           "number": 20,
           "title": "docs: log 2026-10-20 run, report, roadmap",
@@ -786,24 +806,6 @@
           "title": "docs: log 2026-10-18 run, report, roadmap",
           "mergedAt": "2026-10-18T15:18:55Z",
           "url": "https://github.com/Alphaguyasa/Suq/pull/14"
-        },
-        {
-          "number": 13,
-          "title": "test(db): prove old IndexedDB data survives every Dexie schema upgrade",
-          "mergedAt": "2026-10-18T15:16:24Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/13"
-        },
-        {
-          "number": 12,
-          "title": "fix(offline): open receipts and products offline via precached static shells",
-          "mergedAt": "2026-10-18T15:12:27Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/12"
-        },
-        {
-          "number": 11,
-          "title": "docs: log 2026-10-16 run, report, approvals",
-          "mergedAt": "2026-10-16T04:51:50Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/11"
         }
       ],
       "npm": null,
