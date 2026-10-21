@@ -5,6 +5,8 @@
  *     response and on any "#fragment" link with no matching id on its page
  *   - accessibility: runs axe-core (WCAG 2.1 A/AA rules) on every page and fails
  *     on serious or critical violations, at desktop and phone widths
+ *   - security headers: every page must carry a Content-Security-Policy, and no
+ *     page may log a CSP violation (a blocked script, style, font or image)
  *
  *   npm run build && npm run check:site
  *
@@ -56,12 +58,18 @@ try {
     for (const vp of VIEWPORTS) {
       const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
       const page = await context.newPage();
+      const cspViolations = [];
+      page.on("console", (msg) => {
+        if (/Content Security Policy/i.test(msg.text())) cspViolations.push(msg.text());
+      });
       const res = await page.goto(BASE + pathname, { waitUntil: "networkidle" });
       if (!res || !res.ok()) {
         problems.push(`${pathname}: HTTP ${res?.status() ?? "no response"}`);
         await context.close();
         break;
       }
+
+      if (!res.headers()["content-security-policy"]) problems.push(`${pathname}: no Content-Security-Policy header`);
 
       const axe = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
@@ -101,6 +109,7 @@ try {
           }
         }
       }
+      for (const v of cspViolations) problems.push(`${pathname} [${vp.name}] CSP violation: ${v}`);
       await context.close();
     }
   }
