@@ -10,6 +10,7 @@ clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 
 Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-20: 6 items open after items 18 and 14, so no replan.
+2026-10-21: 4 items were left after items 15 and 16; added 19–21.
 
 ---
 
@@ -19,20 +20,24 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
-Still 5 high (dev-only) on 2026-10-20; production audit clean.
+Still 5 high (dev-only) on 2026-10-20 and 2026-10-21; production audit clean.
 
-### 15. [P2 · S] Security headers
-`next.config.ts` sets no headers. Add `X-Content-Type-Options: nosniff`,
-`Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY` /
-`frame-ancestors 'none'`, a `Permissions-Policy` that turns off camera, microphone and
-geolocation, and a Content-Security-Policy that the static pages pass (next/font is
-self-hosted; check inline styles and the JSON-LD script). Test: a unit test on the
-header list, and check:site must still pass with no CSP console errors.
+### 19. [P2 · S] Refuse cross-site posts to /api/contact
+The route accepts a POST from any origin, so a page elsewhere can submit the form
+through a visitor's browser. Reject a request whose `Origin` header is present and is
+not the site's own (403); keep requests with no `Origin` (curl, old clients) subject to
+the rate limit. Route tests for same-origin, cross-origin and missing `Origin`.
 
-### 16. [P2 · S] Cap the contact request body before parsing
-`/api/contact` calls `request.json()` on any body; field limits are checked only after
-the whole body is parsed. Reject a `Content-Length` over ~16 KB (413) and read with a
-size guard. Route test for the 413.
+### 20. [P2 · S] check:site fails on uncaught page errors
+check:site now catches CSP violations, but a client-side exception (`pageerror`) or a
+failed hydration would still pass. Fail on `pageerror` and on console errors, with an
+allowlist only if a known third-party message needs one.
+
+### 21. [P3 · M] Contact form state tests
+The form's states (sending, sent, field errors, mailto fallback on `unconfigured`) have
+no tests, because the suite runs in Node. Add a DOM environment for that one test file
+only if it is light (check licence, age and audit first), or extract the state logic
+into a pure reducer and test that instead (preferred: no new dependency).
 
 ### 17. [P3 · S] Find new public repos without the owner listing
 Listing Alphaguyasa's repos returns 403 in the cloud run, so a new public repo appears
@@ -58,6 +63,16 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **Meret:** no repo description is set on GitHub.
 
 ## Done
+
+- **[P2] Contact body-size cap** (item 16), PR #26 (2026-10-21). `/api/contact` refuses a
+  body over 32 KB with 413 before parsing: a declared `Content-Length` is checked first,
+  then the stream is read with a running count and cancelled past the cap. 32 KB, not
+  16, because a full 5,000-character message in Amharic is about 15 KB. Three route tests.
+- **[P2] Security headers** (item 15), PR #25 (2026-10-21), squash `e50a330`. CSP limited
+  to the site's own origin (`frame-ancestors 'none'`, `object-src 'none'`; `'unsafe-inline'`
+  scripts because nonces would make the static pages dynamic), nosniff, strict referrer
+  policy, `X-Frame-Options: DENY`, Permissions-Policy off for camera, microphone and
+  geolocation. check:site fails on a missing CSP header or a CSP violation. Four tests.
 
 - **[P1] Udacity certificates** (Alpha's request, 2026-10-20). Two Nanodegree certificates
   (Artificial Intelligence Fundamentals, Android Developer Fundamentals, both issued

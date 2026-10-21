@@ -29,6 +29,8 @@ Still refused on 2026-10-19; also missing: `v2026-10-19-1 594e4fb` (PR #17) and
 `v2026-10-19-2`, `-3` on the PR #18 and #19 squash commits.
 Still refused on 2026-10-20; also missing: `v2026-10-20-1 b8db769` (PR #20),
 `v2026-10-20-2 c70e31e` (PR #21) and `v2026-10-20-3` on the honeypot PR's squash commit.
+Still refused on 2026-10-21; also missing: `v2026-10-21-1 0910c86` (PR #24),
+`v2026-10-21-2 e50a330` (PR #25) and `v2026-10-21-3` on the PR #26 squash commit.
 
 ## Resolved
 
