@@ -5,6 +5,7 @@ import {
   type ContactFields,
 } from "@/lib/contact-schema";
 import { clientKey, rateLimit } from "@/lib/rateLimit";
+import { MAX_BODY_BYTES, readCapped } from "@/lib/read-capped";
 import { site } from "@/data/site";
 
 export const runtime = "nodejs";
@@ -37,9 +38,14 @@ export async function POST(request: Request) {
     );
   }
 
+  const text = await readCapped(request, MAX_BODY_BYTES);
+  if (text === null) {
+    return NextResponse.json({ error: "The message is too long." }, { status: 413 });
+  }
+
   let payload: unknown;
   try {
-    payload = await request.json();
+    payload = JSON.parse(text);
   } catch {
     return NextResponse.json({ error: "Malformed request body." }, { status: 400 });
   }

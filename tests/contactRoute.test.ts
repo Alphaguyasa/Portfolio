@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { POST } from "@/app/api/contact/route";
+import { MAX_BODY_BYTES } from "@/lib/read-capped";
 import { budgetOptions, interestOptions, site } from "@/data/site";
 
 let ip = 0;
@@ -95,6 +96,32 @@ describe("POST /api/contact", () => {
     expect((await post("{not json")).status).toBe(400);
     expect((await post(null)).status).toBe(400);
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("refuses a body over the size cap before parsing it", async () => {
+    const response = await post({ ...valid, message: "a".repeat(MAX_BODY_BYTES) });
+    expect(response.status).toBe(413);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("refuses an oversized body even when Content-Length understates it", async () => {
+    const big = JSON.stringify({ ...valid, message: "a".repeat(MAX_BODY_BYTES) });
+    const response = await POST(
+      new Request("https://example.com/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json", "content-length": "10", "x-forwarded-for": "198.51.100.7" },
+        body: new Blob([big]).stream(),
+        duplex: "half",
+      } as RequestInit),
+    );
+    expect(response.status).toBe(413);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("accepts a full-length message written in Amharic", async () => {
+    const response = await post({ ...valid, message: "ሰላም".repeat(1666) });
+    expect(response.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("reports unconfigured delivery when the API key is absent, so the form falls back to mailto", async () => {
