@@ -16,7 +16,7 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   "100 instrumented tests run in CI on an API 34 emulator" (NullChat #4/#7), and the
   status note no longer says instrumented tests run only on a phone. No status changed.
   docsearch's CI on main was red at sync time (shown live; suggestion added).
-- **Item 19** — PR #28: cross-site posts to `/api/contact` get 403 before the rate
+- **Item 19** — PR #28 (merged, squash `ca6cdc4`): cross-site posts to `/api/contact` get 403 before the rate
   limit. Checked against `next start` too: no Origin 422, same origin 422, other site 403.
 - **Item 20** — PR #29 (this one): check:site fails on uncaught exceptions and console
   errors. 11 pages clean locally.
@@ -31,7 +31,7 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
 | Field | Content |
 |---|---|
 | Done | Sync (PR #27), item 19 cross-site posts (PR #28), item 20 page errors (PR #29) |
-| Merged | #27 yes, `a3e95cf` · #28 and #29 see PRs (tags not pushable: A10) |
+| Merged | #27 yes, `a3e95cf` · #28 yes, `ca6cdc4` · #29 see PR (tags not pushable: A10) |
 | Failed or blocked | Release tags not pushable (A10) |
 | Roadmap | 6 items open; no replan needed (item 22 added) |
 | Model | Opus 5.5, newest Opus; no action needed |

@@ -32,7 +32,7 @@ Still refused on 2026-10-20; also missing: `v2026-10-20-1 b8db769` (PR #20),
 Still refused on 2026-10-21; also missing: `v2026-10-21-1 0910c86` (PR #24),
 `v2026-10-21-2 e50a330` (PR #25) and `v2026-10-21-3` on the PR #26 squash commit.
 Still refused on 2026-10-22; also missing: `v2026-10-22-1 a3e95cf` (PR #27) and
-`v2026-10-22-2`, `-3` on the PR #28 and #29 squash commits.
+`v2026-10-22-2 ca6cdc4` (PR #28) and `v2026-10-22-3` on the PR #29 squash commit.
 
 ## Resolved
 
