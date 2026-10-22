@@ -11,6 +11,7 @@ clients reading the portfolio · P2 = important, not blocking · P3 = polish.
 Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-20: 6 items open after items 18 and 14, so no replan.
 2026-10-21: 4 items were left after items 15 and 16; added 19–21.
+2026-10-22: items 19 and 20 done, item 22 added; 6 open, so no replan.
 
 ---
 
@@ -20,18 +21,14 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
-Still 5 high (dev-only) on 2026-10-20 and 2026-10-21; production audit clean.
+Still 5 high (dev-only) on 2026-10-20, 2026-10-21 and 2026-10-22 (eslint-config-next
+16.4.2 still pulls the same chain); production audit clean. The 2 moderate are item 22.
 
-### 19. [P2 · S] Refuse cross-site posts to /api/contact
-The route accepts a POST from any origin, so a page elsewhere can submit the form
-through a visitor's browser. Reject a request whose `Origin` header is present and is
-not the site's own (403); keep requests with no `Origin` (curl, old clients) subject to
-the rate limit. Route tests for same-origin, cross-origin and missing `Origin`.
-
-### 20. [P2 · S] check:site fails on uncaught page errors
-check:site now catches CSP violations, but a client-side exception (`pageerror`) or a
-failed hydration would still pass. Fail on `pageerror` and on console errors, with an
-allowlist only if a known third-party message needs one.
+### 22. [P2 · S] Bump vitest past the @vitest/mocker advisories
+`npm audit` (2026-10-22) reports 2 moderate advisories in vitest 5.0.0–5.0.2 via
+`@vitest/mocker` (GHSA-qxg6-89mg-rqv8, GHSA-xp26-3454-mjgp); 5.0.5 is the fix npm
+offers. Dev-only. Bump to the oldest fixed 5.0.x that is at least two weeks old (check
+the publish date first), run the suite, and record the version here.
 
 ### 21. [P3 · M] Contact form state tests
 The form's states (sending, sent, field errors, mailto fallback on `unconfigured`) have
@@ -61,9 +58,19 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
 - **Meret:** no repo description is set on GitHub.
+- **docsearch:** CI on `main` was red at the 2026-10-22 sync (run of 03:44 UTC); the
+  portfolio shows that live, so a green main also helps the project page.
 
 ## Done
 
+- **[P2] check:site fails on page errors** (item 20), PR #29 (2026-10-22). Any uncaught
+  exception (`pageerror`) or console error now fails the page, at both widths; the rule
+  lives in `scripts/lib/page-errors.mjs` with an allowlist that starts empty. 11 pages
+  clean locally. Four tests.
+- **[P2] Refuse cross-site posts to /api/contact** (item 19), PR #28 (2026-10-22). A
+  request whose `Origin` is not the site's own host (canonical URL, the addressed host,
+  `Host` or `X-Forwarded-Host`) gets 403 before the rate limit runs; no `Origin` is
+  unchanged. Eleven tests.
 - **[P2] Contact body-size cap** (item 16), PR #26 (2026-10-21). `/api/contact` refuses a
   body over 32 KB with 413 before parsing: a declared `Content-Length` is checked first,
   then the stream is read with a running count and cancelled past the cap. 32 KB, not

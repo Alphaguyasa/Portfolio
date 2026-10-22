@@ -7,6 +7,8 @@
  *     on serious or critical violations, at desktop and phone widths
  *   - security headers: every page must carry a Content-Security-Policy, and no
  *     page may log a CSP violation (a blocked script, style, font or image)
+ *   - page errors: no uncaught exception and no console error (a failed hydration
+ *     or a missing script shows up as one of these, not as a broken link)
  *
  *   npm run build && npm run check:site
  *
@@ -16,6 +18,7 @@
 import { spawn } from "node:child_process";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
+import { classifyConsole } from "./lib/page-errors.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
 const BASE = `http://127.0.0.1:${PORT}`;
@@ -59,9 +62,13 @@ try {
       const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
       const page = await context.newPage();
       const cspViolations = [];
+      const pageErrors = [];
       page.on("console", (msg) => {
-        if (/Content Security Policy/i.test(msg.text())) cspViolations.push(msg.text());
+        const kind = classifyConsole(msg.type(), msg.text());
+        if (kind === "csp") cspViolations.push(msg.text());
+        else if (kind === "error") pageErrors.push(`console error: ${msg.text()}`);
       });
+      page.on("pageerror", (err) => pageErrors.push(`uncaught: ${err.message}`));
       const res = await page.goto(BASE + pathname, { waitUntil: "networkidle" });
       if (!res || !res.ok()) {
         problems.push(`${pathname}: HTTP ${res?.status() ?? "no response"}`);
@@ -110,6 +117,7 @@ try {
         }
       }
       for (const v of cspViolations) problems.push(`${pathname} [${vp.name}] CSP violation: ${v}`);
+      for (const e of pageErrors) problems.push(`${pathname} [${vp.name}] ${e}`);
       await context.close();
     }
   }
@@ -127,4 +135,4 @@ if (problems.length) {
   for (const p of problems) console.error(`  - ${p}`);
   process.exit(1);
 }
-console.log("check-site: all links resolve and no serious accessibility violations");
+console.log("check-site: all links resolve, no page errors and no serious accessibility violations");
