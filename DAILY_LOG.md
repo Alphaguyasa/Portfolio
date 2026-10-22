@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-22 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last runs (#24's push run was cancelled by #25's, not failed).
+- **Sync** — PR #27 (merged, squash `a3e95cf`): all 9 repos read (122 API requests;
+  owner listing still 403). verify:facts failed on one stale quote: NullChat's roadmap
+  was replanned and dropped the "231 JVM unit tests" baseline. The result now cites
+  "100 instrumented tests run in CI on an API 34 emulator" (NullChat #4/#7), and the
+  status note no longer says instrumented tests run only on a phone. No status changed.
+  docsearch's CI on main was red at sync time (shown live; suggestion added).
+- **Item 19** — PR #28 (merged, squash `ca6cdc4`): cross-site posts to `/api/contact` get 403 before the rate
+  limit. Checked against `next start` too: no Origin 422, same origin 422, other site 403.
+- **Item 20** — PR #29 (this one): check:site fails on uncaught exceptions and console
+  errors. 11 pages clean locally.
+- **Item 11:** still 5 high in dev-only tooling (eslint-config-next 16.4.2 unchanged).
+  New: 2 moderate in vitest 5.0.0–5.0.2, logged as item 22. Production audit clean.
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- Local check:site used the preinstalled Chromium 1194 through symlinks named as the
+  1243 headless shell that Playwright expects. CI is unaffected.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #27), item 19 cross-site posts (PR #28), item 20 page errors (PR #29) |
+| Merged | #27 yes, `a3e95cf` · #28 yes, `ca6cdc4` · #29 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 6 items open; no replan needed (item 22 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A10 tags, A12 confirm the second Vercel project is gone |
+| Next | Daily sync; item 11 re-check, then item 22 (vitest bump) and 21 (form state tests) |
+
+---
+
 ## 2026-10-21 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
