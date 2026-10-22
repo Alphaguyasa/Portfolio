@@ -3,6 +3,102 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
+    "title": "test: accessibility checks on reconcile, reports, settings and onboarding (R17, part 2)",
+    "date": "2026-10-22T05:31:42Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/31"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "test: clear the Kotlin compiler warnings in app test sources (R15)",
+    "date": "2026-10-22T05:28:14Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/32"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "LocalTileServer: loopback HTTP for tile packs (roadmap item 13, 6b)",
+    "date": "2026-10-22T04:53:35Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/32"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "MbtilesReader: tiles and metadata from an .mbtiles pack (roadmap item 13, 6a)",
+    "date": "2026-10-22T04:50:43Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/31"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "feat(settings): one-tap backup export (JSON + sales CSV), offline",
+    "date": "2026-10-22T04:26:08Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/25"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "feat: error boundaries and a clear message when a sale cannot be saved",
+    "date": "2026-10-22T04:21:30Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/24"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Show the crisis message and help resources in Amharic",
+    "date": "2026-10-22T03:44:26Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/120"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Safety classifier fails safe on an empty or garbled reply",
+    "date": "2026-10-22T03:41:01Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/119"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Battery modes: automatic, normal or saver scanning; replan and log 2026-10-22",
+    "date": "2026-10-22T03:36:28Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/36"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Disappearing messages, part 1: a local timer per chat (Room 7→8)",
+    "date": "2026-10-22T03:28:10Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/35"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Contact nicknames: rename a peer on this phone only (Room 6→7)",
+    "date": "2026-10-22T03:20:56Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/34"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-10-22-3",
+    "date": "2026-10-22T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-22-3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
     "title": "test: accessibility checks on the ledger and customer screens (R17, part 1)",
     "date": "2026-10-21T05:39:26Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/28"
@@ -62,101 +158,5 @@
     "title": "Grow the scripture golden set for Catholic, Protestant and Eastern Orthodox readers",
     "date": "2026-10-21T03:49:01Z",
     "url": "https://github.com/Alphaguyasa/docsearch/pull/116"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Stop the scripture eval cutting generated answers off at 900 tokens",
-    "date": "2026-10-21T03:44:26Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/115"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "App lock: system fingerprint / face / screen lock",
-    "date": "2026-10-21T03:40:19Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/33"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "compileSdk 37 + androidx bumps (core 1.19.1, Compose BOM 2026.09, Room 2.8.5)",
-    "date": "2026-10-21T03:31:11Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/32"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Toolchain bump: AGP 9.4.1, Gradle 9.8.1, Kotlin 2.4.21, KSP 2.3.12 + libraries",
-    "date": "2026-10-21T03:21:34Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/31"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-10-21-3",
-    "date": "2026-10-21T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-21-3"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "feat: say so when the user refuses to let the app read past messages (R16)",
-    "date": "2026-10-20T05:26:51Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/26"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "test: accessibility semantics on Today, the keypad and the review queue (R8)",
-    "date": "2026-10-20T05:19:36Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/24"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Boot receiver: offer to resume an open track (roadmap item 10)",
-    "date": "2026-10-20T04:56:48Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/25"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Diagnostics screen and copy report (roadmap item 9, part 2)",
-    "date": "2026-10-20T04:52:23Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/24"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Tracking health and diagnostics report (roadmap item 9, part 1)",
-    "date": "2026-10-20T04:48:15Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/23"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix(sync): server keeps the newer product edit (last-write-wins trigger)",
-    "date": "2026-10-20T04:19:12Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/19"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "security: run the secret scanner for real (executable hook + CI scan)",
-    "date": "2026-10-20T04:14:36Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/18"
   }
 ]
