@@ -118,14 +118,14 @@
       "tagline": "Peer-to-peer messaging with no network",
       "repo": "Alphaguyasa/NullChat",
       "status": "building",
-      "statusNote": "Under active development. Unit tests pass in CI; instrumented tests run only on a physical phone so far.",
+      "statusNote": "Under active development. Unit tests and instrumented tests run in CI; radio behaviour still needs a check on two real phones.",
       "featured": false,
       "platform": "Android",
       "stack": ["Kotlin", "Jetpack Compose", "Bluetooth LE", "Wi-Fi Direct", "Room"],
       "problem": "People need to exchange messages during blackouts, in dead zones and during shutdowns, when there is no network at all.",
       "approach": "Android phones talk directly over Bluetooth LE and Wi-Fi Direct and relay text and photos between peers, with no server and no internet connection.",
       "results": [
-        "231 JVM unit tests passing."
+        "100 instrumented tests run in CI on an API 34 emulator."
       ],
       "learned": [
         "Closed a security gap: a direct message is now held until the peer's agreement key is known instead of being sent in plaintext. The receiving side still accepts plaintext from older builds, tracked on the roadmap."
@@ -134,7 +134,7 @@
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/NullChat" }],
       "facts": [
         { "path": "@description", "quote": "Peer-to-peer Android messaging over Bluetooth LE and Wi-Fi Direct. Text and photos, no network connection required." },
-        { "path": "ROADMAP.md", "quote": "Baseline: 231 JVM unit tests passing; instrumented tests exist but only run on a physical phone." },
+        { "path": "ROADMAP.md", "quote": "#4 Instrumented tests in CI (API 34 emulator, 100 tests)" },
         { "path": "ROADMAP.md", "quote": "#6 No plaintext direct messages (held until keyed)" },
         { "path": "ROADMAP.md", "quote": "Receiving side still accepts plaintext direct messages from older builds" }
       ]

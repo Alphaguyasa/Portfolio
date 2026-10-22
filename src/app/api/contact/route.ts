@@ -6,6 +6,7 @@ import {
 } from "@/lib/contact-schema";
 import { clientKey, rateLimit } from "@/lib/rateLimit";
 import { MAX_BODY_BYTES, readCapped } from "@/lib/read-capped";
+import { isCrossSite } from "@/lib/same-origin";
 import { site } from "@/data/site";
 
 export const runtime = "nodejs";
@@ -23,8 +24,15 @@ const WINDOW_MS = 10 * 60 * 1000;
  *
  * A filled-in `company` field is the form's hidden honeypot: the post is answered as
  * if it were sent, so a bot learns nothing, and nothing is delivered.
+ *
+ * A post from another site's page is refused before it can use up the visitor's
+ * rate-limit window.
  */
 export async function POST(request: Request) {
+  if (isCrossSite(request, site.url)) {
+    return NextResponse.json({ error: "Cross-site requests are not accepted." }, { status: 403 });
+  }
+
   // Keeps one script from hammering the form and burning the Resend quota.
   const { allowed, retryAfter } = rateLimit(
     clientKey(request),

@@ -6,11 +6,11 @@ import { budgetOptions, interestOptions, site } from "@/data/site";
 let ip = 0;
 
 /** Each call gets its own address so the shared rate-limit window stays clean. */
-function post(body: unknown, address = `192.0.2.${++ip}`) {
+function post(body: unknown, address = `192.0.2.${++ip}`, extra: Record<string, string> = {}) {
   return POST(
     new Request("https://example.com/api/contact", {
       method: "POST",
-      headers: { "content-type": "application/json", "x-forwarded-for": address },
+      headers: { "content-type": "application/json", "x-forwarded-for": address, ...extra },
       body: typeof body === "string" ? body : JSON.stringify(body),
     }),
   );
@@ -70,6 +70,43 @@ describe("POST /api/contact", () => {
     const response = await post({ ...valid, company: "" });
     expect(response.status).toBe(200);
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("accepts a post from the site's own origin", async () => {
+    const response = await post(valid, undefined, { origin: "https://example.com" });
+    expect(response.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("accepts a post from the canonical site URL", async () => {
+    const response = await post(valid, undefined, { origin: site.url });
+    expect(response.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("refuses a cross-site post with 403 and delivers nothing", async () => {
+    const response = await post(valid, undefined, { origin: "https://evil.example" });
+    expect(response.status).toBe(403);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("refuses an opaque null origin", async () => {
+    const response = await post(valid, undefined, { origin: "null" });
+    expect(response.status).toBe(403);
+  });
+
+  it("does not spend the sender's rate limit on refused cross-site posts", async () => {
+    const address = "198.51.100.77";
+    for (let i = 0; i < 10; i++) {
+      await post(valid, address, { origin: "https://evil.example" });
+    }
+    const response = await post(valid, address, { origin: "https://example.com" });
+    expect(response.status).toBe(200);
+  });
+
+  it("still accepts a post with no Origin header", async () => {
+    const response = await post(valid);
+    expect(response.status).toBe(200);
   });
 
   it("rejects missing fields with per-field errors", async () => {
