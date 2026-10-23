@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-10-22T06:41:34.337Z",
+  "syncedAt": "2026-10-23T06:41:34.242Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -75,8 +75,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-10-22T03:44:36Z",
-      "lastCommitAt": "2026-10-22T03:44:35Z",
+      "pushedAt": "2026-10-23T03:44:22Z",
+      "lastCommitAt": "2026-10-23T03:44:21Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -88,10 +88,22 @@
       "ci": {
         "workflow": "ci",
         "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-10-22T03:44:28Z"
+        "conclusion": "success",
+        "at": "2026-10-23T03:44:24Z"
       },
       "mergedPulls": [
+        {
+          "number": 122,
+          "title": "End a Gemini story in an error when it was cut off or blocked",
+          "mergedAt": "2026-10-23T03:44:22Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/122"
+        },
+        {
+          "number": 121,
+          "title": "Self-host the site fonts so builds stop failing on Google Fonts",
+          "mergedAt": "2026-10-23T03:41:50Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/121"
+        },
         {
           "number": 120,
           "title": "Show the crisis message and help resources in Amharic",
@@ -139,18 +151,6 @@
           "title": "Fix the 11 ESLint warnings and fail lint on any new one",
           "mergedAt": "2026-10-19T04:00:44Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/112"
-        },
-        {
-          "number": 111,
-          "title": "Default view reads oriental_orthodox; Eastern Orthodox reads eastern_orthodox",
-          "mergedAt": "2026-10-19T03:57:02Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/111"
-        },
-        {
-          "number": 110,
-          "title": "Tag books eastern_orthodox / oriental_orthodox, each with a cited basis",
-          "mergedAt": "2026-10-19T03:45:18Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/110"
         }
       ],
       "npm": null,
@@ -344,8 +344,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-10-22T04:54:18Z",
-      "lastCommitAt": "2026-10-22T04:54:18Z",
+      "pushedAt": "2026-10-23T04:50:07Z",
+      "lastCommitAt": "2026-10-23T04:50:06Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -356,9 +356,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-22T04:53:38Z"
+        "at": "2026-10-23T04:49:11Z"
       },
       "mergedPulls": [
+        {
+          "number": 36,
+          "title": "docs: log run 9, mark 6c and 6d-1 done (#34, #35), add A11",
+          "mergedAt": "2026-10-23T04:50:07Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/36"
+        },
+        {
+          "number": 35,
+          "title": "StyleProvider: style template with the loopback source (roadmap item 13, 6d-1)",
+          "mergedAt": "2026-10-23T04:49:08Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/35"
+        },
+        {
+          "number": 34,
+          "title": "Network security config: cleartext to 127.0.0.1 only (roadmap item 13, 6c)",
+          "mergedAt": "2026-10-23T04:47:30Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/34"
+        },
         {
           "number": 33,
           "title": "docs: log run 8, mark 6a and 6b done (#31, #32)",
@@ -400,24 +418,6 @@
           "title": "docs: log run 6, mark items 9 and 10 done, add items 16-17",
           "mergedAt": "2026-10-20T04:57:33Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/26"
-        },
-        {
-          "number": 25,
-          "title": "Boot receiver: offer to resume an open track (roadmap item 10)",
-          "mergedAt": "2026-10-20T04:56:48Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/25"
-        },
-        {
-          "number": 24,
-          "title": "Diagnostics screen and copy report (roadmap item 9, part 2)",
-          "mergedAt": "2026-10-20T04:52:23Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/24"
-        },
-        {
-          "number": 23,
-          "title": "Tracking health and diagnostics report (roadmap item 9, part 1)",
-          "mergedAt": "2026-10-20T04:48:15Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/23"
         }
       ],
       "npm": null,
@@ -476,8 +476,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-10-22T05:39:15Z",
-      "lastCommitAt": "2026-10-22T05:39:15Z",
+      "pushedAt": "2026-10-23T05:36:08Z",
+      "lastCommitAt": "2026-10-23T05:36:08Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -490,9 +490,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-22T05:39:18Z"
+        "at": "2026-10-23T05:36:11Z"
       },
       "mergedPulls": [
+        {
+          "number": 36,
+          "title": "docs: log the 2026-10-23 run and update the roadmap",
+          "mergedAt": "2026-10-23T05:36:08Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/36"
+        },
+        {
+          "number": 34,
+          "title": "test: accessibility checks on the dialogs with no text field (R18, part 1)",
+          "mergedAt": "2026-10-23T05:28:39Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/34"
+        },
+        {
+          "number": 35,
+          "title": "feat: the daily-net chart has a spoken summary for TalkBack (R19)",
+          "mergedAt": "2026-10-23T05:22:41Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/35"
+        },
         {
           "number": 33,
           "title": "docs: log the 2026-10-22 run and replan the roadmap",
@@ -534,24 +552,6 @@
           "title": "docs: log the 2026-10-20 run and update the roadmap",
           "mergedAt": "2026-10-20T05:32:13Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/27"
-        },
-        {
-          "number": 26,
-          "title": "feat: say so when the user refuses to let the app read past messages (R16)",
-          "mergedAt": "2026-10-20T05:26:51Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/26"
-        },
-        {
-          "number": 24,
-          "title": "test: accessibility semantics on Today, the keypad and the review queue (R8)",
-          "mergedAt": "2026-10-20T05:19:36Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/24"
-        },
-        {
-          "number": 25,
-          "title": "docs: log the 2026-10-19 run and update the roadmap",
-          "mergedAt": "2026-10-19T05:40:29Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/25"
         }
       ],
       "npm": null,
@@ -609,28 +609,46 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-10-22T03:36:36Z",
-      "lastCommitAt": "2026-10-22T03:36:27Z",
+      "pushedAt": "2026-10-23T03:49:57Z",
+      "lastCommitAt": "2026-10-23T03:49:49Z",
       "latestRelease": null,
       "tags": [
+        "v2026-10-23-3",
+        "v2026-10-23-2",
+        "v2026-10-23-1",
         "v2026-10-22-3",
         "v2026-10-22-2",
         "v2026-10-22-1",
         "v2026-10-21-3",
         "v2026-10-21-2",
         "v2026-10-21-1",
-        "v2026-10-20-3",
-        "v2026-10-20-2",
-        "v2026-10-20-1",
-        "v2026-10-19-3"
+        "v2026-10-20-3"
       ],
       "ci": {
-        "workflow": "Release tag",
+        "workflow": "Android CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-22T03:36:30Z"
+        "at": "2026-10-23T03:49:52Z"
       },
       "mergedPulls": [
+        {
+          "number": 39,
+          "title": "Order threads by this phone's clock, not the sender's; log 2026-10-23",
+          "mergedAt": "2026-10-23T03:49:50Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/39"
+        },
+        {
+          "number": 38,
+          "title": "Bound received images: refuse oversized ones, decode with a size cap",
+          "mergedAt": "2026-10-23T03:30:23Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/38"
+        },
+        {
+          "number": 37,
+          "title": "Sends survive leaving the chat: run them in the mesh scope",
+          "mergedAt": "2026-10-23T03:23:13Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/37"
+        },
         {
           "number": 36,
           "title": "Battery modes: automatic, normal or saver scanning; replan and log 2026-10-22",
@@ -672,24 +690,6 @@
           "title": "Panic wipe: erase identity, messages and images from Settings",
           "mergedAt": "2026-10-20T03:38:40Z",
           "url": "https://github.com/Alphaguyasa/NullChat/pull/30"
-        },
-        {
-          "number": 29,
-          "title": "Message actions, part 2: reply with quote",
-          "mergedAt": "2026-10-20T03:32:10Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/29"
-        },
-        {
-          "number": 28,
-          "title": "CI: bump GitHub Actions to their Node 24 majors",
-          "mergedAt": "2026-10-20T03:22:28Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/28"
-        },
-        {
-          "number": 23,
-          "title": "Dependabot for Gradle and GitHub Actions; log 2026-10-19",
-          "mergedAt": "2026-10-19T03:36:56Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/23"
         }
       ],
       "npm": null,
@@ -733,8 +733,8 @@
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-10-22T04:34:00Z",
-      "lastCommitAt": "2026-10-22T04:33:59Z",
+      "pushedAt": "2026-10-23T04:36:29Z",
+      "lastCommitAt": "2026-10-23T04:36:29Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -744,9 +744,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-22T04:34:02Z"
+        "at": "2026-10-23T04:36:32Z"
       },
       "mergedPulls": [
+        {
+          "number": 29,
+          "title": "docs: log 2026-10-23 run, report, roadmap",
+          "mergedAt": "2026-10-23T04:36:30Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/29"
+        },
+        {
+          "number": 28,
+          "title": "fix(import): a bad CSV row no longer aborts the import; honest summary",
+          "mergedAt": "2026-10-23T04:33:26Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/28"
+        },
+        {
+          "number": 27,
+          "title": "fix: say why a save failed on every screen, reject negative prices",
+          "mergedAt": "2026-10-23T04:23:25Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/27"
+        },
         {
           "number": 26,
           "title": "docs: log 2026-10-22 run, report, replanned roadmap",
@@ -788,24 +806,6 @@
           "title": "docs: log 2026-10-20 run, report, roadmap",
           "mergedAt": "2026-10-20T04:21:52Z",
           "url": "https://github.com/Alphaguyasa/Suq/pull/20"
-        },
-        {
-          "number": 19,
-          "title": "fix(sync): server keeps the newer product edit (last-write-wins trigger)",
-          "mergedAt": "2026-10-20T04:19:12Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/19"
-        },
-        {
-          "number": 18,
-          "title": "security: run the secret scanner for real (executable hook + CI scan)",
-          "mergedAt": "2026-10-20T04:14:36Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/18"
-        },
-        {
-          "number": 17,
-          "title": "docs: log 2026-10-19 run, report, roadmap",
-          "mergedAt": "2026-10-19T04:23:27Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/17"
         }
       ],
       "npm": null,

@@ -58,8 +58,6 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
 - **Meret:** no repo description is set on GitHub.
-- **docsearch:** CI on `main` was red at the 2026-10-22 sync (run of 03:44 UTC); the
-  portfolio shows that live, so a green main also helps the project page.
 
 ## Done
 
