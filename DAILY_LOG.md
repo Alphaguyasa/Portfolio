@@ -4,6 +4,46 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-23 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last push run (#29).
+- **Sync + Next.js patch** — PR #30 (merged, squash `44cb14d`): all 9 repos read (122
+  API requests; owner listing still 403). Every fact verified, no status changed;
+  docsearch's CI on main is green again, so that suggestion is removed. npm audit then
+  showed a **critical** advisory in next ≤16.4.0, which fails CI's production audit, so
+  next went to 16.4.1 in the same PR (9 days old: the critical fix overrode the
+  two-week rule, logged as A15). Locally: build, check:site 11 pages, Lighthouse `/` 90
+  and project page 95.
+- **Item 22** — PR #31 (merged, squash `48f5558`): vitest 5.0.3 (two weeks old, fixes both @vitest/mocker
+  advisories). Installed with `npm install --before=2026-10-09`, because a plain install
+  pulled a two-day-old vite. npm 10 crashes on this tree ("edgesOut"); npm 11 works.
+- **Item 21** — PR #32 (this one): the contact form's reply handling is a pure, tested
+  function (`src/lib/contact-outcome.ts`); no DOM test dependency added. 8 tests.
+- **Item 11:** still 5 high in dev-only tooling (eslint-config-next 16.4.2 unchanged).
+- **Replan:** 4 items were left, so three were added: exact dependency pins (23), a
+  browser test of the contact form (24), a weekly production audit on main (25).
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- Local check:site used the preinstalled Chromium 1194 through symlinks named as the
+  1243 headless shell (the shell binary now has to be linked as
+  `chrome-headless-shell-linux64/chrome-headless-shell`). CI is unaffected.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync + Next.js 16.4.1 security patch (PR #30), item 22 vitest (PR #31), item 21 form state tests (PR #32) |
+| Merged | #30 yes, `44cb14d` · #31 yes, `48f5558` · #32 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 7 items open; replan done (items 23–25 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A15 critical fix under the two-week rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Daily sync; item 11 re-check, then item 23 (exact pins) and 24 (form browser test) |
+
+---
+
 ## 2026-10-22 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

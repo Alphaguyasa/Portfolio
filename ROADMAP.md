@@ -12,10 +12,29 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-20: 6 items open after items 18 and 14, so no replan.
 2026-10-21: 4 items were left after items 15 and 16; added 19–21.
 2026-10-22: items 19 and 20 done, item 22 added; 6 open, so no replan.
+2026-10-23: 4 items were left after items 22 and 21; added 23–25.
 
 ---
 
 ## Open
+
+### 23. [P2 · S] Pin every dependency exactly
+CLAUDE.md asks for exact pins, but nine entries in package.json still use ranges
+(`^4`, `^19`, `^16.3.8`, …). The lockfile holds them today, but any `npm install`
+can move them. Pin each to the version in package-lock.json (no upgrades), and add a
+test that fails on a range in `dependencies` or `devDependencies`.
+
+### 24. [P2 · S] Browser test of the contact form in check:site
+The form's state logic is unit-tested (item 21), but nothing clicks it. check:site
+already runs Playwright: submit the empty form (errors shown, focus on the first
+field), then a valid one with the route answering `unconfigured` (the "Message sent"
+state, mailto navigation intercepted). No real email is sent; CI has no provider key.
+
+### 25. [P2 · S] Weekly production audit on main
+CI audits only on PRs and pushes, so a new advisory against the deployed build (like
+next 16.4.0 on 2026-10-23) is seen only when the next PR runs. Add a weekly `schedule`
+to a small audit-only workflow (`npm ci --ignore-scripts && npm audit --omit=dev
+--audit-level=high`, about 1 minute), so a red run shows on main between daily runs.
 
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
@@ -23,12 +42,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 Re-check weekly; take the upstream fix when a 16.x release ships one.
 Still 5 high (dev-only) on 2026-10-20, 2026-10-21, 2026-10-22 and 2026-10-23
 (eslint-config-next 16.4.2 still pulls the same chain); production audit clean.
-
-### 21. [P3 · M] Contact form state tests
-The form's states (sending, sent, field errors, mailto fallback on `unconfigured`) have
-no tests, because the suite runs in Node. Add a DOM environment for that one test file
-only if it is light (check licence, age and audit first), or extract the state logic
-into a pure reducer and test that instead (preferred: no new dependency).
 
 ### 17. [P3 · S] Find new public repos without the owner listing
 Listing Alphaguyasa's repos returns 403 in the cloud run, so a new public repo appears
@@ -55,7 +68,13 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
-- **[P2] vitest past the @vitest/mocker advisories** (item 22), PR #31 (2026-10-23).
+- **[P3] Contact form state tests** (item 21), PR #32 (2026-10-23). The reply handling
+  moved out of `ContactForm.tsx` into a pure `contactOutcome()` and `contactMailto()`
+  in `src/lib/contact-outcome.ts`: sent, mailto fallback on `unconfigured`, server
+  field errors (422), rate limit (429, with a default text) and every other failure
+  (the email-me notice, never raw server text). No new dependency. Eight tests; build
+  and check:site pass.
+- **[P2] vitest past the @vitest/mocker advisories** (item 22), PR #31 (2026-10-23), squash `48f5558`.
   vitest 5.0.2 → 5.0.3 (published 2026-09-30; both advisories are fixed from 5.0.3, so
   5.0.5 was not needed). Installed with `npm install --before=2026-10-09`, so the
   re-resolved transitive tooling (vite 8.3.4, rolldown 1.2.13) is also two weeks old;
