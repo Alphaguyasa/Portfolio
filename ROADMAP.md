@@ -21,14 +21,8 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
-Still 5 high (dev-only) on 2026-10-20, 2026-10-21 and 2026-10-22 (eslint-config-next
-16.4.2 still pulls the same chain); production audit clean. The 2 moderate are item 22.
-
-### 22. [P2 · S] Bump vitest past the @vitest/mocker advisories
-`npm audit` (2026-10-22) reports 2 moderate advisories in vitest 5.0.0–5.0.2 via
-`@vitest/mocker` (GHSA-qxg6-89mg-rqv8, GHSA-xp26-3454-mjgp); 5.0.5 is the fix npm
-offers. Dev-only. Bump to the oldest fixed 5.0.x that is at least two weeks old (check
-the publish date first), run the suite, and record the version here.
+Still 5 high (dev-only) on 2026-10-20, 2026-10-21, 2026-10-22 and 2026-10-23
+(eslint-config-next 16.4.2 still pulls the same chain); production audit clean.
 
 ### 21. [P3 · M] Contact form state tests
 The form's states (sending, sent, field errors, mailto fallback on `unconfigured`) have
@@ -61,6 +55,15 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] vitest past the @vitest/mocker advisories** (item 22), PR #31 (2026-10-23).
+  vitest 5.0.2 → 5.0.3 (published 2026-09-30; both advisories are fixed from 5.0.3, so
+  5.0.5 was not needed). Installed with `npm install --before=2026-10-09`, so the
+  re-resolved transitive tooling (vite 8.3.4, rolldown 1.2.13) is also two weeks old;
+  a plain install had pulled a two-day-old vite. The 2 moderate are gone.
+- **[P0] Next.js 16.4.0 → 16.4.1** (main-broken fix, not a roadmap item), PR #30
+  (2026-10-23), squash `44cb14d`. A critical advisory in next ≤16.4.0 failed CI's
+  production audit. 16.4.1 was 9 days old; the critical fix overrode the two-week rule
+  (NEEDS_APPROVAL A15).
 - **[P2] check:site fails on page errors** (item 20), PR #29 (2026-10-22). Any uncaught
   exception (`pageerror`) or console error now fails the page, at both widths; the rule
   lives in `scripts/lib/page-errors.mjs` with an allowlist that starts empty. 11 pages
