@@ -5,6 +5,16 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
+### A15. A critical Next.js fix was taken under the two-week age rule (2026-10-23)
+CLAUDE.md asks for dependency versions at least two weeks old. On 2026-10-23 npm audit
+reported a critical advisory in next 16.0.0–16.4.0 (GHSA-2464-fhr4-w9xw and
+GHSA-673q-mjm6-r5xr, remote code execution; GHSA-p3m5-59mp-jv5r, denial of service),
+which also failed CI's production audit gate. The only fix, 16.4.1, was 9 days old. It
+was installed (PR #30) because a critical advisory is the larger risk and the gate would
+otherwise block every PR. The site does not use the affected features (SVG image
+optimisation, `use cache`, Server Actions). Nothing to do unless you want a different
+rule: say whether a critical security fix may always override the two-week rule.
+
 ### A12. A second Vercel project fails on every PR (2026-10-18)
 **Update:** from PR #14 on, the failing `portfolio` project no longer posts; it looks
 fixed. Close this once Alpha confirms.
@@ -33,6 +43,8 @@ Still refused on 2026-10-21; also missing: `v2026-10-21-1 0910c86` (PR #24),
 `v2026-10-21-2 e50a330` (PR #25) and `v2026-10-21-3` on the PR #26 squash commit.
 Still refused on 2026-10-22; also missing: `v2026-10-22-1 a3e95cf` (PR #27) and
 `v2026-10-22-2 ca6cdc4` (PR #28) and `v2026-10-22-3` on the PR #29 squash commit.
+Still refused on 2026-10-23; also missing: `v2026-10-23-1 44cb14d` (PR #30) and
+`v2026-10-23-2`, `-3` on the PR #31 and #32 squash commits.
 
 ## Resolved
 
