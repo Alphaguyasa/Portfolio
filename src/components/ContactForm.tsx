@@ -4,11 +4,11 @@ import { useId, useState } from "react";
 import { budgetOptions, interestOptions, site } from "@/data/site";
 import {
   emptyContact,
-  formatContactBody,
   validateContact,
   type ContactErrors,
   type ContactFields,
 } from "@/lib/contact-schema";
+import { contactMailto, contactOutcome, failureNotice } from "@/lib/contact-outcome";
 
 const fieldClass =
   "w-full rounded-xl bg-white px-5 py-4.5 font-sans text-[17px] text-ink outline-none";
@@ -65,46 +65,29 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...values, company }),
       });
-      const data = await response.json().catch(() => ({}));
+      const data: unknown = await response.json().catch(() => ({}));
+      const outcome = contactOutcome(response.status, data, site.email);
 
-      if (response.status === 422 && data.errors) {
-        setErrors(data.errors as ContactErrors);
+      if (outcome.kind === "fieldErrors") {
+        setErrors(outcome.errors);
         setStatus("idle");
         return;
       }
-
-      if (response.status === 429) {
+      if (outcome.kind === "error") {
         setStatus("error");
-        setNotice(
-          data.error ?? "Too many messages just now — please try again shortly.",
-        );
+        setNotice(outcome.notice);
         return;
       }
-
-      if (!response.ok) throw new Error(data.error ?? "Request failed");
-
-      if (data.delivery === "unconfigured") {
-        // No mail provider wired up yet — hand the visitor a prefilled email
-        // rather than silently dropping their message.
-        const subject = `Portfolio enquiry — ${values.name}`;
-        window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-          subject,
-        )}&body=${encodeURIComponent(formatContactBody(values))}`;
-        setStatus("sent");
-        setNotice(
-          "Your mail app should be opening with the message ready to send.",
-        );
-        return;
+      if (outcome.kind === "mailto") {
+        window.location.href = contactMailto(values, site.email);
+      } else {
+        setValues(emptyContact);
       }
-
       setStatus("sent");
-      setNotice("Thanks — your message is on its way. I usually reply the same day.");
-      setValues(emptyContact);
+      setNotice(outcome.notice);
     } catch {
       setStatus("error");
-      setNotice(
-        `Something went wrong sending that. Email me directly at ${site.email}.`,
-      );
+      setNotice(failureNotice(site.email));
     }
   }
 
