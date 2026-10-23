@@ -74,7 +74,7 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
   field errors (422), rate limit (429, with a default text) and every other failure
   (the email-me notice, never raw server text). No new dependency. Eight tests; build
   and check:site pass.
-- **[P2] vitest past the @vitest/mocker advisories** (item 22), PR #31 (2026-10-23).
+- **[P2] vitest past the @vitest/mocker advisories** (item 22), PR #31 (2026-10-23), squash `48f5558`.
   vitest 5.0.2 → 5.0.3 (published 2026-09-30; both advisories are fixed from 5.0.3, so
   5.0.5 was not needed). Installed with `npm install --before=2026-10-09`, so the
   re-resolved transitive tooling (vite 8.3.4, rolldown 1.2.13) is also two weeks old;

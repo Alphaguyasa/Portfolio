@@ -17,7 +17,7 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   next went to 16.4.1 in the same PR (9 days old: the critical fix overrode the
   two-week rule, logged as A15). Locally: build, check:site 11 pages, Lighthouse `/` 90
   and project page 95.
-- **Item 22** — PR #31: vitest 5.0.3 (two weeks old, fixes both @vitest/mocker
+- **Item 22** — PR #31 (merged, squash `48f5558`): vitest 5.0.3 (two weeks old, fixes both @vitest/mocker
   advisories). Installed with `npm install --before=2026-10-09`, because a plain install
   pulled a two-day-old vite. npm 10 crashes on this tree ("edgesOut"); npm 11 works.
 - **Item 21** — PR #32 (this one): the contact form's reply handling is a pure, tested
@@ -35,7 +35,7 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
 | Field | Content |
 |---|---|
 | Done | Sync + Next.js 16.4.1 security patch (PR #30), item 22 vitest (PR #31), item 21 form state tests (PR #32) |
-| Merged | #30 yes, `44cb14d` · #31 and #32 see PRs (tags not pushable: A10) |
+| Merged | #30 yes, `44cb14d` · #31 yes, `48f5558` · #32 see PR (tags not pushable: A10) |
 | Failed or blocked | Release tags not pushable (A10) |
 | Roadmap | 7 items open; replan done (items 23–25 added) |
 | Model | Opus 5.5, newest Opus; no action needed |
