@@ -13,16 +13,11 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-21: 4 items were left after items 15 and 16; added 19–21.
 2026-10-22: items 19 and 20 done, item 22 added; 6 open, so no replan.
 2026-10-23: 4 items were left after items 22 and 21; added 23–25.
+2026-10-24: items 23 and 24 done, item 26 added; 6 open, so no replan.
 
 ---
 
 ## Open
-
-### 24. [P2 · S] Browser test of the contact form in check:site
-The form's state logic is unit-tested (item 21), but nothing clicks it. check:site
-already runs Playwright: submit the empty form (errors shown, focus on the first
-field), then a valid one with the route answering `unconfigured` (the "Message sent"
-state, mailto navigation intercepted). No real email is sent; CI has no provider key.
 
 ### 25. [P2 · S] Weekly production audit on main
 CI audits only on PRs and pushes, so a new advisory against the deployed build (like
@@ -30,12 +25,22 @@ next 16.4.0 on 2026-10-23) is seen only when the next PR runs. Add a weekly `sch
 to a small audit-only workflow (`npm ci --ignore-scripts && npm audit --omit=dev
 --audit-level=high`, about 1 minute), so a red run shows on main between daily runs.
 
+### 26. [P2 · S] fast-uri 3.1.9 for four moderate advisories (dev-only)
+`npm audit` (2026-10-24) reports GHSA-w74x-v6f9-j3xg, -xhq7-xmqj-769h,
+-wjr9-j795-jxcr and -333x-w4r6-6crp in fast-uri 3.1.8, reached only through
+lighthouse → ajv (dev-only, never shipped; production audit clean). The fix, 3.1.9,
+was published 2026-10-19, so it meets the two-week rule on **2026-11-02**. Then
+update the lockfile (`npm update fast-uri --before=<date>`), check that nothing else
+moves, and confirm `npm audit` is clean.
+
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
 Re-check weekly; take the upstream fix when a 16.x release ships one.
 Still 5 high (dev-only) on 2026-10-20, 2026-10-21, 2026-10-22 and 2026-10-23
 (eslint-config-next 16.4.2 still pulls the same chain); production audit clean.
+2026-10-24: the 5 high are no longer reported; the dev tree now shows only the
+fast-uri moderate (item 26). Keep re-checking until that is gone, then close this.
 
 ### 17. [P3 · S] Find new public repos without the owner listing
 Listing Alphaguyasa's repos returns 403 in the cloud run, so a new public repo appears
@@ -62,6 +67,12 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] Browser test of the contact form** (item 24), PR #35 (2026-10-24). check:site
+  now clicks the form on `/` at 1440px and 375px: an empty submit must show all seven
+  errors, move focus to the name field and post nothing; a valid one, with
+  `/api/contact` stubbed to answer `unconfigured` (so no email can be sent), must post
+  the fields with the honeypot empty and reach "Message sent" with the mail-app
+  notice, without leaving the page. Checked to fail when the stub answers 500.
 - **[P2] Exact dependency pins** (item 23), PR #34 (2026-10-24). The nine ranged
   devDependencies are pinned to the versions already in package-lock.json (no
   upgrades; the lockfile's root entry updated to match, `npm ci` clean).

@@ -41,6 +41,59 @@ async function waitForServer(url, timeoutMs = 60_000) {
   throw new Error(`server did not start at ${url}`);
 }
 
+/**
+ * Clicks through the contact form on "/": an empty submit must show the errors and
+ * move focus to the first field; a valid one, with /api/contact stubbed to answer
+ * `unconfigured`, must reach "Message sent" with the mail-app notice. The stub
+ * means no email can be sent, even where a provider key is set. Headless Chromium
+ * has no mail app, so the form's mailto hand-off is a no-op there (checked: no
+ * navigation, no console error).
+ */
+async function checkContactForm(vp) {
+  const found = [];
+  const fail = (msg) => found.push(`/ [${vp.name}] contact form: ${msg}`);
+  const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+  const page = await context.newPage();
+  let posted = null;
+  await page.route("**/api/contact", async (route) => {
+    posted = route.request().postDataJSON();
+    await route.fulfill({ json: { ok: true, delivery: "unconfigured" } });
+  });
+  try {
+    await page.goto(BASE + "/", { waitUntil: "networkidle" });
+    const form = page.locator("form").filter({ has: page.getByRole("button", { name: "Send Message" }) });
+    const submit = form.getByRole("button", { name: "Send Message" });
+
+    await submit.click();
+    const alerts = await form.getByRole("alert").count();
+    if (alerts < 7) fail(`empty submit showed ${alerts} error(s), expected 7`);
+    const focused = await page.evaluate(() => document.activeElement?.getAttribute("name"));
+    if (focused !== "name") fail(`empty submit left focus on "${focused}", expected the name field`);
+    if (posted) fail("empty submit reached /api/contact");
+
+    await form.getByLabel("Your Name").fill("Check Site");
+    await form.getByLabel("Email").fill("check@example.com");
+    await form.getByLabel("Phone").fill("+251 900 000 000");
+    await form.getByLabel("I’m Interested in").selectOption({ index: 1 });
+    await form.getByLabel("Budget Range (USD)").selectOption({ index: 1 });
+    await form.getByLabel("Country").fill("Ethiopia");
+    await form.getByLabel("Your Message").fill("An automated check of the contact form.");
+    await submit.click();
+
+    const sent = page.getByRole("status").filter({ hasText: "Message sent" });
+    await sent.waitFor({ timeout: 10_000 });
+    if (!(await sent.textContent())?.includes("mail app")) fail("the sent state did not show the mail-app notice");
+    if (new URL(page.url()).pathname !== "/") fail(`the mailto hand-off navigated to ${page.url()}`);
+    if (!posted || posted.name !== "Check Site") fail("the valid submit did not post the form fields");
+    if (posted && posted.company !== "") fail("the honeypot field was not posted empty");
+  } catch (err) {
+    fail(String(err?.message ?? err).split("\n")[0]);
+  } finally {
+    await context.close();
+  }
+  return found;
+}
+
 const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", String(PORT)], {
   stdio: ["ignore", "inherit", "inherit"],
 });
@@ -122,7 +175,9 @@ try {
     }
   }
 
-  console.log(`check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked`);
+  for (const vp of VIEWPORTS) problems.push(...(await checkContactForm(vp)));
+
+  console.log(`check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked`);
 } catch (err) {
   problems.push(String(err?.stack ?? err));
 } finally {
