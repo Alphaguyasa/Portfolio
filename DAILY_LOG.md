@@ -4,6 +4,40 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-24 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last 3 push runs.
+- **Sync** — PR #33 (merged, squash `4928d5d`): all 9 repos read (122 API requests;
+  owner listing still 403). Every fact verified; no status, release, CI result or npm
+  version changed, so projects.json is unchanged. Copy and feed regenerated.
+- **Item 23** — PR #34 (merged, squash `bf65d86`): the nine ranged devDependencies
+  pinned to their locked versions (no upgrades); `tests/pins.test.ts` guards it.
+- **Item 24** — PR #35 (this one): check:site clicks the contact form at both widths
+  (empty submit, then a valid one against a stubbed `/api/contact`). 11 pages clean.
+- **Item 11:** the 5 high dev-only advisories are no longer reported. New: one
+  moderate (fast-uri 3.1.8 via lighthouse → ajv, dev-only); the fix is 5 days old, so
+  it is item 26, due on 2026-11-02. Production audit clean.
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+- Local tooling: Chromium 1243 is preinstalled now, so check:site ran without the
+  symlink workaround; `npm ci` on npm 10 worked.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #33), item 23 exact pins (PR #34), item 24 contact form browser test (PR #35) |
+| Merged | #33 yes, `4928d5d` · #34 yes, `bf65d86` · #35 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 6 items open; no replan needed (item 26 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Daily sync; item 25 (weekly production audit), then item 11 re-check / 17 |
+
+---
+
 ## 2026-10-23 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
