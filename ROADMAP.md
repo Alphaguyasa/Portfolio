@@ -18,12 +18,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
-### 23. [P2 · S] Pin every dependency exactly
-CLAUDE.md asks for exact pins, but nine entries in package.json still use ranges
-(`^4`, `^19`, `^16.3.8`, …). The lockfile holds them today, but any `npm install`
-can move them. Pin each to the version in package-lock.json (no upgrades), and add a
-test that fails on a range in `dependencies` or `devDependencies`.
-
 ### 24. [P2 · S] Browser test of the contact form in check:site
 The form's state logic is unit-tested (item 21), but nothing clicks it. check:site
 already runs Playwright: submit the empty form (errors shown, focus on the first
@@ -68,6 +62,11 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] Exact dependency pins** (item 23), PR #34 (2026-10-24). The nine ranged
+  devDependencies are pinned to the versions already in package-lock.json (no
+  upgrades; the lockfile's root entry updated to match, `npm ci` clean).
+  `tests/pins.test.ts` fails on any range, on a pin that differs from the lockfile,
+  and on a root entry out of step with package.json.
 - **[P3] Contact form state tests** (item 21), PR #32 (2026-10-23). The reply handling
   moved out of `ContactForm.tsx` into a pure `contactOutcome()` and `contactMailto()`
   in `src/lib/contact-outcome.ts`: sent, mailto fallback on `unconfigured`, server
