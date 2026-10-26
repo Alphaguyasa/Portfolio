@@ -17,3 +17,13 @@ export function classifyConsole(type, text) {
   if (ALLOWED_CONSOLE_ERRORS.some((pattern) => pattern.test(text))) return null;
   return "error";
 }
+
+/**
+ * On the 404 check, Chromium logs the page's own 404 as a console error ("Failed
+ * to load resource ... 404"). That one is the expected answer, so it is allowed
+ * only when its source is the page itself; a 404 for any script, style or image on
+ * that page still fails.
+ */
+export function isOwnNotFound(text, sourceUrl, pageUrl) {
+  return /status of 404/.test(text) && sourceUrl === pageUrl;
+}

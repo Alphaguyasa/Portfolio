@@ -9,6 +9,8 @@
  *     page may log a CSP violation (a blocked script, style, font or image)
  *   - page errors: no uncaught exception and no console error (a failed hydration
  *     or a missing script shows up as one of these, not as a broken link)
+ *   - 404 page: an unknown path must answer 404 with the not-found page, which no
+ *     link reaches, so the crawl alone would never check it
  *
  *   npm run build && npm run check:site
  *
@@ -18,7 +20,7 @@
 import { spawn } from "node:child_process";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
-import { classifyConsole } from "./lib/page-errors.mjs";
+import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
 const BASE = `http://127.0.0.1:${PORT}`;
@@ -26,6 +28,8 @@ const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900 },
   { name: "phone", width: 375, height: 800 },
 ];
+
+const NOT_FOUND_PATH = "/check-site-unknown-page";
 
 async function waitForServer(url, timeoutMs = 60_000) {
   const start = Date.now();
@@ -39,6 +43,52 @@ async function waitForServer(url, timeoutMs = 60_000) {
     await new Promise((r) => setTimeout(r, 500));
   }
   throw new Error(`server did not start at ${url}`);
+}
+
+/** Serious or critical WCAG 2.1 A/AA violations on the loaded page. */
+async function axeProblems(page, label) {
+  const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]).analyze();
+  return axe.violations
+    .filter((v) => v.impact === "serious" || v.impact === "critical")
+    .map((v) => {
+      const where = v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ");
+      return `${label} a11y ${v.impact}: ${v.id} (${v.help}) at ${where}`;
+    });
+}
+
+/**
+ * Opens an unknown path: it must answer 404 (not a 200 soft-404) with the
+ * not-found page, carry the CSP header, pass axe, log no errors other than its
+ * own 404, and link back home.
+ */
+async function checkNotFound(vp) {
+  const label = `${NOT_FOUND_PATH} [${vp.name}] 404 page`;
+  const found = [];
+  const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+  const page = await context.newPage();
+  const url = BASE + NOT_FOUND_PATH;
+  page.on("console", (msg) => {
+    const kind = classifyConsole(msg.type(), msg.text());
+    if (kind === "csp") found.push(`${label}: CSP violation: ${msg.text()}`);
+    else if (kind === "error" && !isOwnNotFound(msg.text(), msg.location().url, url)) {
+      found.push(`${label}: console error: ${msg.text()}`);
+    }
+  });
+  page.on("pageerror", (err) => found.push(`${label}: uncaught: ${err.message}`));
+  try {
+    const res = await page.goto(url, { waitUntil: "networkidle" });
+    if (res?.status() !== 404) found.push(`${label}: HTTP ${res?.status() ?? "no response"}, expected 404`);
+    if (!res?.headers()["content-security-policy"]) found.push(`${label}: no Content-Security-Policy header`);
+    const heading = await page.getByRole("heading", { level: 1 }).textContent();
+    if (!heading?.includes("doesn’t exist")) found.push(`${label}: heading "${heading}" is not the not-found page`);
+    if ((await page.locator('a[href="/"]').count()) === 0) found.push(`${label}: no link back to /`);
+    found.push(...(await axeProblems(page, label)));
+  } catch (err) {
+    found.push(`${label}: ${String(err?.message ?? err).split("\n")[0]}`);
+  } finally {
+    await context.close();
+  }
+  return found;
 }
 
 /**
@@ -131,15 +181,7 @@ try {
 
       if (!res.headers()["content-security-policy"]) problems.push(`${pathname}: no Content-Security-Policy header`);
 
-      const axe = await new AxeBuilder({ page })
-        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-        .analyze();
-      for (const v of axe.violations) {
-        if (v.impact === "serious" || v.impact === "critical") {
-          const where = v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ");
-          problems.push(`${pathname} [${vp.name}] a11y ${v.impact}: ${v.id} (${v.help}) at ${where}`);
-        }
-      }
+      problems.push(...(await axeProblems(page, `${pathname} [${vp.name}]`)));
 
       if (vp.name === "desktop") {
         const { links, ids } = await page.evaluate(() => ({
@@ -176,8 +218,11 @@ try {
   }
 
   for (const vp of VIEWPORTS) problems.push(...(await checkContactForm(vp)));
+  for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
-  console.log(`check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked`);
+  console.log(
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked`,
+  );
 } catch (err) {
   problems.push(String(err?.stack ?? err));
 } finally {
