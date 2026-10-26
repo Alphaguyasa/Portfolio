@@ -4,6 +4,39 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-26 — scheduled run (evening)
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+A second scheduled run on the same day; the morning run's PRs (#36–#38) were already merged.
+
+- **Main:** CI green on the last 3 push runs.
+- **Sync** — PR #39 (merged, squash `73fec9c`): all 9 repos read (123 API requests;
+  owner listing and search still 403). Every fact verified, no status, release or npm
+  version changed, so projects.json is unchanged. Meret's last commit is now
+  2026-10-26. CI on the default branch turned red for docsearch (`deploy-not-alone`)
+  and Meret; the site reads CI live, so it shows that as is.
+- **Item 27** — PR #40 (merged, squash `342ed6b`): Actions pinned to commit SHAs.
+- **Item 28** — PR #41 (this one): the 404 page is checked by check:site.
+- **Item 11:** unchanged (only the fast-uri moderate, dev-only, item 26 due
+  2026-11-02). Production audit clean.
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #39), item 27 Actions SHA pins (PR #40), item 28 404 page check (PR #41) |
+| Merged | #39 yes, `73fec9c` · #40 yes, `342ed6b` · #41 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 6 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Daily sync; item 29 (`npm audit signatures`), then 30 (README); item 26 from 2026-11-02 |
+
+---
+
 ## 2026-10-26 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

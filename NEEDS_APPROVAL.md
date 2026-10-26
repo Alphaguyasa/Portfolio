@@ -49,6 +49,8 @@ Still refused on 2026-10-24; also missing: `v2026-10-24-1 4928d5d` (PR #33),
 `v2026-10-24-2 bf65d86` (PR #34) and `v2026-10-24-3` on the PR #35 squash commit.
 Still refused on 2026-10-26; also missing: `v2026-10-26-1 7d90d91` (PR #36),
 `v2026-10-26-2 548a3d7` (PR #37) and `v2026-10-26-3` on the PR #38 squash commit.
+Still refused in the 2026-10-26 evening run; also missing: `v2026-10-26-4 73fec9c` (PR #39),
+`v2026-10-26-5 342ed6b` (PR #40) and `v2026-10-26-6` on the PR #41 squash commit.
 
 ## Resolved
 

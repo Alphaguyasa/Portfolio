@@ -15,21 +15,11 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-23: 4 items were left after items 22 and 21; added 23–25.
 2026-10-24: items 23 and 24 done, item 26 added; 6 open, so no replan.
 2026-10-26: 4 items were left after items 25 and 17; added 27–30.
+2026-10-26 (evening run): items 27 and 28 done; 6 open, so no replan.
 
 ---
 
 ## Open
-
-### 27. [P2 · S] Pin GitHub Actions to commit SHAs
-`ci.yml` and `audit.yml` use `actions/checkout@v4`, `actions/setup-node@v4` and
-`actions/cache@v4` by moving tag. A re-pointed tag would run new code with the repo's
-token. Pin each to the full commit SHA of the current release (comment with the
-version), and add a test that every `uses:` is a 40-character SHA.
-
-### 28. [P2 · S] Check the 404 page in check:site
-check:site crawls links from `/`, so `src/app/not-found.tsx` is never visited. Add an
-unknown path to the run: it must answer 404, pass axe at 1440px and 375px, show no
-page errors and link back home.
 
 ### 29. [P3 · S] Verify registry signatures in CI
 Add `npm audit signatures` after `npm ci` in CI (seconds, free): it fails if an
@@ -58,6 +48,7 @@ Still 5 high (dev-only) on 2026-10-20, 2026-10-21, 2026-10-22 and 2026-10-23
 2026-10-24: the 5 high are no longer reported; the dev tree now shows only the
 fast-uri moderate (item 26). Keep re-checking until that is gone, then close this.
 2026-10-26: unchanged (only the fast-uri moderate, dev-only); production audit clean.
+2026-10-26 (evening): unchanged.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -78,6 +69,15 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] 404 page in check:site** (item 28), PR #41 (2026-10-26). check:site opens an
+  unknown path at both widths: it must answer 404 (not a soft 200), show the not-found
+  page with the CSP header, pass axe, log no error but its own 404, and link home.
+  `isOwnNotFound()` allows only the page's own 404 line; three tests. Checked to fail
+  when pointed at `/about`.
+- **[P2] GitHub Actions pinned to commit SHAs** (item 27), PR #40 (2026-10-26), squash
+  `342ed6b`. checkout v4.4.0, setup-node v4.4.0, cache v4.3.0, each the commit `v4`
+  pointed to (no behaviour change; all older than two weeks). A test fails on any
+  `uses:` that is not a 40-character SHA with a version comment.
 - **[P3] Find new public repos without the owner listing** (item 17), PR #38
   (2026-10-26). When the owner listing is refused, the sync now also asks the search
   API (`user:<owner> fork:false`) and logs every public repo it finds that the config
