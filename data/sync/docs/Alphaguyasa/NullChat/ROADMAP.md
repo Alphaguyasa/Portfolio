@@ -13,11 +13,7 @@ network are a wrong clock and leaving the app mid-send.
 
 | # | Item | Pri | Effort | Notes |
 |---|---|---|---|---|
-| 31 | **Forget peer, block sender** (part 2; delete chat shipped in #41). A spammer cannot be silenced. Block drops delivery but still relays; needs a `peers.blocked` column (Room 8→9). | P1 | M | |
-| 33 | **App lock hides notification text**: while the lock is on, show "New message" only. | P2 | S | Privacy |
-| 34 | **Bundle the fonts**: `GoogleFont.Provider` needs internet. On a phone that was never online the fingerprints render in a proportional font. Ship the OFL fonts in `res/font`. | P2 | S | APK +~300 KB |
 | 35 | **`InboundHandler` extraction + JVM tests** for the inbound path (collectIncoming, fragments, offerQueued, releaseHeld). Replaces the tech-debt line. | P2 | M | |
-| 36 | **Message info** on long-press: sent time, received time, state, hops, sender id. | P2 | S | |
 | 37 | **Search in a chat** (LIKE over the body, highlighted). | P2 | M | |
 | 38 | **Share into Null Chat / forward a message** (`SEND text/plain` + peer picker). | P2 | M | No wire change |
 | 39 | **Disappearing messages, part 2**: tell the other phone the timer (new packet type, old builds ignore it). | P2 | M | Wire change |
@@ -75,3 +71,9 @@ change once decided.
 | 2026-10-24 | #30 A link belongs to a peer only after a verified ANNOUNCE on it (`LinkBindings`) | #40 | see log |
 | 2026-10-24 | #31 part 1: Delete chat (thread menu; own queued messages and the timer stay; tombstoned) | #41 | see log |
 | 2026-10-24 | #32 Router: duplicates dropped before the Ed25519 check; inbound ttl clamped to 6 | #42 | see log |
+| 2026-10-25 | #31 part 2: Block sender (Room 8→9; dropped before storing, not acknowledged, still relayed) | #43 | see log |
+| 2026-10-25 | #33 App lock hides notification text ("New message" only, sender name too) | #44 | see log |
+| 2026-10-25 | #34 Bundle the fonts (static 400/500 OFL subsets in `res/font`; Play Services font download removed) | #45 | see log |
+| 2026-10-26 | Dependabot #46 re-applied (Tink 1.24.0, Gradle 9.8.2, test-only kotlinx-serialization 1.12.0) | #47 | see log |
+| 2026-10-26 | #36 Message info (long-press → Info: state and hops, sender id, both clocks, timer) | #48 | see log |
+| 2026-10-26 | #31 part 3: Forget contact (thread, row and queued sends removed; keys kept, since the id commits to them; not while blocked) | #49 | see log |
