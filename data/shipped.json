@@ -3,6 +3,134 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
+    "title": "fix: Today's figures stay whole at a large font; large-text check (R20)",
+    "date": "2026-10-26T05:38:50Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/41"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "test: accessibility checks on the dialogs with text fields (R18, part 2)",
+    "date": "2026-10-26T05:21:21Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/37"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "feat(settings): reset says what has not synced and offers the backup first",
+    "date": "2026-10-26T04:21:53Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/35"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "fix(a11y): every till control is a 56px touch target",
+    "date": "2026-10-26T04:16:03Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/34"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Upgrade zod to 4.6.7 for GHSA-mrhx-c7xc-m3w5",
+    "date": "2026-10-26T03:45:00Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/128"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Upgrade Next.js to 16.4.3 and rename middleware to proxy",
+    "date": "2026-10-26T03:42:00Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/127"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Forget contact: remove a peer, its chat and its queued sends from this phone",
+    "date": "2026-10-26T03:40:21Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/49"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Message info: long-press a message to see who, when and how far",
+    "date": "2026-10-26T03:32:22Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/48"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Bump Tink 1.24.0, Gradle 9.8.2, kotlinx-serialization (test) 1.12.0",
+    "date": "2026-10-26T03:22:28Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/47"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-10-26-3",
+    "date": "2026-10-26T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-26-3"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Send the Gemini key in a header instead of the URL",
+    "date": "2026-10-25T03:44:58Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/126"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Bundle the fonts: ship OFL subsets in res/font; log 2026-10-25",
+    "date": "2026-10-25T03:41:53Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/45"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Require the cron secret on /api/telegram/daily, compare bot secrets in constant time",
+    "date": "2026-10-25T03:41:36Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/125"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "App lock hides notification text: \"New message\" only",
+    "date": "2026-10-25T03:32:29Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/44"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Block sender: drop a blocked peer's messages on this phone (Room 8→9)",
+    "date": "2026-10-25T03:25:07Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/43"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-10-25-3",
+    "date": "2026-10-25T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-25-3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
     "title": "feat: an optional note when a period closes with a gap (R21)",
     "date": "2026-10-24T05:20:23Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/38"
@@ -30,133 +158,5 @@
     "title": "fix(i18n): sign-in and sync errors in the UI language",
     "date": "2026-10-24T04:28:32Z",
     "url": "https://github.com/Alphaguyasa/Suq/pull/31"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix(sales): a sale voided on two tills is voided once (+ zod advisory override)",
-    "date": "2026-10-24T04:21:38Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/30"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Show search errors in the reader's language, not raw upstream text",
-    "date": "2026-10-24T03:44:31Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/124"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Start ingest after a fetch, and stop queued fetch runs from conflicting",
-    "date": "2026-10-24T03:41:17Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/123"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Router: drop duplicates before verifying, clamp inbound ttl; log 2026-10-24",
-    "date": "2026-10-24T03:40:42Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/42"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Delete chat: empty a thread on this phone from its menu",
-    "date": "2026-10-24T03:32:52Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/41"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "A link belongs to a peer only after its verified ANNOUNCE arrives on it",
-    "date": "2026-10-24T03:25:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/40"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-10-24-3",
-    "date": "2026-10-24T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-24-3"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "test: accessibility checks on the dialogs with no text field (R18, part 1)",
-    "date": "2026-10-23T05:28:39Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/34"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "feat: the daily-net chart has a spoken summary for TalkBack (R19)",
-    "date": "2026-10-23T05:22:41Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/35"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "StyleProvider: style template with the loopback source (roadmap item 13, 6d-1)",
-    "date": "2026-10-23T04:49:08Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/35"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Network security config: cleartext to 127.0.0.1 only (roadmap item 13, 6c)",
-    "date": "2026-10-23T04:47:30Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/34"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix(import): a bad CSV row no longer aborts the import; honest summary",
-    "date": "2026-10-23T04:33:26Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/28"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix: say why a save failed on every screen, reject negative prices",
-    "date": "2026-10-23T04:23:25Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/27"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Order threads by this phone's clock, not the sender's; log 2026-10-23",
-    "date": "2026-10-23T03:49:50Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/39"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "End a Gemini story in an error when it was cut off or blocked",
-    "date": "2026-10-23T03:44:22Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/122"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Self-host the site fonts so builds stop failing on Google Fonts",
-    "date": "2026-10-23T03:41:50Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/121"
   }
 ]
