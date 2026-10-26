@@ -3,6 +3,94 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
+    "title": "feat: show the last backup and remind after 30 days without one (R23)",
+    "date": "2026-10-26T18:24:29Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/43"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "perf(reports): reports and sales history read only what they show",
+    "date": "2026-10-26T18:08:31Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/38"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "perf(till): screens read stock from the cache, recents in one query",
+    "date": "2026-10-26T17:56:05Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/37"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Turn off the Next image optimizer endpoint",
+    "date": "2026-10-26T17:37:37Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/130"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Fail CI on high or critical advisories in production dependencies",
+    "date": "2026-10-26T17:33:39Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/129"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Send closed tracking gaps to Telemetry (roadmap item 17)",
+    "date": "2026-10-26T17:27:59Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/42"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Map screen draws the installed pack (roadmap item 13, 6f-1)",
+    "date": "2026-10-26T17:21:40Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/41"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Share into Null Chat and forward a message",
+    "date": "2026-10-26T16:16:38Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/52"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Search in a chat: find words in one thread, highlighted",
+    "date": "2026-10-26T16:10:41Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/51"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "InboundHandler: move the inbound path out of MeshCoordinator, with JVM tests",
+    "date": "2026-10-26T15:59:07Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/50"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "MapLibre MapView wrapper with lifecycle and session hold (roadmap item 13, 6e-2)",
+    "date": "2026-10-26T11:44:03Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/40"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
     "title": "fix: Today's figures stay whole at a large font; large-text check (R20)",
     "date": "2026-10-26T05:38:50Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/41"
@@ -70,93 +158,5 @@
     "title": "Bump Tink 1.24.0, Gradle 9.8.2, kotlinx-serialization (test) 1.12.0",
     "date": "2026-10-26T03:22:28Z",
     "url": "https://github.com/Alphaguyasa/NullChat/pull/47"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-10-26-3",
-    "date": "2026-10-26T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-26-3"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Send the Gemini key in a header instead of the URL",
-    "date": "2026-10-25T03:44:58Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/126"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Bundle the fonts: ship OFL subsets in res/font; log 2026-10-25",
-    "date": "2026-10-25T03:41:53Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/45"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Require the cron secret on /api/telegram/daily, compare bot secrets in constant time",
-    "date": "2026-10-25T03:41:36Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/125"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "App lock hides notification text: \"New message\" only",
-    "date": "2026-10-25T03:32:29Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/44"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Block sender: drop a blocked peer's messages on this phone (Room 8→9)",
-    "date": "2026-10-25T03:25:07Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/43"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-10-25-3",
-    "date": "2026-10-25T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-25-3"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "feat: an optional note when a period closes with a gap (R21)",
-    "date": "2026-10-24T05:20:23Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/38"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "OfflineMapSession and PackDirectoryResolver (roadmap item 13, 6e-1)",
-    "date": "2026-10-24T04:51:34Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/38"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Bundle the glyph stack and sprite in :core:maps assets (roadmap item 13, 6d-2)",
-    "date": "2026-10-24T04:45:39Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/37"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix(i18n): sign-in and sync errors in the UI language",
-    "date": "2026-10-24T04:28:32Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/31"
   }
 ]

@@ -71,7 +71,7 @@ How I work: 5 of my 9 listed projects keep a written roadmap and 6 have CI on Gi
 
 - **Short:** Offline maps and GPS logging for field teams. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved..
 - **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.
-- **Status:** In development · last commit 2026-10-24. Early. The project skeleton, core model, database and location engine are done; tracking, maps and forms are next.
+- **Status:** In development · last commit 2026-10-26. Early. The project skeleton, core model, database and location engine are done; tracking, maps and forms are next.
 - **Skills:** Kotlin, Jetpack Compose, Room, multi-module Gradle
 - **Link:** https://github.com/Alphaguyasa/Meret
 
@@ -123,7 +123,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Suq**: Offline-first point of sale and inventory. A sale writes to IndexedDB in one transaction and never touches the network. (In development · last commit 2026-10-26) https://github.com/Alphaguyasa/Suq
 - **DocSearch → Not Alone**: Cited answers from documents, now pivoting to a scripture app. 91 human-reviewed evaluation questions. (In development · last commit 2026-10-26) https://github.com/Alphaguyasa/docsearch
 - **NullChat**: Peer-to-peer messaging with no network. 100 instrumented tests run in CI on an API 34 emulator. (In development · last commit 2026-10-26) https://github.com/Alphaguyasa/NullChat
-- **Meret**: Offline maps and GPS logging for field teams. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine. (In development · last commit 2026-10-24) https://github.com/Alphaguyasa/Meret
+- **Meret**: Offline maps and GPS logging for field teams. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine. (In development · last commit 2026-10-26) https://github.com/Alphaguyasa/Meret
 - **ethiopic-text**: Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped. (Shipped · npm 0.1.0 · last commit 2026-08-05) https://github.com/Alphaguyasa/ethiopic-text
 - **HU News**: Haramaya University news app. Signed release APK committed to the repo. (Shipped · last commit 2026-05-02) https://github.com/Alphaguyasa/HUnews
 - **Security Scanner**: Automated web vulnerability scanner, similar to online pentesting platforms. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.. (Completed · last commit 2026-05-12) https://github.com/vulnerability-scanner-website/Final-year-project
@@ -135,7 +135,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Suq** — Offline-first point of sale and inventory. Next.js, TypeScript, Dexie (IndexedDB), Supabase, Serwist. In development · last commit 2026-10-26.
 - **DocSearch → Not Alone** — Cited answers from documents, now pivoting to a scripture app. Next.js, TypeScript, Postgres + pgvector, Voyage embeddings, Anthropic / Gemini. In development · last commit 2026-10-26.
 - **NullChat** — Peer-to-peer messaging with no network. Kotlin, Jetpack Compose, Bluetooth LE, Wi-Fi Direct, Room. In development · last commit 2026-10-26.
-- **Meret** — Offline maps and GPS logging for field teams. Kotlin, Jetpack Compose, Room, multi-module Gradle. In development · last commit 2026-10-24.
+- **Meret** — Offline maps and GPS logging for field teams. Kotlin, Jetpack Compose, Room, multi-module Gradle. In development · last commit 2026-10-26.
 - **ethiopic-text** — Search and normalization for Ethiopic script. TypeScript. Shipped · npm 0.1.0 · last commit 2026-08-05.
 - **HU News** — Haramaya University news app. Flutter, Dart, WordPress REST API. Shipped · last commit 2026-05-02.
 - **Security Scanner** — Automated web vulnerability scanner, similar to online pentesting platforms. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Completed · last commit 2026-05-12.
