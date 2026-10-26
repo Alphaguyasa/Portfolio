@@ -4,6 +4,43 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-26 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last 3 push runs.
+- **Sync** — PR #36 (merged, squash `7d90d91`): all 9 repos read (122 API requests;
+  owner listing still 403). Every fact verified; no status, release, CI result or npm
+  version changed, so projects.json is unchanged. Copy and feed regenerated.
+- **Item 25** — PR #37 (merged, squash `548a3d7`): weekly production audit on main
+  (`.github/workflows/audit.yml`, Mondays 04:00 UTC). It first runs on 2026-11-02;
+  it can also be started by hand.
+- **Item 17** — PR #38 (this one): when the owner listing is refused, the sync asks the
+  search API and logs public repos missing from the config, without syncing them. The
+  cloud run refuses the search API too (403), which is logged and harmless.
+- **Item 11:** unchanged, only the fast-uri moderate (dev-only, item 26, due 2026-11-02).
+  Production audit clean.
+- **Replan:** 4 items were left, so four were added: Actions pinned to SHAs (27), the
+  404 page in check:site (28), `npm audit signatures` in CI (29), README update (30).
+- **Branch:** a force push to reset the session branch after a squash merge was refused,
+  so main is merged into the branch instead (no history rewritten).
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #36), item 25 weekly audit (PR #37), item 17 repo discovery (PR #38) |
+| Merged | #36 yes, `7d90d91` · #37 yes, `548a3d7` · #38 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 8 items open; replan done (items 27–30 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Daily sync; item 27 (Actions SHA pins), then 28 (404 page check); item 26 from 2026-11-02 |
+
+---
+
 ## 2026-10-24 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
