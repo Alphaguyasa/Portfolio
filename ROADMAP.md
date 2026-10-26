@@ -14,16 +14,32 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-22: items 19 and 20 done, item 22 added; 6 open, so no replan.
 2026-10-23: 4 items were left after items 22 and 21; added 23–25.
 2026-10-24: items 23 and 24 done, item 26 added; 6 open, so no replan.
+2026-10-26: 4 items were left after items 25 and 17; added 27–30.
 
 ---
 
 ## Open
 
-### 25. [P2 · S] Weekly production audit on main
-CI audits only on PRs and pushes, so a new advisory against the deployed build (like
-next 16.4.0 on 2026-10-23) is seen only when the next PR runs. Add a weekly `schedule`
-to a small audit-only workflow (`npm ci --ignore-scripts && npm audit --omit=dev
---audit-level=high`, about 1 minute), so a red run shows on main between daily runs.
+### 27. [P2 · S] Pin GitHub Actions to commit SHAs
+`ci.yml` and `audit.yml` use `actions/checkout@v4`, `actions/setup-node@v4` and
+`actions/cache@v4` by moving tag. A re-pointed tag would run new code with the repo's
+token. Pin each to the full commit SHA of the current release (comment with the
+version), and add a test that every `uses:` is a 40-character SHA.
+
+### 28. [P2 · S] Check the 404 page in check:site
+check:site crawls links from `/`, so `src/app/not-found.tsx` is never visited. Add an
+unknown path to the run: it must answer 404, pass axe at 1440px and 375px, show no
+page errors and link back home.
+
+### 29. [P3 · S] Verify registry signatures in CI
+Add `npm audit signatures` after `npm ci` in CI (seconds, free): it fails if an
+installed package's registry signature or provenance attestation does not verify.
+Check locally first that the current tree passes.
+
+### 30. [P3 · S] README: weekly audit and repo discovery
+Document the weekly audit workflow (item 25) and the search fallback with its
+"found but not synced" log line (item 17), so Alpha knows to add a logged repo to
+`knownPublicRepos`.
 
 ### 26. [P2 · S] fast-uri 3.1.9 for four moderate advisories (dev-only)
 `npm audit` (2026-10-24) reports GHSA-w74x-v6f9-j3xg, -xhq7-xmqj-769h,
@@ -41,12 +57,7 @@ Still 5 high (dev-only) on 2026-10-20, 2026-10-21, 2026-10-22 and 2026-10-23
 (eslint-config-next 16.4.2 still pulls the same chain); production audit clean.
 2026-10-24: the 5 high are no longer reported; the dev tree now shows only the
 fast-uri moderate (item 26). Keep re-checking until that is gone, then close this.
-
-### 17. [P3 · S] Find new public repos without the owner listing
-Listing Alphaguyasa's repos returns 403 in the cloud run, so a new public repo appears
-only once it is added to `knownPublicRepos` by hand. Try the search API
-(`user:Alphaguyasa fork:false`) as a second fallback, and log any repo it finds that is
-not in the config, instead of adding it silently. Unit test on the merge of the lists.
+2026-10-26: unchanged (only the fast-uri moderate, dev-only); production audit clean.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -66,6 +77,17 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **Meret:** no repo description is set on GitHub.
 
 ## Done
+
+- **[P3] Find new public repos without the owner listing** (item 17), PR #38
+  (2026-10-26). When the owner listing is refused, the sync now also asks the search
+  API (`user:<owner> fork:false`) and logs every public repo it finds that the config
+  does not list ("NOT synced. Add it to the config"), without syncing it. A refused
+  search is logged and the sync goes on. The cloud run refuses the search API too
+  (403), so here it only logs that; it works wherever the token can search. Five tests.
+- **[P2] Weekly production audit on main** (item 25), PR #37 (2026-10-26).
+  `.github/workflows/audit.yml` runs `npm audit --omit=dev --audit-level=high` on main
+  every Monday 04:00 UTC (and by hand), read-only, install scripts skipped, about a
+  minute. `tests/workflows.test.ts` keeps its command identical to CI's gate.
 
 - **[P2] Browser test of the contact form** (item 24), PR #35 (2026-10-24). check:site
   now clicks the form on `/` at 1440px and 375px: an empty submit must show all seven
