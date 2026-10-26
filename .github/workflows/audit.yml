@@ -1,0 +1,32 @@
+name: Weekly audit
+
+# CI audits only when a PR or a push runs, so an advisory published against the
+# deployed build between changes would go unseen until the next PR. This job
+# re-runs the same production audit on main once a week. Install scripts are
+# skipped: nothing is built here, and it keeps the run to about a minute.
+on:
+  schedule:
+    - cron: "0 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: production audit (weekly)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install
+        run: npm ci --ignore-scripts
+
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
