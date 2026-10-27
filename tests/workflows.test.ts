@@ -31,6 +31,15 @@ describe("weekly production audit", () => {
   });
 });
 
+// Signatures are checked on what `npm ci` actually installed, before any of it runs
+// in a later step (lint, tests, build).
+describe("registry signatures", () => {
+  it("are verified right after install in CI", () => {
+    const steps = [...ci.matchAll(/^\s*run: (.+)$/gm)].map((m) => m[1].trim());
+    expect(steps.indexOf("npm audit signatures")).toBe(steps.indexOf("npm ci") + 1);
+  });
+});
+
 // A tag like `@v4` can be re-pointed to new code that then runs with the repo's
 // token; a full commit SHA cannot. The comment keeps the version readable.
 describe("third-party actions", () => {

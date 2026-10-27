@@ -34,6 +34,11 @@ jobs:
       - name: Install
         run: npm ci
 
+      # Fails if an installed package's registry signature or provenance
+      # attestation does not verify, i.e. the tarball is not what npm published.
+      - name: Verify registry signatures
+        run: npm audit signatures
+
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
 
