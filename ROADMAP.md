@@ -16,20 +16,32 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-24: items 23 and 24 done, item 26 added; 6 open, so no replan.
 2026-10-26: 4 items were left after items 25 and 17; added 27–30.
 2026-10-26 (evening run): items 27 and 28 done; 6 open, so no replan.
+2026-10-27: 4 items were left after items 29 and 30; added 31–34.
 
 ---
 
 ## Open
 
-### 29. [P3 · S] Verify registry signatures in CI
-Add `npm audit signatures` after `npm ci` in CI (seconds, free): it fails if an
-installed package's registry signature or provenance attestation does not verify.
-Check locally first that the current tree passes.
+### 31. [P2 · S] check:site fails on horizontal scroll at 375px
+CLAUDE.md asks for pages readable at phone width with no horizontal page scroll, but
+check:site does not test it. At 375px, fail a page whose `document.documentElement.
+scrollWidth` exceeds its `clientWidth` (marquees must clip, not widen the page). Put
+the rule in a pure helper with tests; check it fails on a forced wide element.
 
-### 30. [P3 · S] README: weekly audit and repo discovery
-Document the weekly audit workflow (item 25) and the search fallback with its
-"found but not synced" log line (item 17), so Alpha knows to add a logged repo to
-`knownPublicRepos`.
+### 32. [P2 · S] Hard cap on the contact rate limiter's memory
+`src/lib/rateLimit.ts` prunes only expired windows once the map holds 500 keys, so
+many distinct client keys inside one window grow it without bound. Add a hard cap
+(evict the oldest windows first) and a test that floods it with distinct keys.
+
+### 33. [P3 · S] Weekly workflow also verifies registry signatures
+Add `npm audit signatures` to `.github/workflows/audit.yml` after `npm ci
+--ignore-scripts`, so a re-published or tampered package is caught in a week with
+no PRs too. Extend `tests/workflows.test.ts`.
+
+### 34. [P3 · S] check:site checks title, description and canonical on every page
+Each page should have a non-empty `<title>`, a meta description and a canonical link
+to its own path on the site URL (clients find the portfolio through search and
+shared links). Fail check:site on a missing or duplicated one; pure helper + tests.
 
 ### 26. [P2 · S] fast-uri 3.1.9 for four moderate advisories (dev-only)
 `npm audit` (2026-10-24) reports GHSA-w74x-v6f9-j3xg, -xhq7-xmqj-769h,
@@ -49,6 +61,7 @@ Still 5 high (dev-only) on 2026-10-20, 2026-10-21, 2026-10-22 and 2026-10-23
 fast-uri moderate (item 26). Keep re-checking until that is gone, then close this.
 2026-10-26: unchanged (only the fast-uri moderate, dev-only); production audit clean.
 2026-10-26 (evening): unchanged.
+2026-10-27: unchanged.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -69,6 +82,12 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P3] README: weekly audit and repo discovery** (item 30), this PR (2026-10-27).
+  Documents `.github/workflows/audit.yml` and what to do when the sync logs a public
+  repo as "NOT synced" (add it to `knownPublicRepos` or `skip`).
+- **[P3] Registry signatures verified in CI** (item 29), PR #43 (2026-10-27), squash
+  `743c871`. `npm audit signatures` runs right after `npm ci`; a test keeps it there.
+  Not runnable locally (the session proxy blocks Sigstore's TUF host); passed in CI.
 - **[P2] 404 page in check:site** (item 28), PR #41 (2026-10-26). check:site opens an
   unknown path at both widths: it must answer 404 (not a soft 200), show the not-found
   page with the CSP header, pass axe, log no error but its own 404, and link home.
