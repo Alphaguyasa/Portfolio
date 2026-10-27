@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-27 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last 2 push runs (the third was cancelled by the next push).
+- **Sync** — PR #42 (merged, squash `3ec8669`): all 9 repos read (123 API requests;
+  owner listing and search still 403). Every fact verified; no status, release or npm
+  version changed, so projects.json is unchanged. Meret's default-branch CI is green
+  again; new merged PRs and NullChat tags.
+- **Item 29** — PR #43 (merged, squash `743c871`): `npm audit signatures` in CI right
+  after install. It could not run locally (the session proxy refuses Sigstore's TUF
+  host with 403); the step passed in CI.
+- **Item 30** — PR #44 (this one): README documents the weekly audit and the
+  "NOT synced" log line for new public repos.
+- **Item 11:** unchanged (only the fast-uri moderate, dev-only, item 26 due
+  2026-11-02). Production audit clean.
+- **Replan:** 4 items were left, so four were added: no horizontal scroll at 375px in
+  check:site (31), a hard cap on the rate limiter's memory (32), signatures in the
+  weekly audit (33), title/description/canonical checks (34).
+- **Tags:** still refused by the session proxy (A10). Rollback points: squash commits.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #42), item 29 registry signatures in CI (PR #43), item 30 README (PR #44) |
+| Merged | #42 yes, `3ec8669` · #43 yes, `743c871` · #44 see PR (tags not pushable: A10) |
+| Failed or blocked | Release tags not pushable (A10) |
+| Roadmap | 8 items open; replan done (items 31–34 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Daily sync; item 31 (no horizontal scroll), then 32 (rate limiter cap); item 26 from 2026-11-02 |
+
+---
+
 ## 2026-10-26 — scheduled run (evening)
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

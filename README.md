@@ -21,8 +21,13 @@ npm run check:lighthouse  # after build: Lighthouse 90+ in all four categories
 ```
 
 `check:site` and `check:lighthouse` need a Chromium (`npx playwright install chromium`).
-CI (`.github/workflows/ci.yml`) runs all of the above, plus a production `npm audit`,
-on every PR and on `main`.
+CI (`.github/workflows/ci.yml`) runs all of the above, plus a production `npm audit`
+and `npm audit signatures`, on every PR and on `main`.
+
+A second workflow, `.github/workflows/audit.yml`, runs the same production audit
+(`npm audit --omit=dev --audit-level=high`) on `main` every Monday at 04:00 UTC, so a
+new advisory shows up even in a week with no PRs. It is read-only, skips install
+scripts and takes about a minute; start it by hand from the Actions tab at any time.
 
 ## How the content flows
 
@@ -41,6 +46,19 @@ data/projects.json ◀── edited by hand, every claim quotes data/sync/docs
    `portfolio.config.json` (public repos by default; a private repo only when listed
    under `include`, and then only its written summary) and writes `data/sync/`. It needs
    `GITHUB_TOKEN`, `GH_TOKEN` or `gh auth token`; a run uses about 120 requests.
+
+   **Finding new repos.** The sync first lists the owner's repos. Where the token may
+   not (403), it reads `knownPublicRepos` in `portfolio.config.json` instead, then asks
+   the search API (`user:<owner> fork:false`) for any public repo missing from that
+   list. Such a repo is **not** synced; the log names it:
+
+   ```
+   found public repo <owner>/<repo> that is not in portfolio.config.json knownPublicRepos; it was NOT synced. Add it to the config to include it.
+   ```
+
+   Add it to `knownPublicRepos` (or to `skip` to keep it off the site), and give the
+   scheduled routine read access to it, so the next sync reads it. Where the search is
+   refused as well, the log says so and new public repos have to be added by hand.
 2. **Projects.** `data/projects.json` holds all project content. Each project lists
    `facts: [{ path, quote }]`; a quote must appear verbatim in that repo's synced doc
    (or its description, for `@description`). Every number shown on the site must
