@@ -11,35 +11,22 @@ several PRs.
 
 Built from the audit on 2026-10-14: the full code read plus the open items in
 `NOTES.md` § "What is left". Replanned on 2026-10-22, when the open list fell below 5:
-R19 to R22 were added. Replanned again on 2026-10-26: R23 to R26 were added.
+R19 to R22 were added. Replanned again on 2026-10-26: R23 to R26 were added. R27 was found on the second
+2026-10-26 run. R28 was found on 2026-10-27.
 
 ## Open
-
-### R23 · P1 · S: Say when the last backup was made, and remind when there is none
-The app is offline and has no sync, so a lost or broken phone loses every ledger and
-credit entry that was never backed up. Today nothing records whether a backup was
-ever made. Store the time of the last successful backup in DataStore (not Room, so no
-schema change). Show it under Backup in Settings ("Last backup: 12 Oct" or "Never").
-On Today, show a dismissable card when there has been no backup for 30 days and the
-ledger has at least one transaction. No new permission and no change to either flavor.
-ViewModel tests for never, recent, stale and dismissed. English and Amharic.
-
-### R26 · P2 · S: Today's headline at a six-figure total and a large font
-The R20 check (PR #41) measured Today's "+12,450.00 ETB" at 278dp of the 296dp it has,
-at font scale 2.0. A total of 100,000.00 ETB or more would wrap. Add that case to
-`LargeTextTest`, then fix it if it fails: for example, let the currency move to its
-own line, or step the headline down one type size when it cannot fit. Never cut it
-off or ellipsize it.
-
-### R24 · P2 · S: Large-text check on the remaining screens
-R20 covered Today, cash entry, Reconcile and the credit statement. Add the ledger, the
-customer list, Reports, Settings, onboarding, the review queue, the transaction detail
-and the dialogs (through `AccessibilityChecks.openDialog`) to `LargeTextTest`.
 
 ### R25 · P2 · S: Large text in Amharic
 Ethiopic labels are often longer than the English ones, and the glyphs are taller.
 Run `LargeTextTest`'s screens with the `am` locale at font scale 2.0
 (`qualifiers = "am-w360dp-h1600dp"`). Fix what wraps badly.
+
+### R28 · P2 · S: The original message row on the transaction detail does not say whether it is open
+The "Original message from …" row expands and collapses the message body, but
+TalkBack hears only its label. The arrow icon has no description and the row has no
+state. Give the row `stateDescription` ("expanded"/"collapsed", in English and
+Amharic) or `Role.Button` with an expand/collapse action, and assert it in
+`TransactionDetailAccessibilityTest`.
 
 ### R10 · P1 · L: Encrypt the database at rest
 **Blocked: see NEEDS_APPROVAL.md A1.** This needs a new native dependency
@@ -69,6 +56,30 @@ picker, so no permission is needed. Tests for the CSV writer, including commas,
 quotes and a line break in a note.
 
 ## Done
+
+- 2026-10-27 · R27: Backup files carry schema 6 (`BackupRepository.SCHEMA_VERSION`
+  was still 5). A test compares it with the version of the database Room builds,
+  and a file written at schema 5 (no `possibleDuplicateOfId`) still restores
+  exactly. PR #46. (Tag `v2026-10-27-1` not pushed: A6.)
+- 2026-10-27 · R24: `LargeTextTest` covers every remaining screen (ledger,
+  customers, Reports, Settings, onboarding, review queue, transaction detail and
+  editor) and seven dialogs. Real fixes: the Amharic language chip in Settings was
+  0dp wide at font scale 1.5 and 2.0 (the row is now a FlowRow). The transaction
+  detail's "Reconciled" switch and "always use this category" checkbox were
+  nameless second controls (the rows are now the toggles). The customer list's
+  outstanding total and the detail's balance no longer wrap at a large font. PR #47.
+  (Tag `v2026-10-27-2` not pushed: A6.)
+
+- 2026-10-26 (second run) · R23: Settings shows "Last backup: <date>" or "never".
+  Today shows a card when the ledger has transactions and there has been no backup
+  for 30 days (counted from the first run if there was never one). "Back up now"
+  opens Settings. "Not now" hides it for 30 days. Stamps are in DataStore, so no
+  schema change. A failed backup, or one taken in demo mode, is not stamped. PR #43.
+  (Tag `v2026-10-26-3` not pushed: A6.)
+- 2026-10-26 (second run) · R26: `MoneyText` with a currency lays out the amount and
+  "ETB" as a flow, so at a large font only "ETB" moves to the next line. Today's
+  headline stays on one line at 100,000.00 and 1,234,567.89, at font scale 1.5 and
+  2.0. PR #44. (Tag `v2026-10-26-4` not pushed: A6.)
 
 - 2026-10-26 · R20: Large-text check (font scale 1.5 and 2.0, native graphics) on
   Today, cash entry, Reconcile and the credit statement. Real fix: Today's "Paid out"

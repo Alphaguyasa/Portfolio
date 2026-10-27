@@ -4,19 +4,22 @@ Prioritised backlog. The daily run takes the top open item. Mark an item done wi
 its PR number and move it to "Done" at the bottom. Priority: P0 (urgent) → P3.
 Effort: S (< half a run), M (one run), L (split into several PRs).
 
-Last replan: 2026-10-26 (small third audit after the Next 16 upgrade: deps, API input limits, image endpoint). Before that 2026-10-21.
+Last replan: 2026-10-27 (short dependency audit: `npm outdated`; `npm audit` clean). Before that 2026-10-26 and 2026-10-21. The next replan should be a full one (code, security, UX, accessibility, Amharic gaps).
 
 ## Open
 
 28. **[P0, S] Production deploy is red (Vercel CLI 65.3.1, "scope does not exist").**
     Waits on NEEDS_APPROVAL #10: with Alpha's OK, pin `vercel@65.2.0` in
     deploy-not-alone.yml and add a test that pins it; otherwise check first whether
-    a re-run on a newer CLI passes.
-22. **[P2, S] Workflows on Node 24 actions.** All 8 workflows use checkout@v4,
-    setup-node@v4 (cache, upload-artifact too), deprecated with Node 20; deploy and the
-    data workflows build on Node 22 while CI tests on 24. Bump majors; align Node.
-27. **[P3, S] Drop the redundant `--turbopack` flags.** Next 16 builds and serves
-    with Turbopack by default; the flags in `dev` and `build` only add noise.
+    a re-run on a newer CLI passes. (2026-10-27: a re-run on 65.4.0 failed the same
+    way.) Once the deploy is green, bump its checkout/setup-node to v7 and Node to 24
+    and drop it from EXEMPT in tests/workflow-runtimes.test.ts (left out of item 22).
+29. **[P2, S] In-range dependency updates.** `npm outdated` (2026-10-27): supabase-js
+    2.110.8 → 2.118.0, tsx 4.23.15, typescript-eslint 8.72.1, unpdf 1.9.1,
+    @types/react(-dom) 19.3.0. All within the existing ranges; refresh the lockfile,
+    run the full checks and a `next start` smoke test.
+30. **[P2, S] React 19.1.0 → 19.3.1** (react, react-dom; Next 16.4 supports it). Own
+    PR, since it changes the runtime of every page; build and smoke-test the pages.
 23. **[P3, S] Remove the legacy DocSearch routes** (api/upload, process, documents,
     documents/[id], app/documents). Dead behind SHOW_DOCUMENTS, but with it on they
     could list and delete corpus books via the service-role client. ROADMAP entry
@@ -26,9 +29,16 @@ Last replan: 2026-10-26 (small third audit after the Next 16 upgrade: deps, API 
     batch of 100 row updates hit Supabase's statement timeout (each update rewrites
     the HNSW and tsv index entries). The chained rerun recovered, but retag should use
     smaller batches and split a batch in half on a timeout.
+31. **[P3, S] @types/node 20 → 24.** CI, deploy and the data workflows run on Node 24
+    since item 22, but the types still describe Node 20. Typecheck may surface fixes.
+32. **[P3, L] Toolchain majors, one PR each:** ESLint 10 (+ @eslint/js 10,
+    react-hooks plugin 7, which adds new rules), vitest/coverage-v8 5, TypeScript 7.
+    Read each migration guide first; dev-only, so no runtime risk.
 
 ## Done
 
+- 2026-10-27: Item 27. `dev` and `build` call `next dev` / `next build` without `--turbopack`; Next 16 uses Turbopack by default (the build banner still says "Turbopack"). tests/next-config.test.ts pins the scripts.
+- 2026-10-27: Item 22. Every workflow but deploy-not-alone uses the Node 24 actions (checkout@v7, setup-node@v7, cache@v6, upload-artifact@v7) and builds on Node 24, as CI tests. The deploy workflow waits on item 28. tests/workflow-runtimes.test.ts.
 - 2026-10-26: Item 26. next.config.ts sets `images: { unoptimized: true }`, so `/_next/image` (where GHSA-2464-fhr4-w9xw lived) answers 404; no page uses next/image. tests/next-config.test.ts pins both. Checked with `next start`: home 200, /_next/image 404.
 - 2026-10-26: Item 25 (PR #129). ci.yml runs `npm audit --omit=dev --audit-level=high` right after install, so a new high or critical advisory in a production dependency turns main red and the next run fixes it first. tests/ci-workflow.test.ts pins the step and its place.
 - 2026-10-26: Item 24. zod 4.4.3 → 4.6.7 (GHSA-mrhx-c7xc-m3w5, high: memory exhaustion on oversized constrained collections; the API routes validate request bodies with zod). With item 21, `npm audit` reports 0 vulnerabilities.
