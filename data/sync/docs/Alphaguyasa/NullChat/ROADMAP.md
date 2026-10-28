@@ -4,20 +4,30 @@ Prioritized backlog. Work top-down; the daily run takes up to 3 items.
 Priority: **P0** broken / security · **P1** high value · **P2** solid improvement · **P3** nice to have.
 Effort: **S** < 2 h · **M** half a day · **L** a day or more (split into several PRs).
 
-Audit of 2026-10-14; **replanned 2026-10-22** (second audit: bugs, security,
-battery, UX, tests, features). Items 27–41 come from that audit, with the evidence in
-DAILY_LOG 2026-10-22. Bugs come first: the most common failures of a phone with no
-network are a wrong clock and leaving the app mid-send.
+Audit of 2026-10-14; replanned 2026-10-22 (items 27–41); **replanned 2026-10-28**
+(third audit, items 43–54, evidence in DAILY_LOG 2026-10-28). This round's theme is a
+hostile or crowded mesh: what one modified phone, or a festival's worth of strangers,
+can make this phone hold, drop or show. Bugs and abuse resistance come before features.
 
 ## Open
 
 | # | Item | Pri | Effort | Notes |
 |---|---|---|---|---|
+| 44b | **Evicted means failed**: when our own entry is pushed out of the full forward queue (500 of our own packets, or eviction for any other reason), its row still says `queued` until the 24 h expiry. Mark it `failed` at eviction. (Part 1, unverified packets kept out of the queue, is done.) | P2 | S | |
+| 45 | **Held messages that never leave**: `releaseHeld` scans only the 100 oldest pending rows across all chats (`pendingOutgoing()`), and `agreementKeyLearned` drops emissions past 64 during start-up warm-up (`tryEmit`). Query pending rows by conversation; release once over everything after warm-up. | P2 | S | Test with >100 rows and >64 peers |
+| 46 | **Online and "1 hop" from bound links only**: `ChatViewModel.isPeerOnline` and the peer list's online set still trust the advertised endpoint name, so a stranger naming itself as a contact makes the contact look next to you. Expose bound peers from the coordinator (`LinkBindings`) and use that. | P2 | S | Proximity honesty |
+| 47 | **Fragment bounds**: a first fragment with `total = 65535` and a 1-byte chunk passes the 64 KiB check and allocates 65 535 slots; 32 partials ≈ 8–16 MB. Cap `total` at ceil(64 KiB / chunk) and require full-size non-final chunks. | P2 | S | Round-trip + hostile-input tests |
+| 48 | **`TransferTracker` never forgets**: `clear()` has no callers; every image and long text adds an entry, and each progress tick copies the whole map to the chat screen. Clear on final state and after the reassembly timeout. | P2 | S | |
+| 49 | **Bound the stranger list**: every self-signed ANNOUNCE heard within 6 hops adds a permanent peer row, key-directory entry and hop observation (copied on every packet). Prune unverified strangers with no thread after N days; cap the hop map; list only peers with a thread, verified, or seen recently. | P2 | M | Room change → migration + test if a column is needed |
+| 50 | **Mute a chat**: per-thread "no notifications" (local only), shown in the subtitle; broadcast thread already silent. | P2 | M | Room 9→10 + migration test |
+| 51 | **Tap an image to see it full screen** (pinch to zoom, back closes; content description). | P2 | S | |
+| 52 | **Timer change race**: a contact's TIMER held by a relay for hours overrides the user's newer local change, because local changes record no stamp (`PeerTimer`). Stamp local changes and reject older peer changes; show a thread line when the contact changes it. | P3 | M | |
+| 53 | **Peer list order**: comment says "then most recently heard from", code sorts by label (`PeerListViewModel` sort). Sort by last seen; test. Also highlight the open chat's row in the two-pane layout. | P3 | S | |
+| 54 | **Duty cycle under Doze**: no wake lock or alarm, so `delay` in the duty cycle may stall when the phone dozes. Measure on a phone first; fix only with evidence. | P3 | S | Needs phone evidence |
+| 42 | **Link challenge**: a stranger in range of a contact can relay the contact's live ANNOUNCE onto its own link and be bound (see `LinkBindings`). A plain nonce does not stop a live relay; sign Nearby's per-connection raw authentication token instead, which differs on each of the relay's two links. New packet type. | P3 | M | Wire change, needs two-phone check |
 | 21 | **Group channels** with a shared key, invite by QR. | P3 | L | |
 | 22 | **Voice notes** (≤10 s Opus over Fragmenter). | P3 | L | |
 | 23 | **Route strip**: show relay chain on tap. Privacy trade-off — see NEEDS_APPROVAL. | P3 | M | |
-| 42 | **Link challenge**: a stranger in range of a contact can still relay the contact's live ANNOUNCE onto its own link and be bound (see `LinkBindings`). Close it with a nonce the link must sign (new packet type). | P3 | M | Wire change, needs two-phone check |
-| 41 | **Export a chat to a file** (system file picker, text, never automatic). | P3 | M | |
 
 **Waiting for alpha:** keeping chat history out of Google backup (NEEDS_APPROVAL #3).
 The audit found it also undoes panic wipe and disappearing messages. It is an S-sized
@@ -77,3 +87,6 @@ change once decided.
 | 2026-10-27 | #39 Disappearing messages, part 2: TIMER packet (type 7, sealed, store-and-forwarded); last change wins, ordered by the sender's clock with a 7-day replay window | #53 | see log |
 | 2026-10-27 | #40 Carry others' mail: each new neighbour is handed up to 32 queued packets for other recipients (copies; newest first; never twice to the same neighbour) | #54 | see log |
 | 2026-10-27 | #20 Two panes from 840dp window width (list a third, 320–420dp; chat or "Pick a chat" beside it; pairing and settings stay full-window) | #55 | see log |
+| 2026-10-28 | #41 Export a chat (⋮ → Export chat → warning → system file picker; plain text, images as `[image]`, bubble times and delivery words) | #56 | see log |
+| 2026-10-28 | #43 A failure in the mesh never crashes the app (scope handlers; inbound, key release, sweep and notifications caught per item) | #57 | see log |
+| 2026-10-28 | #44 part 1: a packet whose sender we could not verify is relayed live but never held in the forward queue | #58 | see log |

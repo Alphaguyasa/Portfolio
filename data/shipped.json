@@ -3,6 +3,102 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
+    "title": "fix: large-text check in Amharic, and no word may break across lines (R25)",
+    "date": "2026-10-28T05:30:37Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/49"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "fix: the original message row says whether it is open (R28)",
+    "date": "2026-10-28T05:24:03Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/50"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Check permissions again from the diagnostics screen (roadmap item 16)",
+    "date": "2026-10-28T04:57:00Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/48"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Location puck, follow mode and pack by position (roadmap item 13, 6f-2b-1)",
+    "date": "2026-10-28T04:52:13Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/47"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "test: cover shop adoption, report periods, PostgREST errors and save failures",
+    "date": "2026-10-28T04:19:09Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/44"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "perf(owner): stop polling Supabase while the dashboard is hidden",
+    "date": "2026-10-28T04:16:10Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/43"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Update React and react-dom to 19.3.1 and log run 15",
+    "date": "2026-10-28T03:44:56Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/135"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Update in-range dependencies (supabase-js, tsx, typescript-eslint, unpdf, React types)",
+    "date": "2026-10-28T03:41:43Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/134"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Hold only verified packets in the forward queue (roadmap #44 part 1)",
+    "date": "2026-10-28T03:41:04Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/58"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Keep the mesh running when one packet or task fails (roadmap #43); replan",
+    "date": "2026-10-28T03:32:12Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/57"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Export a chat to a text file (roadmap #41)",
+    "date": "2026-10-28T03:22:32Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/56"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-10-28-3",
+    "date": "2026-10-28T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-28-3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
     "title": "fix: large-text check on every remaining screen and dialog (R24)",
     "date": "2026-10-27T05:34:29Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/47"
@@ -62,101 +158,5 @@
     "title": "Drop the redundant --turbopack flags and log run 14",
     "date": "2026-10-27T03:45:10Z",
     "url": "https://github.com/Alphaguyasa/docsearch/pull/133"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Move the workflows to Node 24 actions and build on Node 24",
-    "date": "2026-10-27T03:41:04Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/132"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Carry others' mail: hand queued packets to a passing neighbour",
-    "date": "2026-10-27T03:36:05Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/54"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Disappearing messages, part 2: tell the other phone the timer",
-    "date": "2026-10-27T03:28:08Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/53"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-10-27-3",
-    "date": "2026-10-27T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-27-3"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "fix: a large headline total keeps its digits on one line (R26)",
-    "date": "2026-10-26T18:30:59Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/44"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "feat: show the last backup and remind after 30 days without one (R23)",
-    "date": "2026-10-26T18:24:29Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/43"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "perf(reports): reports and sales history read only what they show",
-    "date": "2026-10-26T18:08:31Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/38"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "perf(till): screens read stock from the cache, recents in one query",
-    "date": "2026-10-26T17:56:05Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/37"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Turn off the Next image optimizer endpoint",
-    "date": "2026-10-26T17:37:37Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/130"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Fail CI on high or critical advisories in production dependencies",
-    "date": "2026-10-26T17:33:39Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/129"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Send closed tracking gaps to Telemetry (roadmap item 17)",
-    "date": "2026-10-26T17:27:59Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/42"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Map screen draws the installed pack (roadmap item 13, 6f-1)",
-    "date": "2026-10-26T17:21:40Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/41"
   }
 ]

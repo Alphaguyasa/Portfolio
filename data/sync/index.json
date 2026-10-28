@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-10-27T06:41:13.587Z",
+  "syncedAt": "2026-10-28T06:41:42.306Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -75,8 +75,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-10-27T04:10:58Z",
-      "lastCommitAt": "2026-10-27T04:10:57Z",
+      "pushedAt": "2026-10-28T03:44:56Z",
+      "lastCommitAt": "2026-10-28T03:44:56Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -89,9 +89,21 @@
         "workflow": "deploy-not-alone",
         "status": "completed",
         "conclusion": "failure",
-        "at": "2026-10-27T03:45:13Z"
+        "at": "2026-10-28T03:44:59Z"
       },
       "mergedPulls": [
+        {
+          "number": 135,
+          "title": "Update React and react-dom to 19.3.1 and log run 15",
+          "mergedAt": "2026-10-28T03:44:56Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/135"
+        },
+        {
+          "number": 134,
+          "title": "Update in-range dependencies (supabase-js, tsx, typescript-eslint, unpdf, React types)",
+          "mergedAt": "2026-10-28T03:41:43Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/134"
+        },
         {
           "number": 133,
           "title": "Drop the redundant --turbopack flags and log run 14",
@@ -139,18 +151,6 @@
           "title": "Send the Gemini key in a header instead of the URL",
           "mergedAt": "2026-10-25T03:44:58Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/126"
-        },
-        {
-          "number": 125,
-          "title": "Require the cron secret on /api/telegram/daily, compare bot secrets in constant time",
-          "mergedAt": "2026-10-25T03:41:36Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/125"
-        },
-        {
-          "number": 124,
-          "title": "Show search errors in the reader's language, not raw upstream text",
-          "mergedAt": "2026-10-24T03:44:31Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/124"
         }
       ],
       "npm": null,
@@ -344,8 +344,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-10-27T04:54:24Z",
-      "lastCommitAt": "2026-10-27T04:54:24Z",
+      "pushedAt": "2026-10-28T04:57:49Z",
+      "lastCommitAt": "2026-10-28T04:57:49Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -356,9 +356,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-27T04:53:45Z"
+        "at": "2026-10-28T04:57:02Z"
       },
       "mergedPulls": [
+        {
+          "number": 49,
+          "title": "docs: log run 14, mark 6f-2b-1 and item 16 done (#47, #48), add 6f-2b-2",
+          "mergedAt": "2026-10-28T04:57:50Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/49"
+        },
+        {
+          "number": 48,
+          "title": "Check permissions again from the diagnostics screen (roadmap item 16)",
+          "mergedAt": "2026-10-28T04:57:00Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/48"
+        },
+        {
+          "number": 47,
+          "title": "Location puck, follow mode and pack by position (roadmap item 13, 6f-2b-1)",
+          "mergedAt": "2026-10-28T04:52:13Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/47"
+        },
         {
           "number": 46,
           "title": "docs: log run 13, mark the main CI fix and 6f-2a done (#44, #45)",
@@ -400,24 +418,6 @@
           "title": "MapLibre MapView wrapper with lifecycle and session hold (roadmap item 13, 6e-2)",
           "mergedAt": "2026-10-26T11:44:03Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/40"
-        },
-        {
-          "number": 39,
-          "title": "docs: log run 10, mark 6d-2 and 6e-1 done (#37, #38)",
-          "mergedAt": "2026-10-24T04:52:22Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/39"
-        },
-        {
-          "number": 38,
-          "title": "OfflineMapSession and PackDirectoryResolver (roadmap item 13, 6e-1)",
-          "mergedAt": "2026-10-24T04:51:34Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/38"
-        },
-        {
-          "number": 37,
-          "title": "Bundle the glyph stack and sprite in :core:maps assets (roadmap item 13, 6d-2)",
-          "mergedAt": "2026-10-24T04:45:39Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/37"
         }
       ],
       "npm": null,
@@ -476,8 +476,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-10-27T05:42:21Z",
-      "lastCommitAt": "2026-10-27T05:42:21Z",
+      "pushedAt": "2026-10-28T05:36:34Z",
+      "lastCommitAt": "2026-10-28T05:36:34Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -490,9 +490,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-27T05:42:23Z"
+        "at": "2026-10-28T05:36:37Z"
       },
       "mergedPulls": [
+        {
+          "number": 51,
+          "title": "docs: log the 2026-10-28 run and replan the roadmap (R29 to R37)",
+          "mergedAt": "2026-10-28T05:36:34Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/51"
+        },
+        {
+          "number": 49,
+          "title": "fix: large-text check in Amharic, and no word may break across lines (R25)",
+          "mergedAt": "2026-10-28T05:30:37Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/49"
+        },
+        {
+          "number": 50,
+          "title": "fix: the original message row says whether it is open (R28)",
+          "mergedAt": "2026-10-28T05:24:03Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/50"
+        },
         {
           "number": 48,
           "title": "docs: log the 2026-10-27 run and update the roadmap",
@@ -534,24 +552,6 @@
           "title": "docs: log the 2026-10-26 run and replan the roadmap",
           "mergedAt": "2026-10-26T05:45:59Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/42"
-        },
-        {
-          "number": 41,
-          "title": "fix: Today's figures stay whole at a large font; large-text check (R20)",
-          "mergedAt": "2026-10-26T05:38:50Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/41"
-        },
-        {
-          "number": 37,
-          "title": "test: accessibility checks on the dialogs with text fields (R18, part 2)",
-          "mergedAt": "2026-10-26T05:21:21Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/37"
-        },
-        {
-          "number": 39,
-          "title": "docs: log the 2026-10-24 run and update the roadmap",
-          "mergedAt": "2026-10-24T05:36:34Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/39"
         }
       ],
       "npm": null,
@@ -609,28 +609,46 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-10-27T03:51:07Z",
-      "lastCommitAt": "2026-10-27T03:50:59Z",
+      "pushedAt": "2026-10-28T03:41:12Z",
+      "lastCommitAt": "2026-10-28T03:41:04Z",
       "latestRelease": null,
       "tags": [
+        "v2026-10-28-3",
+        "v2026-10-28-2",
+        "v2026-10-28-1",
         "v2026-10-27-3",
         "v2026-10-27-2",
         "v2026-10-27-1",
         "v2026-10-26-6",
         "v2026-10-26-5",
         "v2026-10-26-4",
-        "v2026-10-26-3",
-        "v2026-10-26-2",
-        "v2026-10-26-1",
-        "v2026-10-25-3"
+        "v2026-10-26-3"
       ],
       "ci": {
         "workflow": "Android CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-27T03:51:02Z"
+        "at": "2026-10-28T03:41:07Z"
       },
       "mergedPulls": [
+        {
+          "number": 58,
+          "title": "Hold only verified packets in the forward queue (roadmap #44 part 1)",
+          "mergedAt": "2026-10-28T03:41:04Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/58"
+        },
+        {
+          "number": 57,
+          "title": "Keep the mesh running when one packet or task fails (roadmap #43); replan",
+          "mergedAt": "2026-10-28T03:32:12Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/57"
+        },
+        {
+          "number": 56,
+          "title": "Export a chat to a text file (roadmap #41)",
+          "mergedAt": "2026-10-28T03:22:32Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/56"
+        },
         {
           "number": 55,
           "title": "Tablet and landscape: peer list and chat side by side",
@@ -672,24 +690,6 @@
           "title": "Forget contact: remove a peer, its chat and its queued sends from this phone",
           "mergedAt": "2026-10-26T03:40:21Z",
           "url": "https://github.com/Alphaguyasa/NullChat/pull/49"
-        },
-        {
-          "number": 48,
-          "title": "Message info: long-press a message to see who, when and how far",
-          "mergedAt": "2026-10-26T03:32:22Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/48"
-        },
-        {
-          "number": 47,
-          "title": "Bump Tink 1.24.0, Gradle 9.8.2, kotlinx-serialization (test) 1.12.0",
-          "mergedAt": "2026-10-26T03:22:28Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/47"
-        },
-        {
-          "number": 45,
-          "title": "Bundle the fonts: ship OFL subsets in res/font; log 2026-10-25",
-          "mergedAt": "2026-10-25T03:41:53Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/45"
         }
       ],
       "npm": null,
@@ -733,8 +733,8 @@
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-10-27T04:27:45Z",
-      "lastCommitAt": "2026-10-27T04:27:45Z",
+      "pushedAt": "2026-10-28T04:22:12Z",
+      "lastCommitAt": "2026-10-28T04:22:12Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -744,9 +744,27 @@
         "workflow": "CI",
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-10-27T04:27:47Z"
+        "at": "2026-10-28T04:22:15Z"
       },
       "mergedPulls": [
+        {
+          "number": 45,
+          "title": "docs: log 2026-10-28 run 13, report, roadmap",
+          "mergedAt": "2026-10-28T04:22:13Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/45"
+        },
+        {
+          "number": 44,
+          "title": "test: cover shop adoption, report periods, PostgREST errors and save failures",
+          "mergedAt": "2026-10-28T04:19:09Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/44"
+        },
+        {
+          "number": 43,
+          "title": "perf(owner): stop polling Supabase while the dashboard is hidden",
+          "mergedAt": "2026-10-28T04:16:10Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/43"
+        },
         {
           "number": 42,
           "title": "docs: log 2026-10-27 run 12, report, roadmap",
@@ -788,24 +806,6 @@
           "title": "docs: log 2026-10-26 run, report, roadmap",
           "mergedAt": "2026-10-26T04:25:15Z",
           "url": "https://github.com/Alphaguyasa/Suq/pull/36"
-        },
-        {
-          "number": 35,
-          "title": "feat(settings): reset says what has not synced and offers the backup first",
-          "mergedAt": "2026-10-26T04:21:53Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/35"
-        },
-        {
-          "number": 34,
-          "title": "fix(a11y): every till control is a 56px touch target",
-          "mergedAt": "2026-10-26T04:16:03Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/34"
-        },
-        {
-          "number": 32,
-          "title": "docs: log 2026-10-24 run, report, roadmap",
-          "mergedAt": "2026-10-24T04:33:45Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/32"
         }
       ],
       "npm": null,
