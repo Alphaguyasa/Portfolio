@@ -11,6 +11,7 @@
  *     or a missing script shows up as one of these, not as a broken link)
  *   - 404 page: an unknown path must answer 404 with the not-found page, which no
  *     link reaches, so the crawl alone would never check it
+ *   - no horizontal scroll: at both widths, no page may be wider than the viewport
  *
  *   npm run build && npm run check:site
  *
@@ -20,6 +21,7 @@
 import { spawn } from "node:child_process";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
+import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
@@ -82,6 +84,8 @@ async function checkNotFound(vp) {
     const heading = await page.getByRole("heading", { level: 1 }).textContent();
     if (!heading?.includes("doesn’t exist")) found.push(`${label}: heading "${heading}" is not the not-found page`);
     if ((await page.locator('a[href="/"]').count()) === 0) found.push(`${label}: no link back to /`);
+    const overflow = overflowProblem(await page.evaluate(measureOverflow));
+    if (overflow) found.push(`${label}: ${overflow}`);
     found.push(...(await axeProblems(page, label)));
   } catch (err) {
     found.push(`${label}: ${String(err?.message ?? err).split("\n")[0]}`);
@@ -183,6 +187,9 @@ try {
 
       problems.push(...(await axeProblems(page, `${pathname} [${vp.name}]`)));
 
+      const overflow = overflowProblem(await page.evaluate(measureOverflow));
+      if (overflow) problems.push(`${pathname} [${vp.name}] ${overflow}`);
+
       if (vp.name === "desktop") {
         const { links, ids } = await page.evaluate(() => ({
           links: [...document.querySelectorAll("a[href], link[href], img[src]")].map(
@@ -221,7 +228,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));

@@ -22,12 +22,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
-### 31. [P2 · S] check:site fails on horizontal scroll at 375px
-CLAUDE.md asks for pages readable at phone width with no horizontal page scroll, but
-check:site does not test it. At 375px, fail a page whose `document.documentElement.
-scrollWidth` exceeds its `clientWidth` (marquees must clip, not widen the page). Put
-the rule in a pure helper with tests; check it fails on a forced wide element.
-
 ### 32. [P2 · S] Hard cap on the contact rate limiter's memory
 `src/lib/rateLimit.ts` prunes only expired windows once the map holds 500 keys, so
 many distinct client keys inside one window grow it without bound. Add a hard cap
@@ -82,6 +76,11 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] No horizontal scroll in check:site** (item 31), PR #46 (2026-10-28). At
+  1440px and 375px, every crawled page and the 404 page fail when
+  `documentElement.scrollWidth` exceeds `clientWidth`; the message names the three
+  widest unclipped elements past the edge. Rule in `scripts/lib/overflow.mjs`, three
+  tests. All 11 pages fit; checked to fail on a forced 2000px element.
 - **[P3] README: weekly audit and repo discovery** (item 30), this PR (2026-10-27).
   Documents `.github/workflows/audit.yml` and what to do when the sync logs a public
   repo as "NOT synced" (add it to `knownPublicRepos` or `skip`).
