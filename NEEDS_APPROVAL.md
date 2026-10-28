@@ -5,6 +5,23 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
+### A16. GitHub Actions will not start any job: billing / spending limit (2026-10-28)
+**Blocks every merge.** On 2026-10-28 both PRs (#45 sync, #46 item 31) got a failed
+CI check after 2 seconds with no runner. GitHub's annotation: "The job was not started
+because recent account payments have failed or your spending limit needs to be
+increased. Please check the 'Billing & plans' section in your settings". The repo is
+private on the free plan, so this most likely means October's 2,000 free Actions
+minutes are used up (CI runs ~4–5 minutes per PR and per push to main), or a payment
+method on the account has failed. Nothing was changed in billing (no-purchases policy).
+The merge policy needs green CI, so both PRs stay open; every check was run locally and
+passed except Lighthouse `/` at 89 locally (CI usually scores it 96; this PR does not
+touch the page). Options, all free: (a) wait for the minutes to reset on the next
+billing cycle (usually the 1st), then the next run re-runs CI and merges; (b) make the
+repo public (public repos get unlimited free Actions minutes; check nothing private is
+in the history first: NEEDS_APPROVAL.md and DAILY_LOG.md are internal); (c) say that
+local checks may stand in for CI while Actions is blocked. Do not raise a spending
+limit on my account: that would allow a bill.
+
 ### A15. A critical Next.js fix was taken under the two-week age rule (2026-10-23)
 CLAUDE.md asks for dependency versions at least two weeks old. On 2026-10-23 npm audit
 reported a critical advisory in next 16.0.0–16.4.0 (GHSA-2464-fhr4-w9xw and
