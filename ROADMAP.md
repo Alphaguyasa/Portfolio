@@ -75,7 +75,7 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
-- **[P2] Hard cap on the rate limiter's memory** (item 32), PR after #47 (2026-10-29,
+- **[P2] Hard cap on the rate limiter's memory** (item 32), PR #48 (2026-10-29,
   open until Actions runs again: A16). `src/lib/rateLimit.ts` tracks at most 5,000
   keys; past that the oldest windows are evicted first (a renewed window is
   re-inserted, so map order is window-start order). Two tests flood it with distinct

@@ -19,7 +19,7 @@ The 2026-10-28 run's entry and A16 are on PR #46's branch, which has not merged.
   projects.json is unchanged. docsearch's README now says `main` is Not Alone, so that
   suggestion is dropped from ROADMAP. Supersedes #45 (close #45 once #47 merges).
   230 tests pass locally.
-- **Item 32** — this PR (open): the rate limiter tracks at most 5,000 keys. Locally:
+- **Item 32** — PR #48 (open): the rate limiter tracks at most 5,000 keys. Locally:
   lint, typecheck, 232 tests, verify:facts, production audit and build pass; the flood
   test fails without the cap. check:site/Lighthouse not re-run (no page changed).
 - Stopped after one roadmap item: more unmergeable PRs would only pile up conflicts.
@@ -30,13 +30,13 @@ The 2026-10-28 run's entry and A16 are on PR #46's branch, which has not merged.
 
 | Field | Content |
 |---|---|
-| Done | Sync (PR #47), item 32 rate limiter cap (this PR) |
-| Merged | #47 no · this PR no · #45/#46 still open (CI cannot start: A16) |
+| Done | Sync (PR #47), item 32 rate limiter cap (PR #48) |
+| Merged | #47 no · #48 no · #45/#46 still open (CI cannot start: A16) |
 | Failed or blocked | GitHub Actions refuses to start jobs (billing/spending limit, A16), second day |
 | Roadmap | 6 items open; no replan needed |
 | Model | Opus 5.5, newest Opus; no action needed |
 | Needs approval | A16 Actions blocked, A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
-| Next | Once Actions runs: re-run CI and merge #46, #47 and this PR (close #45); then item 33; item 26 from 2026-11-02 |
+| Next | Once Actions runs: re-run CI and merge #46, #47 and #48 (close #45); then item 33; item 26 from 2026-11-02 |
 
 ---
 
