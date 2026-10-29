@@ -10,14 +10,34 @@
 
 type Window = { count: number; resetAt: number };
 
+/**
+ * Hard ceiling on tracked keys. Pruning expired windows alone is not enough:
+ * many distinct keys inside one window (spoofed x-forwarded-for values) would
+ * grow the map without bound. Past the cap the oldest windows go first; those
+ * clients get a fresh window, which is the cheaper failure than running the
+ * instance out of memory.
+ */
+export const MAX_WINDOWS = 5_000;
+
+// Insertion order is window start order (a renewed window is re-inserted), so
+// the first entries are always the oldest.
 const windows = new Map<string, Window>();
 
 /** Cheap sweep so an instance that lives a long time doesn't grow unbounded. */
-function evictExpired(now: number) {
+function evict(now: number) {
   if (windows.size < 500) return;
   for (const [key, window] of windows) {
     if (window.resetAt <= now) windows.delete(key);
   }
+  for (const key of windows.keys()) {
+    if (windows.size < MAX_WINDOWS) break;
+    windows.delete(key);
+  }
+}
+
+/** Number of keys currently tracked; for tests. */
+export function trackedWindows() {
+  return windows.size;
 }
 
 export function rateLimit(
@@ -26,11 +46,12 @@ export function rateLimit(
   windowMs: number,
 ): { allowed: boolean; retryAfter: number } {
   const now = Date.now();
-  evictExpired(now);
+  evict(now);
 
   const existing = windows.get(key);
 
   if (!existing || existing.resetAt <= now) {
+    windows.delete(key);
     windows.set(key, { count: 1, resetAt: now + windowMs });
     return { allowed: true, retryAfter: 0 };
   }
