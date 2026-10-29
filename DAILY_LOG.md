@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-29 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+The 2026-10-28 run's entry and A16 are on PR #46's branch, which has not merged.
+
+- **Main:** last push run (#44) green. **Still blocked: GitHub Actions does not start
+  jobs** (A16, same billing / spending-limit annotation as 2026-10-28). Nothing can
+  merge under the merge policy; PRs #45, #46 and today's stay open.
+- **Sync** — PR #47 (open): all 9 repos read (123 API requests; owner listing and
+  search still 403). Every fact verified; no status, release or npm version changed, so
+  projects.json is unchanged. docsearch's README now says `main` is Not Alone, so that
+  suggestion is dropped from ROADMAP. Supersedes #45 (close #45 once #47 merges).
+  230 tests pass locally.
+- **Item 32** — this PR (open): the rate limiter tracks at most 5,000 keys. Locally:
+  lint, typecheck, 232 tests, verify:facts, production audit and build pass; the flood
+  test fails without the cap. check:site/Lighthouse not re-run (no page changed).
+- Stopped after one roadmap item: more unmergeable PRs would only pile up conflicts.
+- **Item 11:** unchanged (fast-uri moderate, dev-only, item 26 due 2026-11-02).
+- **Tags:** none (nothing merged).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #47), item 32 rate limiter cap (this PR) |
+| Merged | #47 no · this PR no · #45/#46 still open (CI cannot start: A16) |
+| Failed or blocked | GitHub Actions refuses to start jobs (billing/spending limit, A16), second day |
+| Roadmap | 6 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 Actions blocked, A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Once Actions runs: re-run CI and merge #46, #47 and this PR (close #45); then item 33; item 26 from 2026-11-02 |
+
+---
+
 ## 2026-10-27 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

@@ -17,6 +17,7 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-26: 4 items were left after items 25 and 17; added 27–30.
 2026-10-26 (evening run): items 27 and 28 done; 6 open, so no replan.
 2026-10-27: 4 items were left after items 29 and 30; added 31–34.
+2026-10-29: item 32 done (PR open, not merged: Actions blocked, A16); 6 open, so no replan.
 
 ---
 
@@ -27,11 +28,6 @@ CLAUDE.md asks for pages readable at phone width with no horizontal page scroll,
 check:site does not test it. At 375px, fail a page whose `document.documentElement.
 scrollWidth` exceeds its `clientWidth` (marquees must clip, not widen the page). Put
 the rule in a pure helper with tests; check it fails on a forced wide element.
-
-### 32. [P2 · S] Hard cap on the contact rate limiter's memory
-`src/lib/rateLimit.ts` prunes only expired windows once the map holds 500 keys, so
-many distinct client keys inside one window grow it without bound. Add a hard cap
-(evict the oldest windows first) and a test that floods it with distinct keys.
 
 ### 33. [P3 · S] Weekly workflow also verifies registry signatures
 Add `npm audit signatures` to `.github/workflows/audit.yml` after `npm ci
@@ -72,9 +68,6 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Suggestions for other repos (read-only; for Alpha to apply)
 
-- **docsearch:** README still describes DocSearch only; the pivot to Not Alone lives in
-  `docs/`. A short "Status: pivoting to Not Alone" note at the top would let the
-  portfolio cite the pivot from the README.
 - **NullChat:** has no README; the sync can only cite the repo description and ROADMAP.
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
@@ -82,6 +75,11 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
+- **[P2] Hard cap on the rate limiter's memory** (item 32), PR after #47 (2026-10-29,
+  open until Actions runs again: A16). `src/lib/rateLimit.ts` tracks at most 5,000
+  keys; past that the oldest windows are evicted first (a renewed window is
+  re-inserted, so map order is window-start order). Two tests flood it with distinct
+  keys; the first fails without the cap.
 - **[P3] README: weekly audit and repo discovery** (item 30), this PR (2026-10-27).
   Documents `.github/workflows/audit.yml` and what to do when the sync logs a public
   repo as "NOT synced" (add it to `knownPublicRepos` or `skip`).
