@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-30 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** last push run green (`8ec8126`). Nothing has merged since 2026-10-27.
+- **Actions still blocked (A16, third day):** the CI job on this PR was refused again
+  with "recent account payments have failed or your spending limit needs to be
+  increased". No billing setting was touched. The 2026-10-28 and 2026-10-29 log
+  entries and the A16 write-up are in PR #48, which cannot merge yet.
+- **Sync** — PR #49 (this one): all 9 repos read (123 API requests; owner listing and
+  search still 403). Every fact verified; no status, release or npm version changed, so
+  projects.json is unchanged. docsearch's CI is green again and its README now notes
+  the Not Alone pivot, so that suggestion left the roadmap. #45 and #47 (older
+  snapshots) are superseded by this one; closing them was refused in this session,
+  so close them by hand or in the next run.
+- **Roadmap items:** none started. Items 31 (#46) and 32 (#48) are done and waiting on
+  CI; opening more PRs that cannot merge would only pile up conflicts in ROADMAP.md
+  and DAILY_LOG.md, so the run stopped here ("stop earlier if blocked").
+- **Merge order once CI runs:** #46, #48, then #49 (resolve the DAILY_LOG conflict by
+  keeping both entries, newest first). Then item 26 (fast-uri, due 2026-11-02).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #49), superseding #45 and #47 |
+| Merged | None: GitHub Actions will not start jobs (A16) |
+| Failed or blocked | CI blocked by billing/spending limit (A16); release tags (A10); closing #45/#47 refused |
+| Roadmap | 7 items open (31 and 32 done in open PRs); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 Actions billing (blocks every merge), A15 FYI, A10 tags, A12 |
+| Next | If CI runs: merge #46, #48, #49, close #45/#47; then item 26 and item 33 |
+
+---
+
 ## 2026-10-27 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
