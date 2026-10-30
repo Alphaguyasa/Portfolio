@@ -4,7 +4,7 @@ Prioritised backlog. The daily run takes the top open item. Mark an item done wi
 its PR number and move it to "Done" at the bottom. Priority: P0 (urgent) → P3.
 Effort: S (< half a run), M (one run), L (split into several PRs).
 
-Last replan: 2026-10-27 (short dependency audit: `npm outdated`; `npm audit` clean). Before that 2026-10-26 and 2026-10-21. The next replan should be a full one (code, security, UX, accessibility, Amharic gaps).
+Last replan: 2026-10-29 (full audit: code, security, accessibility, localization, tests; items 35-42). Before that 2026-10-27 (dependencies), 2026-10-26 and 2026-10-21.
 
 ## Open
 
@@ -14,29 +14,42 @@ Last replan: 2026-10-27 (short dependency audit: `npm outdated`; `npm audit` cle
     a re-run on a newer CLI passes. (2026-10-27: a re-run on 65.4.0 failed the same
     way.) Once the deploy is green, bump its checkout/setup-node to v7 and Node to 24
     and drop it from EXEMPT in tests/workflow-runtimes.test.ts (left out of item 22).
-29. **[P2, S] In-range dependency updates.** `npm outdated` (2026-10-27): supabase-js
-    2.110.8 → 2.118.0, tsx 4.23.15, typescript-eslint 8.72.1, unpdf 1.9.1,
-    @types/react(-dom) 19.3.0. All within the existing ranges; refresh the lockfile,
-    run the full checks and a `next start` smoke test.
-30. **[P2, S] React 19.1.0 → 19.3.1** (react, react-dom; Next 16.4 supports it). Own
-    PR, since it changes the runtime of every page; build and smoke-test the pages.
-23. **[P3, S] Remove the legacy DocSearch routes** (api/upload, process, documents,
-    documents/[id], app/documents). Dead behind SHOW_DOCUMENTS, but with it on they
-    could list and delete corpus books via the service-role client. ROADMAP entry
-    here explains the removal, as the safety rules require.
+39. **[P2, M] One person can use the whole site's search limit.** The site-wide limiter
+    (3/min, `take_search_slot`) has no per-user share. Start with a per-chat limit in
+    the bot (pure limiter, injectable clock). A per-IP web limit needs a privacy
+    decision first (hashed IP, short retention): ask in NEEDS_APPROVAL.
+40. **[P2, M] Keep example answers across cold starts.** example-cache.ts keeps the 7 fixed
+    example answers in memory, so each cold start spends Gemini quota on them again.
+    An additive table holding only those fixed questions (no user text), 6-hour TTL.
+    Migration plus a test.
+41. **[P3, S] Leftover DocSearch code and English-only home metadata.** Unused:
+    components/SearchInput.tsx, CitationTargets.tsx, `IdleExamples`/`EmptyState` in
+    States.tsx ("ingest PDFs"). proxy.ts uses realm "DocSearch", and its matcher would
+    block /api/telegram and the cron if APP_PASSWORD were set. layout.tsx metadata is
+    English when lang=am. Test: every component is imported; extend the proxy test.
+42. **[P3, S] Validate the Telegram webhook body with zod.** route.ts casts JSON to
+    `Update` and reads `msg.chat.type`, which throws (500, Telegram retries) on a
+    message without `chat`. Secret is checked first, so low risk.
 11. **[P3, S] Close stale PR #6 (orthodox-library)** once Alpha agrees (NEEDS_APPROVAL.md #3).
-13. **[P3, S] Make ingest's retag robust to statement timeouts.** On 2026-10-19 one
-    batch of 100 row updates hit Supabase's statement timeout (each update rewrites
-    the HNSW and tsv index entries). The chained rerun recovered, but retag should use
-    smaller batches and split a batch in half on a timeout.
-31. **[P3, S] @types/node 20 → 24.** CI, deploy and the data workflows run on Node 24
-    since item 22, but the types still describe Node 20. Typecheck may surface fixes.
+34. **[P3, M] @anthropic-ai/sdk 0.114 → 1.x** (major). Only the optional Anthropic
+    provider in src/lib/llm.ts uses it, and its key is not set in production. Read the
+    migration notes; tests mock it, so no API calls.
 32. **[P3, L] Toolchain majors, one PR each:** ESLint 10 (+ @eslint/js 10,
     react-hooks plugin 7, which adds new rules), vitest/coverage-v8 5, TypeScript 7.
     Read each migration guide first; dev-only, so no runtime risk.
 
 ## Done
 
+- 2026-10-30: Item 38. tests/api-routes.test.ts calls POST /api/search and /api/telegram directly, with the db and the network mocked and `after()` run inside a minimal Next request scope that counts deferred tasks: 400 on bad, empty, over-long input or an unknown church (no slot taken); a crisis answered before the rate limit; a cached example served without a slot; 429 with `code: "busy"`; 503 without a bot token; 403 on a wrong webhook secret; only private chats get a reply.
+- 2026-10-30: Item 37 (PR #142). The streamed story `<article>` has `aria-busy` while it streams, an always-mounted sr-only `role="status"` says "Your story is ready." (EN, AM) when it finishes, and its `lang` follows the story's majority script (`textLang` in src/lib/script-lang.ts), so an Amharic story under the English UI gets an Amharic voice. The bot's `detectLang` uses the same Ethiopic check. tests/script-lang.test.ts.
+- 2026-10-29: Item 36. When a search fails outright, `retrieveForStruggle` keeps the figure passages it already found and marks the result degraded (`topUpWithSearch`); it still throws when there are none. The document-id lookup throws on a db error and caches only successful lookups (`memoizeSuccess`), so a transient error no longer hides a source until a cold start. tests/retrieve-struggle.test.ts.
+- 2026-10-29: Item 35 (PR #140). A story part Telegram rejects is resent as plain text with its keyboard (`sendHtml` in src/lib/telegram.ts); italics no longer cross a tag (`**a *b** c*` was mis-nested), and splitMessage's hard cut backs off before a partial entity. tests/telegram.test.ts.
+- 2026-10-29: Item 31. @types/node 20 → 24.19.2 (undici-types 7.24.6), matching the Node 24 that CI and the workflows run. Typecheck needed no code changes. tests/workflow-runtimes.test.ts checks the types major equals ci.yml's node-version.
+- 2026-10-29: Item 13. Ingest retags in batches of 25 rows (was 100), and a batch that hits a statement timeout is split in half and retried, down to one row (`applyInBatches` in src/lib/scripture/plan.ts). Other errors still fail at once. tests/scripture-plan.test.ts, with a mocked update.
+- 2026-10-28: Item 23. The legacy DocSearch upload and document routes are gone (api/upload, api/process, api/documents, api/documents/[id], app/documents), with the SHOW_DOCUMENTS gate, nav link, robots entry and DocumentSummary type. With the flag on they could list and delete corpus books through the service-role client; the corpus is curated and ingested by CI. The CLI ingest (scripts/ingest.ts, src/lib/pipeline.ts) stays. tests/proxy.test.ts checks the routes stay removed. The README says it describes v1 (tag v1-docsearch).
+- 2026-10-28: Item 33. When retrieval names figures, the answer prompt repeats rule 10 right after the message: tell their stories, do not send the not-covered sentence. Off-topic questions name no one, so their refusal is unchanged. Read offline (no LLM calls): s09 had David, Abraham and Jacob named and Genesis 12 retrieved, yet refused, with rule 10 far up the system prompt. tests/scripture-safety.test.ts. The post-merge scripture eval shows whether it holds.
+- 2026-10-28: Item 30. React and react-dom 19.1.0 → 19.3.1 (scheduler 0.28), still pinned exactly. tests/react-version.test.ts checks the two stay equal and match what is installed. Build clean; a browser smoke test of 12 pages had no page or console errors.
+- 2026-10-28: Item 29. In-range updates, lockfile only: supabase-js 2.118.0, tsx 4.23.15, typescript-eslint 8.72.1, unpdf 1.9.1, @types/react(-dom) 19.3.0. No packages added or removed; `npm audit` 0. Lint, typecheck, npm test 318/318, vitest 339/339, build, and a `next start` smoke test (/, /about, /help 200; /_next/image 404).
 - 2026-10-27: Item 27. `dev` and `build` call `next dev` / `next build` without `--turbopack`; Next 16 uses Turbopack by default (the build banner still says "Turbopack"). tests/next-config.test.ts pins the scripts.
 - 2026-10-27: Item 22. Every workflow but deploy-not-alone uses the Node 24 actions (checkout@v7, setup-node@v7, cache@v6, upload-artifact@v7) and builds on Node 24, as CI tests. The deploy workflow waits on item 28. tests/workflow-runtimes.test.ts.
 - 2026-10-26: Item 26. next.config.ts sets `images: { unoptimized: true }`, so `/_next/image` (where GHSA-2464-fhr4-w9xw lived) answers 404; no page uses next/image. tests/next-config.test.ts pins both. Checked with `next start`: home 200, /_next/image 404.

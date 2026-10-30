@@ -72,9 +72,6 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Suggestions for other repos (read-only; for Alpha to apply)
 
-- **docsearch:** README still describes DocSearch only; the pivot to Not Alone lives in
-  `docs/`. A short "Status: pivoting to Not Alone" note at the top would let the
-  portfolio cite the pivot from the README.
 - **NullChat:** has no README; the sync can only cite the repo description and ROADMAP.
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
