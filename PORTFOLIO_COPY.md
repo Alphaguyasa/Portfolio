@@ -70,8 +70,8 @@ How I work: 5 of my 9 listed projects keep a written roadmap and 6 have CI on Gi
 #### Meret: Offline maps and GPS logging for field teams
 
 - **Short:** Offline maps and GPS logging for field teams. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved..
-- **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.
-- **Status:** In development · last commit 2026-10-31. Early. The project skeleton, core model, database and location engine are done; tracking, maps and forms are next.
+- **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine. Phases 5 and 6 (tracking service, offline map) are done in CI; their device checks are still pending.
+- **Status:** In development · last commit 2026-10-31. Early. The project skeleton, core model, database, location engine, tracking service and offline map are done in CI; their checks on a real phone are pending, and tracking UI, forms and sync are next.
 - **Skills:** Kotlin, Jetpack Compose, Room, multi-module Gradle
 - **Link:** https://github.com/Alphaguyasa/Meret
 
