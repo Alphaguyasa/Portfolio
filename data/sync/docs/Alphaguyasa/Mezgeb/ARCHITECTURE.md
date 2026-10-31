@@ -160,7 +160,13 @@ When `gap ≠ 0` the screen shows a ranked list of explanations rather than a ba
 unmatched messages in the period (with a partial total where the amount alone was
 extractable), uncategorised transactions, possible duplicates (money in flagged by the
 lookalike check, which still counts in `capturedIn` and is never subtracted), outstanding
-credit, and rows a human touched since the period was opened.
+credit, rows a human touched since the period was opened, and breaks in a wallet's
+balance chain. For telebirr and CBE Birr, the previous `balanceAfterMinor` plus or minus
+the next amount should equal the next balance. A break ("CBE Birr balance went up by X
+between 10:02 and 14:30 with nothing recorded") means a message was never captured. It
+is shown with its exact difference and never booked. A drop of up to 2% (at least 10
+birr) per outgoing transfer is taken as a fee; a rise is never excused. Bank rows are
+not chained, because several accounts share the `BANK` channel (`BalanceChain`).
 
 Closing a session snapshots every computed figure into the entity. Later edits do not
 retroactively change a closed period — that is the entire point of closing one, and it is
@@ -183,7 +189,10 @@ tested.
   deliberately plaintext: restore has to be able to say *why* it refused, and it cannot
   distinguish a wrong passphrase from a wrong file if it must decrypt before it can look.
   GCM means a flipped byte fails the tag instead of restoring a ledger with one wrong
-  number in it. Everything is validated before anything is cleared.
+  number in it. From format 2 the header is passed to GCM as associated data, so it is
+  plaintext but not editable: a changed schema byte fails like a changed ciphertext.
+  Format 1 files (no associated data) are still read. Everything is validated before
+  anything is cleared.
 - `android:allowBackup="false"` — Google's auto-backup does not get a shop's ledger.
 - Zero `Log` / `Timber` / `println` calls in shipped code. Raw message bodies are never
   logged, and there is no crash reporter to send them anywhere.

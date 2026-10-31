@@ -12,21 +12,76 @@ several PRs.
 Built from the audit on 2026-10-14: the full code read plus the open items in
 `NOTES.md` § "What is left". Replanned on 2026-10-22, when the open list fell below 5:
 R19 to R22 were added. Replanned again on 2026-10-26: R23 to R26 were added. R27 was found on the second
-2026-10-26 run. R28 was found on 2026-10-27.
+2026-10-26 run. R28 was found on 2026-10-27. Replanned on 2026-10-28, when the open
+list fell to 4: R29 to R37 come from a fresh code audit. R29 and R30 were checked by
+hand against the code; the others carry the audit's file and line evidence and are
+re-checked when picked up. R29 and R30 were done on the second 2026-10-28 run. R31 and R32 were done on
+2026-10-29, and R33 and R22 on the second 2026-10-29 run. R34 and R35 were done on 2026-10-30. R36 and R37 were done on 2026-10-31, and the
+list then fell to 3, so the same run replanned: R38 to R44 come from a fresh code audit,
+and R38 and R39 were checked by hand against the code.
 
 ## Open
 
-### R25 · P2 · S: Large text in Amharic
-Ethiopic labels are often longer than the English ones, and the glyphs are taller.
-Run `LargeTextTest`'s screens with the `am` locale at font scale 2.0
-(`qualifiers = "am-w360dp-h1600dp"`). Fix what wraps badly.
+### R38 · P0 · S: A backup can be written with an empty passphrase
+`SettingsRoute` keeps the passphrase in `remember { mutableStateOf("") }`
+(`ui/settings/SettingsScreen.kt:72`) while the file picker is open. A rotation or a
+low-memory kill resets it to `""`, and the picker's result (line 76) then writes the
+backup encrypted with `""`. Anyone can open that file, and the restore dialog asks for
+at least 8 characters, so the owner can never restore it. `BackupCrypto.write` does not
+refuse an empty passphrase. Fix: keep the passphrase in the ViewModel (in memory only,
+never saved); if it is missing when the file comes back, refuse, delete the empty file
+and say so. `BackupCrypto.write` refuses a passphrase under 8 characters. Tests: a
+ViewModel test where the file arrives with no passphrase gives a failure and writes
+nothing; `write` with an empty passphrase fails.
 
-### R28 · P2 · S: The original message row on the transaction detail does not say whether it is open
-The "Original message from …" row expands and collapses the message body, but
-TalkBack hears only its label. The arrow icon has no description and the row has no
-state. Give the row `stateDescription` ("expanded"/"collapsed", in English and
-Amharic) or `Role.Button` with an expand/collapse action, and assert it in
-`TransactionDetailAccessibilityTest`.
+### R39 · P0 · M: Demo mode loses real payments captured during a demo
+Demo mode swaps the whole database (`di/DatabaseModule.kt:42`), but the notification
+listener (`capture/notification/MezgebNotificationListener.kt:89`) and the `direct` SMS
+import keep capturing, with no demo check anywhere in `capture/`. Real payments that
+arrive during a demo go into the demo file, and `DemoModeController.disable()` (line
+83) deletes it. A restore is also allowed in demo mode (`SettingsViewModel.kt:281`)
+and is deleted the same way. Part 1 (no approval needed): refuse a restore while demo
+mode is on, with a message. Part 2 waits on **NEEDS_APPROVAL.md A9** (what capture
+does during a demo). Tests: restore in demo mode is refused and nothing is written;
+part 2 per the decision.
+
+### R40 · P1 · S: Backup, restore and export run on the main thread
+`SettingsViewModel.kt:253` and `:283`, and `ReportsViewModel.kt:136-139`, use plain
+`viewModelScope.launch`. `BackupRepository` and `BackupCrypto` never switch dispatcher,
+so 210,000 PBKDF2 rounds, JSON encoding, `readBytes()` and the CSV or PDF writes all
+run on the main thread: an "app not responding" risk on cheap phones. A failed write
+also leaves an empty or partial file behind. Fix: inject the existing `@IoDispatcher`
+(`di/AppModule.kt:82`) and use `withContext`; delete the document when a write fails.
+Tests: with a test dispatcher, the work runs on it; a failed write deletes the file.
+
+### R41 · P1 · S: The amount normalizer guesses on bad input
+`parser/.../AmountNormalizer.kt:67-69` multiplies by 100 with no overflow check (a
+17-digit amount becomes negative), line 55 drops commas without checking the grouping
+("1,5" becomes 15 birr, "12,34" becomes 1,234), and zero is accepted. Project rule:
+a value that will not normalize goes to review, never a guess. Fix: null on overflow
+(`Math.multiplyExact`), on bad grouping (`^\d{1,3}(,\d{3})*$`) and on 0 or less.
+Tests: anonymized fixtures for overflow, "1,5", "12,34", "1,2345" and "0.00" all come
+out `Unmatched`; corpus accuracy unchanged.
+
+### R42 · P2 · M: A credit entry can never be corrected or removed
+`CustomerRepository.updateEntry` and `deleteEntry` (lines 64 and 66) are never called.
+A mistyped credit (5,000 instead of 500) stays in the balance for good; the only way
+out is a fake repayment. Fix: edit and delete on a statement line, with a confirm step.
+Closed-period snapshots stay as they are. Tests: Turbine tests for edit and delete;
+the balance follows; a closed period's figures do not change.
+
+### R43 · P2 · S: `CreditEntryViewModel` has no tests
+Every other screen ViewModel has a test. Untested: the keypad cap, re-ranking of
+repayment suggestions on each amount change, link and unlink, the double-save guard,
+and `SAVE_FAILED`. Tests: Turbine with in-memory Room, including that a payment is
+never linked automatically.
+
+### R44 · P3 · S: Share a customer's statement as text
+`CustomerDetailScreen.kt:78-82` only offers a reminder SMS. When a customer disputes a
+balance, the shop should be able to send the dated lines and the running balance.
+Fix: "Share statement" builds plain text from the statement and opens the share sheet
+(`ACTION_SEND`; no permission, no network). English and Amharic. Tests: the text
+builder (order, signs, balance, empty statement) and an accessibility check.
 
 ### R10 · P1 · L: Encrypt the database at rest
 **Blocked: see NEEDS_APPROVAL.md A1.** This needs a new native dependency
@@ -46,17 +101,67 @@ versioned as `<kotlin>-<ksp>`. The comment in `libs.versions.toml` and the
 #17 once A7 is answered. (2026-10-26: #17 is superseded by #40, the same group with
 26 updates, Gradle 9.8.2 and Compose BOM 2026.09.00. CI is green on it.)
 
-### R22 · P3 · M: Export closed reconciliation periods
-The CSV export covers the ledger and the credit book, but not the closed periods,
-which are what an accountant or a partner asks for. Add "Periods (CSV)" to the
-Reports export menu, using the snapshotted columns as stored (never recomputed), plus
-the note from R21 (done: `reconciliation_sessions.note`, at most 200 characters, and
-it may hold commas, quotes and line breaks). Goes through the same system file
-picker, so no permission is needed. Tests for the CSV writer, including commas,
-quotes and a line break in a note.
-
 ## Done
 
+- 2026-10-31 · R37: Reconcile names breaks in the telebirr and CBE Birr balance chain
+  ("balance went up by X between 10:02 and 14:30 with nothing recorded"), with the exact
+  difference in santim. Shown, never booked. A drop of up to max(10 birr, 2%) per
+  outgoing transfer counts as a fee; a rise never does. Bank rows are not chained, and a
+  possible duplicate restarts the chain. PR #65. (Tag `v2026-10-31-2` not pushed: A6.)
+- 2026-10-31 · R36: Backups are format 2: the whole header is GCM associated data, so
+  an edited schema or format byte fails as `WRONG_PASSPHRASE_OR_CORRUPT`. Format 1
+  files still restore; a format 2 file relabelled as format 1 fails. PR #64. (Tag
+  `v2026-10-31-1` not pushed: A6.)
+
+- 2026-10-30 · R35: Today rolls over at local midnight with the screen still open.
+  The day's bounds come from the new `LocalDays` (`ClockLocalDays`), which re-emits
+  at the next local midnight on the injected clock; a refresh still restarts it.
+  PR #62. (Tag `v2026-10-30-2` not pushed: A6.)
+- 2026-10-30 · R34: "Lock immediately" no longer asks for the PIN on rotation or a
+  language change. `MainActivity.onStop()` passes `isChangingConfigurations`, and a
+  configuration-change stop is not counted as time away. Tested in `AppLockStateTest`
+  (no Hilt activity-test setup exists for a `recreate()` test). PR #61. (Tag
+  `v2026-10-30-1` not pushed: A6.)
+- 2026-10-29 (second run) · R22: Reports → Export → "Closed periods (CSV)" writes
+  every closed period, oldest first, with the figures as snapshotted (never
+  recomputed). `accounted_for` and `gap` are derived from the stored figures through
+  `PeriodReconciliation`. No expected total leaves `expected` and `gap` empty. The
+  note is quoted (commas, quotes, line breaks) and neutralised. The open period is
+  never exported. English and Amharic. PR #59. (Tag `v2026-10-29-4` not pushed: A6.)
+- 2026-10-29 (second run) · R33: CSV export no longer runs formulas. Every
+  free-text cell (name, phone, reference, category, note) that starts with `=`, `+`,
+  `-`, `@`, tab or CR gets a leading `'`. Amounts and dates are unchanged, so a
+  negative gap stays a number. PR #58. (Tag `v2026-10-29-3` not pushed: A6.)
+- 2026-10-29 · R32: the PIN lockout and the auto-lock are timed on uptime
+  (`SystemClock.elapsedRealtime`, new `DeviceUptime`), not the wall clock. A lockout
+  stores the boot it started in. After a restart the full wait starts again. A lockout
+  read as over is forgotten. A lockout stored by an older version as a wall-clock end
+  is converted on first read (capped at 15 minutes). Arithmetic in the pure
+  `LockoutTimer`. PR #56. (Tag `v2026-10-29-2` not pushed: A6.)
+- 2026-10-29 · R31: Reconcile opens one period at a time. A double tap on "Start
+  checking" is ignored, and the button is disabled while busy.
+  `ReconciliationSessionDao.insertIfNoneOpen` checks and inserts in one Room
+  transaction. Open, save expected and close catch a failed write, show "Could not
+  save. Try again.", and keep what was typed. PR #55. (Tag `v2026-10-29-1` not
+  pushed: A6.)
+- 2026-10-28 · R30: one raw message becomes at most one Transaction.
+  `resolveManually` refuses a message that is no longer UNMATCHED, `record()` refuses
+  a message that already has a Transaction (and takes it out of the review queue),
+  and the insert plus the "resolved" mark are one Room transaction. New
+  `DedupTier.SAME_MESSAGE`. The unique index is proposed as A8. PR #53.
+- 2026-10-28 · R29: closing a period computes the figures again from the database,
+  and the Reconcile screen recomputes when the ledger changes (`LedgerChanges`, Room's
+  invalidation tracker), not on every keystroke. PR #52.
+- 2026-10-28 · R25: `LargeTextTest` runs in Amharic at font scale 2.0, and every
+  screen test now checks that no visible text breaks inside a word. That check found
+  16 squeezed labels per flavor, in English too. Label-and-value rows are now flows
+  (reconcile figures, transaction detail rows, Reports totals and breakdowns, the
+  ledger day header, review queue rows, the transaction row's second line). The
+  credit statement's two buttons are stacked full width. PR #49. (Tag
+  `v2026-10-28-2` not pushed: A6.)
+- 2026-10-28 · R28: The "Message from …" row on the transaction detail is a button
+  that says whether the message is shown or hidden, and what a double tap does, in
+  English and Amharic. PR #50. (Tag `v2026-10-28-1` not pushed: A6.)
 - 2026-10-27 · R27: Backup files carry schema 6 (`BackupRepository.SCHEMA_VERSION`
   was still 5). A test compares it with the version of the database Room builds,
   and a file written at schema 5 (no `possibleDuplicateOfId`) still restores
