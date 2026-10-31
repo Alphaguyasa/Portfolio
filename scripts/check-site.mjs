@@ -9,6 +9,8 @@
  *     page may log a CSP violation (a blocked script, style, font or image)
  *   - page errors: no uncaught exception and no console error (a failed hydration
  *     or a missing script shows up as one of these, not as a broken link)
+ *   - phone width: at 375px no page may scroll sideways (scrollWidth must not
+ *     exceed clientWidth; marquees and wide content must clip, not widen the page)
  *   - 404 page: an unknown path must answer 404 with the not-found page, which no
  *     link reaches, so the crawl alone would never check it
  *
@@ -20,6 +22,7 @@
 import { spawn } from "node:child_process";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
+import { horizontalOverflow, overflowCulprits } from "./lib/layout.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
@@ -54,6 +57,35 @@ async function axeProblems(page, label) {
       const where = v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ");
       return `${label} a11y ${v.impact}: ${v.id} (${v.help}) at ${where}`;
     });
+}
+
+/** At phone width the page must not be wider than its viewport. */
+async function overflowProblems(page, label) {
+  const measured = await page.evaluate(() => {
+    const root = document.documentElement;
+    const boxes = [];
+    for (const el of document.body.querySelectorAll("*")) {
+      const r = el.getBoundingClientRect();
+      if (r.width === 0) continue;
+      // Content clipped by an ancestor (a marquee track) does not widen the page.
+      let clipped = false;
+      for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+        const ox = getComputedStyle(p).overflowX;
+        if (ox !== "visible") { clipped = true; break; }
+      }
+      if (clipped) continue;
+      const cls = typeof el.className === "string" ? el.className.trim().split(/\s+/).slice(0, 2).join(".") : "";
+      boxes.push({
+        selector: el.tagName.toLowerCase() + (el.id ? `#${el.id}` : "") + (cls ? `.${cls}` : ""),
+        right: r.right + window.scrollX,
+      });
+    }
+    return { scrollWidth: root.scrollWidth, clientWidth: root.clientWidth, boxes };
+  });
+  const overflow = horizontalOverflow(measured);
+  if (!overflow) return [];
+  const culprits = overflowCulprits(measured.boxes, measured.clientWidth);
+  return [`${label}: ${overflow}${culprits.length ? `; check ${culprits.join(", ")}` : ""}`];
 }
 
 /**
@@ -183,6 +215,8 @@ try {
 
       problems.push(...(await axeProblems(page, `${pathname} [${vp.name}]`)));
 
+      if (vp.name === "phone") problems.push(...(await overflowProblems(page, `${pathname} [${vp.name}]`)));
+
       if (vp.name === "desktop") {
         const { links, ids } = await page.evaluate(() => ({
           links: [...document.querySelectorAll("a[href], link[href], img[src]")].map(
@@ -221,7 +255,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll at 375px`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));
