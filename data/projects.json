@@ -145,14 +145,15 @@
       "tagline": "Offline maps and GPS logging for field teams",
       "repo": "Alphaguyasa/Meret",
       "status": "building",
-      "statusNote": "Early. The project skeleton, core model, database and location engine are done; tracking, maps and forms are next.",
+      "statusNote": "Early. The project skeleton, core model, database, location engine, tracking service and offline map are done in CI; their checks on a real phone are pending, and tracking UI, forms and sync are next.",
       "featured": false,
       "platform": "Android",
       "stack": ["Kotlin", "Jetpack Compose", "Room", "multi-module Gradle"],
       "problem": "Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded.",
       "approach": "An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved.",
       "results": [
-        "Phases 1–4 of the build plan are done: skeleton, core model, database, location engine."
+        "Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.",
+        "Phases 5 and 6 (tracking service, offline map) are done in CI; their device checks are still pending."
       ],
       "learned": [
         "Phase 0 tooling for the offline tile pack is done, but a real Ethiopia pack has not been built yet, and acceptance criteria that need a physical phone are not claimed by CI."
@@ -161,6 +162,7 @@
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Meret" }],
       "facts": [
         { "path": "ROADMAP.md", "quote": "Phases 1–4 are done" },
+        { "path": "ROADMAP.md", "quote": "Phases 5 and 6 are done in CI; their device checks are in" },
         { "path": "ROADMAP.md", "quote": "Phase 0 (tile pack) tooling is done" },
         { "path": "ROADMAP.md", "quote": "A real Ethiopia pack has not been built yet" },
         { "path": "docs/README.md", "quote": "It works with the aeroplane mode on, all day" }

@@ -13,9 +13,9 @@ and the unit test suite).
 ## Open
 
 Next run: take the highest-priority open item (P1 before P2), skipping anything marked WAITING or
-"after the pending migrations". As of 2026-10-27 (run 12) that is item 28, then 29. Item 27 needs a new
-`sale_items` column that production lacks until alpha applies the migrations, so it waits unless the push can
-leave the column out safely.
+"after the pending migrations". As of 2026-10-31 (run 18) that is item 40 (reset warning counts saved drawer counts),
+then item 41 (moderate tooling advisories), then item 32 (owner PIN). Item 27 needs a new `sale_items` column that
+production lacks until alpha applies the migrations, so it waits unless the push can leave the column out safely.
 
 ### 12. [P3 · M] Optional camera barcode scanning — WAITING FOR ALPHA (see NEEDS_APPROVAL)
 `docs/RULES.md` says "no camera scanning in v1 and no scanner library", and this item was written by a run, not
@@ -29,48 +29,18 @@ optional. MIT-licensed, Apache-2.0 for zxing core.)
 
 ### 13. [P3 · M] Replicate shop settings so the owner dashboard shows the shop name — after the pending migrations are applied
 Do not ship before the Supabase migrations in NEEDS_APPROVAL are applied: tills would push to a table that does not
-exist in production yet, every push of it would fail and the sync pill would go to "blocked".
+exist in production yet, every push of it would fail and the sync pill would go to "blocked". Replicate `cash_closes`
+(item 30, local only today) in the same step: append-only table, RLS like `sales`.
 `shop_settings` is local-only; the owner view on a second device cannot show which shop it is looking at.
 Additive migration (new table, RLS like the others) + LWW sync like `products`. Migration file + test.
-
-### 16. [P2 · S] Dev-tooling advisories (vitest, undici via jsdom, braces via eslint-config-next, vite)
-2026-10-22: `npm audit` also lists vite 8.2.0–8.2.2 (high, dev only). Production: 0 advisories.
-`npm audit` (dev included) still reports high/moderate advisories in test/lint tooling only — nothing that
-ships to a till. `npm install` currently crashes in npm 10's arborist (`Cannot read properties of null
-(reading 'edgesOut')`, peer-set resolution of vitest's optional `jsdom` peer) when bumping vitest to 4.1.11
-or overriding undici ≥ 8.10.2. Retry with a newer npm or by regenerating the lockfile; `braces` has no fixed
-release yet (every version affected) — wait for upstream.
-
-### 18. [P2 · S] Harden the older offline e2e tests against service-worker network leaks
-Found while doing item 5: in Chromium, `context.setOffline(true)` does not stop requests the service
-worker makes itself, so a page missing from the precache can still load "offline" in a test.
-`e2e/offline-detail-pages.spec.ts` also blocks the app origin with `context.route` (`goOffline()`); move that
-helper into `e2e/helpers.ts` and use it in `offline-launch.spec.ts` and `offline-sync.spec.ts` (keep the
-fake Supabase routes working), so those tests prove what they claim.
 
 ## Replan 2026-10-22 (audit: sync/db/pages, RLS, i18n, perf, tests, features)
 RLS is on for every table, append-only tables allow only SELECT/INSERT, no XSS sinks, and the only writes outside
 `localWrite()` are the sanctioned `lib/sync/apply.ts` and the dev-only demo seed. Items below are ordered by priority.
 
 ### 27. [P2 · S] Gross profit uses today's cost, not the cost at the time of sale
-`lib/reports/compute.ts` says so in a comment. Fix: `cost_snapshot` on `sale_items` (Dexie v7 — v5/v6 are taken by items 25 and 34 — + upgrade test,
+`lib/reports/compute.ts` says so in a comment. Fix: `cost_snapshot` on `sale_items` (Dexie v8 — v5/v6/v7 are taken by items 25, 34 and 30 — + upgrade test,
 additive nullable column migration); old lines fall back to current cost.
-
-### 28. [P2 · M] Test gaps
-No tests for `adoptShopFromMembership`, `lib/reports/period.ts`, the `MissingColumnError`
-mapping of PostgREST error 42703 in `lib/sync/client.ts` (the pull fallback itself is covered by sync test 7), and
-the adjust/setup/settings UI error paths (`importProducts`, void and restock are covered since PRs #27/#28).
-(The scanner double-add check from this item found a real bug, fixed in PR #41.)
-
-### 29. [P2 · S] Owner page polls Supabase every 15s even when hidden
-`app/owner/page.tsx`. Pause on `visibilitychange`; saves battery and the free-tier quota.
-
-### 30. [P3 · M] Saved end-of-day close
-The cash-up sheet exists but float and counted cash live only in React state; nothing is recorded, so past
-shortfalls are invisible. Append-only `cash_closes` record (local first; sync after the migrations are applied).
-
-### 31. [P3 · S] Share a receipt as text (Web Share / Telegram)
-For shops without a thermal printer; today only `window.print()`. Bilingual, offline-capable via `navigator.share`.
 
 ### 32. [P3 · M] Owner PIN for voids, price edits and reset
 Any cashier PIN can void, change prices or reset the device. Add an owner role for those actions. (PINs are plain
@@ -80,7 +50,96 @@ text by design — `lib/db/cashiers.ts` explains why; revisit only together with
 `credit` is already a payment method but records no customer. `docs/RULES.md` lists customer credit accounts as out
 of scope for v1, so this needs alpha's decision (see NEEDS_APPROVAL).
 
+## Replan 2026-10-29 (6 open, 4 of them waiting on alpha or the migrations)
+Short audit: `npm audit` (dev included) is clean after PR #49, there are no TODO/FIXME markers, and `npm outdated`
+shows patch/minor updates within the current majors. The lock state and the remaining gaps logged by earlier items
+were read again.
+
+## Replan 2026-10-31 (5 open, 4 of them blocked; short audit)
+`npm audit` (dev included) now shows moderate advisories in build/lint tooling only; `npm audit --omit=dev` gate is
+clean. `npm outdated` shows only majors: next 16, eslint 10, typescript 7, vitest 5, eslint-config-next 16.
+
+### 40. [P2 · S] Reset warning counts saved drawer counts
+`cash_closes` (item 30) is local only, so a reset destroys every saved count, but the danger section counts only the
+outbox and may say "everything has reached the server". Count the closes in `unsyncedSummary()` (until item 13
+replicates them) and say so; the backup button already includes them. Unit + e2e.
+
+### 41. [P2 · S] Moderate advisories in build tooling (glob, minimatch)
+GHSA-3g3m-2fjr-6pw4 (glob, via @serwist/build) and GHSA-g3hv-75wg-m249 (minimatch, via eslint). Build/lint time only,
+never shipped to the till. Try `overrides` to patched versions within each dependent's range; `npm audit fix --force`
+would downgrade @serwist/next and eslint, so not that. Lockfile with npm 11.
+
+### 42. [P3 · L] Major upgrades, one PR each: vitest 5, typescript 7, eslint 10 (+ eslint-config-next), Next 16
+Read each changelog first; Next 16 is last and largest (Serwist compatibility, App Router changes). Stop and log if
+any needs code changes beyond an S.
+
 ## Done
+
+- **Saved end-of-day close (item 30)** — Reports → cash-up "Save count" records float, cash sales, expected, counted and
+  variance (cents) with the cashier and period in a new append-only, local-only `cash_closes` table (Dexie v7 +
+  upgrade fixture). Saved counts are listed below, short in ochre; a recount is a second record; the same figures
+  cannot be saved twice. Included in the JSON backup. Unit + offline e2e (survives a cold launch). Syncing waits for
+  item 13. [PR #59](https://github.com/Alphaguyasa/Suq/pull/59) · tag `v2026-10-31-2` not pushed (refused) — commit `807465c`
+
+- **Reset gaps closed (item 39)** — tests measured both gaps, and both were real. A reset now keeps the till's
+  `device_id`, code and receipt counter in localStorage (`lib/db/previous-till.ts`), so a till set up again keeps
+  numbering past its old receipts before any pull, and still reverses a duplicate void it wrote before the reset. A
+  two-till test shows the gap with the identity forgotten (net short one sale, goods back twice).
+  [PR #58](https://github.com/Alphaguyasa/Suq/pull/58) · tag `v2026-10-31-1` not pushed (refused) — commit `2616400`
+
+- **Patch/minor dependency bumps (item 38)** — supabase-js 2.118, dexie 4.4.7, react/react-dom 19.3.1, jsdom 30.1.3,
+  @vitejs/plugin-react 6.1.2, testing-library, types, @axe-core/playwright 4.14.0, pglite 0.5.13. Lockfile from npm 11
+  (CLAUDE.md §3 says why). The newer axe found a real WCAG 2.5.3 gap: the sync pill's aria-label did not contain its
+  visible text, so it is now named by its own text with an sr-only "Sync status:" prefix. New `SyncPill.test.tsx`.
+  [PR #56](https://github.com/Alphaguyasa/Suq/pull/56) · tag `v2026-10-30-2` not pushed (refused) — commit `0d222b4`
+
+- **Share the cash-up as text (item 37)** — a Share button next to Print on Reports sends the cash-up as plain text in
+  the UI language (`lib/reports/cashup-text.ts`): net sales, transactions, takings per payment method, float, cash
+  sales, expected, counted and short/over/balanced. `ShareReceiptButton` takes its own label and copied message.
+  Unit + offline e2e. [PR #55](https://github.com/Alphaguyasa/Suq/pull/55) · tag `v2026-10-30-1` not pushed (refused) —
+  commit `db7846b`
+
+- **The PIN lock works from a keyboard, Tab order tested (item 36)** — a Tab walk found the sale screen's order already
+  right (search → tiles → cart → payment → pay → nav). The PIN lock was not: picking a cashier dropped focus to
+  `<body>`, a keyboard could not type the PIN, and ✕/← and the cart's −/+ had no usable names. Focus now goes to the
+  PIN display, and digits/Backspace/Escape work (kept in a ref, so fast typing drops no digit). The first name has
+  focus on a cold launch. New `e2e/keyboard.spec.ts` + LockScreen unit tests.
+  [PR #53](https://github.com/Alphaguyasa/Suq/pull/53) · tag `v2026-10-29-4` not pushed (refused) — commit `fa520e5`
+
+- **Setup unlocks the first cashier (item 35)** — setup now calls `unlockAs()` with the cashier it creates. The first
+  full page load after setup (the offline "Sale complete" tap in the demo) no longer asks for the PIN, and those sales
+  now record the cashier (they recorded none before). e2e `coldLaunch()` clears the tab's session for tests that
+  mean a cold launch. [PR #52](https://github.com/Alphaguyasa/Suq/pull/52) · tag `v2026-10-29-3` not pushed
+  (refused) — commit `189bd77`
+
+- **Share a receipt as text (item 31)** — a Share button on the receipt page opens the phone's share sheet (Telegram,
+  SMS) with the receipt as plain text in the UI language (`lib/sales/receipt-text.ts`, same content as the printout).
+  Where Web Share is missing the text is copied; where neither exists the button is hidden. Works offline. Unit +
+  offline e2e. [PR #50](https://github.com/Alphaguyasa/Suq/pull/50) · tag `v2026-10-29-2` not pushed (refused) — commit `e931bbe`
+
+- **Dev-tooling advisories (item 16)** — vitest 4.1.12, vite 8.3.5, undici 8.12.3. `npm audit` (dev included) is at
+  0. The lockfile was regenerated with npm 11 because npm 10's arborist still crashes. `braces` is no longer flagged.
+  [PR #49](https://github.com/Alphaguyasa/Suq/pull/49) · tag `v2026-10-29-1` not pushed (refused) — commit `a23fb33`
+
+- **Setup save failure + double-tap guard (rest of item 28)** — e2e: a refused shop name and a refused first cashier
+  keep the wizard on the step with what was typed and say why. The retry found a real bug: two taps in the same task
+  added the first cashier twice (stale `busy` state); a ref now guards `next()`.
+  [PR #47](https://github.com/Alphaguyasa/Suq/pull/47) · tag `v2026-10-28-4` not pushed (refused) — commit `6aec552`
+
+- **Offline e2e tests refuse the app origin (item 18)** — `goOffline()`/`goOnline()` in `e2e/helpers.ts`; the cold
+  launch and offline-sync tests use them. [PR #46](https://github.com/Alphaguyasa/Suq/pull/46) · tag `v2026-10-28-3`
+  not pushed (refused) — commit `a2e3757`
+
+- **Test gaps (item 28, most of it)** — `adoptShopFromMembership` (error, no membership, cold start registers the
+  device first, re-stamps placeholder rows, unchanged, refused after a pull), `lib/reports/period.ts` (Monday weeks,
+  month/year rollover, the 31st, half-open bounds, leap February; passes in four time zones), `supabaseSyncClient`
+  (42703 → `MissingColumnError`, other errors, keyset filters, upsert, serverNow), and e2e for a refused stock count,
+  shop details and new cashier. Setup screen left as item 28. [PR #44](https://github.com/Alphaguyasa/Suq/pull/44) ·
+  tag `v2026-10-28-2` not pushed (refused) — commit `f8fcd73`
+
+- **Owner page stops polling when hidden (item 29)** — `useVisiblePolling()` stops the 15s Supabase query while the
+  page is hidden and refreshes at once on return. Unit tests. [PR #43](https://github.com/Alphaguyasa/Suq/pull/43) ·
+  tag `v2026-10-28-1` not pushed (refused) — commit `b919b5d`
 
 - **A scanned code + Enter adds the item once (from item 28)** — the check item 28 asked for found a real bug: a USB
   scanner types the code and presses Enter before IndexedDB answers, so Enter ran a second lookup and every scan put
