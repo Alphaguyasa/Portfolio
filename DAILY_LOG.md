@@ -4,6 +4,44 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-28 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last push run (#44).
+- **Blocked: GitHub Actions does not start jobs** (A16). Both PRs got a failed check
+  after 2 s with no runner: "recent account payments have failed or your spending limit
+  needs to be increased". Most likely the free 2,000 minutes for October are used up.
+  Nothing can merge under the merge policy, so both PRs stay open and the run stopped
+  after one roadmap item instead of two.
+- **Sync** — PR #45 (open, not merged): all 9 repos read (123 API requests; owner
+  listing and search still 403). Every fact verified; no status, release or npm version
+  changed, so projects.json is unchanged. New commits, merged PRs and tags in docsearch,
+  Meret, Mezgeb, NullChat and Suq. 230 tests pass locally.
+- **Item 31** — PR #46 (this one, open, not merged): check:site fails on horizontal page
+  scroll at both widths. Locally: lint, typecheck, 233 tests, verify:facts, production
+  audit, build and check:site pass; checked to fail on a forced 2000px element.
+  check:lighthouse locally: `/` performance 89 (needs 90; local runs have sat at 89–90
+  before, CI scores 96), project page 96, all else 100. This PR does not change pages.
+- **Item 11:** unchanged (only the fast-uri moderate, dev-only, item 26 due
+  2026-11-02). Production audit clean.
+- **Tags:** none (nothing merged).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #45), item 31 no-horizontal-scroll check (PR #46) |
+| Merged | #45 no · #46 no (CI could not start: A16) |
+| Failed or blocked | GitHub Actions refuses to start jobs (billing/spending limit, A16), so no merge |
+| Roadmap | 7 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 Actions blocked (new), A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Re-run CI on #45/#46 once Actions works, merge them; then items 32 and 33 |
+
+---
+
 ## 2026-10-27 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
