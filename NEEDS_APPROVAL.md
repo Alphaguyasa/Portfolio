@@ -5,21 +5,26 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
-### A16. GitHub Actions will not start any job: billing / spending limit (2026-10-28)
-**Blocks every merge. Still blocked on 2026-10-29** (PR #47, same annotation).
-On 2026-10-28 both PRs (#45 sync, #46 item 31) got a failed CI check after 2 seconds
-with no runner. GitHub's annotation: "The job was not started because recent account
-payments have failed or your spending limit needs to be increased. Please check the
-'Billing & plans' section in your settings". The repo is private on the free plan, so
-this most likely means October's 2,000 free Actions minutes are used up, or a payment
+### A16. GitHub Actions did not start any job, 2026-10-28 → 2026-10-31 (billing / spending limit)
+**Update 2026-10-31 (second run): Actions runs again.** CI started normally at 09:37 UTC
+and the backlog merged (#52, #46, #48). Please confirm what it was (October's free
+minutes, or a failed payment method) so the runs know whether to expect it again at the
+end of each month; close this then. No run touched billing.
+**Blocks every merge.** On 2026-10-28 both PRs (#45 sync, #46 item 31) got a failed
+CI check after 2 seconds with no runner. GitHub's annotation: "The job was not started
+because recent account payments have failed or your spending limit needs to be
+increased. Please check the 'Billing & plans' section in your settings". The repo is
+private on the free plan, so this most likely means October's 2,000 free Actions
+minutes are used up (CI runs ~4–5 minutes per PR and per push to main), or a payment
 method on the account has failed. Nothing was changed in billing (no-purchases policy).
-Open PRs waiting on CI: #46 (item 31), #47 (sync, supersedes #45), and the item 32 PR;
-every check that matters was run locally and passed. Options, all free: (a) wait for
-the minutes to reset on the next billing cycle (usually the 1st), then the next run
-re-runs CI and merges; (b) make the repo public (unlimited free Actions minutes; check
-the history for anything private first: NEEDS_APPROVAL.md and DAILY_LOG.md are
-internal); (c) say that local checks may stand in for CI while Actions is blocked.
-Do not raise a spending limit: that would allow a bill.
+The merge policy needs green CI, so both PRs stay open; every check was run locally and
+passed except Lighthouse `/` at 89 locally (CI usually scores it 96; this PR does not
+touch the page). Options, all free: (a) wait for the minutes to reset on the next
+billing cycle (usually the 1st), then the next run re-runs CI and merges; (b) make the
+repo public (public repos get unlimited free Actions minutes; check nothing private is
+in the history first: NEEDS_APPROVAL.md and DAILY_LOG.md are internal); (c) say that
+local checks may stand in for CI while Actions is blocked. Do not raise a spending
+limit on my account: that would allow a bill.
 
 ### A15. A critical Next.js fix was taken under the two-week age rule (2026-10-23)
 CLAUDE.md asks for dependency versions at least two weeks old. On 2026-10-23 npm audit
@@ -69,6 +74,8 @@ Still refused in the 2026-10-26 evening run; also missing: `v2026-10-26-4 73fec9
 `v2026-10-26-5 342ed6b` (PR #40) and `v2026-10-26-6` on the PR #41 squash commit.
 Still refused on 2026-10-27; also missing: `v2026-10-27-1 3ec8669` (PR #42),
 `v2026-10-27-2 743c871` (PR #43) and `v2026-10-27-3` on the PR #44 squash commit.
+Still refused on 2026-10-31; also missing: `v2026-10-31-1 0a4a276` (PR #52),
+`v2026-10-31-2 6f1849f` (PR #46) and `v2026-10-31-3` on the PR #48 squash commit.
 
 ## Resolved
 

@@ -4,6 +4,117 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-31 — scheduled run (second)
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Actions runs again.** This run's sync PR got a real CI run at 09:37 UTC (green in
+  3.5 min), the first since 2026-10-27. Billing was not touched by any run; whatever
+  was blocking it (A16) cleared on Alpha's side or by itself.
+- **Backlog cleared:** CI re-run (not re-pushed) on #46 and #48, both green.
+  - **Sync** — PR #52 (merged, squash `0a4a276`): fresh snapshot plus the Meret update
+    from #50 (phases 5 and 6 done in CI, device checks pending). All facts verified.
+  - **Item 31** — PR #46 (merged, squash `6f1849f`): no sideways scroll in check:site.
+  - **Item 32** — PR #48 (this one): rate limiter capped at 5,000 keys. main merged in
+    (no rebase); the log conflict resolved by keeping every entry, newest first. This PR
+    also carries the 10-30 and 10-31 morning log entries, which were only on #49/#50.
+  - **Superseded, still open:** sync PRs #45, #47, #49, #50. Closing them was refused in
+    this session (as on 10-30); close them by hand, nothing in them is lost.
+- **Found:** the sync records the newest run of *any* workflow as a repo's CI. For
+  NullChat that is now "Release tag" (a tagging job), not "Android CI" (both green
+  today, so nothing false is shown). Added as item 35 (P1), top of the roadmap.
+- **Roadmap work:** items 31 and 32 were done by earlier runs; merging them is this
+  run's two items, so no new item was started.
+- **Item 11:** production audit clean. Dev tree: the fast-uri moderate (item 26, due
+  2026-11-02) plus a new moderate, minimatch <11.0.1 (GHSA-g3hv-75wg-m249, denial of
+  service), reached only through eslint / eslint-config-next. Dev-only, never shipped.
+- **Tags:** still refused (A10). Rollback points: squash commits above.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #52), item 31 no-sideways-scroll (PR #46), item 32 rate limiter cap (PR #48) |
+| Merged | #52 yes, `0a4a276` · #46 yes, `6f1849f` · #48 see PR (tags not pushable: A10) |
+| Failed or blocked | Closing superseded PRs #45/#47/#49/#50 refused; tags (A10) |
+| Roadmap | 7 items open; no replan needed (item 35 added) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 Actions (cleared today; confirm the cause), A15 FYI, A10 tags, A12 |
+| Next | Daily sync; item 35 (CI status from the build workflow), then item 26 (from 2026-11-02) |
+
+---
+
+## 2026-10-31 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** last push run green (2026-10-27). **GitHub Actions has not started a job
+  since 2026-10-28**: "recent account payments have failed or your spending limit needs
+  to be increased" (A16). Nothing has merged since #44, so the 10-28, 10-29 and 10-30
+  logs exist only on their open PRs (#45–#49). This run read main and did not see them.
+- **Sync** — PR #50 (open, CI not started): all 9 repos read (123 API requests). Meret's
+  roadmap now says phases 5 and 6 are done in CI with device checks pending; its status
+  note and results say so, backed by a new quote. docsearch's README now notes the
+  pivot, so that suggestion is removed from ROADMAP.md. All facts verified, 230 tests pass.
+- **Items 31 and 32:** redone before the earlier PRs were found. The item 31 duplicate
+  (#51) is closed in favour of #46. The item 32 push was refused because #48 already
+  holds that branch, so nothing was overwritten. No new roadmap work is stacked while
+  CI is blocked.
+- **Lesson for the next run:** list open PRs (`gh api repos/Alphaguyasa/Portfolio/pulls`)
+  before starting. While A16 stands, the logs live on open PRs.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #50); found items 31 (#46) and 32 (#48) already open |
+| Merged | None: GitHub Actions will not start jobs (A16) |
+| Failed or blocked | CI blocked by billing / spending limit since 2026-10-28; PRs #45–#50 waiting |
+| Roadmap | 8 items open (31, 32 in PRs); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | **A16 Actions blocked** (wait for 1 Nov reset, go public, or allow local checks), A15, A10, A12 |
+| Next | If Actions runs again: re-run CI, merge #50 (close #45/#47/#49), #46, #48; then items 33, 34 |
+
+---
+
+## 2026-10-30 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** last push run green (`8ec8126`). Nothing has merged since 2026-10-27.
+- **Actions still blocked (A16, third day):** the CI job on this PR was refused again
+  with "recent account payments have failed or your spending limit needs to be
+  increased". No billing setting was touched. The 2026-10-28 and 2026-10-29 log
+  entries and the A16 write-up are in PR #48, which cannot merge yet.
+- **Sync** — PR #49 (this one): all 9 repos read (123 API requests; owner listing and
+  search still 403). Every fact verified; no status, release or npm version changed, so
+  projects.json is unchanged. docsearch's CI is green again and its README now notes
+  the Not Alone pivot, so that suggestion left the roadmap. #45 and #47 (older
+  snapshots) are superseded by this one; closing them was refused in this session,
+  so close them by hand or in the next run.
+- **Roadmap items:** none started. Items 31 (#46) and 32 (#48) are done and waiting on
+  CI; opening more PRs that cannot merge would only pile up conflicts in ROADMAP.md
+  and DAILY_LOG.md, so the run stopped here ("stop earlier if blocked").
+- **Merge order once CI runs:** #46, #48, then #49 (resolve the DAILY_LOG conflict by
+  keeping both entries, newest first). Then item 26 (fast-uri, due 2026-11-02).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #49), superseding #45 and #47 |
+| Merged | None: GitHub Actions will not start jobs (A16) |
+| Failed or blocked | CI blocked by billing/spending limit (A16); release tags (A10); closing #45/#47 refused |
+| Roadmap | 7 items open (31 and 32 done in open PRs); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 Actions billing (blocks every merge), A15 FYI, A10 tags, A12 |
+| Next | If CI runs: merge #46, #48, #49, close #45/#47; then item 26 and item 33 |
+
+---
+
 ## 2026-10-29 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
@@ -37,6 +148,44 @@ The 2026-10-28 run's entry and A16 are on PR #46's branch, which has not merged.
 | Model | Opus 5.5, newest Opus; no action needed |
 | Needs approval | A16 Actions blocked, A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
 | Next | Once Actions runs: re-run CI and merge #46, #47 and #48 (close #45); then item 33; item 26 from 2026-11-02 |
+
+---
+
+## 2026-10-28 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** CI green on the last push run (#44).
+- **Blocked: GitHub Actions does not start jobs** (A16). Both PRs got a failed check
+  after 2 s with no runner: "recent account payments have failed or your spending limit
+  needs to be increased". Most likely the free 2,000 minutes for October are used up.
+  Nothing can merge under the merge policy, so both PRs stay open and the run stopped
+  after one roadmap item instead of two.
+- **Sync** — PR #45 (open, not merged): all 9 repos read (123 API requests; owner
+  listing and search still 403). Every fact verified; no status, release or npm version
+  changed, so projects.json is unchanged. New commits, merged PRs and tags in docsearch,
+  Meret, Mezgeb, NullChat and Suq. 230 tests pass locally.
+- **Item 31** — PR #46 (this one, open, not merged): check:site fails on horizontal page
+  scroll at both widths. Locally: lint, typecheck, 233 tests, verify:facts, production
+  audit, build and check:site pass; checked to fail on a forced 2000px element.
+  check:lighthouse locally: `/` performance 89 (needs 90; local runs have sat at 89–90
+  before, CI scores 96), project page 96, all else 100. This PR does not change pages.
+- **Item 11:** unchanged (only the fast-uri moderate, dev-only, item 26 due
+  2026-11-02). Production audit clean.
+- **Tags:** none (nothing merged).
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #45), item 31 no-horizontal-scroll check (PR #46) |
+| Merged | #45 no · #46 no (CI could not start: A16) |
+| Failed or blocked | GitHub Actions refuses to start jobs (billing/spending limit, A16), so no merge |
+| Roadmap | 7 items open; no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 Actions blocked (new), A15 critical-fix rule (FYI), A10 tags, A12 second Vercel project |
+| Next | Re-run CI on #45/#46 once Actions works, merge them; then items 32 and 33 |
 
 ---
 

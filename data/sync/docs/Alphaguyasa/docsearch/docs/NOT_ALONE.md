@@ -52,7 +52,6 @@ church books are under copyright.
 | `GENERATION_PROVIDER` | `gemini` (or `anthropic` + `ANTHROPIC_API_KEY`) |
 | `GEMINI_API_KEY` | same key as the GitHub secret |
 | `SEARCH_PER_MINUTE` | optional; default 3 |
-| `SHOW_DOCUMENTS` | leave unset (upload routes stay off) |
 | `CRON_SECRET` | optional; any long random string. Vercel cron sends it to `/api/telegram/daily`, which then refuses every other caller (401). Unset, the route is open. Set it in Vercel only; the deploy's env sync leaves it alone. |
 
 ## Local commands
@@ -96,6 +95,10 @@ The bot is the website in a chat. `POST /api/telegram` is its webhook: each
 private message is sent to `/api/search` as the site sends it (safety gate,
 rate limit and example cache included) and the story comes back with its
 references. `/start` greets, `/help` gives the crisis numbers. Nothing is stored.
+Each chat may start 2 searches per 3 minutes (`src/lib/chat-limit.ts`, in memory,
+per instance), so one chat cannot use the whole site-wide limit. Over its share a
+chat gets a gentle "please wait" with the matching people; a crisis phrase is still
+answered at once, and the fixed example questions are not counted.
 
 - The token lives only in Vercel as `TELEGRAM_BOT_TOKEN` (sensitive, production).
 - To register the webhook and the English/Amharic command menu (after changing
