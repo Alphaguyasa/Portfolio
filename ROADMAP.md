@@ -17,18 +17,20 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-26: 4 items were left after items 25 and 17; added 27–30.
 2026-10-26 (evening run): items 27 and 28 done; 6 open, so no replan.
 2026-10-27: 4 items were left after items 29 and 30; added 31–34.
+2026-10-28 → 2026-10-31: GitHub Actions does not start jobs (NEEDS_APPROVAL A16), so
+nothing merged. Item 31 is PR #46 and item 32 is PR #48, both waiting on CI.
 
 ---
 
 ## Open
 
-### 31. [P2 · S] check:site fails on horizontal scroll at 375px
+### 31. [P2 · S] check:site fails on horizontal scroll at 375px (PR #46, waiting on CI)
 CLAUDE.md asks for pages readable at phone width with no horizontal page scroll, but
 check:site does not test it. At 375px, fail a page whose `document.documentElement.
 scrollWidth` exceeds its `clientWidth` (marquees must clip, not widen the page). Put
 the rule in a pure helper with tests; check it fails on a forced wide element.
 
-### 32. [P2 · S] Hard cap on the contact rate limiter's memory
+### 32. [P2 · S] Hard cap on the contact rate limiter's memory (PR #48, waiting on CI)
 `src/lib/rateLimit.ts` prunes only expired windows once the map holds 500 keys, so
 many distinct client keys inside one window grow it without bound. Add a hard cap
 (evict the oldest windows first) and a test that floods it with distinct keys.
@@ -72,9 +74,6 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Suggestions for other repos (read-only; for Alpha to apply)
 
-- **docsearch:** README still describes DocSearch only; the pivot to Not Alone lives in
-  `docs/`. A short "Status: pivoting to Not Alone" note at the top would let the
-  portfolio cite the pivot from the README.
 - **NullChat:** has no README; the sync can only cite the repo description and ROADMAP.
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.

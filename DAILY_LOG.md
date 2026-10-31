@@ -4,6 +4,40 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-10-31 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** last push run green (2026-10-27). **GitHub Actions has not started a job
+  since 2026-10-28**: "recent account payments have failed or your spending limit needs
+  to be increased" (A16). Nothing has merged since #44, so the 10-28, 10-29 and 10-30
+  logs exist only on their open PRs (#45–#49). This run read main and did not see them.
+- **Sync** — PR #50 (open, CI not started): all 9 repos read (123 API requests). Meret's
+  roadmap now says phases 5 and 6 are done in CI with device checks pending; its status
+  note and results say so, backed by a new quote. docsearch's README now notes the
+  pivot, so that suggestion is removed from ROADMAP.md. All facts verified, 230 tests pass.
+- **Items 31 and 32:** redone before the earlier PRs were found. The item 31 duplicate
+  (#51) is closed in favour of #46. The item 32 push was refused because #48 already
+  holds that branch, so nothing was overwritten. No new roadmap work is stacked while
+  CI is blocked.
+- **Lesson for the next run:** list open PRs (`gh api repos/Alphaguyasa/Portfolio/pulls`)
+  before starting. While A16 stands, the logs live on open PRs.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #50); found items 31 (#46) and 32 (#48) already open |
+| Merged | None: GitHub Actions will not start jobs (A16) |
+| Failed or blocked | CI blocked by billing / spending limit since 2026-10-28; PRs #45–#50 waiting |
+| Roadmap | 8 items open (31, 32 in PRs); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | **A16 Actions blocked** (wait for 1 Nov reset, go public, or allow local checks), A15, A10, A12 |
+| Next | If Actions runs again: re-run CI, merge #50 (close #45/#47/#49), #46, #48; then items 33, 34 |
+
+---
+
 ## 2026-10-27 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
