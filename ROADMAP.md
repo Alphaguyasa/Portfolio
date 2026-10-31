@@ -17,15 +17,21 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-26: 4 items were left after items 25 and 17; added 27–30.
 2026-10-26 (evening run): items 27 and 28 done; 6 open, so no replan.
 2026-10-27: 4 items were left after items 29 and 30; added 31–34.
+2026-10-28 → 2026-10-31: GitHub Actions did not start jobs (A16), so nothing merged.
+2026-10-31 (second run): Actions ran again; items 31 and 32 merged, item 35 added; 7 open, so no replan.
 
 ---
 
 ## Open
 
-### 32. [P2 · S] Hard cap on the contact rate limiter's memory
-`src/lib/rateLimit.ts` prunes only expired windows once the map holds 500 keys, so
-many distinct client keys inside one window grow it without bound. Add a hard cap
-(evict the oldest windows first) and a test that floods it with distinct keys.
+### 35. [P1 · S] CI status from the build workflow, not the newest run of any workflow
+`scripts/sync-github.mjs` reads `actions/runs?per_page=1`, so a repo's "CI" is whatever
+workflow ran last on the default branch: for NullChat that is now "Release tag" (a
+tagging job), for docsearch it alternates between `ci` and `deploy-not-alone`. Read
+more runs (same request, larger page), take every run on the newest head commit
+(ignoring cancelled and skipped) and report failure if any failed, success only if all
+passed (the safer claim), listing the workflow names. Pure helper + tests, including
+"tag job green, build red → failing".
 
 ### 33. [P3 · S] Weekly workflow also verifies registry signatures
 Add `npm audit signatures` to `.github/workflows/audit.yml` after `npm ci
@@ -56,6 +62,9 @@ fast-uri moderate (item 26). Keep re-checking until that is gone, then close thi
 2026-10-26: unchanged (only the fast-uri moderate, dev-only); production audit clean.
 2026-10-26 (evening): unchanged.
 2026-10-27: unchanged.
+2026-10-31: production audit clean. New dev-only moderate: minimatch <11.0.1
+(GHSA-g3hv-75wg-m249) via eslint / eslint-config-next. Take the fix once a release
+with it is two weeks old and eslint-config-next accepts it.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -66,9 +75,6 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Suggestions for other repos (read-only; for Alpha to apply)
 
-- **docsearch:** README still describes DocSearch only; the pivot to Not Alone lives in
-  `docs/`. A short "Status: pivoting to Not Alone" note at the top would let the
-  portfolio cite the pivot from the README.
 - **NullChat:** has no README; the sync can only cite the repo description and ROADMAP.
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
@@ -76,7 +82,13 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 
 ## Done
 
-- **[P2] No horizontal scroll in check:site** (item 31), PR #46 (2026-10-28). At
+- **[P2] Hard cap on the rate limiter's memory** (item 32), PR #48 (2026-10-29, merged
+  2026-10-31). `src/lib/rateLimit.ts` tracks at most 5,000
+  keys; past that the oldest windows are evicted first (a renewed window is
+  re-inserted, so map order is window-start order). Two tests flood it with distinct
+  keys; the first fails without the cap.
+- **[P2] No horizontal scroll in check:site** (item 31), PR #46 (2026-10-28, merged 2026-10-31, squash
+  `6f1849f`). At
   1440px and 375px, every crawled page and the 404 page fail when
   `documentElement.scrollWidth` exceeds `clientWidth`; the message names the three
   widest unclipped elements past the edge. Rule in `scripts/lib/overflow.mjs`, three
