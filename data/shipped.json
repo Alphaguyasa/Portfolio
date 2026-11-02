@@ -1,162 +1,162 @@
 [
   {
-    "project": "Suq",
-    "slug": "suq",
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
     "kind": "pr",
-    "title": "fix(reset): warn about saved drawer counts; reset no longer crashes Settings",
-    "date": "2026-10-31T09:25:00Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/61"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Replan 2026-10-31 (roadmap items 55–66) and log the second run",
-    "date": "2026-10-31T09:06:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/74"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Link challenge: LINK_PROOF signs the Nearby link token (roadmap #42)",
-    "date": "2026-10-31T08:57:50Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/73"
+    "title": "Pin the Vercel CLI to 65.2.0 so production deploys work again",
+    "date": "2026-11-02T06:41:50Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/150"
   },
   {
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
-    "title": "feat: name breaks in the wallet balance chain as reconcile explanations (R37)",
-    "date": "2026-10-31T05:23:21Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/65"
+    "title": "fix: refuse amounts that will not normalize instead of guessing (R41)",
+    "date": "2026-11-02T05:25:58Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/71"
   },
   {
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
-    "title": "fix: authenticate the backup header as GCM associated data (R36)",
-    "date": "2026-10-31T05:16:52Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/64"
+    "title": "fix: run backup, restore and export off the main thread (R40)",
+    "date": "2026-11-02T05:20:37Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/70"
   },
   {
     "project": "Meret",
     "slug": "meret",
     "kind": "pr",
-    "title": "Give every DataStore test a scope that ends with the test (roadmap item 24)",
-    "date": "2026-10-31T04:50:00Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/63"
+    "title": "Form schema: parse, validate, visible_if (roadmap item 30, Phase 8c)",
+    "date": "2026-11-02T05:00:54Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/73"
   },
   {
     "project": "Meret",
     "slug": "meret",
     "kind": "pr",
-    "title": "Undo an accidental stop, and count segments in the tracking bar (roadmap item 23b, 7d-2)",
-    "date": "2026-10-31T04:49:38Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/62"
+    "title": "List waypoints; a tap centres the map (roadmap item 29b, Phase 8b)",
+    "date": "2026-11-02T04:51:47Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/72"
   },
   {
     "project": "Suq",
     "slug": "suq",
     "kind": "pr",
-    "title": "feat(reports): save the end-of-day drawer count",
-    "date": "2026-10-31T04:32:10Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/59"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "fix(reset): a reset till keeps its id and receipt counter",
-    "date": "2026-10-31T04:21:46Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/58"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Share example answers across server instances so a cold start does not spend quota on them",
-    "date": "2026-10-31T03:45:15Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/145"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Give each Telegram chat its own share of the search limit",
-    "date": "2026-10-31T03:42:01Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/144"
+    "title": "feat(owner): recover a forgotten owner PIN with the shop owner's account",
+    "date": "2026-11-02T04:20:14Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/66"
   },
   {
     "project": "NullChat",
     "slug": "nullchat",
     "kind": "pr",
-    "title": "Send glue: sendHeld and markFlushed with JVM tests; log 2026-10-31",
-    "date": "2026-10-31T03:37:43Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/72"
+    "title": "Publish bound peers from inside LinkBindings' lock; log 2026-11-02",
+    "date": "2026-11-02T04:04:45Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/82"
   },
   {
     "project": "NullChat",
     "slug": "nullchat",
     "kind": "pr",
-    "title": "Show a line in the thread when the disappearing timer changes (Room 10→11)",
-    "date": "2026-10-31T03:26:57Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/71"
+    "title": "Take notifications down when their messages are deleted",
+    "date": "2026-11-02T03:53:38Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/81"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Send a report-only Content-Security-Policy on every page",
+    "date": "2026-11-02T03:50:02Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/149"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Test the feedback and today routes, replan the roadmap, and log the SDK 1.x question",
+    "date": "2026-11-02T03:46:05Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/148"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Ignore replayed ANNOUNCE and PROFILE packets",
+    "date": "2026-11-02T03:32:21Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/80"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Bump AGP 9.4.1 → 9.5.0 (re-applies Dependabot #78)",
+    "date": "2026-11-02T03:22:20Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/79"
   },
   {
     "project": "NullChat",
     "slug": "nullchat",
     "kind": "tag",
-    "title": "v2026-10-31-4",
-    "date": "2026-10-31T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-10-31-4"
+    "title": "v2026-11-02-4",
+    "date": "2026-11-02T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-02-4"
   },
   {
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
-    "title": "fix: Today rolls over to the new day at local midnight (R35)",
-    "date": "2026-10-30T05:18:42Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/62"
+    "title": "fix: refuse a restore while demo mode is on (R39 part 1)",
+    "date": "2026-11-01T19:31:18Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/68"
   },
   {
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
-    "title": "fix: \"Lock immediately\" no longer locks on rotation or a language change (R34)",
-    "date": "2026-10-30T05:18:34Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/61"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Track detail: totals, segments and elevation profile (roadmap item 23a, 7d-1)",
-    "date": "2026-10-30T05:09:31Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/60"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Track list with delete and undo (roadmap item 22, 7c)",
-    "date": "2026-10-30T04:58:16Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/59"
+    "title": "fix: keep the backup passphrase in the ViewModel across the file picker (R38)",
+    "date": "2026-11-01T19:16:59Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/67"
   },
   {
     "project": "Suq",
     "slug": "suq",
     "kind": "pr",
-    "title": "feat(reports): share the cash-up as text",
-    "date": "2026-10-30T04:16:04Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/55"
+    "title": "feat(owner): owner PIN for price edits, reset and cashier management",
+    "date": "2026-11-01T19:04:05Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/64"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "feat(owner): owner role; a cashier needs the owner PIN to void",
+    "date": "2026-11-01T18:55:00Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/63"
   },
   {
     "project": "DocSearch → Not Alone",
     "slug": "docsearch",
     "kind": "pr",
-    "title": "Test the search and Telegram webhook routes end to end with mocks",
-    "date": "2026-10-30T03:41:51Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/143"
+    "title": "Validate the Telegram webhook body with zod so a malformed update is a 200, not a retried 500",
+    "date": "2026-11-01T18:04:56Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/147"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Remove leftover DocSearch components, keep the bot outside the password gate, and give the home page Amharic metadata",
+    "date": "2026-11-01T18:02:03Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/146"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Draw saved waypoints on the map, clustered (roadmap item 29a, Phase 8b)",
+    "date": "2026-11-01T17:19:08Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/70"
   }
 ]

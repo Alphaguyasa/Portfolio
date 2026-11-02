@@ -13,9 +13,9 @@ and the unit test suite).
 ## Open
 
 Next run: take the highest-priority open item (P1 before P2), skipping anything marked WAITING or
-"after the pending migrations". As of 2026-10-31 (run 19) that is item 32 (owner PIN, split into small PRs), then
-item 42 (major upgrades, vitest 5 first). Item 27 needs a new `sale_items` column that
-production lacks until alpha applies the migrations, so it waits unless the push can leave the column out safely.
+"after the pending migrations". As of 2026-11-02 (run 21) that is item 42, part 2 (typescript 7). Item 27 needs a
+new `sale_items` column that production lacks until alpha applies the migrations, so it waits unless the push can
+leave the column out safely.
 
 ### 12. [P3 · M] Optional camera barcode scanning — WAITING FOR ALPHA (see NEEDS_APPROVAL)
 `docs/RULES.md` says "no camera scanning in v1 and no scanner library", and this item was written by a run, not
@@ -42,10 +42,6 @@ RLS is on for every table, append-only tables allow only SELECT/INSERT, no XSS s
 `lib/reports/compute.ts` says so in a comment. Fix: `cost_snapshot` on `sale_items` (Dexie v8 — v5/v6/v7 are taken by items 25, 34 and 30 — + upgrade test,
 additive nullable column migration); old lines fall back to current cost.
 
-### 32. [P3 · M] Owner PIN for voids, price edits and reset
-Any cashier PIN can void, change prices or reset the device. Add an owner role for those actions. (PINs are plain
-text by design — `lib/db/cashiers.ts` explains why; revisit only together with this item.)
-
 ### 33. [P3 · L] Credit (ዱቤ) customer ledger — WAITING FOR ALPHA
 `credit` is already a payment method but records no customer. `docs/RULES.md` lists customer credit accounts as out
 of scope for v1, so this needs alpha's decision (see NEEDS_APPROVAL).
@@ -59,11 +55,29 @@ were read again.
 `npm audit` (dev included) now shows moderate advisories in build/lint tooling only; `npm audit --omit=dev` gate is
 clean. `npm outdated` shows only majors: next 16, eslint 10, typescript 7, vitest 5, eslint-config-next 16.
 
-### 42. [P3 · L] Major upgrades, one PR each: vitest 5, typescript 7, eslint 10 (+ eslint-config-next), Next 16
+### 42. [P3 · L] Major upgrades, one PR each: ~~vitest 5~~ (done), typescript 7, eslint 10 (+ eslint-config-next), Next 16
 Read each changelog first; Next 16 is last and largest (Serwist compatibility, App Router changes). Stop and log if
 any needs code changes beyond an S.
 
 ## Done
+
+- **vitest 5 (item 42, part 1)** — vitest 5.0.5 with no config or test changes (433 tests pass as before).
+  [PR #67](https://github.com/Alphaguyasa/Suq/pull/67) · tag `v2026-11-02-2` not pushed (refused) — commit `a4fd70e`
+
+- **Forgotten owner PIN (item 43)** — "Forgot the owner PIN?" on the lock screen's name list and in Settings (when a
+  cashier is unlocked) asks for the shop owner's Supabase email and password. A throwaway client checks them online,
+  so the till's own session is untouched, and the account must have role `owner` in `shop_members` for this till's
+  shop. Then `setOwnerPin()` sets the new PIN in one transaction. The saved session alone is not trusted, because
+  whoever holds the tablet holds it. Without internet it says so. No new table. Unit + `e2e/owner-pin-recovery.spec.ts`.
+  [PR #66](https://github.com/Alphaguyasa/Suq/pull/66) · tag `v2026-11-02-1` not pushed (refused) — commit `8f4ca2c`
+
+- **Owner PIN for voids, price edits, reset and cashier management (item 32)** — setup's first cashier is the owner
+  (`role: 'owner'`); tills set up earlier read their oldest cashier as the owner, so no Dexie upgrade rewrites rows.
+  The last owner cannot be removed. When someone other than the owner is unlocked, the owner types their PIN inline in
+  the action's own form (no modal); a wrong PIN writes nothing. Settings shows an Owner badge and can add another owner.
+  Unit + `e2e/owner-approval.spec.ts`. [PR #63](https://github.com/Alphaguyasa/Suq/pull/63) (void) · tag
+  `v2026-11-01-1` not pushed (refused) — commit `0ff6376`; [PR #64](https://github.com/Alphaguyasa/Suq/pull/64)
+  (price, reset, cashiers) · tag `v2026-11-01-2` not pushed (refused) — commit `1e0a182`
 
 - **Reset warning counts saved drawer counts (item 40)** — `unsyncedSummary()` counts the local-only `cash_closes`,
   and the reset warning says they will be lost even on a fully synced till. The "all synced" line is shown only when
