@@ -38,6 +38,11 @@ describe("registry signatures", () => {
     const steps = [...ci.matchAll(/^\s*run: (.+)$/gm)].map((m) => m[1].trim());
     expect(steps.indexOf("npm audit signatures")).toBe(steps.indexOf("npm ci") + 1);
   });
+
+  it("are verified right after install in the weekly audit too", () => {
+    const steps = [...audit.matchAll(/^\s*run: (.+)$/gm)].map((m) => m[1].trim());
+    expect(steps.indexOf("npm audit signatures")).toBe(steps.indexOf("npm ci --ignore-scripts") + 1);
+  });
 });
 
 // A tag like `@v4` can be re-pointed to new code that then runs with the repo's

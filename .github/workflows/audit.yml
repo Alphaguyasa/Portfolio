@@ -2,8 +2,9 @@ name: Weekly audit
 
 # CI audits only when a PR or a push runs, so an advisory published against the
 # deployed build between changes would go unseen until the next PR. This job
-# re-runs the same production audit on main once a week. Install scripts are
-# skipped: nothing is built here, and it keeps the run to about a minute.
+# re-runs the same production audit and registry signature check on main once a
+# week. Install scripts are skipped: nothing is built here, and it keeps the run to
+# about a minute.
 on:
   schedule:
     - cron: "0 4 * * 1"
@@ -27,6 +28,11 @@ jobs:
 
       - name: Install
         run: npm ci --ignore-scripts
+
+      # Same check as CI: a re-published or tampered tarball fails here too, even
+      # in a week with no PRs.
+      - name: Verify registry signatures
+        run: npm audit signatures
 
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
