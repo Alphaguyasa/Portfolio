@@ -19,24 +19,11 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-27: 4 items were left after items 29 and 30; added 31–34.
 2026-10-28 → 2026-10-31: GitHub Actions did not start jobs (A16), so nothing merged.
 2026-10-31 (second run): Actions ran again; items 31 and 32 merged, item 35 added; 7 open, so no replan.
+2026-11-02: items 35 and 33 done; 5 open (34, 26, 11, 12, 13), so no replan.
 
 ---
 
 ## Open
-
-### 35. [P1 · S] CI status from the build workflow, not the newest run of any workflow
-`scripts/sync-github.mjs` reads `actions/runs?per_page=1`, so a repo's "CI" is whatever
-workflow ran last on the default branch: for NullChat that is now "Release tag" (a
-tagging job), for docsearch it alternates between `ci` and `deploy-not-alone`. Read
-more runs (same request, larger page), take every run on the newest head commit
-(ignoring cancelled and skipped) and report failure if any failed, success only if all
-passed (the safer claim), listing the workflow names. Pure helper + tests, including
-"tag job green, build red → failing".
-
-### 33. [P3 · S] Weekly workflow also verifies registry signatures
-Add `npm audit signatures` to `.github/workflows/audit.yml` after `npm ci
---ignore-scripts`, so a re-published or tampered package is caught in a week with
-no PRs too. Extend `tests/workflows.test.ts`.
 
 ### 34. [P3 · S] check:site checks title, description and canonical on every page
 Each page should have a non-empty `<title>`, a meta description and a canonical link
@@ -47,7 +34,8 @@ shared links). Fail check:site on a missing or duplicated one; pure helper + tes
 `npm audit` (2026-10-24) reports GHSA-w74x-v6f9-j3xg, -xhq7-xmqj-769h,
 -wjr9-j795-jxcr and -333x-w4r6-6crp in fast-uri 3.1.8, reached only through
 lighthouse → ajv (dev-only, never shipped; production audit clean). The fix, 3.1.9,
-was published 2026-10-19, so it meets the two-week rule on **2026-11-02**. Then
+was published 2026-10-19 at 23:05 UTC, so it is two weeks old from **2026-11-02 23:05 UTC**
+(the 2026-11-02 morning run was 16 hours early and left it). Then
 update the lockfile (`npm update fast-uri --before=<date>`), check that nothing else
 moves, and confirm `npm audit` is clean.
 
@@ -65,6 +53,7 @@ fast-uri moderate (item 26). Keep re-checking until that is gone, then close thi
 2026-10-31: production audit clean. New dev-only moderate: minimatch <11.0.1
 (GHSA-g3hv-75wg-m249) via eslint / eslint-config-next. Take the fix once a release
 with it is two weeks old and eslint-config-next accepts it.
+2026-11-02: unchanged (production clean; dev-only fast-uri and minimatch moderates).
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -79,9 +68,19 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
 - **Meret:** no repo description is set on GitHub.
+- **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync).
 
 ## Done
 
+- **[P3] Weekly audit verifies registry signatures** (item 33), this PR (2026-11-02).
+  `.github/workflows/audit.yml` runs `npm audit signatures` right after
+  `npm ci --ignore-scripts`; a test (fails without the step) keeps it there.
+- **[P1] CI status from every workflow on the newest settled commit** (item 35), PR #54
+  (2026-11-02), squash `063b6a9`. `scripts/lib/ci.mjs` `summariseCi()`: failing if any
+  run on that commit failed, passing only if all passed; cancelled and skipped ignored;
+  a still-running commit is skipped for an older settled one. Nine tests. Live check:
+  NullChat = Android CI + Release tag, passing; docsearch = ci + deploy-not-alone,
+  failing (its deploy job failed). The next sync writes this into index.json.
 - **[P2] Hard cap on the rate limiter's memory** (item 32), PR #48 (2026-10-29, merged
   2026-10-31). `src/lib/rateLimit.ts` tracks at most 5,000
   keys; past that the oldest windows are evicted first (a renewed window is
