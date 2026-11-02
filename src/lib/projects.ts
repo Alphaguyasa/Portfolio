@@ -47,7 +47,14 @@ type SyncRepo = {
   lastCommitAt?: string | null;
   latestRelease?: { tag: string; publishedAt: string } | null;
   tags?: string[];
-  ci?: { workflow: string; status: string; conclusion: string | null; at: string } | null;
+  ci?: {
+    workflow: string;
+    workflows?: string[];
+    failing?: string[];
+    status: string;
+    conclusion: string | null;
+    at: string;
+  } | null;
   npm?: { name: string; latest: string | null; publishedAt: string | null } | null;
   rootFiles?: string[];
   /** Private repos only: the summary Alpha wrote in portfolio.config.json "include". */

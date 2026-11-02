@@ -25,6 +25,7 @@ import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { selectRepos } from "./lib/repos.mjs";
+import { summariseCi } from "./lib/ci.mjs";
 
 // Node's fetch ignores HTTPS_PROXY unless NODE_USE_ENV_PROXY is set. Behind a proxy
 // (the scheduled cloud run) a direct request never gets the proxy's credentials, so
@@ -131,13 +132,12 @@ async function syncRepo(repo, config) {
     gh(`/repos/${full}/releases/latest`, { allow404: true }),
     gh(`/repos/${full}/tags?per_page=10`),
     gh(`/repos/${full}/commits?sha=${branch}&per_page=1`, { allow404: true }),
-    gh(`/repos/${full}/actions/runs?branch=${branch}&per_page=1&exclude_pull_requests=true`, {
+    gh(`/repos/${full}/actions/runs?branch=${branch}&per_page=30&exclude_pull_requests=true`, {
       allow404: true,
     }),
     gh(`/repos/${full}/pulls?state=closed&sort=updated&direction=desc&per_page=30`),
   ]);
 
-  const lastRun = runs?.workflow_runs?.[0];
   const { docs, rootFiles } = await listDocs(full, branch, config);
   const npmName = config.npmPackages?.[repo.name];
   const npm = npmName ? await npmInfo(npmName) : null;
@@ -160,14 +160,7 @@ async function syncRepo(repo, config) {
       lastCommitAt: commits?.[0]?.commit?.committer?.date ?? null,
       latestRelease: release ? { tag: release.tag_name, publishedAt: release.published_at } : null,
       tags: (tags ?? []).map((t) => t.name),
-      ci: lastRun
-        ? {
-            workflow: lastRun.name,
-            status: lastRun.status,
-            conclusion: lastRun.conclusion,
-            at: lastRun.created_at,
-          }
-        : null,
+      ci: summariseCi(runs?.workflow_runs),
       mergedPulls: (pulls ?? [])
         .filter((p) => p.merged_at)
         .sort((a, b) => b.merged_at.localeCompare(a.merged_at))
