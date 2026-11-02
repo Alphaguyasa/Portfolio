@@ -4,36 +4,62 @@ Prioritised backlog. The daily run takes the top open item. Mark an item done wi
 its PR number and move it to "Done" at the bottom. Priority: P0 (urgent) → P3.
 Effort: S (< half a run), M (one run), L (split into several PRs).
 
-Last replan: 2026-10-29 (full audit: code, security, accessibility, localization, tests; items 35-42). Before that 2026-10-27 (dependencies), 2026-10-26 and 2026-10-21.
+Last replan: 2026-11-02 (audit: code, security, dependencies, localization, tests; items 44-49). Before that 2026-10-29 (items 35-42), 2026-10-27 (dependencies), 2026-10-26 and 2026-10-21.
 
 ## Open
 
 28. **[P0, S] Production deploy is red (Vercel CLI 65.3.1, "scope does not exist").**
-    Waits on NEEDS_APPROVAL #10: with Alpha's OK, pin `vercel@65.2.0` in
-    deploy-not-alone.yml and add a test that pins it; otherwise check first whether
-    a re-run on a newer CLI passes. (2026-10-27: a re-run on 65.4.0 failed the same
-    way.) Once the deploy is green, bump its checkout/setup-node to v7 and Node to 24
+    2026-11-02: Alpha approved; `vercel@65.2.0` is pinned in deploy-not-alone.yml
+    (tests/deploy-workflow.test.ts). Mark done once a deploy on main is green. Once the deploy is green, bump its checkout/setup-node to v7 and Node to 24
     and drop it from EXEMPT in tests/workflow-runtimes.test.ts (left out of item 22).
 43. **[P2, M] Per-reader share of the web search limit.** The bot has its per-chat
     share (item 39); the website has none. Needs a privacy decision first (a salted,
     hashed IP kept a few minutes, or nothing at all): NEEDS_APPROVAL #11. Waits on it.
-41. **[P3, S] Leftover DocSearch code and English-only home metadata.** Unused:
-    components/SearchInput.tsx, CitationTargets.tsx, `IdleExamples`/`EmptyState` in
-    States.tsx ("ingest PDFs"). proxy.ts uses realm "DocSearch", and its matcher would
-    block /api/telegram and the cron if APP_PASSWORD were set. layout.tsx metadata is
-    English when lang=am. Test: every component is imported; extend the proxy test.
-42. **[P3, S] Validate the Telegram webhook body with zod.** route.ts casts JSON to
-    `Update` and reads `msg.chat.type`, which throws (500, Telegram retries) on a
-    message without `chat`. Secret is checked first, so low risk.
+50. **[P2, S] Enforce the CSP.** Item 44 sends it report-only. Once Alpha (or a
+    run with browser access to production) sees no "Content Security Policy" lines
+    in the console on the live site (home, a person, a story, /help, Amharic), and
+    the deploy is green again (item 28), rename the header to
+    `Content-Security-Policy` and update tests/next-config.test.ts.
 11. **[P3, S] Close stale PR #6 (orthodox-library)** once Alpha agrees (NEEDS_APPROVAL.md #3).
-34. **[P3, M] @anthropic-ai/sdk 0.114 → 1.x** (major). Only the optional Anthropic
-    provider in src/lib/llm.ts uses it, and its key is not set in production. Read the
-    migration notes; tests mock it, so no API calls.
+34. **[P3, M] @anthropic-ai/sdk 0.114 → 1.x** (major). Waits on NEEDS_APPROVAL #13.
+    1.x sends API version 2026-10-21, which rejects `temperature`/`top_p`/`top_k`
+    with a 400; eval/src/provider.ts sends `temperature: 0` to Haiku 4.5 (a
+    non-default value, so the owner decides). Typecheck flags only that line. Also
+    check then: 1.x sends the key as `Authorization: Bearer` (no proxy here), and
+    llm.ts's `thinking: disabled` is fine on claude-sonnet-5 but 400s on Sonnet 5.5.
 32. **[P3, L] Toolchain majors, one PR each:** ESLint 10 (+ @eslint/js 10,
     react-hooks plugin 7, which adds new rules), vitest/coverage-v8 5, TypeScript 7.
-    Read each migration guide first; dev-only, so no runtime risk.
+    Read each migration guide first; dev-only, so no runtime risk. (2026-11-02:
+    TypeScript 7 waits on typescript-eslint, whose peer range is `<6.1.0`; ESLint 10
+    still uses minimatch 10, so it does not clear item 47.)
+46. **[P3, S] Keep the /stats key out of the URL.** `/stats?key=…` puts the key in
+    request logs and browser history. Accept it once (a small form posting to a route
+    that sets an httpOnly, SameSite=Strict cookie scoped to /stats holding an HMAC,
+    not the key), keep `?key=` working for a while with a redirect that strips it, and
+    reuse src/lib/safe-equal.ts instead of the page's own timingSafeEqual. Tests.
+47. **[P3, S] Dev-only advisory GHSA-g3hv-75wg-m249** (minimatch <11.0.1, moderate,
+    DoS via glob patterns) through eslint 9 and typescript-eslint. No fixed release
+    in their ranges (ESLint 10 still uses minimatch 10), and `npm audit --omit=dev`
+    is clean, so CI stays green. Watch; update when they move to minimatch 11. Do not
+    force an override (minimatch 11 is a major).
+48. **[P3, S] Cap request bodies before parsing.** /api/feedback and /api/search call
+    `request.json()` on whatever arrives (Vercel allows up to 4.5 MB). Read the text,
+    answer 413 above a few KB, then parse. Tests next to the route tests.
+49. **[P3, M] Read a story aloud (browser speech, free).** A "listen" button on the
+    story using `speechSynthesis`, offered only when the browser has a voice for the
+    story's language (Amharic voices are rare; hide the button rather than read
+    Amharic with an English voice). No server cost. EN/AM labels, keyboard and
+    screen-reader friendly, respects a pause/stop.
 
 ## Done
+
+- 2026-11-02: Item 44. Every response carries `Content-Security-Policy-Report-Only` (src/lib/csp.ts, sent from next.config.ts): same-origin only for scripts, styles, images, fonts, fetches, workers and the manifest; `'unsafe-inline'` for scripts and styles (Next's inline bootstrap, the JSON-LD block); no eval in production; `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`. A `next start` browser smoke test of 12 pages (EN and AM) logged no violations; an injected off-site image was reported, so the check works. tests/next-config.test.ts. Enforcing it is item 50.
+
+- 2026-11-02: Item 45. tests/feedback-today-routes.test.ts calls POST /api/feedback and GET /api/today with the db mocked: a good tap is stored through `add_feedback` with numbers and ids only (204); a body that is not JSON, a wrong type, an unknown language, free text in place of a person id, an unknown tag or more than 5 people is a 400 that never reaches the db; the hourly cap and a db error are a 429; today returns the posted person, falls back to the person of the day, and gives `id: null` (200) when the db throws.
+
+- 2026-11-01: Item 42. The Telegram webhook body is parsed with zod (`parseUpdate` in src/lib/telegram-update.ts). Each part (message, inline query, button press) is checked on its own, and a malformed part is dropped, so a message without `chat` or a body that is not JSON gets a 200 and no reply, where before it threw a 500 and Telegram retried. A bad part never drops a good one in the same update. tests/telegram-update.test.ts and a route test in tests/api-routes.test.ts.
+
+- 2026-11-01: Item 41. The unused DocSearch components are gone (SearchInput, CitationTargets, `IdleExamples` and the "ingest PDFs" `EmptyState`, and the unused `Quote` icon). The Basic auth realm says "Not Alone", and the proxy matcher skips /api/telegram/* (webhook, setup, daily cron), which cannot send Basic credentials and check their own secrets, so setting APP_PASSWORD no longer silences the bot. The home page metadata follows the reader's language (`generateMetadata` in layout.tsx, src/app/site-meta.ts; the Amharic line is the bot's own Amharic description). tests/components-used.test.ts (every exported component is used somewhere, metadata in both languages) and two proxy tests.
 
 - 2026-10-31: Item 40. Example answers are also kept in a shared table, `example_answers` (migration 20261031090000, additive: a table with RLS and two service-role-only functions, `get_example` and `put_example`, 6-hour TTL). A cold instance reads the answer back instead of spending Gemini quota on it again. Only keys made by `exampleKey` (the fixed questions) can reach the table. The answer is saved after "done" and before the stream closes. Until the migration is applied, or on any db error, the memory cache works alone as before. tests/example-cache.test.ts (shared read, fallback, key guard, migration checks) and a route test.
 
