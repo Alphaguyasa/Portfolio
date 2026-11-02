@@ -59,6 +59,10 @@ data/projects.json ◀── edited by hand, every claim quotes data/sync/docs
    Add it to `knownPublicRepos` (or to `skip` to keep it off the site), and give the
    scheduled routine read access to it, so the next sync reads it. Where the search is
    refused as well, the log says so and new public repos have to be added by hand.
+
+   A repo's CI is every workflow run on the newest settled commit of its default
+   branch (`scripts/lib/ci.mjs`), not just the newest run: failing if any of them
+   failed, passing only if all passed. Cancelled and skipped runs are ignored.
 2. **Projects.** `data/projects.json` holds all project content. Each project lists
    `facts: [{ path, quote }]`; a quote must appear verbatim in that repo's synced doc
    (or its description, for `@description`). Every number shown on the site must
