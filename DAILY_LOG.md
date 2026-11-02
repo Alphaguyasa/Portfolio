@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-11-02 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** green (`1bf1a4d`). Actions ran normally all run (A16 has not come back).
+- **Superseded sync PRs #45, #47, #49, #50 closed** (the close was allowed this time).
+- **Sync** — PR #53 (merged, squash `3965076`): all 9 repos read (124 API requests;
+  owner listing 403, `knownPublicRepos` used). Meret's roadmap now says phases 5, 6 and
+  7 are done in CI, so its quote, result line and status note say so (status stays
+  building). No release, npm or status change elsewhere.
+- **Item 35** — PR #54 (merged, squash `063b6a9`): CI status is read from every
+  workflow on the newest settled commit (failing if any failed). Live check: docsearch
+  will show CI failing after the next sync (its `deploy-not-alone` job failed on main);
+  added to the suggestions for other repos.
+- **Item 33** — this PR: the weekly audit also runs `npm audit signatures`.
+- **Item 26 deferred:** fast-uri 3.1.9 was published 2026-10-19 23:05 UTC, so it is not
+  two weeks old until tonight; the next run takes it.
+- **Item 11:** production audit clean; dev-only moderates (fast-uri, minimatch) unchanged.
+- **Tags:** pushing `v2026-11-02-1` was refused again (A10). Rollback points: squash
+  commits above.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #53), item 35 CI status from all workflows (PR #54), item 33 signatures in weekly audit (this PR) |
+| Merged | #53 yes, `3965076` · #54 yes, `063b6a9` · this PR see log of next run (tags not pushable: A10) |
+| Failed or blocked | Release tags (A10); item 26 waits a few hours for the two-week rule |
+| Roadmap | 5 items open (34, 26, 11, 12, 13); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 (confirm cause, then close), A15 FYI, A12, A10 tags |
+| Next | Daily sync (records docsearch CI failing); item 26 fast-uri, then item 34 |
+
+---
+
 ## 2026-10-31 — scheduled run (second)
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
