@@ -30,15 +30,6 @@ Each page should have a non-empty `<title>`, a meta description and a canonical 
 to its own path on the site URL (clients find the portfolio through search and
 shared links). Fail check:site on a missing or duplicated one; pure helper + tests.
 
-### 26. [P2 · S] fast-uri 3.1.9 for four moderate advisories (dev-only)
-`npm audit` (2026-10-24) reports GHSA-w74x-v6f9-j3xg, -xhq7-xmqj-769h,
--wjr9-j795-jxcr and -333x-w4r6-6crp in fast-uri 3.1.8, reached only through
-lighthouse → ajv (dev-only, never shipped; production audit clean). The fix, 3.1.9,
-was published 2026-10-19 at 23:05 UTC, so it is two weeks old from **2026-11-02 23:05 UTC**
-(the 2026-11-02 morning run was 16 hours early and left it). Then
-update the lockfile (`npm update fast-uri --before=<date>`), check that nothing else
-moves, and confirm `npm audit` is clean.
-
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
 `eslint-config-next`); the only automatic fix downgrades eslint-config-next to 14.
@@ -54,6 +45,10 @@ fast-uri moderate (item 26). Keep re-checking until that is gone, then close thi
 (GHSA-g3hv-75wg-m249) via eslint / eslint-config-next. Take the fix once a release
 with it is two weeks old and eslint-config-next accepts it.
 2026-11-02: unchanged (production clean; dev-only fast-uri and minimatch moderates).
+2026-11-03: fast-uri fixed (item 26). Left: the minimatch moderate (16 dev-only
+entries, all eslint tooling). 11.0.1 was published 2026-10-27 22:26 UTC, so it is two
+weeks old from 2026-11-10 22:26 UTC; eslint-config-next 16.4.0 still asks for 3.x and
+10.x, so it also needs an upstream release that accepts it.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -71,6 +66,11 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync).
 
 ## Done
+
+- **[P2] fast-uri 3.1.9** (item 26), this PR (2026-11-03). Only the lockfile entry for
+  fast-uri (dev-only, via lighthouse → ajv) moved from 3.1.8 to 3.1.9, published
+  2026-10-19 23:05 UTC (two weeks old). The four fast-uri advisories are gone; nothing
+  else moved; production audit clean.
 
 - **[P3] Weekly audit verifies registry signatures** (item 33), this PR (2026-11-02).
   `.github/workflows/audit.yml` runs `npm audit signatures` right after
