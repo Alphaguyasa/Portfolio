@@ -12,6 +12,8 @@
  *   - 404 page: an unknown path must answer 404 with the not-found page, which no
  *     link reaches, so the crawl alone would never check it
  *   - no horizontal scroll: at both widths, no page may be wider than the viewport
+ *   - search metadata: every page has one title, one meta description and one
+ *     canonical link to its own path on the site URL, none shared between pages
  *
  *   npm run build && npm run check:site
  *
@@ -19,10 +21,12 @@
  * bots, which would make CI fail for reasons outside this repo.
  */
 import { spawn } from "node:child_process";
+import { readFileSync } from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
+import { duplicateProblems, metaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
 const BASE = `http://127.0.0.1:${PORT}`;
@@ -32,6 +36,9 @@ const VIEWPORTS = [
 ];
 
 const NOT_FOUND_PATH = "/check-site-unknown-page";
+
+const SITE_URL = siteUrlFrom(readFileSync(new URL("../src/data/site.ts", import.meta.url), "utf8"));
+if (!SITE_URL) throw new Error("check-site: no `url` found in src/data/site.ts");
 
 async function waitForServer(url, timeoutMs = 60_000) {
   const start = Date.now();
@@ -162,6 +169,7 @@ try {
   const queue = ["/"];
   const seen = new Set(queue);
   const checkedAssets = new Set();
+  const pageMeta = {};
 
   while (queue.length) {
     const pathname = queue.shift();
@@ -191,6 +199,10 @@ try {
       if (overflow) problems.push(`${pathname} [${vp.name}] ${overflow}`);
 
       if (vp.name === "desktop") {
+        const meta = await page.evaluate(readPageMeta);
+        pageMeta[pathname] = meta;
+        for (const m of metaProblems(meta, pathname, SITE_URL)) problems.push(`${pathname}: ${m}`);
+
         const { links, ids } = await page.evaluate(() => ({
           links: [...document.querySelectorAll("a[href], link[href], img[src]")].map(
             (el) => el.getAttribute("href") ?? el.getAttribute("src"),
@@ -224,11 +236,13 @@ try {
     }
   }
 
+  problems.push(...duplicateProblems(pageMeta));
+
   for (const vp of VIEWPORTS) problems.push(...(await checkContactForm(vp)));
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions and canonicals checked`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));
