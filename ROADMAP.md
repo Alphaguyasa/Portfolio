@@ -20,15 +20,31 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-28 → 2026-10-31: GitHub Actions did not start jobs (A16), so nothing merged.
 2026-10-31 (second run): Actions ran again; items 31 and 32 merged, item 35 added; 7 open, so no replan.
 2026-11-02: items 35 and 33 done; 5 open (34, 26, 11, 12, 13), so no replan.
+2026-11-03: 3 items were left after items 26 and 34; added 36–38.
 
 ---
 
 ## Open
 
-### 34. [P3 · S] check:site checks title, description and canonical on every page
-Each page should have a non-empty `<title>`, a meta description and a canonical link
-to its own path on the site URL (clients find the portfolio through search and
-shared links). Fail check:site on a missing or duplicated one; pure helper + tests.
+### 36. [P3 · S] The 404 page sends mixed signals to search engines
+An unknown path returns `noindex` (added by Next) plus the layout's
+`index, follow` and a canonical link to the home page (seen 2026-11-03). A crawler
+should get one clear answer: the not-found page should carry only `noindex` and no
+canonical. Fix in `not-found.tsx` metadata or the layout; extend check:site's 404
+check with the `page-meta` rules (exactly one robots meta, `noindex`, no canonical).
+
+### 37. [P3 · S] check:site compares the sitemap with the crawl
+`/sitemap.xml` lists 11 URLs and the crawl finds 11 pages today, but nothing keeps them
+in step: a new project page missing from the sitemap, or a sitemap URL that 404s, would
+pass. Fail check:site when the sets differ (same site-URL rule as item 34). Pure helper
++ tests.
+
+### 38. [P3 · S] Structured data (JSON-LD) for the person and each project
+A `Person` block on `/` and `/about` (name, job title, the public links already in
+`src/data/site.ts`) and a `SoftwareSourceCode` block per project page (name, description,
+code repository, language from the sync). Only fields that already appear on the page,
+so nothing new is claimed; a test checks every JSON-LD value against the page's data.
+Must keep the CSP intact (`application/ld+json` is not executed).
 
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
@@ -66,6 +82,12 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync).
 
 ## Done
+
+- **[P3] check:site checks title, description and canonical** (item 34), this PR
+  (2026-11-03). Every crawled page needs one non-empty `<title>`, one meta description
+  and one canonical link to its own path on the site URL (read from `src/data/site.ts`);
+  no two pages may share any of them. Rules in `scripts/lib/page-meta.mjs`, six tests.
+  All 11 pages pass; checked to fail when `/about` lost its canonical (it inherited "/").
 
 - **[P2] fast-uri 3.1.9** (item 26), this PR (2026-11-03). Only the lockfile entry for
   fast-uri (dev-only, via lighthouse → ajv) moved from 3.1.8 to 3.1.9, published

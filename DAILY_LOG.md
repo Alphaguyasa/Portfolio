@@ -4,6 +4,41 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-11-03 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** green (`530baff`); the first weekly audit run (2026-11-02) passed. No open PRs.
+- **Sync:** PR #56 (merged, squash `92f34f8`). All 9 repos were read (124 API requests). Meret's
+  roadmap now lists the waypoint form renderer (8c-2) and draft autosave (8d) as done, so
+  its status note says so, backed by two new quotes. Status stays building; photos and
+  sync are next. docsearch now shows CI failing (`deploy-not-alone` failed on its newest
+  commit), as item 35 intended. No release, npm or status change elsewhere.
+- **Item 26:** PR #57 (merged, squash `45aaf9c`). fast-uri 3.1.8 → 3.1.9 (dev-only), lockfile
+  entry only. npm 10 in this container rewrote unrelated libc/dev flags, so those changes
+  were left out.
+- **Item 34:** this PR. check:site now checks the title, the meta description and the canonical link on every page.
+- **Replan:** 3 items were left (11, 12, 13), so items 36–38 were added. Item 36 comes from this run: the 404 page
+  sends `noindex`, `index, follow` and a canonical link to the home page at the same time.
+- **Item 11:** production audit clean. Only the dev-only minimatch moderate is left; 11.0.1 will be
+  two weeks old on 2026-11-10, and eslint-config-next also needs to accept it.
+- **Tags:** pushing `v2026-11-03-1` was refused again (A10). The squash commits above are the rollback points.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #56), item 26 fast-uri (PR #57), item 34 page metadata in check:site (this PR) |
+| Merged | #56 yes, `92f34f8` · #57 yes, `45aaf9c` · this PR see the next run's log (tags not pushable: A10) |
+| Failed or blocked | Release tags (A10) |
+| Roadmap | 6 open (36, 37, 38, 11, 12, 13); replan done (added 36–38) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 (confirm the cause, then close), A15 FYI, A12, A10 tags |
+| Next | Daily sync; item 36 (404 robots/canonical), then item 37 (sitemap vs crawl) |
+
+---
+
 ## 2026-11-02 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
