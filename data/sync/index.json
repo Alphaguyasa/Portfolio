@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-02T06:42:56.131Z",
+  "syncedAt": "2026-11-03T06:41:19.564Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -75,8 +75,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-11-02T06:41:50Z",
-      "lastCommitAt": "2026-11-02T06:41:50Z",
+      "pushedAt": "2026-11-03T03:49:34Z",
+      "lastCommitAt": "2026-11-03T03:49:34Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -86,12 +86,38 @@
         "v1-docsearch"
       ],
       "ci": {
-        "workflow": "ci",
-        "status": "in_progress",
-        "conclusion": null,
-        "at": "2026-11-02T06:41:53Z"
+        "workflow": "ci, deploy-not-alone",
+        "workflows": [
+          "ci",
+          "deploy-not-alone"
+        ],
+        "failing": [
+          "deploy-not-alone"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-03T03:49:37Z",
+        "headSha": "9434326200906172b456fb9e302bce537c1e1cef"
       },
       "mergedPulls": [
+        {
+          "number": 153,
+          "title": "Keep the /stats key out of the URL: a one-time form and an HMAC cookie scoped to /stats",
+          "mergedAt": "2026-11-03T03:49:34Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/153"
+        },
+        {
+          "number": 152,
+          "title": "Upgrade vitest and its coverage plugin to 5.1 (dev only, no config change)",
+          "mergedAt": "2026-11-03T03:45:03Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/152"
+        },
+        {
+          "number": 151,
+          "title": "Upgrade the Anthropic SDK to 1.3 and stop sending temperature on that path",
+          "mergedAt": "2026-11-02T06:46:18Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/151"
+        },
         {
           "number": 150,
           "title": "Pin the Vercel CLI to 65.2.0 so production deploys work again",
@@ -133,24 +159,6 @@
           "title": "Give each Telegram chat its own share of the search limit",
           "mergedAt": "2026-10-31T03:42:01Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/144"
-        },
-        {
-          "number": 143,
-          "title": "Test the search and Telegram webhook routes end to end with mocks",
-          "mergedAt": "2026-10-30T03:41:51Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/143"
-        },
-        {
-          "number": 142,
-          "title": "Mark the streamed story busy, announce it when ready, and give it its own language",
-          "mergedAt": "2026-10-30T03:39:43Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/142"
-        },
-        {
-          "number": 141,
-          "title": "Keep figure passages when search fails and cache only successful document lookups",
-          "mergedAt": "2026-10-29T16:35:12Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/141"
         }
       ],
       "npm": null,
@@ -231,10 +239,17 @@
       "latestRelease": null,
       "tags": [],
       "ci": {
-        "workflow": "CI",
+        "workflow": "CI, Docs, Release",
+        "workflows": [
+          "CI",
+          "Docs",
+          "Release"
+        ],
+        "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-08-05T17:16:27Z"
+        "at": "2026-08-05T17:16:27Z",
+        "headSha": "4bd832c3b2976321b49cc39c7766919699d4a1cb"
       },
       "mergedPulls": [],
       "npm": {
@@ -344,8 +359,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-11-02T05:01:32Z",
-      "lastCommitAt": "2026-11-02T05:01:32Z",
+      "pushedAt": "2026-11-03T05:14:48Z",
+      "lastCommitAt": "2026-11-03T05:14:48Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -354,11 +369,52 @@
       ],
       "ci": {
         "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-02T05:00:56Z"
+        "at": "2026-11-03T05:13:26Z",
+        "headSha": "d5698bdb3eba4badf1d408f8357ecb3876f4a533"
       },
       "mergedPulls": [
+        {
+          "number": 80,
+          "title": "docs: log run 24, mark items 32b and 33a done (#78, #79), split 33 into 33a/33b",
+          "mergedAt": "2026-11-03T05:14:48Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/80"
+        },
+        {
+          "number": 79,
+          "title": "Photo pipeline: 1600 px q80, GPS EXIF kept, SHA-256 (roadmap item 33a, Phase 8e-1)",
+          "mergedAt": "2026-11-03T05:13:24Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/79"
+        },
+        {
+          "number": 78,
+          "title": "Waypoint sheet draft autosave to Room (roadmap item 32b, Phase 8d)",
+          "mergedAt": "2026-11-03T05:00:49Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/78"
+        },
+        {
+          "number": 77,
+          "title": "docs: log run 23, mark items 31 and 32a done (#75, #76), split 32 into 32a/32b",
+          "mergedAt": "2026-11-02T10:15:16Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/77"
+        },
+        {
+          "number": 76,
+          "title": "CI: print new Room schemas, fail on a changed committed one (roadmap item 32a)",
+          "mergedAt": "2026-11-02T10:14:11Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/76"
+        },
+        {
+          "number": 75,
+          "title": "Show the project's form on the waypoint sheet (roadmap item 31, Phase 8c-2)",
+          "mergedAt": "2026-11-02T10:09:06Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/75"
+        },
         {
           "number": 74,
           "title": "docs: log run 22, mark items 29b and 30 done (#72, #73)",
@@ -382,42 +438,6 @@
           "title": "docs: log run 21, mark items 28 and 29a done (#69, #70), add 29b and A15",
           "mergedAt": "2026-11-01T17:19:57Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/71"
-        },
-        {
-          "number": 70,
-          "title": "Draw saved waypoints on the map, clustered (roadmap item 29a, Phase 8b)",
-          "mergedAt": "2026-11-01T17:19:08Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/70"
-        },
-        {
-          "number": 69,
-          "title": "Save a waypoint from the map (roadmap item 28, Phase 8a)",
-          "mergedAt": "2026-11-01T17:14:22Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/69"
-        },
-        {
-          "number": 67,
-          "title": "docs: log run 20, mark items 27 and 15 done (#65, #66), replan Phase 8 into items 28-35",
-          "mergedAt": "2026-10-31T11:03:51Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/67"
-        },
-        {
-          "number": 65,
-          "title": "Draw earlier tracks on the map (roadmap item 27, Phase 7e)",
-          "mergedAt": "2026-10-31T11:02:59Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/65"
-        },
-        {
-          "number": 66,
-          "title": "Remove Android Studio template leftovers (roadmap item 15)",
-          "mergedAt": "2026-10-31T11:01:38Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/66"
-        },
-        {
-          "number": 64,
-          "title": "docs: log run 19, mark items 23b and 24 done (#62, #63), add item 27",
-          "mergedAt": "2026-10-31T04:50:59Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/64"
         }
       ],
       "npm": null,
@@ -477,8 +497,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-11-02T05:34:14Z",
-      "lastCommitAt": "2026-11-02T05:34:14Z",
+      "pushedAt": "2026-11-03T05:39:31Z",
+      "lastCommitAt": "2026-11-03T05:39:30Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -489,11 +509,34 @@
       ],
       "ci": {
         "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-02T05:34:17Z"
+        "at": "2026-11-03T05:39:33Z",
+        "headSha": "abfe18c38a284d55ed5f25267dbb68f6cb9b2032"
       },
       "mergedPulls": [
+        {
+          "number": 75,
+          "title": "docs: log the 2026-11-03 run (R42, R43 done)",
+          "mergedAt": "2026-11-03T05:39:31Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/75"
+        },
+        {
+          "number": 74,
+          "title": "test: cover the credit form's keypad, ranking and failed save (R43)",
+          "mergedAt": "2026-11-03T05:31:24Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/74"
+        },
+        {
+          "number": 73,
+          "title": "feat: correct or remove a credit entry from the statement (R42)",
+          "mergedAt": "2026-11-03T05:26:02Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/73"
+        },
         {
           "number": 72,
           "title": "docs: log the 2026-11-02 run (R40, R41 done)",
@@ -535,24 +578,6 @@
           "title": "docs: log the 2026-10-31 run (R36, R37 done, replan R38-R44)",
           "mergedAt": "2026-10-31T05:30:54Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/66"
-        },
-        {
-          "number": 65,
-          "title": "feat: name breaks in the wallet balance chain as reconcile explanations (R37)",
-          "mergedAt": "2026-10-31T05:23:21Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/65"
-        },
-        {
-          "number": 64,
-          "title": "fix: authenticate the backup header as GCM associated data (R36)",
-          "mergedAt": "2026-10-31T05:16:52Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/64"
-        },
-        {
-          "number": 63,
-          "title": "docs: log the 2026-10-30 run (R34, R35 done)",
-          "mergedAt": "2026-10-30T05:25:13Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/63"
         }
       ],
       "npm": null,
@@ -610,28 +635,64 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-11-02T04:04:52Z",
-      "lastCommitAt": "2026-11-02T04:04:44Z",
+      "pushedAt": "2026-11-03T03:34:43Z",
+      "lastCommitAt": "2026-11-03T03:34:32Z",
       "latestRelease": null,
       "tags": [
+        "v2026-11-03-2",
+        "v2026-11-03-1",
+        "v2026-11-02-7",
+        "v2026-11-02-6",
+        "v2026-11-02-5",
         "v2026-11-02-4",
         "v2026-11-02-3",
         "v2026-11-02-2",
         "v2026-11-02-1",
-        "v2026-11-01-3",
-        "v2026-11-01-2",
-        "v2026-11-01-1",
-        "v2026-10-31-4",
-        "v2026-10-31-3",
-        "v2026-10-31-2"
+        "v2026-11-01-3"
       ],
       "ci": {
-        "workflow": "Release tag",
+        "workflow": "Android CI, Release tag",
+        "workflows": [
+          "Android CI",
+          "Release tag"
+        ],
+        "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-02T04:04:47Z"
+        "at": "2026-11-03T03:34:35Z",
+        "headSha": "b14979b684662d855ccb0d7488e68b9b6383d913"
       },
       "mergedPulls": [
+        {
+          "number": 87,
+          "title": "Mesh health in Settings: the router's drop counters; \"Open settings\"",
+          "mergedAt": "2026-11-03T03:34:32Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/87"
+        },
+        {
+          "number": 86,
+          "title": "Tombstone cap 1000 -> 5000; Everyone trim gets its own set",
+          "mergedAt": "2026-11-03T03:24:19Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/86"
+        },
+        {
+          "number": 85,
+          "title": "Mesh on/off: Settings switch and a Stop action on the mesh notification; log 2026-11-02 second run",
+          "mergedAt": "2026-11-02T09:50:41Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/85"
+        },
+        {
+          "number": 84,
+          "title": "Prune orphaned image files at start; delete and delete chat outlive the screen",
+          "mergedAt": "2026-11-02T09:29:09Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/84"
+        },
+        {
+          "number": 83,
+          "title": "Index messages by (conversationId, receivedAt); Room 11 → 12",
+          "mergedAt": "2026-11-02T09:20:29Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/83"
+        },
         {
           "number": 82,
           "title": "Publish bound peers from inside LinkBindings' lock; log 2026-11-02",
@@ -661,36 +722,6 @@
           "title": "Per-link inbound rate limit; log 2026-11-01",
           "mergedAt": "2026-11-01T16:59:55Z",
           "url": "https://github.com/Alphaguyasa/NullChat/pull/77"
-        },
-        {
-          "number": 76,
-          "title": "Cap the Everyone thread: 2000 received messages, 100 received images",
-          "mergedAt": "2026-11-01T16:49:52Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/76"
-        },
-        {
-          "number": 75,
-          "title": "Service start guard: no crash loop when mesh permissions are revoked",
-          "mergedAt": "2026-11-01T16:40:58Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/75"
-        },
-        {
-          "number": 74,
-          "title": "Replan 2026-10-31 (roadmap items 55–66) and log the second run",
-          "mergedAt": "2026-10-31T09:06:00Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/74"
-        },
-        {
-          "number": 73,
-          "title": "Link challenge: LINK_PROOF signs the Nearby link token (roadmap #42)",
-          "mergedAt": "2026-10-31T08:57:50Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/73"
-        },
-        {
-          "number": 72,
-          "title": "Send glue: sendHeld and markFlushed with JVM tests; log 2026-10-31",
-          "mergedAt": "2026-10-31T03:37:43Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/72"
         }
       ],
       "npm": null,
@@ -734,8 +765,8 @@
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-11-02T04:30:33Z",
-      "lastCommitAt": "2026-11-02T04:30:33Z",
+      "pushedAt": "2026-11-03T04:34:08Z",
+      "lastCommitAt": "2026-11-03T04:34:08Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -743,11 +774,34 @@
       ],
       "ci": {
         "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-02T04:30:36Z"
+        "at": "2026-11-03T04:34:10Z",
+        "headSha": "defcce7144e8ed9647925a5aeeac00c04b20dbc0"
       },
       "mergedPulls": [
+        {
+          "number": 71,
+          "title": "docs: log 2026-11-03 run 22, report, roadmap replan",
+          "mergedAt": "2026-11-03T04:34:08Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/71"
+        },
+        {
+          "number": 70,
+          "title": "fix(reports): gross profit uses the cost at the time of sale",
+          "mergedAt": "2026-11-03T04:29:16Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/70"
+        },
+        {
+          "number": 69,
+          "title": "chore(deps): typescript 6.0.3",
+          "mergedAt": "2026-11-03T04:24:06Z",
+          "url": "https://github.com/Alphaguyasa/Suq/pull/69"
+        },
         {
           "number": 68,
           "title": "docs: log 2026-11-02 run 21, report, roadmap",
@@ -789,24 +843,6 @@
           "title": "docs: log 2026-10-31 run 19, report, roadmap",
           "mergedAt": "2026-10-31T09:29:56Z",
           "url": "https://github.com/Alphaguyasa/Suq/pull/62"
-        },
-        {
-          "number": 61,
-          "title": "fix(reset): warn about saved drawer counts; reset no longer crashes Settings",
-          "mergedAt": "2026-10-31T09:25:00Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/61"
-        },
-        {
-          "number": 60,
-          "title": "docs: log 2026-10-31 run 18, report, roadmap",
-          "mergedAt": "2026-10-31T04:57:14Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/60"
-        },
-        {
-          "number": 59,
-          "title": "feat(reports): save the end-of-day drawer count",
-          "mergedAt": "2026-10-31T04:32:10Z",
-          "url": "https://github.com/Alphaguyasa/Suq/pull/59"
         }
       ],
       "npm": null,
@@ -824,6 +860,7 @@
         "ROADMAP.md",
         "app",
         "components",
+        "css.d.ts",
         "docs",
         "e2e",
         "eslint.config.mjs",
