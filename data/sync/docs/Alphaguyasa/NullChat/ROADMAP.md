@@ -15,11 +15,6 @@ can make this phone hold, drop or show. Bugs and abuse resistance come before fe
 | # | Item | Pri | Effort | Notes |
 |---|---|---|---|---|
 | 58 | **Greeting floods the mesh**: each new link triggers a ttl-6 ANNOUNCE and PROFILE with fresh ids, so a crowd pays ~O(N²) airtime on every reconnect. Send the announcement on the new link only (`sendOnLink`) and broadcast at most every few minutes. | P1 | M | On-air, needs two-phone check. **2026-11-02 design note:** a ttl-1 announce on the new link is read as 6 hops by `hopsFrom`, and re-sending one cached id is deduplicated by peers that already heard it (no link bind for old builds). Needs a receiver-side rule for link-local greetings first. |
-| 61 | **Mesh on/off**: `MeshForegroundService.stop()` has no callers; the only way to stop relaying is force stop. Setting plus a Stop action on the ongoing notification, remembered across restarts. | P2 | M | |
-| 62 | **Index on `receivedAt`**: thread and summary queries order by `receivedAt` (since #29) but only `(conversationId, timestamp)` is indexed. Add `(conversationId, receivedAt)` (Room 11→12, migration test). | P2 | S | Schema change. Needs the KSP-generated `12.json`; the cloud box has no SDK, so push the entity change, take the schema from CI (or alpha's PC), then the migration test. |
-| 64 | **Orphan image files**: `deleteLocally`/`deleteChat` are not `outliveCaller`-wrapped, and `pruneExcept` is never called. Wrap both; prune once at start against live attachment names. | P3 | S | |
-| 65 | **Tombstone cap**: `Tombstones.MAX_ENTRIES = 1000`, so deleting a chat over 1000 messages lets older ones come back from relays' queues within 24 h. Raise the cap or move to Room. | P3 | S | |
-| 66 | **Mesh health row** in Settings from the unused router counters (forged, malformed, failed forwards); fix "Open Settings" → "Open settings" (strings.xml:30). | P3 | S | |
 | 54 | **Duty cycle under Doze**: no wake lock or alarm, so `delay` in the duty cycle may stall when the phone dozes. Measure on a phone first; fix only with evidence. | P3 | S | Needs phone evidence |
 | 21 | **Group channels** with a shared key, invite by QR. | P3 | L | |
 | 22 | **Voice notes** (≤10 s Opus over Fragmenter). | P3 | L | |
@@ -104,3 +99,8 @@ change once decided.
 | 2026-11-02 | #59 Replayed ANNOUNCE/PROFILE: `PresenceFreshness` takes only a packet newer, by the sender's own clock, than the newest already taken (or current by ours), so a replay no longer marks a contact heard, resets the prune, moves its hop reading or reverts its name | #80 | see log |
 | 2026-11-02 | #60 Notifications outlive deleted messages: the sweep, delete, delete chat, forget and block take the thread's notification down (`MeshCoordinator.withdrawn`); a message after a swipe counts from 1 again | #81 | see log |
 | 2026-11-02 | #63 `_boundPeers` race: `LinkBindings.boundPeerIds` is published inside the bindings' lock by every change | #82 | see log |
+| 2026-11-02 | #62 `(conversationId, receivedAt)` index on `messages` (Room 11→12; index only, no row rewritten; schema taken from CI's schema check) | #83 | see log |
+| 2026-11-02 | #64 Orphan image files: delete and delete chat run in the mesh scope; once per start, image files no row points at (written before the start) are deleted | #84 | see log |
+| 2026-11-02 | #61 Mesh on/off: Settings switch, Stop on the mesh notification, "Mesh is off" banner with Turn on; remembered across restarts (needs phone check) | #85 | see log |
+| 2026-11-03 | #65 Tombstone cap 1000 → 5000 (received messages only, oldest first); the Everyone trim gets its own 1000-entry set so a crowd cannot push out the user's deletions | #86 | see log |
+| 2026-11-03 | #66 Mesh health in Settings (forged, unreadable, over-rate packets and missed relays since start; Warning line when a phone nearby misbehaves); "Open settings" | #87 | see log |

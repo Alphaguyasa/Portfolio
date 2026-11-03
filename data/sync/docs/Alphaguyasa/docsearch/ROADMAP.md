@@ -8,10 +8,12 @@ Last replan: 2026-11-02 (audit: code, security, dependencies, localization, test
 
 ## Open
 
-28. **[P0, S] Production deploy is red (Vercel CLI 65.3.1, "scope does not exist").**
-    2026-11-02: Alpha approved; `vercel@65.2.0` is pinned in deploy-not-alone.yml
-    (tests/deploy-workflow.test.ts). Mark done once a deploy on main is green. Once the deploy is green, bump its checkout/setup-node to v7 and Node to 24
-    and drop it from EXEMPT in tests/workflow-runtimes.test.ts (left out of item 22).
+28. **[P0, S] Production deploy is red ("The specified scope does not exist").**
+    2026-11-02: `vercel@65.2.0` is pinned (PR #150, tests/deploy-workflow.test.ts),
+    and 65.2.0 now fails the same way (run 41401554345), so the CLI is not the
+    cause: the Vercel token or the team slug changed. Waits on NEEDS_APPROVAL #14
+    (Alpha checks both on vercel.com). Mark done once a deploy on main is green.
+    Then bump its checkout/setup-node to v7 and Node to 24 and drop it from EXEMPT in tests/workflow-runtimes.test.ts (left out of item 22).
 43. **[P2, M] Per-reader share of the web search limit.** The bot has its per-chat
     share (item 39); the website has none. Needs a privacy decision first (a salted,
     hashed IP kept a few minutes, or nothing at all): NEEDS_APPROVAL #11. Waits on it.
@@ -20,23 +22,11 @@ Last replan: 2026-11-02 (audit: code, security, dependencies, localization, test
     in the console on the live site (home, a person, a story, /help, Amharic), and
     the deploy is green again (item 28), rename the header to
     `Content-Security-Policy` and update tests/next-config.test.ts.
-11. **[P3, S] Close stale PR #6 (orthodox-library)** once Alpha agrees (NEEDS_APPROVAL.md #3).
-34. **[P3, M] @anthropic-ai/sdk 0.114 → 1.x** (major). Waits on NEEDS_APPROVAL #13.
-    1.x sends API version 2026-10-21, which rejects `temperature`/`top_p`/`top_k`
-    with a 400; eval/src/provider.ts sends `temperature: 0` to Haiku 4.5 (a
-    non-default value, so the owner decides). Typecheck flags only that line. Also
-    check then: 1.x sends the key as `Authorization: Bearer` (no proxy here), and
-    llm.ts's `thinking: disabled` is fine on claude-sonnet-5 but 400s on Sonnet 5.5.
 32. **[P3, L] Toolchain majors, one PR each:** ESLint 10 (+ @eslint/js 10,
-    react-hooks plugin 7, which adds new rules), vitest/coverage-v8 5, TypeScript 7.
+    react-hooks plugin 7, which adds new rules), TypeScript 7 (vitest 5 done 2026-11-03).
     Read each migration guide first; dev-only, so no runtime risk. (2026-11-02:
     TypeScript 7 waits on typescript-eslint, whose peer range is `<6.1.0`; ESLint 10
     still uses minimatch 10, so it does not clear item 47.)
-46. **[P3, S] Keep the /stats key out of the URL.** `/stats?key=…` puts the key in
-    request logs and browser history. Accept it once (a small form posting to a route
-    that sets an httpOnly, SameSite=Strict cookie scoped to /stats holding an HMAC,
-    not the key), keep `?key=` working for a while with a redirect that strips it, and
-    reuse src/lib/safe-equal.ts instead of the page's own timingSafeEqual. Tests.
 47. **[P3, S] Dev-only advisory GHSA-g3hv-75wg-m249** (minimatch <11.0.1, moderate,
     DoS via glob patterns) through eslint 9 and typescript-eslint. No fixed release
     in their ranges (ESLint 10 still uses minimatch 10), and `npm audit --omit=dev`
@@ -52,6 +42,11 @@ Last replan: 2026-11-02 (audit: code, security, dependencies, localization, test
     screen-reader friendly, respects a pause/stop.
 
 ## Done
+
+- 2026-11-03: Item 46. /stats no longer takes its key in the URL. Without the stats cookie it shows a one-field form that posts to /stats/session, which sets `na_stats`: an HMAC-SHA256 of the key (never the key), httpOnly, Secure, SameSite=Strict, Path=/stats, 30 days; "Sign this browser out" clears it, and changing STATS_KEY signs everyone out. An old `/stats?key=…` link is answered by the proxy with a 303 to /stats without the key (cookie set only if it was right); the Basic auth gate still runs first. The page's own timingSafeEqual is gone (src/lib/stats-auth.ts uses safeEqual and Web Crypto). The form body is capped before parsing. With STATS_KEY unset the page is still a 404. tests/stats-auth.test.ts; tests/proxy.test.ts awaits the now-async proxy. Checked under `next start` with curl and Chromium (wrong key, right key, sign out; no console or CSP errors).
+- 2026-11-03: Item 32 (vitest part, PR #152). vitest and @vitest/coverage-v8 4.1.12 → 5.1.0, dev only. Read the 5.0 migration guide: the eval tests use no mocks, `sequential`, `toThrow("")`, unawaited `resolves`, or removed entry points, and the coverage include patterns were already root-relative, so no config change. vitest 339/339 and an identical coverage report (same files, same figures) before and after. tests/vitest-version.test.ts keeps the two packages on one release.
+- 2026-11-02: Item 34. @anthropic-ai/sdk 0.114 → 1.3.0 (Alpha approved, NEEDS_APPROVAL #13). 1.x sends API version 2026-10-21, which rejects sampling parameters, so the eval's Anthropic provider no longer sends `temperature` (the Gemini path keeps 0, and the disk cache keeps re-runs identical). llm.ts needed no change (`thinking: disabled` is accepted on claude-sonnet-5). Typecheck, npm test, vitest 339/339; `npm audit --omit=dev` 0. tests/anthropic-sdk.test.ts.
+- 2026-11-02: Item 11. Stale PR #6 (orthodox-library) closed with Alpha's OK; the branch is kept.
 
 - 2026-11-02: Item 44. Every response carries `Content-Security-Policy-Report-Only` (src/lib/csp.ts, sent from next.config.ts): same-origin only for scripts, styles, images, fonts, fetches, workers and the manifest; `'unsafe-inline'` for scripts and styles (Next's inline bootstrap, the JSON-LD block); no eval in production; `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`. A `next start` browser smoke test of 12 pages (EN and AM) logged no violations; an injected off-site image was reported, so the check works. tests/next-config.test.ts. Enforcing it is item 50.
 
