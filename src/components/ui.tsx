@@ -18,7 +18,7 @@ export function Container({
   );
 }
 
-/** The orange rule + label that opens every section. */
+/** The label that opens every section. */
 export function Eyebrow({
   children,
   center = false,
@@ -32,7 +32,6 @@ export function Eyebrow({
     <div
       className={`flex items-center gap-3 ${center ? "justify-center" : ""}`}
     >
-      <span className="h-[3px] w-[30px] shrink-0 rounded-sm bg-accent" />
       <span
         className={`font-sans font-medium ${large ? "text-lg xl:text-[22px]" : "text-[15px] xl:text-[17px]"}`}
       >

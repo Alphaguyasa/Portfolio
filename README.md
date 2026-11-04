@@ -132,7 +132,7 @@ project's environment variables and redeploy. See `.env.example`.
 
 - **The hero portrait is the original photo**, clipped into the arch. A
   background-removed cut-out PNG would read better; drop it in as
-  `public/assets/hero-portrait.png`.
+  `public/assets/hero-portrait.jpg` (or a PNG, updating `Hero.tsx`).
 - The engineering notes stay hidden until the posts exist.
 - The footer subscribe field opens a prefilled email; wire it to a real list
   provider when there is one.

@@ -130,7 +130,7 @@ export default function ContactForm() {
             name="name"
             type="text"
             autoComplete="name"
-            placeholder="Ex. John Doe"
+            placeholder="Ex. Selam Bekele"
             className={fieldClass}
             value={values.name}
             onChange={(e) => set("name")(e.target.value)}
