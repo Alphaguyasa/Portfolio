@@ -145,7 +145,7 @@
       "tagline": "Offline maps and GPS logging for field teams",
       "repo": "Alphaguyasa/Meret",
       "status": "building",
-      "statusNote": "Early. The project skeleton, core model, database, location engine, tracking service, offline map, tracking screens, waypoint forms and draft autosave are done in CI; their checks on a real phone are pending, and photos and sync are next.",
+      "statusNote": "Early. The project skeleton, core model, database, location engine, tracking service, offline map, tracking screens, waypoint forms, draft autosave and waypoint photos are done in CI; their checks on a real phone are pending, and sync is next.",
       "featured": false,
       "platform": "Android",
       "stack": ["Kotlin", "Jetpack Compose", "Room", "multi-module Gradle"],
@@ -153,7 +153,7 @@
       "approach": "An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved.",
       "results": [
         "Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.",
-        "Phases 5, 6 and 7 (tracking service, offline map, tracking screens) are done in CI; their device checks are still pending."
+        "Phases 5, 6, 7 and 8 (tracking service, offline map, tracking screens, waypoints with forms and photos) are done in CI; their device checks are still pending."
       ],
       "learned": [
         "Phase 0 tooling for the offline tile pack is done, but a real Ethiopia pack has not been built yet, and acceptance criteria that need a physical phone are not claimed by CI."
@@ -162,11 +162,12 @@
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Meret" }],
       "facts": [
         { "path": "ROADMAP.md", "quote": "Phases 1–4 are done" },
-        { "path": "ROADMAP.md", "quote": "Phases 5, 6 and 7 are done in CI; their device checks are in" },
+        { "path": "ROADMAP.md", "quote": "Phases 5, 6, 7 and 8 are done in CI; their device checks are in" },
         { "path": "ROADMAP.md", "quote": "Phase 0 (tile pack) tooling is done" },
         { "path": "ROADMAP.md", "quote": "A real Ethiopia pack has not been built yet" },
         { "path": "ROADMAP.md", "quote": "Phase 8c-2: form renderer on the waypoint sheet" },
         { "path": "ROADMAP.md", "quote": "Phase 8d: waypoint sheet draft autosave to Room" },
+        { "path": "ROADMAP.md", "quote": "Phase 8e-2: photos on the sheet through the phone's camera app" },
         { "path": "docs/README.md", "quote": "It works with the aeroplane mode on, all day" }
       ]
     },

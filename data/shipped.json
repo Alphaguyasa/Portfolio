@@ -3,6 +3,94 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
+    "title": "fix: a blank SMS row no longer ends the inbox import early (R45)",
+    "date": "2026-11-04T05:31:15Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/77"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "feat: share a customer's statement as text (R44)",
+    "date": "2026-11-04T05:30:01Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/76"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Photos on the waypoint sheet through the phone's camera app (roadmap item 33b-2, Phase 8e-2)",
+    "date": "2026-11-04T05:00:51Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/82"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Photo rows written with the waypoint at Save (roadmap item 33b-1, Phase 8e-2)",
+    "date": "2026-11-04T04:50:17Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/81"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "fix(build): self-host the three fonts so the build never needs the network",
+    "date": "2026-11-04T04:17:00Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/72"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Upgrade ESLint to 10 and the React hooks plugin to 7 (dev only)",
+    "date": "2026-11-04T03:46:57Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/155"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Drop reassembled text over twice the send limit; log 2026-11-04",
+    "date": "2026-11-04T03:42:35Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/90"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Cap request bodies before parsing: 413 above a few KB on search and feedback",
+    "date": "2026-11-04T03:41:15Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/154"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "App lock turns itself off when the phone can no longer unlock; replan items 67–80",
+    "date": "2026-11-04T03:33:50Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/89"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Greetings stop flooding on reconnect (roadmap #58)",
+    "date": "2026-11-04T03:23:34Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/88"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-11-04-3",
+    "date": "2026-11-04T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-04-3"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
     "title": "test: cover the credit form's keypad, ranking and failed save (R43)",
     "date": "2026-11-03T05:31:24Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/74"
@@ -70,93 +158,5 @@
     "title": "Tombstone cap 1000 -> 5000; Everyone trim gets its own set",
     "date": "2026-11-03T03:24:19Z",
     "url": "https://github.com/Alphaguyasa/NullChat/pull/86"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-11-03-2",
-    "date": "2026-11-03T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-03-2"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Show the project's form on the waypoint sheet (roadmap item 31, Phase 8c-2)",
-    "date": "2026-11-02T10:09:06Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/75"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Mesh on/off: Settings switch and a Stop action on the mesh notification; log 2026-11-02 second run",
-    "date": "2026-11-02T09:50:41Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/85"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Prune orphaned image files at start; delete and delete chat outlive the screen",
-    "date": "2026-11-02T09:29:09Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/84"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Index messages by (conversationId, receivedAt); Room 11 → 12",
-    "date": "2026-11-02T09:20:29Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/83"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Upgrade the Anthropic SDK to 1.3 and stop sending temperature on that path",
-    "date": "2026-11-02T06:46:18Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/151"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Pin the Vercel CLI to 65.2.0 so production deploys work again",
-    "date": "2026-11-02T06:41:50Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/150"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "fix: refuse amounts that will not normalize instead of guessing (R41)",
-    "date": "2026-11-02T05:25:58Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/71"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "fix: run backup, restore and export off the main thread (R40)",
-    "date": "2026-11-02T05:20:37Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/70"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Form schema: parse, validate, visible_if (roadmap item 30, Phase 8c)",
-    "date": "2026-11-02T05:00:54Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/73"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "List waypoints; a tap centres the map (roadmap item 29b, Phase 8b)",
-    "date": "2026-11-02T04:51:47Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/72"
   }
 ]
