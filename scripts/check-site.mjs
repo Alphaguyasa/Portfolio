@@ -26,7 +26,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
-import { duplicateProblems, metaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
+import { duplicateProblems, metaProblems, notFoundMetaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
 const BASE = `http://127.0.0.1:${PORT}`;
@@ -68,7 +68,7 @@ async function axeProblems(page, label) {
 /**
  * Opens an unknown path: it must answer 404 (not a 200 soft-404) with the
  * not-found page, carry the CSP header, pass axe, log no errors other than its
- * own 404, and link back home.
+ * own 404, link back home, and carry only `noindex` with no canonical.
  */
 async function checkNotFound(vp) {
   const label = `${NOT_FOUND_PATH} [${vp.name}] 404 page`;
@@ -91,6 +91,7 @@ async function checkNotFound(vp) {
     const heading = await page.getByRole("heading", { level: 1 }).textContent();
     if (!heading?.includes("doesn’t exist")) found.push(`${label}: heading "${heading}" is not the not-found page`);
     if ((await page.locator('a[href="/"]').count()) === 0) found.push(`${label}: no link back to /`);
+    for (const m of notFoundMetaProblems(await page.evaluate(readPageMeta))) found.push(`${label}: ${m}`);
     const overflow = overflowProblem(await page.evaluate(measureOverflow));
     if (overflow) found.push(`${label}: ${overflow}`);
     found.push(...(await axeProblems(page, label)));
@@ -242,7 +243,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions and canonicals checked`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions, canonicals and robots checked`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));
