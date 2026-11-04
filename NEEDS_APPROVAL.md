@@ -6,6 +6,7 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 ## Open
 
 ### A16. GitHub Actions did not start any job, 2026-10-28 → 2026-10-31 (billing / spending limit)
+**Update 2026-11-04:** CI ran normally again.
 **Update 2026-11-03:** CI ran normally again (three PRs).
 **Update 2026-11-02:** CI ran normally for every PR this run (new month).
 **Update 2026-10-31 (second run): Actions runs again.** CI started normally at 09:37 UTC
@@ -82,6 +83,8 @@ Still refused on 2026-11-02; also missing: `v2026-11-02-1 3965076` (PR #53),
 `v2026-11-02-2 063b6a9` (PR #54) and `v2026-11-02-3` on this run's last PR squash commit.
 Still refused on 2026-11-03; also missing: `v2026-11-03-1 92f34f8` (PR #56),
 `v2026-11-03-2 45aaf9c` (PR #57) and `v2026-11-03-3` on this run's last PR squash commit.
+Still missing from 2026-11-04: `v2026-11-04-1 f5f216c` (PR #59), `v2026-11-04-2 c887f35` (PR #60)
+and `v2026-11-04-3` on this run's last PR squash commit.
 
 ## Resolved
 

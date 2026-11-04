@@ -14,6 +14,7 @@
  *   - no horizontal scroll: at both widths, no page may be wider than the viewport
  *   - search metadata: every page has one title, one meta description and one
  *     canonical link to its own path on the site URL, none shared between pages
+ *   - sitemap: /sitemap.xml lists exactly the crawled pages, on the site URL
  *
  *   npm run build && npm run check:site
  *
@@ -26,6 +27,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
+import { sitemapProblems, sitemapUrls } from "./lib/sitemap.mjs";
 import { duplicateProblems, metaProblems, notFoundMetaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
 
 const PORT = Number(process.env.PORT ?? 3123);
@@ -239,11 +241,18 @@ try {
 
   problems.push(...duplicateProblems(pageMeta));
 
+  const sitemapRes = await fetch(`${BASE}/sitemap.xml`);
+  if (!sitemapRes.ok) problems.push(`/sitemap.xml: HTTP ${sitemapRes.status}`);
+  else {
+    const urls = sitemapUrls(await sitemapRes.text());
+    for (const m of sitemapProblems(urls, Object.keys(pageMeta), SITE_URL)) problems.push(`/sitemap.xml: ${m}`);
+  }
+
   for (const vp of VIEWPORTS) problems.push(...(await checkContactForm(vp)));
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions, canonicals and robots checked`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions, canonicals and robots checked, sitemap matches the crawl`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));

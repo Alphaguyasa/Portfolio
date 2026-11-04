@@ -4,6 +4,42 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-11-04 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** green (`abfab1b`, PR #58 merged after yesterday's run). No open PRs at the start.
+- **Sync:** PR #59 (merged, squash `f5f216c`). All 9 repos read (124 API requests; owner
+  listing 403, `knownPublicRepos` used). Meret's roadmap now says phases 5, 6, 7 and 8 are
+  done in CI (waypoint photos through the camera app, Meret #81/#82), so its result line
+  and status note say so, backed by the updated quote and a new one for photos. Status
+  stays building; sync is next. docsearch's `deploy-not-alone` still fails on its main.
+  No release, npm or status change elsewhere.
+- **Item 36:** PR #60 (merged, squash `c887f35`). The 404 page now carries only
+  Next's `noindex`, no `index, follow` and no canonical; check:site checks robots tags.
+- **Item 37:** this PR. check:site fails when `/sitemap.xml` and the crawl list different pages.
+- **Replan:** 4 items were left (38, 11, 12, 13), so items 39–42 were added. Item 39 comes
+  from this run: the sitemap's `lastModified` is the build time for every page.
+- **Item 11:** production audit clean; only the 16 dev-only minimatch moderates are left
+  (fix due from 2026-11-10 at the earliest, and eslint-config-next must accept it).
+- **Tags:** pushing `v2026-11-04-1` was refused again (A10). Squash commits
+  are the rollback points.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #59), item 36 404 robots/canonical (PR #60), item 37 sitemap vs crawl (this PR) |
+| Merged | #59 yes, `f5f216c` · #60 yes, `c887f35` · this PR see the next run's log (tags not pushable: A10) |
+| Failed or blocked | Release tags (A10) |
+| Roadmap | 8 open (39, 40, 38, 41, 42, 11, 12, 13); replan done (added 39–42) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A16 (confirm the cause, then close), A15 FYI, A12, A10 tags |
+| Next | Daily sync; item 39 (real sitemap dates), then item 40 (new-tab and external links) |
+
+---
+
 ## 2026-11-03 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
