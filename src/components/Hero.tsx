@@ -50,7 +50,6 @@ export default function Hero() {
 
         <div className="text-center">
           <div className="inline-flex items-center gap-3">
-            <span className="h-[3px] w-[30px] rounded-sm bg-accent" />
             <span className="font-sans text-lg font-medium xl:text-[22px]">
               Hello There!
             </span>
@@ -74,7 +73,7 @@ export default function Hero() {
             <div className="absolute inset-x-[7.4%] bottom-0 h-[82.1%] rounded-t-[200px] bg-accent" />
             <div className="absolute inset-x-[9.6%] bottom-0 z-2 h-[78.6%] overflow-hidden rounded-t-[190px]">
               <Image
-                src="/assets/hero-portrait.png"
+                src="/assets/hero-portrait.jpg"
                 alt="Alpha Guyasa"
                 fill
                 // The image box is 80.8% of the portrait column (max 420px, 470px at xl).

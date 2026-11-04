@@ -13,7 +13,7 @@ function TimelineCard({
   rows: TimelineRow[];
 }) {
   return (
-    <div className="rounded-3xl border-l-4 border-accent bg-white px-7 py-8 xl:px-9 xl:py-[34px]">
+    <div className="rounded-3xl bg-white px-7 py-8 xl:px-9 xl:py-[34px]">
       <div className="flex items-center gap-4.5 border-b border-hairline pb-[22px]">
         <span className="flex size-13 shrink-0 items-center justify-center rounded-full bg-accent text-white">
           {icon}

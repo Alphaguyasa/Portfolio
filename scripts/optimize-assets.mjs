@@ -7,7 +7,7 @@ import path from "node:path";
 const dir = path.join(process.cwd(), "public", "assets");
 
 const plan = [
-  { file: "hero-portrait.png", width: 900, format: "png" },
+  { file: "hero-portrait.jpg", width: 900, format: "jpeg" },
   { file: "about-portrait.jpg", width: 900, format: "jpeg" },
   { file: "testimonial-abdi.jpg", width: 400, format: "jpeg" },
   { file: "testimonial-melkias.jpeg", width: 400, format: "jpeg" },
