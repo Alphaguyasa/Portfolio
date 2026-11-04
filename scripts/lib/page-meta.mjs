@@ -3,7 +3,9 @@
  * can pin them. Clients find the portfolio through search results and shared links,
  * so every crawled page needs exactly one non-empty <title>, one meta description
  * and one canonical link that points at its own path on the production site URL,
- * and no two pages may share a title, description or canonical.
+ * and no two pages may share a title, description or canonical. A crawled page must
+ * not say `noindex`. The not-found page is the opposite case: exactly one robots tag,
+ * `noindex`, and no canonical, so a crawler gets one clear answer for an unknown URL.
  */
 
 /** Runs in the browser: the raw metadata of the current page. */
@@ -14,6 +16,7 @@ export function readPageMeta() {
       (el) => el.getAttribute("content") ?? "",
     ),
     canonicals: [...document.querySelectorAll('link[rel="canonical"]')].map((el) => el.getAttribute("href") ?? ""),
+    robots: [...document.querySelectorAll('meta[name="robots"]')].map((el) => el.getAttribute("content") ?? ""),
   };
 }
 
@@ -21,6 +24,13 @@ export function readPageMeta() {
 export function siteUrlFrom(source) {
   const match = /\burl:\s*"(https:\/\/[^"]+)"/.exec(source);
   return match ? match[1].replace(/\/+$/, "") : null;
+}
+
+function saysNoindex(content) {
+  return content
+    .toLowerCase()
+    .split(",")
+    .some((d) => ["noindex", "none"].includes(d.trim()));
 }
 
 function samePath(a, b) {
@@ -42,6 +52,9 @@ export function metaProblems(meta, pathname, siteUrl) {
   };
   one(meta.titles, "title");
   one(meta.descriptions, "meta description");
+  const robots = meta.robots ?? [];
+  if (robots.length > 1) found.push(`${robots.length} robots meta tags (want at most one)`);
+  if (robots.some(saysNoindex)) found.push(`robots meta says noindex: ${robots.join(" | ")}`);
   const canonical = one(meta.canonicals, "canonical link");
   if (canonical !== null) {
     let url = null;
@@ -82,5 +95,15 @@ export function duplicateProblems(pages) {
       if (paths.length > 1) found.push(`same ${name} on ${paths.join(", ")}: "${value}"`);
     }
   }
+  return found;
+}
+
+/** Problems with the not-found page's metadata: one `noindex` robots tag, no canonical. */
+export function notFoundMetaProblems(meta) {
+  const found = [];
+  const robots = meta.robots ?? [];
+  if (robots.length !== 1) found.push(`${robots.length} robots meta tags (want exactly one, noindex)`);
+  else if (!saysNoindex(robots[0])) found.push(`robots meta is "${robots[0]}", want noindex`);
+  if (meta.canonicals.length > 0) found.push(`canonical link on the not-found page: ${meta.canonicals.join(", ")}`);
   return found;
 }

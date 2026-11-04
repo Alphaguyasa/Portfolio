@@ -1,15 +1,16 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { duplicateProblems, metaProblems, siteUrlFrom } from "../scripts/lib/page-meta.mjs";
+import { duplicateProblems, metaProblems, notFoundMetaProblems, siteUrlFrom } from "../scripts/lib/page-meta.mjs";
 import { site } from "../src/data/site";
 
 const SITE = "https://alpha-guyasa-portfolio.vercel.app";
 
-function meta(over: Partial<{ titles: string[]; descriptions: string[]; canonicals: string[] }> = {}) {
+function meta(over: Partial<{ titles: string[]; descriptions: string[]; canonicals: string[]; robots: string[] }> = {}) {
   return {
     titles: ["Mezgeb · Alpha Guyasa"],
     descriptions: ["Small shops lose track of mobile-money payments."],
     canonicals: [`${SITE}/projects/mezgeb`],
+    robots: ["index, follow"],
     ...over,
   };
 }
@@ -61,5 +62,52 @@ describe("check:site page metadata", () => {
     expect(siteUrlFrom(readFileSync("src/data/site.ts", "utf8"))).toBe(site.url);
     expect(siteUrlFrom('url: "https://example.com/",')).toBe("https://example.com");
     expect(siteUrlFrom("no url here")).toBeNull();
+  });
+});
+
+describe("check:site robots metadata", () => {
+  it("passes a crawled page with one indexable robots tag, or none", () => {
+    expect(metaProblems(meta(), "/projects/mezgeb", SITE)).toEqual([]);
+    expect(metaProblems(meta({ robots: [] }), "/projects/mezgeb", SITE)).toEqual([]);
+  });
+
+  it("fails a crawled page that says noindex or has two robots tags", () => {
+    expect(metaProblems(meta({ robots: ["noindex, follow"] }), "/projects/mezgeb", SITE)).toEqual([
+      "robots meta says noindex: noindex, follow",
+    ]);
+    expect(metaProblems(meta({ robots: ["NONE"] }), "/projects/mezgeb", SITE)).toEqual(["robots meta says noindex: NONE"]);
+    expect(metaProblems(meta({ robots: ["index, follow", "noindex"] }), "/projects/mezgeb", SITE)).toEqual([
+      "2 robots meta tags (want at most one)",
+      "robots meta says noindex: index, follow | noindex",
+    ]);
+  });
+
+  const notFound = (over: Partial<{ robots: string[]; canonicals: string[] }> = {}) =>
+    meta({ titles: ["Page not found · Alpha Guyasa"], canonicals: [], robots: ["noindex"], ...over });
+
+  it("passes a not-found page with only noindex and no canonical", () => {
+    expect(notFoundMetaProblems(notFound())).toEqual([]);
+  });
+
+  it("fails the mixed signals seen on 2026-11-03: noindex plus index, follow plus a canonical", () => {
+    expect(notFoundMetaProblems(notFound({ robots: ["noindex", "index, follow"], canonicals: [SITE] }))).toEqual([
+      "2 robots meta tags (want exactly one, noindex)",
+      `canonical link on the not-found page: ${SITE}`,
+    ]);
+  });
+
+  it("fails a not-found page with no robots tag or an indexable one", () => {
+    expect(notFoundMetaProblems(notFound({ robots: [] }))).toEqual(["0 robots meta tags (want exactly one, noindex)"]);
+    expect(notFoundMetaProblems(notFound({ robots: ["index, follow"] }))).toEqual([
+      'robots meta is "index, follow", want noindex',
+    ]);
+  });
+});
+
+describe("not-found page metadata", () => {
+  it("clears the layout's robots and canonical, leaving Next's own noindex", async () => {
+    const { metadata } = await import("../src/app/not-found");
+    expect(metadata.robots).toBeNull();
+    expect(metadata.alternates).toBeNull();
   });
 });

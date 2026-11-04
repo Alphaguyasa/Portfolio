@@ -3,8 +3,13 @@ import type { Metadata } from "next";
 import { ArrowRight } from "@/components/icons";
 import { Container, Logo } from "@/components/ui";
 
+// Next adds its own `noindex` to this page. Clearing the layout's robots and canonical
+// keeps that the only answer a crawler gets: no `index, follow` beside it, and no
+// canonical pointing an unknown URL at the home page.
 export const metadata: Metadata = {
   title: "Page not found",
+  robots: null,
+  alternates: null,
 };
 
 export default function NotFound() {
