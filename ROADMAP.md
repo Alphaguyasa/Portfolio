@@ -21,23 +21,21 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-10-31 (second run): Actions ran again; items 31 and 32 merged, item 35 added; 7 open, so no replan.
 2026-11-02: items 35 and 33 done; 5 open (34, 26, 11, 12, 13), so no replan.
 2026-11-03: 3 items were left after items 26 and 34; added 36–38.
+2026-11-04: 4 items were left after items 36 and 37; added 39–42.
 
 ---
 
 ## Open
 
-### 36. [P3 · S] The 404 page sends mixed signals to search engines
-An unknown path returns `noindex` (added by Next) plus the layout's
-`index, follow` and a canonical link to the home page (seen 2026-11-03). A crawler
-should get one clear answer: the not-found page should carry only `noindex` and no
-canonical. Fix in `not-found.tsx` metadata or the layout; extend check:site's 404
-check with the `page-meta` rules (exactly one robots meta, `noindex`, no canonical).
+### 39. [P2 · S] Sitemap dates are build time, not real change dates
+`src/app/sitemap.ts` sets `lastModified: new Date()` for every URL, so each deploy tells
+crawlers that every page changed. Use the synced last commit for each project page and
+the sync date (`syncedAt`) for `/` and `/about`; a test pins both.
 
-### 37. [P3 · S] check:site compares the sitemap with the crawl
-`/sitemap.xml` lists 11 URLs and the crawl finds 11 pages today, but nothing keeps them
-in step: a new project page missing from the sitemap, or a sitemap URL that 404s, would
-pass. Fail check:site when the sets differ (same site-URL rule as item 34). Pure helper
-+ tests.
+### 40. [P2 · S] check:site checks new-tab and external links
+Every `target="_blank"` link must carry `rel` with `noopener` (and `noreferrer`), and
+every external link must be `https:`. Today it holds by hand in five components; nothing
+keeps it. Pure helper + tests, run on every crawled page.
 
 ### 38. [P3 · S] Structured data (JSON-LD) for the person and each project
 A `Person` block on `/` and `/about` (name, job title, the public links already in
@@ -45,6 +43,17 @@ A `Person` block on `/` and `/about` (name, job title, the public links already 
 code repository, language from the sync). Only fields that already appear on the page,
 so nothing new is claimed; a test checks every JSON-LD value against the page's data.
 Must keep the CSP intact (`application/ld+json` is not executed).
+
+### 41. [P3 · S] Layout shift on every page, not only the two Lighthouse pages
+Lighthouse scores CLS on `/` and one project page. check:site could read
+`layout-shift` entries (PerformanceObserver, ignoring shifts after input) on all 11
+pages at both widths and fail above 0.1 (the "good" threshold). Pure scoring helper +
+tests.
+
+### 42. [P3 · S] check:site checks robots.txt
+`/robots.txt` must allow `/` for every agent and name `<site URL>/sitemap.xml`, so a
+change to `robots.ts` or the site URL cannot hide the site from search. Pure helper +
+tests.
 
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
@@ -65,6 +74,7 @@ with it is two weeks old and eslint-config-next accepts it.
 entries, all eslint tooling). 11.0.1 was published 2026-10-27 22:26 UTC, so it is two
 weeks old from 2026-11-10 22:26 UTC; eslint-config-next 16.4.0 still asks for 3.x and
 10.x, so it also needs an upstream release that accepts it.
+2026-11-04: unchanged (production clean; 16 dev-only minimatch moderates).
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -79,9 +89,19 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
 - **Meret:** no repo description is set on GitHub.
-- **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync).
+- **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync; still failing in the 2026-11-04 sync).
 
 ## Done
+
+- **[P3] check:site compares the sitemap with the crawl** (item 37), this PR
+  (2026-11-04). `/sitemap.xml` must list exactly the crawled pages: every URL absolute,
+  on the site URL, no query or fragment, no duplicate, and reached by the crawl; every
+  crawled page listed. Rules in `scripts/lib/sitemap.mjs`, six tests (one runs
+  `sitemap.ts` itself against the project list). All 11 pages match.
+- **[P3] The 404 page gives one robots answer** (item 36), PR #60 (2026-11-04), squash `c887f35`.
+  `not-found.tsx` clears the layout's robots and canonical, so only Next's `noindex` is
+  left. check:site now fails a crawled page with `noindex` or two robots tags, and a 404
+  page without exactly one `noindex` or with a canonical. Six tests.
 
 - **[P3] check:site checks title, description and canonical** (item 34), this PR
   (2026-11-03). Every crawled page needs one non-empty `<title>`, one meta description
