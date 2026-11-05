@@ -4,6 +4,40 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-11-05 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** green (`350e50d`, PR #62, Alpha's new hero photo). No open PRs at the start.
+- **Sync:** PR #63 (merged, squash `73857ee`). All 9 repos read (125 API requests; owner
+  listing 403, `knownPublicRepos` used). Alpha Coin has its first commits since March
+  (its PRs #1–#7: safe transfer and claim, integer amounts, local-only network), so the
+  note "No commits since March 2026" was false. The note now says work resumed and that it
+  is experimental software, not financial advice, backed by its new README notice and
+  roadmap; its description quote changed upstream and was updated. Status stays completed
+  (Alpha-confirmed); asked as A17. docsearch's `deploy-not-alone` still fails on its main.
+- **Item 39:** PR #64 (merged, squash `07cd314`). Sitemap `lastModified` is now the synced
+  last commit per project page and `syncedAt` for `/` and `/about`, not the build time.
+- **Item 40:** this PR. check:site fails a new-tab link without `noopener noreferrer`, an
+  external `http:` link, and any scheme other than https/mailto/tel.
+- **Item 11:** production audit clean; 8 dev-only minimatch moderates (fix not due before 2026-11-10).
+- **Tags:** pushing `v2026-11-05-1` was refused again (A10). Squash commits are the rollback points.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #63), item 39 real sitemap dates (PR #64), item 40 link safety in check:site (this PR) |
+| Merged | #63 yes, `73857ee` · #64 yes, `07cd314` · this PR see the next run's log (tags not pushable: A10) |
+| Failed or blocked | Release tags (A10) |
+| Roadmap | 6 open (38, 41, 42, 11, 12, 13); no replan needed |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A17 (Alpha Coin status), A16 (confirm the cause, then close), A15 FYI, A12, A10 tags |
+| Next | Daily sync; item 38 (JSON-LD), then item 41 (layout shift on every page) |
+
+---
+
 ## 2026-11-04 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
