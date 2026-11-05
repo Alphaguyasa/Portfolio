@@ -5,7 +5,17 @@ Newest first. When Alpha answers, move the item to "Resolved" with the answer.
 
 ## Open
 
+### A17. Alpha Coin: still "completed", or "in development"? (2026-11-05)
+You confirmed Alpha Coin as completed on 2026-10-18 ("finished, with more planned").
+Its repo got its first commits since March on 2026-11-04 and 2026-11-05 (PRs #1–#7:
+transfer and claim made safe, integer amounts, local-only network config), and its own
+CLAUDE.md now lists open work (error handling, layout, ICRC-1). The site keeps your
+"Completed" status, with a note that work resumed and that it is experimental software,
+not financial advice. If you would rather it read "In development" while that work runs,
+say so and the next run changes it. Nothing else depends on it.
+
 ### A16. GitHub Actions did not start any job, 2026-10-28 → 2026-10-31 (billing / spending limit)
+**Update 2026-11-05:** CI ran normally again.
 **Update 2026-11-04:** CI ran normally again.
 **Update 2026-11-03:** CI ran normally again (three PRs).
 **Update 2026-11-02:** CI ran normally for every PR this run (new month).
@@ -84,7 +94,9 @@ Still refused on 2026-11-02; also missing: `v2026-11-02-1 3965076` (PR #53),
 Still refused on 2026-11-03; also missing: `v2026-11-03-1 92f34f8` (PR #56),
 `v2026-11-03-2 45aaf9c` (PR #57) and `v2026-11-03-3` on this run's last PR squash commit.
 Still missing from 2026-11-04: `v2026-11-04-1 f5f216c` (PR #59), `v2026-11-04-2 c887f35` (PR #60)
-and `v2026-11-04-3` on this run's last PR squash commit.
+and `v2026-11-04-3 71f0066` (PR #61).
+Still refused on 2026-11-05; also missing: `v2026-11-05-1 73857ee` (PR #63),
+`v2026-11-05-2 07cd314` (PR #64) and `v2026-11-05-3` on this run's last PR squash commit.
 
 ## Resolved
 

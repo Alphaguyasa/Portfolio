@@ -25,6 +25,7 @@ import { spawn } from "node:child_process";
 import { readFileSync } from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
+import { linkProblems, readAnchors } from "./lib/links.mjs";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
 import { sitemapProblems, sitemapUrls } from "./lib/sitemap.mjs";
@@ -205,6 +206,7 @@ try {
         const meta = await page.evaluate(readPageMeta);
         pageMeta[pathname] = meta;
         for (const m of metaProblems(meta, pathname, SITE_URL)) problems.push(`${pathname}: ${m}`);
+        for (const m of linkProblems(await page.evaluate(readAnchors), BASE + pathname)) problems.push(`${pathname}: ${m}`);
 
         const { links, ids } = await page.evaluate(() => ({
           links: [...document.querySelectorAll("a[href], link[href], img[src]")].map(
@@ -252,7 +254,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions, canonicals and robots checked, sitemap matches the crawl`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions, canonicals and robots checked, new-tab and external links safe, sitemap matches the crawl`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));

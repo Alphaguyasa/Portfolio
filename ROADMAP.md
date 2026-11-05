@@ -22,15 +22,11 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-11-02: items 35 and 33 done; 5 open (34, 26, 11, 12, 13), so no replan.
 2026-11-03: 3 items were left after items 26 and 34; added 36–38.
 2026-11-04: 4 items were left after items 36 and 37; added 39–42.
+2026-11-05: items 39 and 40 done; 6 open (38, 41, 42, 11, 12, 13), so no replan.
 
 ---
 
 ## Open
-
-### 40. [P2 · S] check:site checks new-tab and external links
-Every `target="_blank"` link must carry `rel` with `noopener` (and `noreferrer`), and
-every external link must be `https:`. Today it holds by hand in five components; nothing
-keeps it. Pure helper + tests, run on every crawled page.
 
 ### 38. [P3 · S] Structured data (JSON-LD) for the person and each project
 A `Person` block on `/` and `/about` (name, job title, the public links already in
@@ -70,6 +66,8 @@ entries, all eslint tooling). 11.0.1 was published 2026-10-27 22:26 UTC, so it i
 weeks old from 2026-11-10 22:26 UTC; eslint-config-next 16.4.0 still asks for 3.x and
 10.x, so it also needs an upstream release that accepts it.
 2026-11-04: unchanged (production clean; 16 dev-only minimatch moderates).
+2026-11-05: production clean; `npm audit` now counts 8 dev-only moderates, all the same
+minimatch advisory via eslint tooling. Fix still not due before 2026-11-10 22:26 UTC.
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -84,17 +82,23 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **HUnews:** README's team table includes student ID numbers; consider removing them.
 - **ethiopic-text:** 0.1.0 is on npm but has no git tag or GitHub release.
 - **Meret:** no repo description is set on GitHub.
-- **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync; still failing in the 2026-11-04 sync).
+- **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync; still failing in the 2026-11-05 sync).
 
 ## Done
 
-- **[P2] Sitemap dates are real change dates** (item 39), this PR (2026-11-05).
+- **[P2] check:site checks new-tab and external links** (item 40), this PR
+  (2026-11-05). Every crawled page: a `target="_blank"` link needs `rel` with both
+  `noopener` and `noreferrer`, a link off the site must be `https:`, and only
+  `https:`/`http:` (same site), `mailto:` and `tel:` hrefs are allowed. Rules in
+  `scripts/lib/links.mjs`, five tests (one scans every `.tsx` for new-tab anchors).
+  Checked to fail on all 11 pages when the footer GitHub link lost `noopener`.
+- **[P2] Sitemap dates are real change dates** (item 39), PR #64 (2026-11-05), squash `07cd314`.
   `sitemap.ts` dates each project page by its synced last commit and `/` and `/about`
   by `syncedAt`, instead of the build time for every URL. A test pins both (and fails
   on the old `new Date()`).
 
-- **[P3] check:site compares the sitemap with the crawl** (item 37), this PR
-  (2026-11-04). `/sitemap.xml` must list exactly the crawled pages: every URL absolute,
+- **[P3] check:site compares the sitemap with the crawl** (item 37), PR #61
+  (2026-11-04), squash `71f0066`. `/sitemap.xml` must list exactly the crawled pages: every URL absolute,
   on the site URL, no query or fragment, no duplicate, and reached by the crawl; every
   crawled page listed. Rules in `scripts/lib/sitemap.mjs`, six tests (one runs
   `sitemap.ts` itself against the project list). All 11 pages match.
