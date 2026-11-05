@@ -254,7 +254,7 @@
       "repo": "Alphaguyasa/Alpha-digital-coin",
       "status": "completed",
       "statusConfirmed": "Alpha, 2026-10-18",
-      "statusNote": "Finished; more features are planned. No commits since March 2026.",
+      "statusNote": "Finished; work resumed in November 2026: safer transfer and claim, exact integer amounts, and a local-only network setting. Experimental software, not financial advice.",
       "featured": false,
       "platform": "Web + ICP canister",
       "stack": ["Motoko", "Next.js", "TypeScript", "Internet Identity"],
@@ -265,7 +265,11 @@
       "images": [],
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Alpha-digital-coin" }],
       "facts": [
-        { "path": "README.md", "quote": "A decentralized token dashboard built on the Internet Computer Protocol (ICP) with Internet Identity authentication." }
+        { "path": "README.md", "quote": "A token dashboard built on the Internet Computer Protocol (ICP) with Internet Identity authentication." },
+        { "path": "README.md", "quote": "Experimental software, not financial advice." },
+        { "path": "ROADMAP.md", "quote": "R1. transfer and claim made safe" },
+        { "path": "ROADMAP.md", "quote": "R3. Integer amounts in the frontend" },
+        { "path": "ROADMAP.md", "quote": "only a local replica is accepted" }
       ]
     }
   ]
