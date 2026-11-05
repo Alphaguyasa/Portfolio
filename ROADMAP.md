@@ -27,11 +27,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
-### 39. [P2 · S] Sitemap dates are build time, not real change dates
-`src/app/sitemap.ts` sets `lastModified: new Date()` for every URL, so each deploy tells
-crawlers that every page changed. Use the synced last commit for each project page and
-the sync date (`syncedAt`) for `/` and `/about`; a test pins both.
-
 ### 40. [P2 · S] check:site checks new-tab and external links
 Every `target="_blank"` link must carry `rel` with `noopener` (and `noreferrer`), and
 every external link must be `https:`. Today it holds by hand in five components; nothing
@@ -92,6 +87,11 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync; still failing in the 2026-11-04 sync).
 
 ## Done
+
+- **[P2] Sitemap dates are real change dates** (item 39), this PR (2026-11-05).
+  `sitemap.ts` dates each project page by its synced last commit and `/` and `/about`
+  by `syncedAt`, instead of the build time for every URL. A test pins both (and fails
+  on the old `new Date()`).
 
 - **[P3] check:site compares the sitemap with the crawl** (item 37), this PR
   (2026-11-04). `/sitemap.xml` must list exactly the crawled pages: every URL absolute,

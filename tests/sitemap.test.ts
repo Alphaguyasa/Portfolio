@@ -58,4 +58,18 @@ describe("sitemapProblems", () => {
     const expected = ["/", "/about", ...projects.map((p) => projectPath(p))];
     expect(sitemapProblems(sitemap().map((e) => e.url), expected, SITE)).toEqual([]);
   });
+  it("dates / and /about by the sync and each project page by its last commit, never the build time", async () => {
+    const { default: sitemap } = await import("../src/app/sitemap");
+    const { liveFacts, projectPath, projects, syncedAt } = await import("../src/lib/projects");
+    const byPath = new Map(sitemap().map((e) => [e.url.slice(SITE.length) || "/", e.lastModified]));
+    expect(byPath.get("/")).toBe(syncedAt);
+    expect(byPath.get("/about")).toBe(syncedAt);
+    for (const p of projects) {
+      const expected = liveFacts(p).lastCommitAt ?? syncedAt;
+      expect(byPath.get(projectPath(p)), p.slug).toBe(expected);
+    }
+    // At least one project has a commit date of its own, so the test cannot pass on syncedAt alone.
+    expect(projects.some((p) => liveFacts(p).lastCommitAt && liveFacts(p).lastCommitAt !== syncedAt)).toBe(true);
+    for (const e of sitemap()) expect(Number.isNaN(Date.parse(String(e.lastModified))), e.url).toBe(false);
+  });
 });
