@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
 import { ArrowRight, Check } from "@/components/icons";
+import JsonLd from "@/components/JsonLd";
 import { StatusBadge } from "@/components/Portfolio";
 import { Accent, Container, Eyebrow, Logo } from "@/components/ui";
 import {
@@ -14,6 +15,7 @@ import {
   projects,
   type Project,
 } from "@/lib/projects";
+import { projectJsonLd } from "@/lib/structured-data";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -86,6 +88,7 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <>
+      <JsonLd data={projectJsonLd(project)} />
       <header className="bg-surface-alt pb-14 pt-[18px] xl:pb-20">
         <Container>
           <Link href="/" aria-label="Alpha Guyasa — home" className="inline-block">

@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { ArrowRight } from "@/components/icons";
+import JsonLd from "@/components/JsonLd";
 import { StatusBadge } from "@/components/Portfolio";
 import { Accent, Container, Eyebrow, Logo } from "@/components/ui";
 import { aboutPage } from "@/data/site";
+import { personJsonLd } from "@/lib/structured-data";
 import { formatDate, methodEvidence, projectPath, projects, syncedAt, type Project } from "@/lib/projects";
 
 const description =
@@ -41,6 +43,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd data={personJsonLd()} />
       <header className="bg-surface-alt pb-14 pt-[18px] xl:pb-20">
         <Container>
           <Link href="/" aria-label="Alpha Guyasa — home" className="inline-block">
