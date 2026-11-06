@@ -15,6 +15,7 @@ not financial advice. If you would rather it read "In development" while that wo
 say so and the next run changes it. Nothing else depends on it.
 
 ### A16. GitHub Actions did not start any job, 2026-10-28 → 2026-10-31 (billing / spending limit)
+**Update 2026-11-06:** CI ran normally again.
 **Update 2026-11-05:** CI ran normally again.
 **Update 2026-11-04:** CI ran normally again.
 **Update 2026-11-03:** CI ran normally again (three PRs).
@@ -96,7 +97,9 @@ Still refused on 2026-11-03; also missing: `v2026-11-03-1 92f34f8` (PR #56),
 Still missing from 2026-11-04: `v2026-11-04-1 f5f216c` (PR #59), `v2026-11-04-2 c887f35` (PR #60)
 and `v2026-11-04-3 71f0066` (PR #61).
 Still refused on 2026-11-05; also missing: `v2026-11-05-1 73857ee` (PR #63),
-`v2026-11-05-2 07cd314` (PR #64) and `v2026-11-05-3` on this run's last PR squash commit.
+`v2026-11-05-2 07cd314` (PR #64) and `v2026-11-05-3 711ca9b` (PR #65).
+Still refused on 2026-11-06; also missing: `v2026-11-06-1 bb510f5` (PR #66),
+`v2026-11-06-2 c2cd315` (PR #67) and `v2026-11-06-3` on this run's last PR squash commit.
 
 ## Resolved
 
