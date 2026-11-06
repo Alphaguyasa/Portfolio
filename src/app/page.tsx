@@ -5,6 +5,7 @@ import Education from "@/components/Education";
 import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import JsonLd from "@/components/JsonLd";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
 import Notes from "@/components/Notes";
@@ -16,10 +17,12 @@ import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
 import Tools from "@/components/Tools";
 import { marquees } from "@/data/site";
+import { personJsonLd } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={personJsonLd()} />
       <Nav />
       <main id="main">
         <Hero />

@@ -68,23 +68,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Helps search engines resolve the person behind the site.
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Alpha Guyasa",
-  jobTitle: "Full Stack Engineer",
-  email: `mailto:${site.email}`,
-  url: site.url,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Addis Ababa",
-    addressCountry: "ET",
-  },
-  alumniOf: { "@type": "CollegeOrUniversity", name: "Haramaya University" },
-  sameAs: [site.linkedin, site.github, site.leetcode],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -98,11 +81,6 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
-        <script
-          type="application/ld+json"
-          // Static, author-controlled payload.
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
       </body>
     </html>
   );
