@@ -19,10 +19,16 @@ is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line);
   layout (every page, the 404 too) is removed; the new test caught its jobTitle "Full Stack
   Engineer", which `/about` never shows, so the footer's "Full stack engineer" is used.
 - **Item 41:** this PR. check:site scores CLS on all 11 pages at both widths (limit 0.1).
-  All pages pass; HU News is the highest at 0.035 (item 44).
+  Its first CI run failed on a real shift: `/projects/security-scanner` 0.243 and
+  `/projects/alpha-coin` 0.193 at phone width. Reproduced locally by hiding Arial-metric
+  fonts (as on CI's runner and on phones without Arial): Poppins is not preloaded, its
+  fallback face needs `local(Arial)`, so headings re-wrapped when Poppins arrived. Fixed by
+  `display: "optional"` for Poppins (it never swaps in after first paint; a slow first
+  visit may show the fallback for headings). Every page now scores 0.000 locally, with or
+  without Arial, and Lighthouse `/` performance went from 87 to 93 locally.
 - **Replan:** 4 items were left (42, 11, 12, 13), so items 43–46 were added.
 - **Item 11:** production audit clean; 8 dev-only minimatch moderates (fix not due before 2026-11-10).
-- **Lighthouse:** `/` performance 87 locally on PR #67 (CI passed at 90+); item 46 looks at the margin.
+- **Lighthouse:** `/` performance 87 locally on PR #67, 93 after the font fix; item 46 checks the margin.
 - **Tags:** not pushed (A10). Squash commits are the rollback points.
 
 ### Report

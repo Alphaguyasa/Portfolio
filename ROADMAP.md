@@ -100,8 +100,9 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **[P3] Layout shift on every page** (item 41), this PR (2026-11-06). check:site records
   `layout-shift` entries from before any page script on all 11 pages at both widths and
   fails above CLS 0.1 (Core Web Vitals session windows; shifts after input ignored), or
-  when nothing was recorded. Rules in `scripts/lib/layout-shift.mjs`, six tests. Checked
-  with the limit at -1: every page reported a real score (all ≤ 0.035).
+  when nothing was recorded. Rules in `scripts/lib/layout-shift.mjs`, seven tests. It
+  found a real shift (0.19–0.24 on two project pages at phone width where Arial is
+  missing): Poppins now uses `display: "optional"`, so it never swaps in after paint.
 - **[P3] Structured data (JSON-LD)** (item 38), PR #67 (2026-11-06), squash `c2cd315`.
   Person on `/` and `/about`, SoftwareSourceCode per project page, from
   `src/lib/structured-data.ts`; the untested layout block (on every page, the 404 too) is

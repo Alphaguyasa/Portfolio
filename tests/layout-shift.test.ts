@@ -47,3 +47,12 @@ describe("check:site layout shift", () => {
     expect(src).toContain("layout shifts were not recorded");
   });
 });
+
+describe("fonts cannot shift the page", () => {
+  it("the display font, which is not preloaded, never swaps in after first paint", () => {
+    const layout = readFileSync("src/app/layout.tsx", "utf8");
+    const poppins = layout.slice(layout.indexOf("Poppins({"), layout.indexOf("});", layout.indexOf("Poppins({")));
+    expect(poppins).toContain("preload: false");
+    expect(poppins).toContain('display: "optional"');
+  });
+});
