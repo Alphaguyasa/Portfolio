@@ -3,6 +3,126 @@
     "project": "Alpha Coin",
     "slug": "alpha-coin",
     "kind": "pr",
+    "title": "Make every link and nav control go somewhere real (R6)",
+    "date": "2026-11-06T06:11:54Z",
+    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/9"
+  },
+  {
+    "project": "Alpha Coin",
+    "slug": "alpha-coin",
+    "kind": "pr",
+    "title": "Handle every dashboard failure (R5)",
+    "date": "2026-11-06T06:09:25Z",
+    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/8"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "fix: a background failure no longer crashes the app (R48)",
+    "date": "2026-11-06T05:30:37Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/82"
+  },
+  {
+    "project": "Mezgeb",
+    "slug": "mezgeb",
+    "kind": "pr",
+    "title": "fix: tapping the reconcile reminder opens Reconcile (R49)",
+    "date": "2026-11-06T05:29:58Z",
+    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/83"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Sweep orphaned photo files (roadmap item 36)",
+    "date": "2026-11-06T04:55:57Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/87"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Dependabot: monthly npm updates for tools/ (roadmap item 18)",
+    "date": "2026-11-06T04:46:50Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/88"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "fix(sales): a void stores 0, not -0, for zero money and quantity fields",
+    "date": "2026-11-06T04:30:15Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/79"
+  },
+  {
+    "project": "Suq",
+    "slug": "suq",
+    "kind": "pr",
+    "title": "feat(setup): warn when restored receipts already use the device code",
+    "date": "2026-11-06T04:25:45Z",
+    "url": "https://github.com/Alphaguyasa/Suq/pull/78"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Show bold and italics in live answers instead of their asterisks",
+    "date": "2026-11-06T03:49:29Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/159"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Read a person's passages aloud on their page, in one language the device can speak",
+    "date": "2026-11-06T03:46:47Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/158"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Seen cache holds 20 000 ids; log 2026-11-06",
+    "date": "2026-11-06T03:41:29Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/96"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Chat rows are built off the main thread",
+    "date": "2026-11-06T03:31:10Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/95"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Pairing camera stops when the screen closes; one save per scan",
+    "date": "2026-11-06T03:22:01Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/94"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-11-06-3",
+    "date": "2026-11-06T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-06-3"
+  },
+  {
+    "project": "Alpha Coin",
+    "slug": "alpha-coin",
+    "kind": "tag",
+    "title": "v2026-11-06-3",
+    "date": "2026-11-06T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/tree/v2026-11-06-3"
+  },
+  {
+    "project": "Alpha Coin",
+    "slug": "alpha-coin",
+    "kind": "pr",
     "title": "Read the network from build config and fail closed (R4)",
     "date": "2026-11-05T06:12:30Z",
     "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/6"
@@ -38,125 +158,5 @@
     "title": "Name a track from its detail screen (roadmap item 35)",
     "date": "2026-11-05T05:00:09Z",
     "url": "https://github.com/Alphaguyasa/Meret/pull/85"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "«Show on map» from track detail (roadmap item 34)",
-    "date": "2026-11-05T04:52:08Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/84"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "feat(reports): share the reorder list as text",
-    "date": "2026-11-05T04:25:29Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/76"
-  },
-  {
-    "project": "Suq",
-    "slug": "suq",
-    "kind": "pr",
-    "title": "feat(backup): restore a JSON backup on a fresh till",
-    "date": "2026-11-05T04:20:55Z",
-    "url": "https://github.com/Alphaguyasa/Suq/pull/75"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Upgrade Next.js to 16.4.5 for seven moderate security fixes, plus in-range patch updates",
-    "date": "2026-11-05T03:53:55Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/157"
-  },
-  {
-    "project": "DocSearch → Not Alone",
-    "slug": "docsearch",
-    "kind": "pr",
-    "title": "Read a story aloud with the browser's own voice, only when it speaks the story's language",
-    "date": "2026-11-05T03:45:01Z",
-    "url": "https://github.com/Alphaguyasa/docsearch/pull/156"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "One sender holds at most 4 part-assembled messages; log 2026-11-05",
-    "date": "2026-11-05T03:38:54Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/93"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Switching chats keeps each thread's draft",
-    "date": "2026-11-05T03:30:31Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/92"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Pairing QR no longer supplies the agreement key",
-    "date": "2026-11-05T03:22:40Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/91"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-11-05-3",
-    "date": "2026-11-05T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-05-3"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "tag",
-    "title": "v2026-11-05-3",
-    "date": "2026-11-05T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/tree/v2026-11-05-3"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "pr",
-    "title": "Remove the price display and false claims from the site (R2)",
-    "date": "2026-11-04T09:48:36Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/3"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "pr",
-    "title": "Make transfer and claim safe (R1)",
-    "date": "2026-11-04T09:37:57Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/2"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "pr",
-    "title": "Set up the repo for autonomous work: CI, tags, context files, threat model",
-    "date": "2026-11-04T09:13:12Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/1"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "fix: a blank SMS row no longer ends the inbox import early (R45)",
-    "date": "2026-11-04T05:31:15Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/77"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "feat: share a customer's statement as text (R44)",
-    "date": "2026-11-04T05:30:01Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/76"
   }
 ]
