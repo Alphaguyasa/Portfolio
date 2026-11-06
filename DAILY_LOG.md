@@ -4,6 +4,47 @@ One entry per run, newest first. Internal file: never published on the site.
 
 ---
 
+## 2026-11-06 — scheduled run
+
+**Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5
+is still the newest Opus (Fable 5.1 is listed, but the policy is the Opus line); no switch.
+
+- **Main:** green (`711ca9b`, PR #65). No open PRs at the start.
+- **Sync:** PR #66 (merged, squash `bb510f5`). All 9 repos read (125 API requests; owner
+  listing 403, `knownPublicRepos` used). New commits in Alpha Coin, docsearch, Meret,
+  Mezgeb, NullChat and Suq; no release, npm, description or status change, so
+  `projects.json` is unchanged. docsearch's `deploy-not-alone` still fails on its main.
+- **Item 38:** PR #67 (merged, squash `c2cd315`). Tested JSON-LD: Person on `/` and
+  `/about`, SoftwareSourceCode per project page. The old untested Person block in the
+  layout (every page, the 404 too) is removed; the new test caught its jobTitle "Full Stack
+  Engineer", which `/about` never shows, so the footer's "Full stack engineer" is used.
+- **Item 41:** this PR. check:site scores CLS on all 11 pages at both widths (limit 0.1).
+  Its first CI run failed on a real shift: `/projects/security-scanner` 0.243 and
+  `/projects/alpha-coin` 0.193 at phone width. Reproduced locally by hiding Arial-metric
+  fonts (as on CI's runner and on phones without Arial): Poppins is not preloaded, its
+  fallback face needs `local(Arial)`, so headings re-wrapped when Poppins arrived. Fixed by
+  `display: "optional"` for Poppins (it never swaps in after first paint; a slow first
+  visit may show the fallback for headings). Every page now scores 0.000 locally, with or
+  without Arial, and Lighthouse `/` performance went from 87 to 93 locally.
+- **Replan:** 4 items were left (42, 11, 12, 13), so items 43–46 were added.
+- **Item 11:** production audit clean; 8 dev-only minimatch moderates (fix not due before 2026-11-10).
+- **Lighthouse:** `/` performance 87 locally on PR #67, 93 after the font fix; item 46 checks the margin.
+- **Tags:** not pushed (A10). Squash commits are the rollback points.
+
+### Report
+
+| Field | Content |
+|---|---|
+| Done | Sync (PR #66), item 38 JSON-LD (PR #67), item 41 layout shift on every page (this PR) |
+| Merged | #66 yes, `bb510f5` · #67 yes, `c2cd315` · this PR see the next run's log (tags not pushable: A10) |
+| Failed or blocked | Release tags (A10) |
+| Roadmap | 8 open (43, 42, 44, 45, 46, 11, 12, 13); replan done (added 43–46) |
+| Model | Opus 5.5, newest Opus; no action needed |
+| Needs approval | A17 (Alpha Coin status), A16 (confirm the cause, then close), A15 FYI, A12, A10 tags |
+| Next | Daily sync; item 43 (Meret tagline), then item 42 (robots.txt in check:site) |
+
+---
+
 ## 2026-11-05 — scheduled run
 
 **Model:** Opus 5.5 (`claude-opus-5-5`). Checked the official models overview: Opus 5.5

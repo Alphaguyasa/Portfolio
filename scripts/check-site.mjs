@@ -12,6 +12,8 @@
  *   - 404 page: an unknown path must answer 404 with the not-found page, which no
  *     link reaches, so the crawl alone would never check it
  *   - no horizontal scroll: at both widths, no page may be wider than the viewport
+ *   - no layout shift: at both widths, every page's CLS (Core Web Vitals scoring,
+ *     shifts after input ignored) must be 0.1 or less, as Lighthouse checks on two
  *   - search metadata: every page has one title, one meta description and one
  *     canonical link to its own path on the site URL, none shared between pages
  *   - sitemap: /sitemap.xml lists exactly the crawled pages, on the site URL
@@ -25,6 +27,7 @@ import { spawn } from "node:child_process";
 import { readFileSync } from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { chromium } from "playwright";
+import { layoutShiftProblem, readLayoutShifts, recordLayoutShifts } from "./lib/layout-shift.mjs";
 import { linkProblems, readAnchors } from "./lib/links.mjs";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
@@ -179,6 +182,7 @@ try {
     const pathname = queue.shift();
     for (const vp of VIEWPORTS) {
       const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+      await context.addInitScript(recordLayoutShifts);
       const page = await context.newPage();
       const cspViolations = [];
       const pageErrors = [];
@@ -201,6 +205,13 @@ try {
 
       const overflow = overflowProblem(await page.evaluate(measureOverflow));
       if (overflow) problems.push(`${pathname} [${vp.name}] ${overflow}`);
+
+      const shifts = await page.evaluate(readLayoutShifts);
+      if (!shifts) problems.push(`${pathname} [${vp.name}] layout shifts were not recorded`);
+      else {
+        const shift = layoutShiftProblem(shifts);
+        if (shift) problems.push(`${pathname} [${vp.name}] ${shift}`);
+      }
 
       if (vp.name === "desktop") {
         const meta = await page.evaluate(readPageMeta);
@@ -254,7 +265,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, titles, descriptions, canonicals and robots checked, new-tab and external links safe, sitemap matches the crawl`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, sitemap matches the crawl`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));

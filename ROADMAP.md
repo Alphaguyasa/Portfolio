@@ -23,28 +23,38 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 2026-11-03: 3 items were left after items 26 and 34; added 36–38.
 2026-11-04: 4 items were left after items 36 and 37; added 39–42.
 2026-11-05: items 39 and 40 done; 6 open (38, 41, 42, 11, 12, 13), so no replan.
+2026-11-06: 4 items were left after items 38 and 41; added 43–46.
 
 ---
 
 ## Open
 
-### 38. [P3 · S] Structured data (JSON-LD) for the person and each project
-A `Person` block on `/` and `/about` (name, job title, the public links already in
-`src/data/site.ts`) and a `SoftwareSourceCode` block per project page (name, description,
-code repository, language from the sync). Only fields that already appear on the page,
-so nothing new is claimed; a test checks every JSON-LD value against the page's data.
-Must keep the CSP intact (`application/ld+json` is not executed).
-
-### 41. [P3 · S] Layout shift on every page, not only the two Lighthouse pages
-Lighthouse scores CLS on `/` and one project page. check:site could read
-`layout-shift` entries (PerformanceObserver, ignoring shifts after input) on all 11
-pages at both widths and fail above 0.1 (the "good" threshold). Pure scoring helper +
-tests.
+### 43. [P2 · S] Meret's tagline is behind its status note
+The tagline says "Phases 1–4 of the build plan are done", while the status note (and
+Meret's synced ROADMAP) says phases 5–8 are done too. It is a lower claim, so not
+dishonest, but stale. Re-quote the tagline from the synced roadmap's phase lines and
+add a test that a project's tagline does not name fewer done phases than its status note.
 
 ### 42. [P3 · S] check:site checks robots.txt
 `/robots.txt` must allow `/` for every agent and name `<site URL>/sitemap.xml`, so a
 change to `robots.ts` or the site URL cannot hide the site from search. Pure helper +
 tests.
+
+### 44. [P3 · S] HU News project page shifts more than the others
+check:site's new CLS gate (item 41) scores `/projects/hu-news` at 0.034 desktop and
+0.035 phone (`main#main` moved); every other page is at 0.005 or less. Under the 0.1
+limit, but find the element that changes size after load (likely the phone screenshot
+grid) and reserve its space. Lower the limit for that page in a test once it is fixed.
+
+### 45. [P3 · S] check:site reads the built JSON-LD
+Item 38's test renders pages in vitest. check:site could also parse every
+`application/ld+json` block in the served HTML: valid JSON, exactly one per page,
+none on the 404 page, and its `url` equal to the page's canonical. Pure helper + tests.
+
+### 46. [P3 · S] Home page Lighthouse performance margin
+Local Lighthouse on `/` scored 87 on 2026-11-06 (CI passes at 90+). Measure the home
+page's blocking time and JS size per section, and cut the largest client-side cost so
+the margin over 90 is not luck. No new dependency.
 
 ### 11. [P2 · S] Dev-only dependency advisories
 `npm audit` reports 5 high advisories in dev-only tooling (braces/micromatch via
@@ -68,6 +78,7 @@ weeks old from 2026-11-10 22:26 UTC; eslint-config-next 16.4.0 still asks for 3.
 2026-11-04: unchanged (production clean; 16 dev-only minimatch moderates).
 2026-11-05: production clean; `npm audit` now counts 8 dev-only moderates, all the same
 minimatch advisory via eslint tooling. Fix still not due before 2026-11-10 22:26 UTC.
+2026-11-06: unchanged (production clean; the same dev-only minimatch moderate).
 
 ### 12. [P3 · S] Per-project Open Graph images
 Generate an OG image per project page with `next/og` (already used for the home page).
@@ -85,6 +96,18 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync; still failing in the 2026-11-05 sync).
 
 ## Done
+
+- **[P3] Layout shift on every page** (item 41), this PR (2026-11-06). check:site records
+  `layout-shift` entries from before any page script on all 11 pages at both widths and
+  fails above CLS 0.1 (Core Web Vitals session windows; shifts after input ignored), or
+  when nothing was recorded. Rules in `scripts/lib/layout-shift.mjs`, seven tests. It
+  found a real shift (0.19–0.24 on two project pages at phone width where Arial is
+  missing): Poppins now uses `display: "optional"`, so it never swaps in after paint.
+- **[P3] Structured data (JSON-LD)** (item 38), PR #67 (2026-11-06), squash `c2cd315`.
+  Person on `/` and `/about`, SoftwareSourceCode per project page, from
+  `src/lib/structured-data.ts`; the untested layout block (on every page, the 404 too) is
+  gone. A test checks every value against the rendered page; it caught the old jobTitle
+  "Full Stack Engineer", which `/about` never shows.
 
 - **[P2] check:site checks new-tab and external links** (item 40), this PR
   (2026-11-05). Every crawled page: a `target="_blank"` link needs `rel` with both

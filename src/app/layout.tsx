@@ -9,7 +9,11 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
   style: ["normal", "italic"],
-  display: "swap",
+  // Not preloaded (first-load work on phones, PR #20), so it often arrives after the
+  // first paint. With "swap" the headings then re-wrap and push the page down: CLS
+  // 0.19-0.24 on short project pages wherever the Arial-metric fallback is missing
+  // (CI's runner; phones without Arial). "optional" never swaps after first paint.
+  display: "optional",
   preload: false,
 });
 
