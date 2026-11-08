@@ -8,7 +8,7 @@ const pkg = readJson<Manifest>("package.json");
 const lock = readJson<Lock>("package-lock.json");
 const EXACT = /^\d+\.\d+\.\d+$/;
 
-// CLAUDE.md asks for exact pins: a range lets any `npm install` move a dependency
+// The engineering handbook asks for exact pins: a range lets any `npm install` move a dependency
 // without review, even though the lockfile holds it today.
 describe("dependency pins", () => {
   for (const field of ["dependencies", "devDependencies"] as const) {

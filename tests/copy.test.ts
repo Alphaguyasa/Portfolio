@@ -52,7 +52,7 @@ describe("isHousekeeping", () => {
   it.each([
     "docs: log the 2026-10-14 setup run",
     "Log 2026-10-14 run; mark roadmap items done",
-    "Resolve auto-approve item in NEEDS_APPROVAL",
+    "Resolve auto-approve item in the decision log",
     "Model policy: Opus line only",
     "chore(deps): bump next",
   ])("hides %s", (title) => expect(isHousekeeping(title)).toBe(true));

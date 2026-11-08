@@ -10,7 +10,7 @@
  *                                   last commit, recent merged PRs
  *   data/sync/docs/<repo>/<path>    the repo's README / ROADMAP / docs, verbatim
  *
- * Rules (see CLAUDE.md):
+ * Rules (see the engineering handbook):
  *   - Public repos are included unless listed in portfolio.config.json "skip".
  *   - A private repo is included ONLY if listed in "include", and then nothing is
  *     fetched from it: only the public summary written in the config is recorded.

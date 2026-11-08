@@ -83,7 +83,7 @@ see the notice at the top of that file before using it.
 ## Project documents
 
 [ROADMAP.md](./ROADMAP.md), [THREAT_MODEL.md](./THREAT_MODEL.md),
-[NEEDS_APPROVAL.md](./NEEDS_APPROVAL.md), [DAILY_LOG.md](./DAILY_LOG.md) and [CLAUDE.md](./CLAUDE.md).
+[the decision log](./the decision log), [the dev log](./the dev log) and [the engineering handbook](./the engineering handbook).
 
 ## Project Structure
 

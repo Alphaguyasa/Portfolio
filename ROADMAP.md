@@ -2,7 +2,7 @@
 
 Prioritized backlog. The daily run takes the **top open item** first, up to 2 per run.
 When an item is done, move it to "Done" with its PR number and release tag. Replan
-(CLAUDE.md, daily loop step 6) when fewer than 5 items are open.
+(the engineering handbook, daily loop step 6) when fewer than 5 items are open.
 
 **Priority:** P0 = honesty / privacy / security / broken build · P1 = core value for
 clients reading the portfolio · P2 = important, not blocking · P3 = polish.
@@ -85,7 +85,7 @@ Generate an OG image per project page with `next/og` (already used for the home 
 
 ### 13. [P3 · M] Amharic version of the key pages
 Most projects target Amharic-speaking users; an Amharic summary of the home page and
-project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
+project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Suggestions for other repos (read-only; for Alpha to apply)
 
@@ -212,7 +212,7 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
 - **[P0] Next.js 16.4.0 → 16.4.1** (main-broken fix, not a roadmap item), PR #30
   (2026-10-23), squash `44cb14d`. A critical advisory in next ≤16.4.0 failed CI's
   production audit. 16.4.1 was 9 days old; the critical fix overrode the two-week rule
-  (NEEDS_APPROVAL A15).
+  (the decision log A15).
 - **[P2] check:site fails on page errors** (item 20), PR #29 (2026-10-22). Any uncaught
   exception (`pageerror`) or console error now fails the page, at both widths; the rule
   lives in `scripts/lib/page-errors.mjs` with an allowlist that starts empty. 11 pages
@@ -284,7 +284,7 @@ project pages would show that. Needs Alpha to review wording (NEEDS_APPROVAL).
   Squash `97c1b89`; tag `v2026-10-16-1` not pushable (A10).
 - **[P1] "Recently shipped" feed on the home page** — PR #5 (2026-10-15).
 - **[P1] A page per project: /projects/[slug]** — PR #4 (2026-10-15). Release tag
-  `v2026-10-15-1` could not be pushed from the cloud session (NEEDS_APPROVAL A10);
+  `v2026-10-15-1` could not be pushed from the cloud session (the decision log A10);
   roll back to squash commit `f30bf71` if needed.
 - **[P0] Portfolio section from data/projects.json, no stand-in images** — PR #2, `v2026-10-14-2`.
 - **[P0] Remove unverifiable claims from the home page** (skill percentages, draft

@@ -1,5 +1,5 @@
 /**
- * Horizontal page scroll, as a pure rule so tests can pin it. CLAUDE.md asks for
+ * Horizontal page scroll, as a pure rule so tests can pin it. The engineering handbook asks for
  * pages readable at phone width with no horizontal scroll: a marquee or a long URL
  * must clip or wrap inside its box, never widen the page. The browser side only
  * measures (see measureOverflow); this decides.

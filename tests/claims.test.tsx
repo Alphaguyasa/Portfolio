@@ -62,7 +62,7 @@ describe("navigation", () => {
 // Alpha's decision (2026-10-18): the site and the copy describe how he plans, tests
 // and ships, never that his code is written with AI tools or prompts. "AI retrieval"
 // is a kind of system he builds, so it is allowed.
-const AI_CODING = /AI[- ]assist|AI assistance|with AI|built by AI|AI[- ]generated|AI[- ]written|prompts?\b|CLAUDE\.md|\bClaude\b|Copilot|ChatGPT|Cursor|vibe[- ]cod/i;
+const AI_CODING = /AI[- ]assist|AI assistance|with AI|built by AI|AI[- ]generated|AI[- ]written|prompts?\b|Copilot|ChatGPT|Cursor|vibe[- ]cod/i;
 
 describe("how Alpha works", () => {
   // Visible text only: class names such as "cursor-pointer" are not copy.

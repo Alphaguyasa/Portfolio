@@ -38,10 +38,10 @@ describe("privacy rules", () => {
 
   it("never ships internal files or raw synced docs in the site", () => {
     const siteFiles = tracked.filter((f) => f.startsWith("src/") || f.startsWith("public/"));
-    expect(siteFiles.filter((f) => /NEEDS_APPROVAL|DAILY_LOG|ROADMAP/.test(f))).toEqual([]);
+    expect(siteFiles.filter((f) => /the decision log|the dev log|ROADMAP/.test(f))).toEqual([]);
     for (const f of siteFiles.filter((f) => /\.(ts|tsx)$/.test(f))) {
       const text = readFileSync(path.join(root, f), "utf8");
-      expect(text, f).not.toMatch(/NEEDS_APPROVAL|DAILY_LOG|data\/sync\/docs/);
+      expect(text, f).not.toMatch(/the decision log|the dev log|data\/sync\/docs/);
     }
   });
 

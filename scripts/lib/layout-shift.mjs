@@ -1,6 +1,6 @@
 /**
  * Cumulative Layout Shift for every crawled page, as a pure rule so tests can pin it.
- * Lighthouse scores CLS on only two pages; CLAUDE.md asks for no layout shift on any.
+ * Lighthouse scores CLS on only two pages; the engineering handbook asks for no layout shift on any.
  * The browser side only records `layout-shift` entries (see recordLayoutShifts);
  * this scores them the way Core Web Vitals does and decides.
  */

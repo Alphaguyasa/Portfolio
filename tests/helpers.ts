@@ -35,7 +35,7 @@ export function fixture() {
         latestRelease: null,
         tags: ["v2026-10-14-1", "v2026-10-14-2", "v2026-10-13-1"],
         npm: null,
-        rootFiles: ["CLAUDE.md", "README.md"],
+        rootFiles: ["LICENSE", "README.md"],
         ci: { conclusion: "success" },
         mergedPulls: [
           { number: 3, title: "Add the ledger", mergedAt: "2026-10-14T09:00:00Z", url: "https://github.com/me/app/pull/3" },
