@@ -107,7 +107,7 @@ layout only.
   which silently emits `xl:` *before* `sm:` and makes it lose every conflict.
 - **Accent colour** is `#c2410c` (WCAG AA on white). `accent-bright` `#ff4a17` is only
   for text on the dark ink background.
-- **Fonts** (Poppins, DM Sans) are self-hosted by `next/font` at build time. No
+- **Fonts** (Archivo, DM Sans) are self-hosted by `next/font` at build time. No
   runtime request to Google Fonts.
 - **Brand logos** in the tool tiles are vendored from the `simple-icons` package
   into `src/components/brand-logos.tsx` rather than hot-linked from a CDN.

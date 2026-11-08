@@ -41,7 +41,7 @@ export function Eyebrow({
   );
 }
 
-/** Section H2 — Poppins 700 52px at desktop, stepped down below. */
+/** Section H2 — Archivo 700 52px at desktop, stepped down below. */
 export function SectionTitle({
   children,
   className = "",

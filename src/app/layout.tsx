@@ -1,20 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Poppins } from "next/font/google";
+import { Archivo, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 
 // next/font self-hosts these at build time — no Google Fonts request at runtime.
-const poppins = Poppins({
-  variable: "--font-poppins",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  // Variable font: one file per style covers every heading weight.
   style: ["normal", "italic"],
-  // Not preloaded (first-load work on phones, PR #20), so it often arrives after the
-  // first paint. With "swap" the headings then re-wrap and push the page down: CLS
-  // 0.19-0.24 on short project pages wherever the Arial-metric fallback is missing
-  // (CI's runner; phones without Arial). "optional" never swaps after first paint.
-  display: "optional",
-  preload: false,
+  // Preloaded so it is ready before first paint on every visit, not only after a
+  // refresh. If it is ever late, "swap" brings it in over a size-matched Arial
+  // fallback (next/font adjustFontFallback), so the headings keep their metrics.
+  display: "swap",
+  preload: true,
 });
 
 const dmSans = DM_Sans({
@@ -76,7 +75,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${dmSans.variable}`}>
       <body className="antialiased">
         <a
           href="#main"

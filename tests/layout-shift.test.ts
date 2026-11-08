@@ -49,10 +49,11 @@ describe("check:site layout shift", () => {
 });
 
 describe("fonts cannot shift the page", () => {
-  it("the display font, which is not preloaded, never swaps in after first paint", () => {
+  it("the display font is preloaded, so every visit gets the same headings", () => {
     const layout = readFileSync("src/app/layout.tsx", "utf8");
-    const poppins = layout.slice(layout.indexOf("Poppins({"), layout.indexOf("});", layout.indexOf("Poppins({")));
-    expect(poppins).toContain("preload: false");
-    expect(poppins).toContain('display: "optional"');
+    const archivo = layout.slice(layout.indexOf("Archivo({"), layout.indexOf("});", layout.indexOf("Archivo({")));
+    expect(archivo).toContain("preload: true");
+    expect(archivo).toContain('display: "swap"');
+    expect(archivo).not.toContain("adjustFontFallback: false");
   });
 });

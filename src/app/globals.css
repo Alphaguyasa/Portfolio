@@ -27,7 +27,7 @@
   --color-tag-border: #3a3a3a;
   --color-placeholder: #a8a8a8;
 
-  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* The handoff specifies the full desktop composition from 1290px up, so `xl:` is
