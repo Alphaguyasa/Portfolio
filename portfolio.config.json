@@ -1,7 +1,7 @@
 {
   "$comment": "Controls what the GitHub sync reads and what the site may publish. Public repos are included by default unless listed in 'skip'. A private repo is included ONLY if listed in 'include', and then only the 'publicSummary' written here is used; its contents are never read. 'knownPublicRepos' is the fallback when listing the owner's repos is refused (403); add new public repos to it.",
   "owner": "Alphaguyasa",
-  "skip": ["Alphaguyasa", "Portfolio"],
+  "skip": ["Alphaguyasa", "Portfolio", "galmee-clinic", "galmee-school", "galmee-garage", "galmee-transport", "galmee-coffee", "galmee-driving", "galmee-rentals"],
   "include": {
     "erko": {
       "name": "Adey",
@@ -17,7 +17,10 @@
     "Alphaguyasa/Meret",
     "Alphaguyasa/Mezgeb",
     "Alphaguyasa/NullChat",
-    "Alphaguyasa/Suq"
+    "Alphaguyasa/Suq",
+    "Alphaguyasa/galmee-pharmacy",
+    "Alphaguyasa/galmee-wholesale",
+    "Alphaguyasa/galmee-hotel"
   ],
   "extraPublicRepos": ["vulnerability-scanner-website/Final-year-project"],
   "npmPackages": { "ethiopic-text": "ethiopic-text" },
