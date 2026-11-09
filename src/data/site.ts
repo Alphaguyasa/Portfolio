@@ -6,7 +6,7 @@
 import certificatesData from "../../data/certificates.json";
 
 export const site = {
-  url: "https://alpha-guyasa-portfolio.vercel.app",
+  url: "https://alpha-guy.vercel.app",
   email: "alphaguyasa@gmail.com",
   linkedin: "https://www.linkedin.com/in/alpha-guyasa-a2b567328",
   github: "https://github.com/Alphaguyasa",
