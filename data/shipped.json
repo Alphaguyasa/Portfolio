@@ -1,5 +1,85 @@
 [
   {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Measure a plot by tapping its corners on the map (39)",
+    "date": "2026-11-09T04:49:11Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/93"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Measuring: keep the ring in progress and its live figures (39a)",
+    "date": "2026-11-09T04:37:34Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/92"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Measurement save, with area on the WGS84 ellipsoid (roadmap item 38)",
+    "date": "2026-11-09T03:28:58Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/91"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Area units: square metres, hectares and timad (roadmap item 37)",
+    "date": "2026-11-09T03:16:06Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/90"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Apply in-range updates to the Anthropic SDK and Tailwind",
+    "date": "2026-11-09T02:33:23Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/163"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Stop reading refs while rendering and turn on the refs lint rule",
+    "date": "2026-11-09T02:28:13Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/162"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Read the clock once on the stats page and turn on the purity lint rule",
+    "date": "2026-11-09T02:24:11Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/161"
+  },
+  {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Update three and its types to 0.187",
+    "date": "2026-11-09T02:19:45Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/160"
+  },
+  {
+    "project": "Alpha Coin",
+    "slug": "alpha-coin",
+    "kind": "tag",
+    "title": "v2026-11-09-11",
+    "date": "2026-11-09T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/tree/v2026-11-09-11"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-11-08-1",
+    "date": "2026-11-08T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-08-1"
+  },
+  {
     "project": "Alpha Coin",
     "slug": "alpha-coin",
     "kind": "pr",
@@ -19,14 +99,6 @@
     "project": "Mezgeb",
     "slug": "mezgeb",
     "kind": "pr",
-    "title": "fix: a background failure no longer crashes the app (R48)",
-    "date": "2026-11-06T05:30:37Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/82"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
     "title": "fix: tapping the reconcile reminder opens Reconcile (R49)",
     "date": "2026-11-06T05:29:58Z",
     "url": "https://github.com/Alphaguyasa/Mezgeb/pull/83"
@@ -38,14 +110,6 @@
     "title": "Sweep orphaned photo files (roadmap item 36)",
     "date": "2026-11-06T04:55:57Z",
     "url": "https://github.com/Alphaguyasa/Meret/pull/87"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Dependabot: monthly npm updates for tools/ (roadmap item 18)",
-    "date": "2026-11-06T04:46:50Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/88"
   },
   {
     "project": "Suq",
@@ -94,69 +158,5 @@
     "title": "Chat rows are built off the main thread",
     "date": "2026-11-06T03:31:10Z",
     "url": "https://github.com/Alphaguyasa/NullChat/pull/95"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Pairing camera stops when the screen closes; one save per scan",
-    "date": "2026-11-06T03:22:01Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/94"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-11-06-3",
-    "date": "2026-11-06T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-06-3"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "tag",
-    "title": "v2026-11-06-3",
-    "date": "2026-11-06T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/tree/v2026-11-06-3"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "pr",
-    "title": "Read the network from build config and fail closed (R4)",
-    "date": "2026-11-05T06:12:30Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/6"
-  },
-  {
-    "project": "Alpha Coin",
-    "slug": "alpha-coin",
-    "kind": "pr",
-    "title": "Keep token amounts as exact integers in the frontend (R3)",
-    "date": "2026-11-05T06:09:37Z",
-    "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/5"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "fix: a cash entry can no longer be saved twice (R47)",
-    "date": "2026-11-05T05:27:51Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/80"
-  },
-  {
-    "project": "Mezgeb",
-    "slug": "mezgeb",
-    "kind": "pr",
-    "title": "fix: backups keep deleted transactions (R46)",
-    "date": "2026-11-05T05:18:43Z",
-    "url": "https://github.com/Alphaguyasa/Mezgeb/pull/79"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Name a track from its detail screen (roadmap item 35)",
-    "date": "2026-11-05T05:00:09Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/85"
   }
 ]

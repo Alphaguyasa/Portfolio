@@ -5,31 +5,6 @@ Effort: S (under an hour), M (a run), L (several runs). Take the top open item.
 
 ## Open
 
-### R7. [P2 · S] Remove dead code and unused dependencies
-`@icp-sdk/auth` and `@icp-sdk/core` appear unused next to `@dfinity/*`. `shadcn` is a CLI in
-runtime dependencies. There are unused wallet icons in `connect-wallet-modal.tsx`, and the
-`package.json` name is still `next-app`. Confirm each before removing.
-
-### R8. [P2 · S] Dashboard layout and accessibility
-The two-column grid is fixed and breaks on phones. Inputs have placeholders but no labels. The
-status message is not announced to screen readers. Inline styles ignore the theme. The landing
-navigation is hidden below the `lg` breakpoint, so phones have no navigation at all.
-
-### R9. [P2 · S] Stop polling when the tab is hidden
-The dashboard fetches the balance every 5 seconds, always. Pause when hidden and back off on
-errors.
-
-### R10. [P2 · S] Self-host the about-section image
-`about-us-section.tsx` hot-links an Unsplash image, which leaks visitors' IPs to a third party
-and breaks offline. Replace it with a local asset or remove it.
-
-### R11. [P2 · M] Frontend test coverage
-Add component tests for the dashboard's states: signed out, signed in, loading, each error. This
-needs a test renderer, so check licences and audit first.
-
-### R12. [P2 · S] Add CodeQL for the TypeScript code
-Free on public repos. Fix or document each finding.
-
 ### R13. [P3 · M] Claim abuse limits
 Each new Internet Identity gets free tokens, so one person can drain the reserve and grow canister
 memory (Sybil). This only matters on a shared network: see A5 before building anything.
@@ -41,11 +16,6 @@ transaction log.
 ### R16. [P2 · M] Move from dfx to icp-cli
 dfx now prints "dfx is deprecated, use icp-cli". It still works and is pinned at 0.32.0 in CI. Plan
 the move for the scripts, CI and docs before dfx stops getting fixes.
-
-### R17. [P2 · S] Clear the remaining npm audit findings
-20 remain (18 moderate, 2 low), none high or critical; CI fails only at high. `npm audit fix` cannot
-reach them without major version changes, mostly in the ESLint chain. Review and upgrade them on
-their own branch, and recheck after any `eslint-config-next` release.
 
 ### R15. [P3 · S] Localization
 All strings are English and hard-coded. Move them out and add Amharic when Alpha wants it.
@@ -59,3 +29,10 @@ All strings are English and hard-coded. Move them out and add Amharic when Alpha
 - R4. Network configuration that fails closed: canister IDs come from `dfx deploy` via `.env.local`, only a local replica is accepted, and an unconfigured build shows an error ([#6](https://github.com/Alphaguyasa/Alpha-digital-coin/pull/6)).
 - R5. Dashboard error handling: every call ends loading and shows a message, the recipient is checked before sending, canister results get plain messages, and a failed balance read keeps the last balance marked stale ([#8](https://github.com/Alphaguyasa/Alpha-digital-coin/pull/8)).
 - R6. Dead links and controls: landing navigation links to its sections, and the wallet dialog no longer refers to Terms and Privacy pages that do not exist (A8) ([#9](https://github.com/Alphaguyasa/Alpha-digital-coin/pull/9)).
+- R7. Dead code and unused dependencies removed: `@icp-sdk/*`, `radix-ui`, `@radix-ui/react-slot`, `class-variance-authority`, the unused button component and wallet icons. `shadcn` moved to dev dependencies (only its stylesheet is used, at build time). A test now fails if a runtime dependency is not imported.
+- R8. Dashboard layout and accessibility: the grid stacks on phones, inputs have real labels, status messages use a live region that is always mounted, styles follow the light and dark themes with AA contrast, focus rings are visible, reduced-motion is respected, and the landing navigation shows on phones.
+- R9. Balance polling stops while the tab is hidden, refreshes on return, and backs off from 5 seconds to a minute on repeated failures.
+- R10. The about-section image is now a local SVG, so the page makes no request to a third-party image host. A test keeps it that way.
+- R11. Dashboard component tests: the real page is rendered in jsdom with the canister replaced, covering signed out, unconfigured, signed in, loading, each failure, exact amounts and hidden-tab polling. New dev dependencies (esbuild, jsdom, Testing Library) are MIT licensed with no high audit findings.
+- R17. `npm audit` is at zero findings: `eslint-config-next` upgraded (with its stricter rules fixed in the dashboard and card stack), `shadcn` dropped from dependencies with its Tailwind preset vendored in `app/shadcn-preset.css`, and `minimatch` pinned past its advisory for the lint tooling.
+- R12. CodeQL runs on every push and weekly for the TypeScript code, and lists its findings in the run log. First analysis: zero findings.

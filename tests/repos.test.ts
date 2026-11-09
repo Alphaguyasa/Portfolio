@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { selectRepos, unlistedRepos } from "../scripts/lib/repos.mjs";
+import { carryOver, selectRepos, unlistedRepos } from "../scripts/lib/repos.mjs";
 import { readJson } from "./helpers";
 
 const repo = (full: string, extra: Record<string, unknown> = {}) => ({
@@ -85,9 +85,17 @@ describe("selectRepos", () => {
     expect(repos.map((r) => r.full_name)).toEqual(["me/lib", "org/team"]);
   });
 
-  it("fails, naming the repos, when any listed repo cannot be read (no partial snapshot)", async () => {
+  it("reports a refused repo and still returns the rest", async () => {
     const gh = fakeGh({ listing: "403", named: { "me/app": repo("me/app"), "org/team": repo("org/team") } });
-    await expect(selectRepos(gh, config)).rejects.toThrow(/cannot read: me\/lib \(403\)/);
+    const { repos, refused } = await selectRepos(gh, config);
+    expect(repos.map((r) => r.full_name)).toEqual(["me/app", "org/team"]);
+    expect(refused).toEqual(["me/lib"]);
+  });
+
+  it("still fails, naming the repo, when a listed repo does not exist", async () => {
+    const inner = fakeGh({ listing: "403", named: { "me/app": repo("me/app"), "org/team": repo("org/team") } });
+    const gh = async (pathname: string) => (pathname === "/repos/me/lib" ? null : inner(pathname));
+    await expect(selectRepos(gh, config)).rejects.toThrow(/cannot read: me\/lib \(404\)/);
   });
 
   it("logs, but does not sync, a public repo the search finds outside the config", async () => {
@@ -151,5 +159,27 @@ describe("portfolio.config.json knownPublicRepos", () => {
     const sync = readJson<{ repos: { fullName: string; private: boolean }[] }>("data/sync/index.json");
     const listed = new Set([...cfg.knownPublicRepos, ...cfg.extraPublicRepos].map((r) => r.toLowerCase()));
     for (const r of sync.repos.filter((r) => !r.private)) expect(listed.has(r.fullName.toLowerCase())).toBe(true);
+  });
+});
+
+describe("carryOver", () => {
+  const previous = {
+    syncedAt: "2026-11-06T00:00:00Z",
+    repos: [{ fullName: "me/lib", docs: ["README.md"] }, { fullName: "me/old", carriedOverFrom: "2026-10-01T00:00:00Z" }],
+  };
+
+  it("keeps a refused repo's saved entry and dates it, matching the name in any case", () => {
+    expect(carryOver(previous, ["Me/Lib"])).toEqual([
+      { fullName: "me/lib", docs: ["README.md"], carriedOverFrom: "2026-11-06T00:00:00Z" },
+    ]);
+  });
+
+  it("keeps the original date through later syncs", () => {
+    expect(carryOver(previous, ["me/old"])[0].carriedOverFrom).toBe("2026-10-01T00:00:00Z");
+  });
+
+  it("fails rather than drop a project with nothing saved", () => {
+    expect(() => carryOver(previous, ["me/new"])).toThrow(/nothing saved: me\/new/);
+    expect(() => carryOver(null, ["me/new"])).toThrow(/nothing saved/);
   });
 });

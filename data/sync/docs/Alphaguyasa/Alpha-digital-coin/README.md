@@ -28,14 +28,14 @@ A token dashboard built on the Internet Computer Protocol (ICP) with Internet Id
 ### Prerequisites
 
 - Node.js 22.18+ and npm
-- dfx 0.30.1 or later
+- dfx 0.32.0 (the version CI pins)
 
 ### Setup
 
 1. **Clone the repository:**
    ```bash
    git clone <your-repo-url>
-   cd next-app
+   cd Alpha-digital-coin
    ```
 
 2. **Install dependencies:**
@@ -82,8 +82,7 @@ see the notice at the top of that file before using it.
 
 ## Project documents
 
-[ROADMAP.md](./ROADMAP.md), [THREAT_MODEL.md](./THREAT_MODEL.md),
-[the decision log](./the decision log), [the dev log](./the dev log) and [the engineering handbook](./the engineering handbook).
+[ROADMAP.md](./ROADMAP.md) and [THREAT_MODEL.md](./THREAT_MODEL.md).
 
 ## Project Structure
 

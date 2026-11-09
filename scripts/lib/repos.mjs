@@ -17,13 +17,15 @@
  * @param {(path: string, opts?: object) => Promise<any>} gh
  * @param {object} config portfolio.config.json
  * @param {(message: string) => void} [log]
- * Any repo that cannot be read is an error: a partial snapshot would silently
- * drop projects, so the caller keeps the previous snapshot instead.
+ * A repo that does not exist (404) is an error. One this token is refused (403) is
+ * returned in `refused`, and the caller keeps its last saved details (carryOver), so
+ * one out-of-reach repo cannot stop every other project from updating.
  */
 export async function selectRepos(gh, config, log = () => {}) {
   const skip = new Set((config.skip ?? []).map((s) => s.toLowerCase()));
   let owned;
   let source = "listing";
+  const refused = [];
   try {
     owned = await gh(`/users/${config.owner}/repos?type=owner&per_page=100`);
   } catch (err) {
@@ -32,10 +34,14 @@ export async function selectRepos(gh, config, log = () => {}) {
     log(
       `listing ${config.owner}'s repos was refused (403); reading the ${config.knownPublicRepos.length} repos in portfolio.config.json knownPublicRepos instead. New repos are not discovered this way.`,
     );
-    owned = await readNamed(gh, config.knownPublicRepos);
+    const known = await readNamed(gh, config.knownPublicRepos);
+    owned = known.repos;
+    refused.push(...known.refused);
     await searchUnlisted(gh, config, log);
   }
-  const extra = await readNamed(gh, config.extraPublicRepos ?? []);
+  const extraRead = await readNamed(gh, config.extraPublicRepos ?? []);
+  const extra = extraRead.repos;
+  refused.push(...extraRead.refused);
 
   const seen = new Set();
   const repos = [...owned, ...extra].filter((r) => {
@@ -44,7 +50,7 @@ export async function selectRepos(gh, config, log = () => {}) {
     seen.add(key);
     return !r.fork && !r.archived && !r.private && !skip.has(r.name.toLowerCase());
   });
-  return { repos, source };
+  return { repos, source, refused };
 }
 
 /**
@@ -81,6 +87,7 @@ async function searchUnlisted(gh, config, log) {
 
 async function readNamed(gh, names) {
   const repos = [];
+  const refused = [];
   const unreadable = [];
   for (const full of names) {
     try {
@@ -88,7 +95,8 @@ async function readNamed(gh, names) {
       if (r) repos.push(r);
       else unreadable.push(`${full} (404)`);
     } catch (err) {
-      unreadable.push(`${full} (${err?.status ?? err?.message ?? err})`);
+      if (err?.status === 403) refused.push(full);
+      else unreadable.push(`${full} (${err?.status ?? err?.message ?? err})`);
     }
   }
   if (unreadable.length) {
@@ -96,5 +104,20 @@ async function readNamed(gh, names) {
     err.unreadable = unreadable;
     throw err;
   }
-  return repos;
+  return { repos, refused };
+}
+
+/**
+ * The saved snapshot entries for repos this token was refused, each marked with the
+ * date its details are from. A refused repo with nothing saved is an error, because
+ * it would silently drop a project.
+ */
+export function carryOver(previous, refused) {
+  const saved = new Map((previous?.repos ?? []).map((r) => [r.fullName?.toLowerCase(), r]));
+  const missing = refused.filter((full) => !saved.has(full.toLowerCase()));
+  if (missing.length) throw new Error(`cannot read and nothing saved: ${missing.join(", ")}`);
+  return refused.map((full) => {
+    const entry = saved.get(full.toLowerCase());
+    return { ...entry, carriedOverFrom: entry.carriedOverFrom ?? previous.syncedAt };
+  });
 }

@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-06T06:41:32.810Z",
+  "syncedAt": "2026-11-09T06:41:26.148Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -14,39 +14,40 @@
       "primaryLanguage": "TypeScript",
       "languages": [
         "TypeScript",
+        "CSS",
         "Motoko",
         "Shell",
-        "CSS",
         "JavaScript"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-03-19T20:51:04Z",
-      "pushedAt": "2026-11-06T06:14:42Z",
-      "lastCommitAt": "2026-11-06T06:14:34Z",
+      "pushedAt": "2026-11-09T05:27:50Z",
+      "lastCommitAt": "2026-11-09T05:27:41Z",
       "latestRelease": null,
       "tags": [
-        "v2026-11-06-3",
-        "v2026-11-06-2",
-        "v2026-11-06-1",
-        "v2026-11-05-3",
-        "v2026-11-05-2",
-        "v2026-11-05-1",
-        "v2026-11-04-4",
-        "v2026-11-04-3",
-        "v2026-11-04-2",
-        "v2026-11-04-1"
+        "v2026-11-09-11",
+        "v2026-11-09-10",
+        "v2026-11-09-9",
+        "v2026-11-09-8",
+        "v2026-11-09-7",
+        "v2026-11-09-6",
+        "v2026-11-09-5",
+        "v2026-11-09-4",
+        "v2026-11-09-3",
+        "v2026-11-09-2"
       ],
       "ci": {
-        "workflow": "CI, Release tag",
+        "workflow": "CI, CodeQL, Release tag",
         "workflows": [
           "CI",
+          "CodeQL",
           "Release tag"
         ],
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-06T06:14:37Z",
-        "headSha": "24d5e25f6ea85c5f9419e1ee945f0822adebe68b"
+        "at": "2026-11-09T05:27:44Z",
+        "headSha": "69a62350d3e3a93d42b22c177747f91c8f03d1d3"
       },
       "mergedPulls": [
         {
@@ -105,7 +106,7 @@
         },
         {
           "number": 1,
-          "title": "Set up the repo: CI, tags, project docs, threat model",
+          "title": "Set up the repo for autonomous work: CI, tags, context files, threat model",
           "mergedAt": "2026-11-04T09:13:12Z",
           "url": "https://github.com/Alphaguyasa/Alpha-digital-coin/pull/1"
         }
@@ -165,8 +166,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-11-06T03:49:29Z",
-      "lastCommitAt": "2026-11-06T03:49:29Z",
+      "pushedAt": "2026-11-09T02:33:22Z",
+      "lastCommitAt": "2026-11-09T02:33:22Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -186,10 +187,34 @@
         ],
         "status": "completed",
         "conclusion": "failure",
-        "at": "2026-11-06T03:49:31Z",
-        "headSha": "365be7c296ba381c167e131534256bea149b21f0"
+        "at": "2026-11-09T02:33:25Z",
+        "headSha": "2c347e084473c69d9249ae2928849d4d18dc38b6"
       },
       "mergedPulls": [
+        {
+          "number": 163,
+          "title": "Apply in-range updates to the Anthropic SDK and Tailwind",
+          "mergedAt": "2026-11-09T02:33:23Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/163"
+        },
+        {
+          "number": 162,
+          "title": "Stop reading refs while rendering and turn on the refs lint rule",
+          "mergedAt": "2026-11-09T02:28:13Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/162"
+        },
+        {
+          "number": 161,
+          "title": "Read the clock once on the stats page and turn on the purity lint rule",
+          "mergedAt": "2026-11-09T02:24:11Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/161"
+        },
+        {
+          "number": 160,
+          "title": "Update three and its types to 0.187",
+          "mergedAt": "2026-11-09T02:19:45Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/160"
+        },
         {
           "number": 159,
           "title": "Show bold and italics in live answers instead of their asterisks",
@@ -225,30 +250,6 @@
           "title": "Cap request bodies before parsing: 413 above a few KB on search and feedback",
           "mergedAt": "2026-11-04T03:41:15Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/154"
-        },
-        {
-          "number": 153,
-          "title": "Keep the /stats key out of the URL: a one-time form and an HMAC cookie scoped to /stats",
-          "mergedAt": "2026-11-03T03:49:34Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/153"
-        },
-        {
-          "number": 152,
-          "title": "Upgrade vitest and its coverage plugin to 5.1 (dev only, no config change)",
-          "mergedAt": "2026-11-03T03:45:03Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/152"
-        },
-        {
-          "number": 151,
-          "title": "Upgrade the Anthropic SDK to 1.3 and stop sending temperature on that path",
-          "mergedAt": "2026-11-02T06:46:18Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/151"
-        },
-        {
-          "number": 150,
-          "title": "Pin the Vercel CLI to 65.2.0 so production deploys work again",
-          "mergedAt": "2026-11-02T06:41:50Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/150"
         }
       ],
       "npm": null,
@@ -286,11 +287,9 @@
       "docs": [
         "README.md",
         "ROADMAP.md",
-        "docs/EVAL_HARNESS.md",
         "docs/EVAL_RESULTS.md",
         "docs/NOT_ALONE.md",
         "docs/PIVOT.md",
-        "docs/SESSIONS.md",
         "docs/SWEEP.md",
         "docs/WRITEUP.md"
       ]
@@ -375,6 +374,519 @@
         "README.md",
         "docs/DESIGN.md",
         "docs/LINGUISTIC-REVIEW.md"
+      ],
+      "carriedOverFrom": "2026-11-06T06:41:32.810Z"
+    },
+    {
+      "name": "galmee-driving",
+      "fullName": "Alphaguyasa/galmee-driving",
+      "url": "https://github.com/Alphaguyasa/galmee-driving",
+      "private": false,
+      "description": "Galmee Driving School - students, lessons, installments and exams",
+      "homepage": "https://galmee-driving.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:41:14Z",
+      "pushedAt": "2026-11-09T00:23:47Z",
+      "lastCommitAt": "2026-11-09T00:23:45Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "npm_and_yarn in /. - Update #1686161086",
+        "workflows": [
+          "npm_and_yarn in /. - Update #1686161086"
+        ],
+        "failing": [
+          "npm_and_yarn in /. - Update #1686161086"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T22:54:33Z",
+        "headSha": "e74e8dfd6f14b06f4d01057f0173453500f948bf"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "tsconfig.tsbuildinfo",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-garage",
+      "fullName": "Alphaguyasa/galmee-garage",
+      "url": "https://github.com/Alphaguyasa/galmee-garage",
+      "private": false,
+      "description": "Galmee Garage - job cards and spare parts for Ethiopian garages",
+      "homepage": "https://galmee-garage.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:40:18Z",
+      "pushedAt": "2026-11-08T21:28:38Z",
+      "lastCommitAt": "2026-11-08T21:28:35Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "github_actions in /. - Update #1684918551",
+        "workflows": [
+          "github_actions in /. - Update #1684918551"
+        ],
+        "failing": [
+          "github_actions in /. - Update #1684918551"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T08:51:58Z",
+        "headSha": "b961ec13fdd3d1bb09681aa913fb9aed65c6b331"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-hotel",
+      "fullName": "Alphaguyasa/galmee-hotel",
+      "url": "https://github.com/Alphaguyasa/galmee-hotel",
+      "private": false,
+      "description": "Galmee Hotel - room bookings and website for Ethiopian hotels and guesthouses",
+      "homepage": "https://galmee-hotel.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:40:09Z",
+      "pushedAt": "2026-11-08T15:44:40Z",
+      "lastCommitAt": "2026-11-08T15:44:38Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "github_actions in /. - Update #1684918624",
+        "workflows": [
+          "github_actions in /. - Update #1684918624"
+        ],
+        "failing": [
+          "github_actions in /. - Update #1684918624"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T08:52:00Z",
+        "headSha": "cb02cba50a8201e47cf9cd7341510a9e2128899a"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "AGENTS.md",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-pharmacy",
+      "fullName": "Alphaguyasa/galmee-pharmacy",
+      "url": "https://github.com/Alphaguyasa/galmee-pharmacy",
+      "private": false,
+      "description": "Galmee Pharmacy — stock with expiry, sales and credit for Ethiopian pharmacies",
+      "homepage": "https://galmee-pharmacy.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:38:41Z",
+      "pushedAt": "2026-11-08T19:29:45Z",
+      "lastCommitAt": "2026-11-08T19:29:44Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "npm_and_yarn in /. - Update #1685755651",
+        "workflows": [
+          "npm_and_yarn in /. - Update #1685755651"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-06T17:54:25Z",
+        "headSha": "7bc446a1b40a79c08a8a7b22b119db710bc26ae5"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "AGENTS.md",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-rentals",
+      "fullName": "Alphaguyasa/galmee-rentals",
+      "url": "https://github.com/Alphaguyasa/galmee-rentals",
+      "private": false,
+      "description": "Galmee Rentals - tenants, rent due and reminders for landlords and brokers",
+      "homepage": "https://galmee-rentals.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:41:26Z",
+      "pushedAt": "2026-11-09T01:25:16Z",
+      "lastCommitAt": "2026-11-09T01:25:14Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "github_actions in /. - Update #1685470672",
+        "workflows": [
+          "github_actions in /. - Update #1685470672"
+        ],
+        "failing": [
+          "github_actions in /. - Update #1685470672"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T14:34:38Z",
+        "headSha": "07e72b68fcd5cc2d1cb26fc8868247236d168fd4"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-school",
+      "fullName": "Alphaguyasa/galmee-school",
+      "url": "https://github.com/Alphaguyasa/galmee-school",
+      "private": false,
+      "description": "Galmee School - fees, students and report cards for Ethiopian private schools",
+      "homepage": "https://galmee-school.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:40:00Z",
+      "pushedAt": "2026-11-08T18:30:01Z",
+      "lastCommitAt": "2026-11-08T18:29:20Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "github_actions in /. - Update #1685409604",
+        "workflows": [
+          "github_actions in /. - Update #1685409604"
+        ],
+        "failing": [
+          "github_actions in /. - Update #1685409604"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T13:54:36Z",
+        "headSha": "135ad0e33bc5c314c5bd40e50eed1627bbc70702"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "AGENTS.md",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-transport",
+      "fullName": "Alphaguyasa/galmee-transport",
+      "url": "https://github.com/Alphaguyasa/galmee-transport",
+      "private": false,
+      "description": "Galmee Transport - bus tickets, parcels and cash per vehicle",
+      "homepage": "https://galmee-transport.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:40:37Z",
+      "pushedAt": "2026-11-08T22:25:11Z",
+      "lastCommitAt": "2026-11-08T22:25:09Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "github_actions in /. - Update #1686136220",
+        "workflows": [
+          "github_actions in /. - Update #1686136220"
+        ],
+        "failing": [
+          "github_actions in /. - Update #1686136220"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T22:34:24Z",
+        "headSha": "fa99701933b6234a2bbae514c1ab933b3192836d"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
+    },
+    {
+      "name": "galmee-wholesale",
+      "fullName": "Alphaguyasa/galmee-wholesale",
+      "url": "https://github.com/Alphaguyasa/galmee-wholesale",
+      "private": false,
+      "description": "Galmee Wholesale - credit ledger and stock for Ethiopian wholesalers",
+      "homepage": "https://galmee-wholesale.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:39:31Z",
+      "pushedAt": "2026-11-08T20:26:01Z",
+      "lastCommitAt": "2026-11-08T20:25:58Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "github_actions in /. - Update #1684918991",
+        "workflows": [
+          "github_actions in /. - Update #1684918991"
+        ],
+        "failing": [
+          "github_actions in /. - Update #1684918991"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T08:52:07Z",
+        "headSha": "174985b8aa179c350c7ad4f21272c39edc3688f0"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "AGENTS.md",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
       ]
     },
     {
@@ -426,7 +938,8 @@
       ],
       "docs": [
         "README.md"
-      ]
+      ],
+      "carriedOverFrom": "2026-11-06T06:41:32.810Z"
     },
     {
       "name": "Meret",
@@ -447,8 +960,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-11-06T05:05:56Z",
-      "lastCommitAt": "2026-11-06T04:57:00Z",
+      "pushedAt": "2026-11-09T06:26:50Z",
+      "lastCommitAt": "2026-11-09T04:49:10Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -463,15 +976,33 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-06T04:56:00Z",
-        "headSha": "fc42fe3056a27d91dd859620a699261b95e9b43a"
+        "at": "2026-11-09T04:49:13Z",
+        "headSha": "f992d1044c19dcff2100fa3f483869eef3008a96"
       },
       "mergedPulls": [
         {
-          "number": 89,
-          "title": "docs: log run 27, mark items 36 and 18 done (#87, #88), replan Phase 10, add A17",
-          "mergedAt": "2026-11-06T04:57:01Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/89"
+          "number": 93,
+          "title": "Measure a plot by tapping its corners on the map (39)",
+          "mergedAt": "2026-11-09T04:49:11Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/93"
+        },
+        {
+          "number": 92,
+          "title": "Measuring: keep the ring in progress and its live figures (39a)",
+          "mergedAt": "2026-11-09T04:37:34Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/92"
+        },
+        {
+          "number": 91,
+          "title": "Measurement save, with area on the WGS84 ellipsoid (roadmap item 38)",
+          "mergedAt": "2026-11-09T03:28:58Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/91"
+        },
+        {
+          "number": 90,
+          "title": "Area units: square metres, hectares and timad (roadmap item 37)",
+          "mergedAt": "2026-11-09T03:16:06Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/90"
         },
         {
           "number": 87,
@@ -480,34 +1011,10 @@
           "url": "https://github.com/Alphaguyasa/Meret/pull/87"
         },
         {
-          "number": 88,
-          "title": "Dependabot: monthly npm updates for tools/ (roadmap item 18)",
-          "mergedAt": "2026-11-06T04:46:50Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/88"
-        },
-        {
-          "number": 86,
-          "title": "docs: log run 26, mark items 34 and 35 done (#84, #85)",
-          "mergedAt": "2026-11-05T05:00:53Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/86"
-        },
-        {
-          "number": 85,
-          "title": "Name a track from its detail screen (roadmap item 35)",
-          "mergedAt": "2026-11-05T05:00:09Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/85"
-        },
-        {
           "number": 84,
           "title": "«Show on map» from track detail (roadmap item 34)",
           "mergedAt": "2026-11-05T04:52:08Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/84"
-        },
-        {
-          "number": 83,
-          "title": "docs: log run 25, mark items 33b-1 and 33b-2 done (#81, #82), add item 36 and A16",
-          "mergedAt": "2026-11-04T05:01:11Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/83"
         },
         {
           "number": 82,
@@ -516,16 +1023,22 @@
           "url": "https://github.com/Alphaguyasa/Meret/pull/82"
         },
         {
-          "number": 81,
-          "title": "Photo rows written with the waypoint at Save (roadmap item 33b-1, Phase 8e-2)",
-          "mergedAt": "2026-11-04T04:50:17Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/81"
+          "number": 79,
+          "title": "Photo pipeline: 1600 px q80, GPS EXIF kept, SHA-256 (roadmap item 33a, Phase 8e-1)",
+          "mergedAt": "2026-11-03T05:13:24Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/79"
         },
         {
-          "number": 80,
-          "title": "docs: log run 24, mark items 32b and 33a done (#78, #79), split 33 into 33a/33b",
-          "mergedAt": "2026-11-03T05:14:48Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/80"
+          "number": 78,
+          "title": "Waypoint sheet draft autosave to Room (roadmap item 32b, Phase 8d)",
+          "mergedAt": "2026-11-03T05:00:49Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/78"
+        },
+        {
+          "number": 72,
+          "title": "List waypoints; a tap centres the map (roadmap item 29b, Phase 8b)",
+          "mergedAt": "2026-11-02T04:51:47Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/72"
         }
       ],
       "npm": null,
@@ -562,8 +1075,7 @@
         "docs/FORM_SCHEMA.md",
         "docs/LOCATION_ENGINE.md",
         "docs/MAPS_OFFLINE.md",
-        "docs/README.md",
-        "docs/SESSION_PROMPTS.md"
+        "docs/README.md"
       ]
     },
     {
@@ -582,8 +1094,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-11-06T05:38:16Z",
-      "lastCommitAt": "2026-11-06T05:38:16Z",
+      "pushedAt": "2026-11-08T14:24:36Z",
+      "lastCommitAt": "2026-11-08T13:03:08Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -593,58 +1105,23 @@
         "v2026-10-14-1"
       ],
       "ci": {
-        "workflow": "CI",
+        "workflow": "CI, gradle in / for gradle-wrapper, androidx.core:core-ktx, androidx.compose:compose-bom, androidx.navigation:navigation-compose, androidx.paging:paging-runtime, androidx.paging:paging-compose, androidx.paging:paging-compose, androidx.room:room-runtime, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.work:work-runtime-ktx, androidx.wo...",
         "workflows": [
-          "CI"
+          "CI",
+          "gradle in / for gradle-wrapper, androidx.core:core-ktx, androidx.compose:compose-bom, androidx.navigation:navigation-compose, androidx.paging:paging-runtime, androidx.paging:paging-compose, androidx.paging:paging-compose, androidx.room:room-runtime, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.work:work-runtime-ktx, androidx.wo..."
         ],
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-06T05:38:19Z",
-        "headSha": "64007cfa9cc9f077ef937bb964cb58b8383a13a7"
+        "at": "2026-11-09T04:17:47Z",
+        "headSha": "eaa6b298deb5c0c9a07b76a09f06657686abff4b"
       },
       "mergedPulls": [
-        {
-          "number": 84,
-          "title": "docs: log the 2026-11-06 run (R48, R49 done)",
-          "mergedAt": "2026-11-06T05:38:16Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/84"
-        },
-        {
-          "number": 82,
-          "title": "fix: a background failure no longer crashes the app (R48)",
-          "mergedAt": "2026-11-06T05:30:37Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/82"
-        },
         {
           "number": 83,
           "title": "fix: tapping the reconcile reminder opens Reconcile (R49)",
           "mergedAt": "2026-11-06T05:29:58Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/83"
-        },
-        {
-          "number": 81,
-          "title": "docs: log the 2026-11-05 run (R46, R47 done)",
-          "mergedAt": "2026-11-05T05:36:25Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/81"
-        },
-        {
-          "number": 80,
-          "title": "fix: a cash entry can no longer be saved twice (R47)",
-          "mergedAt": "2026-11-05T05:27:51Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/80"
-        },
-        {
-          "number": 79,
-          "title": "fix: backups keep deleted transactions (R46)",
-          "mergedAt": "2026-11-05T05:18:43Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/79"
-        },
-        {
-          "number": 78,
-          "title": "docs: log the 2026-11-04 run (R44, R45 done, replan R46 to R53)",
-          "mergedAt": "2026-11-04T05:39:44Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/78"
         },
         {
           "number": 77,
@@ -659,10 +1136,46 @@
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/76"
         },
         {
-          "number": 75,
-          "title": "docs: log the 2026-11-03 run (R42, R43 done)",
-          "mergedAt": "2026-11-03T05:39:31Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/75"
+          "number": 70,
+          "title": "fix: run backup, restore and export off the main thread (R40)",
+          "mergedAt": "2026-11-02T05:20:37Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/70"
+        },
+        {
+          "number": 68,
+          "title": "fix: refuse a restore while demo mode is on (R39 part 1)",
+          "mergedAt": "2026-11-01T19:31:18Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/68"
+        },
+        {
+          "number": 62,
+          "title": "fix: Today rolls over to the new day at local midnight (R35)",
+          "mergedAt": "2026-10-30T05:18:42Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/62"
+        },
+        {
+          "number": 61,
+          "title": "fix: \"Lock immediately\" no longer locks on rotation or a language change (R34)",
+          "mergedAt": "2026-10-30T05:18:34Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/61"
+        },
+        {
+          "number": 59,
+          "title": "feat: export the closed reconciliation periods as CSV (R22)",
+          "mergedAt": "2026-10-29T17:27:51Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/59"
+        },
+        {
+          "number": 56,
+          "title": "fix: time the PIN lockout and the auto-lock on uptime, not the wall clock (R32)",
+          "mergedAt": "2026-10-29T05:24:15Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/56"
+        },
+        {
+          "number": 55,
+          "title": "fix: Reconcile opens one period at a time, and failed writes are reported (R31)",
+          "mergedAt": "2026-10-29T05:19:33Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/55"
         }
       ],
       "npm": null,
@@ -717,10 +1230,11 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-11-06T03:41:42Z",
-      "lastCommitAt": "2026-11-06T03:41:29Z",
+      "pushedAt": "2026-11-08T14:24:37Z",
+      "lastCommitAt": "2026-11-08T13:03:15Z",
       "latestRelease": null,
       "tags": [
+        "v2026-11-08-1",
         "v2026-11-06-3",
         "v2026-11-06-2",
         "v2026-11-06-1",
@@ -729,20 +1243,20 @@
         "v2026-11-05-1",
         "v2026-11-04-3",
         "v2026-11-04-2",
-        "v2026-11-04-1",
-        "v2026-11-03-2"
+        "v2026-11-04-1"
       ],
       "ci": {
-        "workflow": "Android CI, Release tag",
+        "workflow": "Android CI, Release tag, gradle in / for com.android.application, com.google.devtools.ksp - Update #1688197104",
         "workflows": [
           "Android CI",
-          "Release tag"
+          "Release tag",
+          "gradle in / for com.android.application, com.google.devtools.ksp - Update #1688197104"
         ],
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-06T03:41:32Z",
-        "headSha": "47bede9ede18ecb6aa1ccb00dfbb68f29a38504e"
+        "at": "2026-11-09T01:11:39Z",
+        "headSha": "df1a429f7138cf0d99aa36c8ff7351e57543104b"
       },
       "mergedPulls": [
         {
@@ -844,8 +1358,8 @@
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-11-06T04:34:50Z",
-      "lastCommitAt": "2026-11-06T04:34:50Z",
+      "pushedAt": "2026-11-08T14:26:08Z",
+      "lastCommitAt": "2026-11-08T13:03:10Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -859,8 +1373,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-06T04:34:53Z",
-        "headSha": "ea8fe97c3c3ec5a5945023810131501996714c5b"
+        "at": "2026-11-08T13:03:13Z",
+        "headSha": "668d313a82628bf5924840b92fc85c1b4d4b899e"
       },
       "mergedPulls": [
         {
@@ -1070,7 +1584,8 @@
       ],
       "docs": [
         "README.md"
-      ]
+      ],
+      "carriedOverFrom": "2026-11-06T06:41:32.810Z"
     },
     {
       "name": "erko",

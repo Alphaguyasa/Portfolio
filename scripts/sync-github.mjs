@@ -24,7 +24,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { selectRepos } from "./lib/repos.mjs";
+import { carryOver, selectRepos } from "./lib/repos.mjs";
 import { summariseCi } from "./lib/ci.mjs";
 
 // Node's fetch ignores HTTPS_PROXY unless NODE_USE_ENV_PROXY is set. Behind a proxy
@@ -178,7 +178,18 @@ async function main() {
   const config = JSON.parse(await readFile(path.join(root, "portfolio.config.json"), "utf8"));
   // /users/:user/repos lists public repos only, which is what we want: private
   // repos come in through config.include and are never read.
-  const { repos } = await selectRepos(gh, config, (msg) => console.warn(msg));
+  const { repos, refused } = await selectRepos(gh, config, (msg) => console.warn(msg));
+
+  // Refused repos keep their last saved details. Read before data/sync/docs is emptied.
+  const previous = refused.length ? JSON.parse(await readFile(path.join(outDir, "index.json"), "utf8")) : null;
+  const carried = refused.length ? carryOver(previous, refused) : [];
+  const carriedDocs = [];
+  for (const entry of carried) {
+    for (const file of entry.docs ?? []) {
+      carriedDocs.push([path.join(entry.fullName, file), await readFile(path.join(outDir, "docs", entry.fullName, file))]);
+    }
+    console.warn(`could not read ${entry.fullName} (403); keeping its details from ${entry.carriedOverFrom}`);
+  }
 
   // Empty data/sync/docs rather than deleting it: on Windows a directory that is
   // some process's cwd cannot be removed, and the result is the same.
@@ -199,6 +210,13 @@ async function main() {
     }
     console.log(`synced ${repo.full_name} (${entry.docs.length} docs)`);
   }
+
+  for (const [file, bytes] of carriedDocs) {
+    const dest = path.join(outDir, "docs", file);
+    await mkdir(path.dirname(dest), { recursive: true });
+    await writeFile(dest, bytes);
+  }
+  index.repos = [...index.repos, ...carried].sort((a, b) => a.fullName.localeCompare(b.fullName));
 
   for (const [name, summary] of Object.entries(config.include ?? {})) {
     index.repos.push({ name, fullName: `${config.owner}/${name}`, private: true, publicSummary: summary });
