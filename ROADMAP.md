@@ -31,9 +31,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
-### 52. [P1 · M] Real app screens for the other Galmee projects
-Only Galmee Wholesale and Coffee have screenshots of their working screens; the other seven have sign-up and offline screens at most, so they are listed without images. Once each app has its demo account, add real screenshots of its main screens to that app's repo and list them here.
-
 ### 51. [P3 · S] Guard the site URL against the deployment
 Nothing ties `site.url` to the address the site is served from, which is how it went stale. Add a check that reads a recorded production host (`portfolio.config.json`) and compare it with the site URL.
 
@@ -86,6 +83,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P1] Real app screens for the other Galmee projects** (item 52), 2026-11-09. Every deployed Galmee app now shows its main working screens, rendered from its own code with sample data and committed to its repo (`docs/screenshots`). They are not captures of the live sites, which this environment cannot open.
 - **[P1] Galmee projects on the site** (item 49), 2026-11-09. Eight Galmee apps added (Pharmacy, Wholesale, Hotel, School, Garage, Transport, Driving School, Rentals), each with its live link and every claim quoted from its own repo. Only Wholesale has app screenshots so far. Coffee was added the same day with its own screens; Clinic stays out until it is deployed. The sync now keeps a repo's last saved details when the token is refused, so one repo out of reach no longer stops it.
 - **[P3] Twitter image on /about** (item 50), 2026-11-09. `/about` now has its own `twitter:image`; check:site requires exactly one `twitter:image` on the site URL for every page.
 - **[P2] Share images in check:site** (item 47), 2026-11-09. Every page must name one `og:image` on the site URL, for its own route, and the image must be a 1200x630 PNG (`scripts/lib/og-image.mjs`, six tests). It found that `/about` had none: a page's openGraph object replaces the root one, so the root image was lost.

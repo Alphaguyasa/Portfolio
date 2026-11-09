@@ -295,7 +295,38 @@
         "Credit customers have a running list and statement."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-pharmacy/stock-en-360.webp",
+          "alt": "Galmee Pharmacy stock list with sample data, rows coloured by expiry",
+          "source": "Alphaguyasa/galmee-pharmacy docs/screenshots/stock-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-pharmacy",
+            "path": "docs/screenshots/stock-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-pharmacy/receive-en-360.webp",
+          "alt": "Galmee Pharmacy receive stock form filled with sample data",
+          "source": "Alphaguyasa/galmee-pharmacy docs/screenshots/receive-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-pharmacy",
+            "path": "docs/screenshots/receive-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-pharmacy/customers-en-360.webp",
+          "alt": "Galmee Pharmacy credit customers list with sample data",
+          "source": "Alphaguyasa/galmee-pharmacy docs/screenshots/customers-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-pharmacy",
+            "path": "docs/screenshots/customers-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
@@ -432,7 +463,38 @@
         "Each hotel gets a public one-page website with a booking request form."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-hotel/rooms-en-360.webp",
+          "alt": "Galmee Hotel room board with sample rooms and guest stays",
+          "source": "Alphaguyasa/galmee-hotel docs/screenshots/rooms-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-hotel",
+            "path": "docs/screenshots/rooms-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-hotel/stay-en-360.webp",
+          "alt": "Galmee Hotel guest stay page with the check out form and balance, sample data",
+          "source": "Alphaguyasa/galmee-hotel docs/screenshots/stay-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-hotel",
+            "path": "docs/screenshots/stay-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-hotel/reports-en-360.webp",
+          "alt": "Galmee Hotel occupancy and income report with sample data",
+          "source": "Alphaguyasa/galmee-hotel docs/screenshots/reports-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-hotel",
+            "path": "docs/screenshots/reports-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
@@ -485,7 +547,38 @@
         "Attendance is recorded in the app."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-school/students-en-360.webp",
+          "alt": "Galmee School student register with sample data",
+          "source": "Alphaguyasa/galmee-school docs/screenshots/students-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-school",
+            "path": "docs/screenshots/students-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-school/fees-en-360.webp",
+          "alt": "Galmee School unpaid fees by class with sample data",
+          "source": "Alphaguyasa/galmee-school docs/screenshots/fees-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-school",
+            "path": "docs/screenshots/fees-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-school/attendance-en-360.webp",
+          "alt": "Galmee School daily attendance marking with sample data",
+          "source": "Alphaguyasa/galmee-school docs/screenshots/attendance-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-school",
+            "path": "docs/screenshots/attendance-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
@@ -542,7 +635,38 @@
         "Parts stock and sales are tracked."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-garage/jobs-en-360.webp",
+          "alt": "Galmee Garage job card with sample data",
+          "source": "Alphaguyasa/galmee-garage docs/screenshots/jobs-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-garage",
+            "path": "docs/screenshots/jobs-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-garage/vehicle-history-en-360.webp",
+          "alt": "Galmee Garage vehicle history by plate with sample data",
+          "source": "Alphaguyasa/galmee-garage docs/screenshots/vehicle-history-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-garage",
+            "path": "docs/screenshots/vehicle-history-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-garage/parts-en-360.webp",
+          "alt": "Galmee Garage parts stock list with sample data",
+          "source": "Alphaguyasa/galmee-garage docs/screenshots/parts-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-garage",
+            "path": "docs/screenshots/parts-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
@@ -595,7 +719,38 @@
         "A register records parcels carried as cargo."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-transport/tickets-en-360.webp",
+          "alt": "Galmee Transport ticket sale screen with a seat picker, sample data",
+          "source": "Alphaguyasa/galmee-transport docs/screenshots/tickets-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-transport",
+            "path": "docs/screenshots/tickets-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-transport/departures-en-360.webp",
+          "alt": "Galmee Transport departure board with sample departures",
+          "source": "Alphaguyasa/galmee-transport docs/screenshots/departures-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-transport",
+            "path": "docs/screenshots/departures-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-transport/cash-en-360.webp",
+          "alt": "Galmee Transport cash handover screen with sample balances",
+          "source": "Alphaguyasa/galmee-transport docs/screenshots/cash-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-transport",
+            "path": "docs/screenshots/cash-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
@@ -648,7 +803,28 @@
         "Installment payments and exam dates are tracked for each student."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-driving/students-en-360.webp",
+          "alt": "Galmee Driving School student list with sample data",
+          "source": "Alphaguyasa/galmee-driving docs/screenshots/students-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-driving",
+            "path": "docs/screenshots/students-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-driving/schedule-en-360.webp",
+          "alt": "Galmee Driving School daily lesson schedule with sample bookings",
+          "source": "Alphaguyasa/galmee-driving docs/screenshots/schedule-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-driving",
+            "path": "docs/screenshots/schedule-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
@@ -705,7 +881,38 @@
         "A broker mode covers listings and client matching."
       ],
       "learned": [],
-      "images": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-rentals/doors-en-360.webp",
+          "alt": "Galmee Rentals door list with occupied and vacant units, sample data",
+          "source": "Alphaguyasa/galmee-rentals docs/screenshots/doors-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-rentals",
+            "path": "docs/screenshots/doors-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-rentals/late-en-360.webp",
+          "alt": "Galmee Rentals late rent list with sample tenants",
+          "source": "Alphaguyasa/galmee-rentals docs/screenshots/late-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-rentals",
+            "path": "docs/screenshots/late-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-rentals/lease-en-360.webp",
+          "alt": "Galmee Rentals tenant profile with balances and a take rent form, sample data",
+          "source": "Alphaguyasa/galmee-rentals docs/screenshots/lease-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-rentals",
+            "path": "docs/screenshots/lease-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
       "links": [
         {
           "label": "Live app",
