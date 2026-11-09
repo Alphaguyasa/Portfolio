@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { isCrossSite } from "@/lib/same-origin";
 
-const SITE = "https://alpha-guyasa-portfolio.vercel.app";
+const SITE = "https://alpha-guy.vercel.app";
 
 function req(url: string, headers: Record<string, string>) {
   return new Request(url, { method: "POST", headers });
@@ -40,7 +40,7 @@ describe("isCrossSite", () => {
 
   it("refuses a look-alike host", () => {
     expect(
-      isCrossSite(req(`${SITE}/api/contact`, { origin: "https://alpha-guyasa-portfolio.vercel.app.evil.example" }), SITE),
+      isCrossSite(req(`${SITE}/api/contact`, { origin: "https://alpha-guy.vercel.app.evil.example" }), SITE),
     ).toBe(true);
   });
 });

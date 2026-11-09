@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { duplicateProblems, metaProblems, notFoundMetaProblems, siteUrlFrom } from "../scripts/lib/page-meta.mjs";
 import { site } from "../src/data/site";
 
-const SITE = "https://alpha-guyasa-portfolio.vercel.app";
+const SITE = "https://alpha-guy.vercel.app";
 
 function meta(over: Partial<{ titles: string[]; descriptions: string[]; canonicals: string[]; robots: string[] }> = {}) {
   return {

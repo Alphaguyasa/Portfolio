@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { jsonLdProblems, notFoundJsonLdProblems } from "../scripts/lib/json-ld.mjs";
 
-const SITE = "https://alpha-guyasa-portfolio.vercel.app";
+const SITE = "https://alpha-guy.vercel.app";
 const person = { "@context": "https://schema.org", "@type": "Person", url: SITE };
 const code = { "@context": "https://schema.org", "@type": "SoftwareSourceCode", url: `${SITE}/projects/mezgeb` };
 const json = (v: unknown) => JSON.stringify(v);

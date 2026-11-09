@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { sitemapProblems, sitemapUrls } from "../scripts/lib/sitemap.mjs";
 
-const SITE = "https://alpha-guyasa-portfolio.vercel.app";
+const SITE = "https://alpha-guy.vercel.app";
 
 const xml = (locs: string[]) =>
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${locs
@@ -42,7 +42,7 @@ describe("sitemapProblems", () => {
 
   it("fails a URL on another host, a relative URL, a query, a duplicate and an empty sitemap", () => {
     expect(sitemapProblems([...urls, "https://example.com/about"], crawled, SITE)).toEqual([
-      "sitemap URL https://example.com/about is not on https://alpha-guyasa-portfolio.vercel.app",
+      "sitemap URL https://example.com/about is not on https://alpha-guy.vercel.app",
     ]);
     expect(sitemapProblems([...urls, "/about"], crawled, SITE)).toEqual(["sitemap URL is not absolute: /about"]);
     expect(sitemapProblems([...urls, `${SITE}/about?ref=x`], crawled, SITE)).toEqual([

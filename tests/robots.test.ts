@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { parseRobots, robotsProblems } from "../scripts/lib/robots.mjs";
 
-const SITE = "https://alpha-guyasa-portfolio.vercel.app";
+const SITE = "https://alpha-guy.vercel.app";
 const good = `User-Agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
 
 describe("parseRobots", () => {
