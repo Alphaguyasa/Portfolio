@@ -17,6 +17,7 @@
  *   - search metadata: every page has one title, one meta description and one
  *     canonical link to its own path on the site URL, none shared between pages
  *   - structured data: one valid JSON-LD block per page with the right url, none on the 404
+ *   - share image: every page names one og:image on the site URL, and it is a 1200x630 PNG
  *   - sitemap: /sitemap.xml lists exactly the crawled pages, on the site URL
  *   - robots: /robots.txt lets every agent read "/" and names the sitemap on the site URL
  *
@@ -34,6 +35,7 @@ import { linkProblems, readAnchors } from "./lib/links.mjs";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
 import { jsonLdProblems, notFoundJsonLdProblems, readJsonLdBlocks } from "./lib/json-ld.mjs";
+import { ogImagePath, ogImageProblems, ogTagProblems, readOgImages } from "./lib/og-image.mjs";
 import { robotsProblems } from "./lib/robots.mjs";
 import { sitemapProblems, sitemapUrls } from "./lib/sitemap.mjs";
 import { duplicateProblems, metaProblems, notFoundMetaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
@@ -225,6 +227,10 @@ try {
         for (const m of jsonLdProblems(await page.evaluate(readJsonLdBlocks), meta.canonicals[0], SITE_URL)) {
           problems.push(`${pathname}: ${m}`);
         }
+        for (const m of ogTagProblems(await page.evaluate(readOgImages), pathname, SITE_URL)) problems.push(`${pathname}: ${m}`);
+        const ogRes = await fetch(BASE + ogImagePath(pathname));
+        const ogBytes = new Uint8Array(await ogRes.arrayBuffer());
+        for (const m of ogImageProblems(ogRes.status, ogRes.headers.get("content-type"), ogBytes)) problems.push(`${pathname}: ${m}`);
         for (const m of linkProblems(await page.evaluate(readAnchors), BASE + pathname)) problems.push(`${pathname}: ${m}`);
 
         const { links, ids } = await page.evaluate(() => ({
@@ -277,7 +283,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, JSON-LD valid, sitemap matches the crawl, robots.txt open`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, JSON-LD valid, share images, sitemap matches the crawl, robots.txt open`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));

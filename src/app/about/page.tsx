@@ -16,7 +16,13 @@ export const metadata: Metadata = {
   title: "About and how I work",
   description,
   alternates: { canonical: "/about" },
-  openGraph: { title: "About Alpha Guyasa and how he works", description, url: "/about" },
+  openGraph: {
+    title: "About Alpha Guyasa and how he works",
+    description,
+    url: "/about",
+    // An openGraph object on a page replaces the root one, and with it the root image.
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Alpha Guyasa — Full Stack Engineer" }],
+  },
 };
 
 const prose = "font-sans text-base leading-[1.7] text-body xl:text-[17px]";
