@@ -271,6 +271,473 @@
         { "path": "ROADMAP.md", "quote": "R3. Integer amounts in the frontend" },
         { "path": "ROADMAP.md", "quote": "only a local replica is accepted" }
       ]
+    },
+    {
+      "slug": "galmee-pharmacy",
+      "name": "Galmee Pharmacy",
+      "tagline": "Stock and expiry tracking for pharmacies",
+      "repo": "Alphaguyasa/galmee-pharmacy",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Pharmacies lose money on medicine that expires on the shelf, and on paper nobody can see what expires next or how much cash is tied up in it.",
+      "approach": "See which drugs expire next month and how much money is sitting in them. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Stock list colour-coded by how close each item is to expiry.",
+        "Receiving stock records the supplier, batch, expiry and cost.",
+        "Credit customers have a running list and statement."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-pharmacy.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-pharmacy"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "See which drugs expire next month and how much money is sitting in them."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Stock list with expiry colours"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Receive-stock form (supplier, batch, expiry, cost)"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Credit customers list and statement"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-wholesale",
+      "name": "Galmee Wholesale",
+      "tagline": "Customer debt tracking for wholesalers",
+      "repo": "Alphaguyasa/galmee-wholesale",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Wholesalers sell on credit and keep the debts in a notebook, so it is hard to see who owes what and for how long.",
+      "approach": "Your notebook says people owe you money. This shows exactly who, how much, and since when. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Customers are sorted by the amount they owe.",
+        "Each customer has a statement of every debt and repayment with a running balance.",
+        "An overdue list groups debts by how old they are."
+      ],
+      "learned": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-wholesale/customers-en-360.webp",
+          "alt": "Galmee Wholesale customer list with sample data, sorted by amount owed",
+          "source": "Alphaguyasa/galmee-wholesale docs/screenshots/customers-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-wholesale",
+            "path": "docs/screenshots/customers-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-wholesale/overdue-en-360.webp",
+          "alt": "Galmee Wholesale overdue list with sample data",
+          "source": "Alphaguyasa/galmee-wholesale docs/screenshots/overdue-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-wholesale",
+            "path": "docs/screenshots/overdue-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-wholesale/detail-en-360.webp",
+          "alt": "Galmee Wholesale customer statement with sample data",
+          "source": "Alphaguyasa/galmee-wholesale docs/screenshots/detail-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-wholesale",
+            "path": "docs/screenshots/detail-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-wholesale.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-wholesale"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Your notebook says people owe you money. This shows exactly who, how much, and since when."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Customers sorted by amount owed"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Customer statement: every debt and repayment with running balance"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Overdue list with ageing buckets"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-hotel",
+      "name": "Galmee Hotel",
+      "tagline": "Room board and bookings for small hotels",
+      "repo": "Alphaguyasa/galmee-hotel",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Small hotels track rooms on paper, which leads to double bookings, and they have no website of their own to take bookings from.",
+      "approach": "Never double-book a room again, and take bookings from your own website. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "A room board shows every room by day, coloured by status.",
+        "Check-in and check-out are built, with extra charges for food and laundry.",
+        "Each hotel gets a public one-page website with a booking request form."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-hotel.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-hotel"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Never double-book a room again, and take bookings from your own website."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Room board: grid of rooms by day, colour by status"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Check-in / check-out"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Public one-page website with booking request form"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-school",
+      "name": "Galmee School",
+      "tagline": "Fee collection and attendance for private schools",
+      "repo": "Alphaguyasa/galmee-school",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Private schools track fees by hand, so finding which parents have not paid this month takes hours.",
+      "approach": "Know exactly which parents haven't paid this month, and remind them all with one tap. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Student register by class and section.",
+        "Fee collection with a receipt, and unpaid fees listed by class.",
+        "Attendance is recorded in the app."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-school.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-school"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Know exactly which parents haven't paid this month, and remind them all with one tap."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Student register by class and section"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Fee collection with receipt"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Unpaid fees by class"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Attendance"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-garage",
+      "name": "Galmee Garage",
+      "tagline": "Job cards and vehicle history for garages",
+      "repo": "Alphaguyasa/galmee-garage",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Garages keep repairs on loose job cards, so a car’s history and the parts used on it are hard to find.",
+      "approach": "Type a plate number and see every repair and part ever put on that car. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Job cards hold the vehicle, plate, complaint, mechanic, parts and labour.",
+        "Vehicle history can be found by plate number.",
+        "Parts stock and sales are tracked."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-garage.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-garage"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Type a plate number and see every repair and part ever put on that car."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Job card (vehicle, plate, complaint, mechanic, parts, labour)"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Vehicle history by plate"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Parts stock and sales"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-transport",
+      "name": "Galmee Transport",
+      "tagline": "Ticketing and cash handover for bus operators",
+      "repo": "Alphaguyasa/galmee-transport",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Bus operators sell tickets through several sellers and cannot easily tell how much each seller and bus should have handed in.",
+      "approach": "Know every evening how much each seller and each bus should have handed in. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Tickets are sold by route, departure and seat.",
+        "Cash handover is tracked per seller and per vehicle.",
+        "A register records parcels carried as cargo."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-transport.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-transport"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Know every evening how much each seller and each bus should have handed in."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Ticket sale (route, departure, seat, passenger phone)"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Cash handover per seller and per vehicle"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Parcel (cargo) register"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-driving",
+      "name": "Galmee Driving School",
+      "tagline": "Students, lessons and payments for driving schools",
+      "repo": "Alphaguyasa/galmee-driving",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Driving schools track students, lessons, installments and exam dates across separate notebooks.",
+      "approach": "See every student's lessons, payments and exam date on one screen. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Students register with a document checklist.",
+        "Lessons are scheduled per instructor and vehicle.",
+        "Installment payments and exam dates are tracked for each student."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-driving.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-driving"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "See every student's lessons, payments and exam date on one screen."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Student registration with document checklist"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Lesson schedule per instructor and vehicle"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Installment payments"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Exam date tracking"
+        }
+      ]
+    },
+    {
+      "slug": "galmee-rentals",
+      "name": "Galmee Rentals",
+      "tagline": "Rent tracking for landlords and brokers",
+      "repo": "Alphaguyasa/galmee-rentals",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Landlords chase rent by hand and have no clear view of which tenants are late.",
+      "approach": "Stop chasing rent: tenants are reminded automatically and you see who is late. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Properties and units are listed as vacant or occupied.",
+        "Each tenant has a rent schedule and an overdue list shows who is late.",
+        "A broker mode covers listings and client matching."
+      ],
+      "learned": [],
+      "images": [],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-rentals.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-rentals"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Stop chasing rent: tenants are reminded automatically and you see who is late."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Property and unit list (vacant/occupied)"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Rent schedule"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Overdue list"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Broker mode: listings and client matching"
+        }
+      ]
     }
   ]
 }
