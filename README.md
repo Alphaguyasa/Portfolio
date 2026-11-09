@@ -57,7 +57,7 @@ data/projects.json ◀── edited by hand, every claim quotes data/sync/docs
    ```
 
    Add it to `knownPublicRepos` (or to `skip` to keep it off the site), and give the
-   scheduled routine read access to it, so the next sync reads it. Where the search is
+   sync token read access to it, so the next sync reads it. Where the search is
    refused as well, the log says so and new public repos have to be added by hand.
 
    A repo's CI is every workflow run on the newest settled commit of its default
@@ -89,7 +89,7 @@ scripts/              sync, copy, verify-facts, check-site, check-lighthouse, sc
   lib/                the pure, unit-tested rules (facts, copy, screenshots, lighthouse)
 src/
   app/                layout, home page (section order), /about, /projects/[slug],
-                      /api/contact, Open Graph image, sitemap, robots
+                      /api/contact, Open Graph images, sitemap, robots
   components/         one file per section, plus ui.tsx and icons.tsx
   data/site.ts        non-project copy: hero, services, pricing, FAQ, contacts
   lib/                contact validation, rate limiter

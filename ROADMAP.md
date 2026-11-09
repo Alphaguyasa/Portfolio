@@ -64,9 +64,6 @@ weeks old from 2026-11-10 22:26 UTC; eslint-config-next 16.4.0 still asks for 3.
 minimatch advisory via eslint tooling. Fix still not due before 2026-11-10 22:26 UTC.
 2026-11-06: unchanged (production clean; the same dev-only minimatch moderate).
 
-### 12. [P3 · S] Per-project Open Graph images
-Generate an OG image per project page with `next/og` (already used for the home page).
-
 ### 13. [P3 · M] Amharic version of the key pages
 Most projects target Amharic-speaking users; an Amharic summary of the home page and
 project pages would show that. Needs Alpha to review wording (the decision log).
@@ -81,6 +78,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P3] Per-project Open Graph images** (item 12), 2026-11-09. `src/app/projects/[slug]/opengraph-image.tsx` draws each project's name, tagline, status and first four stack items, from the same data the page shows. Card text is limited to glyphs the default image font has, so rendering needs no font fetch (four tests).
 - **[P3] check:site reads the built JSON-LD** (item 45), 2026-11-09. Every crawled page must serve exactly one valid JSON-LD block, the 404 none; a Person's `url` must be the site and any other block's its page's canonical. Rules in `scripts/lib/json-ld.mjs`, eight tests.
 - **[P3] check:site checks robots.txt** (item 42), 2026-11-09. `/robots.txt` must let every agent read `/` and name the sitemap on the site URL; a named agent blocked from `/` fails too. Rules in `scripts/lib/robots.mjs`, eight tests.
 - **[P2] Meret's tagline is behind its status note** (item 43), 2026-11-09. The stale line was Meret's first result, which PORTFOLIO_COPY.md uses as its proof line; it now names phases 1–8 with the device-check caveat. verify:facts fails when results[0] names an earlier phase than a later result.
