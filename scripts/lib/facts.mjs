@@ -51,6 +51,18 @@ function isYear(n) {
   return /^20\d\d$/.test(n);
 }
 
+/**
+ * The highest build-plan phase a sentence names ("Phases 5, 6, 7 and 8", "Phase 8c",
+ * "Phases 1–4"), or null when it names none.
+ */
+export function highestPhase(text) {
+  let highest = null;
+  for (const match of String(text).matchAll(/\bphases?\s+(\d+(?:[a-z]\b)?(?:\s*(?:,|–|-|and|to)\s*\d+(?:[a-z]\b)?)*)/gi)) {
+    for (const n of match[1].match(/\d+/g)) highest = Math.max(highest ?? 0, Number(n));
+  }
+  return highest;
+}
+
 /** All prose fields of a project that a reader sees. */
 export function proseOf(project) {
   return [
@@ -86,6 +98,14 @@ export function verifyProjects(data, sync, readDoc, assetExists) {
     if (slugs.has(p.slug)) fail("duplicate slug");
     slugs.add(p.slug);
     if (!STATUSES.includes(p.status)) fail(`status "${p.status}" is not one of ${STATUSES.join(", ")}`);
+
+    // results[0] is the proof line in PORTFOLIO_COPY.md, so it must not lag behind the rest.
+    const named = (p.results ?? []).map(highestPhase).filter((n) => n !== null);
+    if (named.length > 0) {
+      const lead = highestPhase(p.results[0]) ?? -1;
+      const latest = Math.max(...named);
+      if (lead < latest) fail(`results[0] names phase ${lead < 0 ? "none" : lead}, but a later result names phase ${latest}`);
+    }
 
     const repo = repos.get(p.repo);
     if (!repo) {

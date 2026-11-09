@@ -152,8 +152,8 @@
       "problem": "Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded.",
       "approach": "An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved.",
       "results": [
-        "Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.",
-        "Phases 5, 6, 7 and 8 (tracking service, offline map, tracking screens, waypoints with forms and photos) are done in CI; their device checks are still pending."
+        "Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending.",
+        "Built so far: skeleton, core model, database, location engine, tracking service, offline map, tracking screens, and waypoints with forms and photos."
       ],
       "learned": [
         "Phase 0 tooling for the offline tile pack is done, but a real Ethiopia pack has not been built yet, and acceptance criteria that need a physical phone are not claimed by CI."

@@ -25,7 +25,7 @@ Selected work:
 - **Suq** (In development): Offline-first point of sale and inventory. A sale writes to IndexedDB in one transaction and never touches the network.
 - **DocSearch → Not Alone** (In development): Cited answers from documents, now pivoting to a scripture app. 91 human-reviewed evaluation questions.
 - **NullChat** (In development): Peer-to-peer messaging with no network. 100 instrumented tests run in CI on an API 34 emulator.
-- **Meret** (In development): Offline maps and GPS logging for field teams. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine.
+- **Meret** (In development): Offline maps and GPS logging for field teams. Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending.
 - **ethiopic-text** (Shipped): Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped.
 - **HU News** (Shipped): Haramaya University news app. Signed release APK committed to the repo.
 - **Security Scanner** (Completed): Automated web vulnerability scanner, similar to online pentesting platforms.
@@ -70,7 +70,7 @@ How I work: 6 of my 9 listed projects keep a written roadmap and 7 have CI on Gi
 #### Meret: Offline maps and GPS logging for field teams
 
 - **Short:** Offline maps and GPS logging for field teams. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved..
-- **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine. Phases 5, 6, 7 and 8 (tracking service, offline map, tracking screens, waypoints with forms and photos) are done in CI; their device checks are still pending.
+- **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending. Built so far: skeleton, core model, database, location engine, tracking service, offline map, tracking screens, and waypoints with forms and photos.
 - **Status:** In development · last commit 2026-11-06. Early. The project skeleton, core model, database, location engine, tracking service, offline map, tracking screens, waypoint forms, draft autosave and waypoint photos are done in CI; their checks on a real phone are pending, and sync is next.
 - **Skills:** Kotlin, Jetpack Compose, Room, multi-module Gradle
 - **Link:** https://github.com/Alphaguyasa/Meret
@@ -123,7 +123,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Suq**: Offline-first point of sale and inventory. A sale writes to IndexedDB in one transaction and never touches the network. (In development · last commit 2026-11-06) https://github.com/Alphaguyasa/Suq
 - **DocSearch → Not Alone**: Cited answers from documents, now pivoting to a scripture app. 91 human-reviewed evaluation questions. (In development · last commit 2026-11-06) https://github.com/Alphaguyasa/docsearch
 - **NullChat**: Peer-to-peer messaging with no network. 100 instrumented tests run in CI on an API 34 emulator. (In development · last commit 2026-11-06) https://github.com/Alphaguyasa/NullChat
-- **Meret**: Offline maps and GPS logging for field teams. Phases 1–4 of the build plan are done: skeleton, core model, database, location engine. (In development · last commit 2026-11-06) https://github.com/Alphaguyasa/Meret
+- **Meret**: Offline maps and GPS logging for field teams. Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending. (In development · last commit 2026-11-06) https://github.com/Alphaguyasa/Meret
 - **ethiopic-text**: Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped. (Shipped · npm 0.1.0 · last commit 2026-08-05) https://github.com/Alphaguyasa/ethiopic-text
 - **HU News**: Haramaya University news app. Signed release APK committed to the repo. (Shipped · last commit 2026-05-02) https://github.com/Alphaguyasa/HUnews
 - **Security Scanner**: Automated web vulnerability scanner, similar to online pentesting platforms. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.. (Completed · last commit 2026-05-12) https://github.com/vulnerability-scanner-website/Final-year-project

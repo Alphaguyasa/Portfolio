@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { numbersIn, normalize, verifyProjects } from "../scripts/lib/facts.mjs";
+import { highestPhase, numbersIn, normalize, verifyProjects } from "../scripts/lib/facts.mjs";
 import { assetExists, fixture, readDoc, readJson, type Data, type Sync } from "./helpers";
 
 describe("the real data", () => {
@@ -11,6 +11,20 @@ describe("the real data", () => {
       assetExists,
     );
     expect(errors).toEqual([]);
+  });
+});
+
+describe("highestPhase", () => {
+  it("reads single phases, lists, ranges and lettered sub-phases", () => {
+    expect(highestPhase("Phase 3 is done")).toBe(3);
+    expect(highestPhase("Phases 1–4 are done")).toBe(4);
+    expect(highestPhase("Phases 5, 6, 7 and 8 are done in CI")).toBe(8);
+    expect(highestPhase("phase 8c is next")).toBe(8);
+  });
+
+  it("is null without a phase number", () => {
+    expect(highestPhase("Phased rollout across 12 sites")).toBeNull();
+    expect(highestPhase("375 unit tests")).toBeNull();
   });
 });
 
@@ -30,6 +44,25 @@ describe("verifyProjects (honesty rules)", () => {
     const p = fixture().project();
     p.facts = [{ path: "README.md", quote: "400 unit tests" }];
     expect(run(p).join()).toMatch(/quote not found/);
+  });
+
+  it("rejects a lead result naming an earlier phase than a later result", () => {
+    const p = fixture().project();
+    p.facts.push({ path: "README.md", quote: "375 unit tests" });
+    p.results = ["Phases 1–4 are done.", "Phases 5 and 8 are done in CI."];
+    expect(run(p).join()).toMatch(/results\[0\] names phase 4, but a later result names phase 8/);
+  });
+
+  it("rejects a lead result that names no phase when a later one does", () => {
+    const p = fixture().project();
+    p.results = ["Works offline.", "Phase 8 is done."];
+    expect(run(p).join()).toMatch(/results\[0\] names phase none/);
+  });
+
+  it("accepts a lead result that names the latest phase", () => {
+    const p = fixture().project();
+    p.results = ["Phases 1–8 are built.", "Phase 3 was hardest."];
+    expect(run(p).join()).not.toMatch(/results\[0\] names/);
   });
 
   it("rejects a number no verified fact quotes (no invented metrics)", () => {

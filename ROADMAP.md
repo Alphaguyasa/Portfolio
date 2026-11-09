@@ -29,12 +29,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
-### 43. [P2 · S] Meret's tagline is behind its status note
-The tagline says "Phases 1–4 of the build plan are done", while the status note (and
-Meret's synced ROADMAP) says phases 5–8 are done too. It is a lower claim, so not
-dishonest, but stale. Re-quote the tagline from the synced roadmap's phase lines and
-add a test that a project's tagline does not name fewer done phases than its status note.
-
 ### 42. [P3 · S] check:site checks robots.txt
 `/robots.txt` must allow `/` for every agent and name `<site URL>/sitemap.xml`, so a
 change to `robots.ts` or the site URL cannot hide the site from search. Pure helper +
@@ -97,6 +91,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P2] Meret's tagline is behind its status note** (item 43), 2026-11-09. The stale line was Meret's first result, which PORTFOLIO_COPY.md uses as its proof line; it now names phases 1–8 with the device-check caveat. verify:facts fails when results[0] names an earlier phase than a later result.
 - **[P3] Layout shift on every page** (item 41), this PR (2026-11-06). check:site records
   `layout-shift` entries from before any page script on all 11 pages at both widths and
   fails above CLS 0.1 (Core Web Vitals session windows; shifts after input ignored), or
