@@ -11,23 +11,28 @@ export function readOgImages() {
   return [...document.querySelectorAll('meta[property="og:image"]')].map((el) => el.getAttribute("content") ?? "");
 }
 
+/** In-page: the content of every twitter:image tag. */
+export function readTwitterImages() {
+  return [...document.querySelectorAll('meta[name="twitter:image"]')].map((el) => el.getAttribute("content") ?? "");
+}
+
 /** The route of the image a page should use: its own for a project, the site's otherwise. */
 export function ogImagePath(pathname) {
   return pathname.startsWith("/projects/") ? `${pathname}/opengraph-image` : "/opengraph-image";
 }
 
 /** Problems with a page's og:image tags; empty when there is one, on the site URL, for this page. */
-export function ogTagProblems(urls, pathname, siteUrl) {
-  if (urls.length !== 1) return [`has ${urls.length} og:image tag(s), expected exactly 1`];
+export function ogTagProblems(urls, pathname, siteUrl, tag = "og:image") {
+  if (urls.length !== 1) return [`has ${urls.length} ${tag} tag(s), expected exactly 1`];
   let url;
   try {
     url = new URL(urls[0]);
   } catch {
-    return [`og:image is not an absolute URL: ${urls[0]}`];
+    return [`${tag} is not an absolute URL: ${urls[0]}`];
   }
   const found = [];
-  if (url.origin !== new URL(siteUrl).origin) found.push(`og:image ${urls[0]} is not on ${siteUrl}`);
-  if (url.pathname !== ogImagePath(pathname)) found.push(`og:image points at ${url.pathname}, expected ${ogImagePath(pathname)}`);
+  if (url.origin !== new URL(siteUrl).origin) found.push(`${tag} ${urls[0]} is not on ${siteUrl}`);
+  if (url.pathname !== ogImagePath(pathname)) found.push(`${tag} points at ${url.pathname}, expected ${ogImagePath(pathname)}`);
   return found;
 }
 

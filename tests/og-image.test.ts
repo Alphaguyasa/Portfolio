@@ -35,6 +35,13 @@ describe("ogTagProblems", () => {
   });
 });
 
+describe("ogTagProblems for twitter:image", () => {
+  it("names the tag it checked", () => {
+    expect(ogTagProblems([], "/", SITE, "twitter:image").join()).toMatch(/0 twitter:image/);
+    expect(ogTagProblems(["https://old.example/opengraph-image"], "/", SITE, "twitter:image").join()).toMatch(/twitter:image .* is not on/);
+  });
+});
+
 describe("pngSize", () => {
   it("reads the header and rejects anything else", () => {
     expect(pngSize(png(1200, 630))).toEqual({ width: 1200, height: 630 });

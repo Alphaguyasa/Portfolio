@@ -34,9 +34,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 ### 49. [P1 · S] Galmee projects on the site
 `portfolio.config.json` lists eight Galmee repos, but `data/projects.json` has none of them, so they appear nowhere on the site. Once the sync can read them (the decision log), add each with real screenshots from its own repo and quotes for every number.
 
-### 50. [P3 · S] Twitter image on /about
-`/about` now has an Open Graph image but no `twitter:image` of its own; add it and extend the share-image check to the Twitter tags.
-
 ### 51. [P3 · S] Guard the site URL against the deployment
 Nothing ties `site.url` to the address the site is served from, which is how it went stale. Add a check that reads a recorded production host (`portfolio.config.json`) and compare it with the site URL.
 
@@ -89,6 +86,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P3] Twitter image on /about** (item 50), 2026-11-09. `/about` now has its own `twitter:image`; check:site requires exactly one `twitter:image` on the site URL for every page.
 - **[P2] Share images in check:site** (item 47), 2026-11-09. Every page must name one `og:image` on the site URL, for its own route, and the image must be a 1200x630 PNG (`scripts/lib/og-image.mjs`, six tests). It found that `/about` had none: a page's openGraph object replaces the root one, so the root image was lost.
 - **[P1] Site URL pointed at an old address** (item 48), 2026-11-09. `site.url` was `alpha-guyasa-portfolio.vercel.app`; the deployment is served from `alpha-guy.vercel.app`, so canonicals, the sitemap, robots.txt, share images and JSON-LD all pointed away from the live site.
 - **[P3] Per-project Open Graph images** (item 12), 2026-11-09. `src/app/projects/[slug]/opengraph-image.tsx` draws each project's name, tagline, status and first four stack items, from the same data the page shows. Card text is limited to glyphs the default image font has, so rendering needs no font fetch (four tests).

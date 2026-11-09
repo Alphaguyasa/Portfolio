@@ -17,7 +17,7 @@
  *   - search metadata: every page has one title, one meta description and one
  *     canonical link to its own path on the site URL, none shared between pages
  *   - structured data: one valid JSON-LD block per page with the right url, none on the 404
- *   - share image: every page names one og:image on the site URL, and it is a 1200x630 PNG
+ *   - share image: every page names one og:image and one twitter:image on the site URL, and it is a 1200x630 PNG
  *   - sitemap: /sitemap.xml lists exactly the crawled pages, on the site URL
  *   - robots: /robots.txt lets every agent read "/" and names the sitemap on the site URL
  *
@@ -35,7 +35,7 @@ import { linkProblems, readAnchors } from "./lib/links.mjs";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
 import { jsonLdProblems, notFoundJsonLdProblems, readJsonLdBlocks } from "./lib/json-ld.mjs";
-import { ogImagePath, ogImageProblems, ogTagProblems, readOgImages } from "./lib/og-image.mjs";
+import { ogImagePath, ogImageProblems, ogTagProblems, readOgImages, readTwitterImages } from "./lib/og-image.mjs";
 import { robotsProblems } from "./lib/robots.mjs";
 import { sitemapProblems, sitemapUrls } from "./lib/sitemap.mjs";
 import { duplicateProblems, metaProblems, notFoundMetaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
@@ -228,6 +228,7 @@ try {
           problems.push(`${pathname}: ${m}`);
         }
         for (const m of ogTagProblems(await page.evaluate(readOgImages), pathname, SITE_URL)) problems.push(`${pathname}: ${m}`);
+        for (const m of ogTagProblems(await page.evaluate(readTwitterImages), pathname, SITE_URL, "twitter:image")) problems.push(`${pathname}: ${m}`);
         const ogRes = await fetch(BASE + ogImagePath(pathname));
         const ogBytes = new Uint8Array(await ogRes.arrayBuffer());
         for (const m of ogImageProblems(ogRes.status, ogRes.headers.get("content-type"), ogBytes)) problems.push(`${pathname}: ${m}`);
