@@ -38,8 +38,9 @@ Selected work:
 - **Galmee Transport** (In development): Ticketing and cash handover for bus operators. Tickets are sold by route, departure and seat.
 - **Galmee Driving School** (In development): Students, lessons and payments for driving schools. Students register with a document checklist.
 - **Galmee Rentals** (In development): Rent tracking for landlords and brokers. Properties and units are listed as vacant or occupied.
+- **Galmee Coffee** (In development): Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances.
 
-How I work: 14 of my 17 listed projects keep a written roadmap and 15 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
+How I work: 15 of my 18 listed projects keep a written roadmap and 16 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
 
 ### Portfolio entries
 
@@ -179,6 +180,14 @@ How I work: 14 of my 17 listed projects keep a written roadmap and 15 have CI on
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-rentals.vercel.app
 
+#### Galmee Coffee: Farmer purchases and advances for coffee traders
+
+- **Short:** Farmer purchases and advances for coffee traders. Every kilo bought, every birr paid and every advance, per farmer, with no arguments.
+- **Long:** Coffee traders buy from many farmers and give advances, and disputes follow when weights, prices and advances are only on paper. Every kilo bought, every birr paid and every advance, per farmer, with no arguments. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. A farmer register holds each farmer’s purchases and advances. Purchases record the kilos, grade, price per kilo and a moisture note. Warehouse stock is tracked by grade.
+- **Status:** In development · last commit 2026-11-08. In development. A working version is deployed, and its roadmap still has open items.
+- **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
+- **Link:** https://galmee-coffee.vercel.app
+
 ## LinkedIn
 
 ### About (short)
@@ -187,7 +196,7 @@ Full-stack and Android developer in Addis Ababa. Offline-first web apps (Next.js
 
 ### About (long)
 
-I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 14 of my 17 listed projects keep a written roadmap and 15 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
+I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 15 of my 18 listed projects keep a written roadmap and 16 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
 
 ### Projects section
 
@@ -208,6 +217,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Galmee Transport**: Ticketing and cash handover for bus operators. Tickets are sold by route, departure and seat. (In development · last commit 2026-11-08) https://galmee-transport.vercel.app
 - **Galmee Driving School**: Students, lessons and payments for driving schools. Students register with a document checklist. (In development · last commit 2026-11-09) https://galmee-driving.vercel.app
 - **Galmee Rentals**: Rent tracking for landlords and brokers. Properties and units are listed as vacant or occupied. (In development · last commit 2026-11-09) https://galmee-rentals.vercel.app
+- **Galmee Coffee**: Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances. (In development · last commit 2026-11-08) https://galmee-coffee.vercel.app
 
 ## CV project list
 
@@ -228,6 +238,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Galmee Transport** — Ticketing and cash handover for bus operators. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-08.
 - **Galmee Driving School** — Students, lessons and payments for driving schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-09.
 - **Galmee Rentals** — Rent tracking for landlords and brokers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-09.
+- **Galmee Coffee** — Farmer purchases and advances for coffee traders. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-08.
 
 ## Certificates
 

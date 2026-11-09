@@ -738,6 +738,94 @@
           "quote": "Broker mode: listings and client matching"
         }
       ]
+    },
+    {
+      "slug": "galmee-coffee",
+      "name": "Galmee Coffee",
+      "tagline": "Farmer purchases and advances for coffee traders",
+      "repo": "Alphaguyasa/galmee-coffee",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Coffee traders buy from many farmers and give advances, and disputes follow when weights, prices and advances are only on paper.",
+      "approach": "Every kilo bought, every birr paid and every advance, per farmer, with no arguments. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "A farmer register holds each farmer’s purchases and advances.",
+        "Purchases record the kilos, grade, price per kilo and a moisture note.",
+        "Warehouse stock is tracked by grade."
+      ],
+      "learned": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-coffee/buy-en-360.webp",
+          "alt": "Galmee Coffee purchase screen with sample data",
+          "source": "Alphaguyasa/galmee-coffee docs/screenshots/buy-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-coffee",
+            "path": "docs/screenshots/buy-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-coffee/farmers-en-360.webp",
+          "alt": "Galmee Coffee farmer list with sample data",
+          "source": "Alphaguyasa/galmee-coffee docs/screenshots/farmers-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-coffee",
+            "path": "docs/screenshots/farmers-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-coffee/stock-en-360.webp",
+          "alt": "Galmee Coffee warehouse stock by grade with sample data",
+          "source": "Alphaguyasa/galmee-coffee docs/screenshots/stock-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-coffee",
+            "path": "docs/screenshots/stock-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-coffee.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-coffee"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Every kilo bought, every birr paid and every advance, per farmer, with no arguments."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Farmer register"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Purchase entry (farmer, kg, grade, price/kg, moisture note)"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Advances to farmers"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Warehouse stock by grade"
+        }
+      ]
     }
   ]
 }

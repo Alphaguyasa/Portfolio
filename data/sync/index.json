@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-09T06:41:26.148Z",
+  "syncedAt": "2026-11-09T07:02:21.444Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -376,6 +376,70 @@
         "docs/LINGUISTIC-REVIEW.md"
       ],
       "carriedOverFrom": "2026-11-06T06:41:32.810Z"
+    },
+    {
+      "name": "galmee-coffee",
+      "fullName": "Alphaguyasa/galmee-coffee",
+      "url": "https://github.com/Alphaguyasa/galmee-coffee",
+      "private": false,
+      "description": "Galmee Coffee - purchases, advances and lots per farmer for coffee traders",
+      "homepage": "https://galmee-coffee.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "JavaScript",
+        "CSS"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:41:02Z",
+      "pushedAt": "2026-11-08T23:26:30Z",
+      "lastCommitAt": "2026-11-08T23:26:27Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": {
+        "workflow": "npm_and_yarn in /. - Update #1685258065",
+        "workflows": [
+          "npm_and_yarn in /. - Update #1685258065"
+        ],
+        "failing": [
+          "npm_and_yarn in /. - Update #1685258065"
+        ],
+        "status": "completed",
+        "conclusion": "failure",
+        "at": "2026-11-06T12:06:41Z",
+        "headSha": "42012430b47bce0eb0815be2e0df7a9b10a97e51"
+      },
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
+      ]
     },
     {
       "name": "galmee-driving",
