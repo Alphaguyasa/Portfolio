@@ -17,6 +17,7 @@
  *   - search metadata: every page has one title, one meta description and one
  *     canonical link to its own path on the site URL, none shared between pages
  *   - sitemap: /sitemap.xml lists exactly the crawled pages, on the site URL
+ *   - robots: /robots.txt lets every agent read "/" and names the sitemap on the site URL
  *
  *   npm run build && npm run check:site
  *
@@ -31,6 +32,7 @@ import { layoutShiftProblem, readLayoutShifts, recordLayoutShifts } from "./lib/
 import { linkProblems, readAnchors } from "./lib/links.mjs";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
+import { robotsProblems } from "./lib/robots.mjs";
 import { sitemapProblems, sitemapUrls } from "./lib/sitemap.mjs";
 import { duplicateProblems, metaProblems, notFoundMetaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
 
@@ -261,11 +263,15 @@ try {
     for (const m of sitemapProblems(urls, Object.keys(pageMeta), SITE_URL)) problems.push(`/sitemap.xml: ${m}`);
   }
 
+  const robotsRes = await fetch(`${BASE}/robots.txt`);
+  if (!robotsRes.ok) problems.push(`/robots.txt: HTTP ${robotsRes.status}`);
+  else for (const m of robotsProblems(await robotsRes.text(), SITE_URL)) problems.push(`/robots.txt: ${m}`);
+
   for (const vp of VIEWPORTS) problems.push(...(await checkContactForm(vp)));
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, sitemap matches the crawl`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, sitemap matches the crawl, robots.txt open`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));

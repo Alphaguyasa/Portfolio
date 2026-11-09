@@ -29,11 +29,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
-### 42. [P3 · S] check:site checks robots.txt
-`/robots.txt` must allow `/` for every agent and name `<site URL>/sitemap.xml`, so a
-change to `robots.ts` or the site URL cannot hide the site from search. Pure helper +
-tests.
-
 ### 44. [P3 · S] HU News project page shifts more than the others
 check:site's new CLS gate (item 41) scores `/projects/hu-news` at 0.034 desktop and
 0.035 phone (`main#main` moved); every other page is at 0.005 or less. Under the 0.1
@@ -91,6 +86,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P3] check:site checks robots.txt** (item 42), 2026-11-09. `/robots.txt` must let every agent read `/` and name the sitemap on the site URL; a named agent blocked from `/` fails too. Rules in `scripts/lib/robots.mjs`, eight tests.
 - **[P2] Meret's tagline is behind its status note** (item 43), 2026-11-09. The stale line was Meret's first result, which PORTFOLIO_COPY.md uses as its proof line; it now names phases 1–8 with the device-check caveat. verify:facts fails when results[0] names an earlier phase than a later result.
 - **[P3] Layout shift on every page** (item 41), this PR (2026-11-06). check:site records
   `layout-shift` entries from before any page script on all 11 pages at both widths and
