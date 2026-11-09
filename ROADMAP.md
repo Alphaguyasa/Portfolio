@@ -35,11 +35,6 @@ check:site's new CLS gate (item 41) scores `/projects/hu-news` at 0.034 desktop 
 limit, but find the element that changes size after load (likely the phone screenshot
 grid) and reserve its space. Lower the limit for that page in a test once it is fixed.
 
-### 45. [P3 · S] check:site reads the built JSON-LD
-Item 38's test renders pages in vitest. check:site could also parse every
-`application/ld+json` block in the served HTML: valid JSON, exactly one per page,
-none on the 404 page, and its `url` equal to the page's canonical. Pure helper + tests.
-
 ### 46. [P3 · S] Home page Lighthouse performance margin
 Local Lighthouse on `/` scored 87 on 2026-11-06 (CI passes at 90+). Measure the home
 page's blocking time and JS size per section, and cut the largest client-side cost so
@@ -86,6 +81,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P3] check:site reads the built JSON-LD** (item 45), 2026-11-09. Every crawled page must serve exactly one valid JSON-LD block, the 404 none; a Person's `url` must be the site and any other block's its page's canonical. Rules in `scripts/lib/json-ld.mjs`, eight tests.
 - **[P3] check:site checks robots.txt** (item 42), 2026-11-09. `/robots.txt` must let every agent read `/` and name the sitemap on the site URL; a named agent blocked from `/` fails too. Rules in `scripts/lib/robots.mjs`, eight tests.
 - **[P2] Meret's tagline is behind its status note** (item 43), 2026-11-09. The stale line was Meret's first result, which PORTFOLIO_COPY.md uses as its proof line; it now names phases 1–8 with the device-check caveat. verify:facts fails when results[0] names an earlier phase than a later result.
 - **[P3] Layout shift on every page** (item 41), this PR (2026-11-06). check:site records

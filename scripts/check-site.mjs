@@ -16,6 +16,7 @@
  *     shifts after input ignored) must be 0.1 or less, as Lighthouse checks on two
  *   - search metadata: every page has one title, one meta description and one
  *     canonical link to its own path on the site URL, none shared between pages
+ *   - structured data: one valid JSON-LD block per page with the right url, none on the 404
  *   - sitemap: /sitemap.xml lists exactly the crawled pages, on the site URL
  *   - robots: /robots.txt lets every agent read "/" and names the sitemap on the site URL
  *
@@ -32,6 +33,7 @@ import { layoutShiftProblem, readLayoutShifts, recordLayoutShifts } from "./lib/
 import { linkProblems, readAnchors } from "./lib/links.mjs";
 import { measureOverflow, overflowProblem } from "./lib/overflow.mjs";
 import { classifyConsole, isOwnNotFound } from "./lib/page-errors.mjs";
+import { jsonLdProblems, notFoundJsonLdProblems, readJsonLdBlocks } from "./lib/json-ld.mjs";
 import { robotsProblems } from "./lib/robots.mjs";
 import { sitemapProblems, sitemapUrls } from "./lib/sitemap.mjs";
 import { duplicateProblems, metaProblems, notFoundMetaProblems, readPageMeta, siteUrlFrom } from "./lib/page-meta.mjs";
@@ -100,6 +102,7 @@ async function checkNotFound(vp) {
     if (!heading?.includes("doesn’t exist")) found.push(`${label}: heading "${heading}" is not the not-found page`);
     if ((await page.locator('a[href="/"]').count()) === 0) found.push(`${label}: no link back to /`);
     for (const m of notFoundMetaProblems(await page.evaluate(readPageMeta))) found.push(`${label}: ${m}`);
+    for (const m of notFoundJsonLdProblems(await page.evaluate(readJsonLdBlocks))) found.push(`${label}: ${m}`);
     const overflow = overflowProblem(await page.evaluate(measureOverflow));
     if (overflow) found.push(`${label}: ${overflow}`);
     found.push(...(await axeProblems(page, label)));
@@ -219,6 +222,9 @@ try {
         const meta = await page.evaluate(readPageMeta);
         pageMeta[pathname] = meta;
         for (const m of metaProblems(meta, pathname, SITE_URL)) problems.push(`${pathname}: ${m}`);
+        for (const m of jsonLdProblems(await page.evaluate(readJsonLdBlocks), meta.canonicals[0], SITE_URL)) {
+          problems.push(`${pathname}: ${m}`);
+        }
         for (const m of linkProblems(await page.evaluate(readAnchors), BASE + pathname)) problems.push(`${pathname}: ${m}`);
 
         const { links, ids } = await page.evaluate(() => ({
@@ -271,7 +277,7 @@ try {
   for (const vp of VIEWPORTS) problems.push(...(await checkNotFound(vp)));
 
   console.log(
-    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, sitemap matches the crawl, robots.txt open`,
+    `check-site: ${seen.size} page(s), ${checkedAssets.size} asset(s) checked, contact form clicked, 404 page checked, no sideways scroll, no layout shift, titles, descriptions, canonicals and robots checked, new-tab and external links safe, JSON-LD valid, sitemap matches the crawl, robots.txt open`,
   );
 } catch (err) {
   problems.push(String(err?.stack ?? err));
