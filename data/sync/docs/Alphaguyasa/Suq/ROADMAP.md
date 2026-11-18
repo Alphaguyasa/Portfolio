@@ -12,9 +12,24 @@ and the unit test suite).
 
 ## Open
 
-Next run: take the highest-priority open item (P1 before P2), skipping anything marked WAITING or
-"after the pending migrations". As of 2026-11-06 (run 25) that is item 51 (supabase-js 2.119 patch bump); item 48
-waits for a Serwist release (still 9.5.13).
+Next run: build the **M-next** milestone below first, skipping anything marked WAITING or "after the pending
+migrations", then the numbered items (P1 before P2).
+
+### M-next: Earn the owner dashboard
+The multi-till owner view is what a paying shop owner looks at every day. This milestone makes it worth paying for.
+- [ ] The two pending Supabase migrations are applied (owner action, see the decision log); verify the pull
+      watermark switches over to `received_at`
+- [ ] Item 13 step 1: `shop_settings` replication (migration + last-write-wins sync + test)
+- [ ] Item 13 step 2: `cash_closes` replication (append-only + RLS + test)
+- [ ] Item 13 step 3: `sale_items.cost_snapshot` column; stop stripping it in `forWire()`
+- [ ] Owner dashboard: shop name + today's totals per till from the replica
+- [x] Item 51: supabase-js patch bump, with the release notes read (2026-11-12)
+- [x] Decision memo: where Suq ends and the Galmee vertical tills begin (one page, for the owner; 2026-11-12, waiting for the decision)
+- [ ] If item 12 is approved: `BarcodeDetector` spike behind feature detection
+
+### Later
+Credit ledger (33) · camera scanning rollout + fallback · ~~end-of-day summary share~~ (done) · ~~price-change audit view~~ (done 2026-11-18, per product and per Reports period) ·
+multi-shop onboarding · Next 16 major (last of item 42).
 
 ### 12. [P3 · M] Optional camera barcode scanning — WAITING FOR ALPHA (see the decision log)
 `docs/RULES.md` says "no camera scanning in v1 and no scanner library", and this item was written by a run, not
@@ -68,7 +83,10 @@ any needs code changes beyond an S.
 patch/minor updates (item 45) and the blocked majors above. No TODO/FIXME markers. Today's CI showed the build
 fetching Google Fonts over the network: one of two runs on the same commit failed in `next/font`.
 
-### 48. [P2 · S] Watch @serwist/next for a release on glob ≥ 14.0.2
+### 48. [P2 · S] Watch @serwist/next for a release on glob ≥ 14.0.2 — DONE 2026-11-18
+Done: @serwist/next and serwist 9.5.15 depend on glob 14.0.6; `npm audit --omit=dev` now reports 0 advisories.
+Precache build and the offline e2e specs pass.
+
 Added 2026-11-04. `npm audit --omit=dev` reports 5 moderate advisories (GHSA-3g3m-2fjr-6pw4 in `glob` 13.0.6,
 GHSA-g3hv-75wg-m249 in `minimatch` 10.2.6). They come only through `@serwist/next` 9.5.13 → `@serwist/build`, which
 use them at build time to list files for the precache. The till does not ship them. The CI gate (`--audit-level=high`)
@@ -81,12 +99,14 @@ fallback, if the precache build and the offline e2e still pass with it.
 typescript-eslint still allows only TypeScript `<6.1.0`, and eslint-plugin-react still stops at eslint ^9. No TODO/FIXME
 markers. Two findings came from building item 46.
 
-### 51. [P3 · S] Patch bump: @supabase/supabase-js 2.119
-`npm outdated` shows 2.118.0 → 2.119.0 (minor, within the current major). Lockfile from npm 11, as in item 45. Read the
-release notes for auth or realtime changes first. Full suite, including the e2e fake Supabase.
-
 ## Done
 
+- **Share the sales summary** — Reports has a "Share summary" button under the totals. It sends the period's net
+  sales (with the change against the previous period), transactions, average basket, gross profit, the three best
+  sellers by revenue and the low-stock count through the share sheet, or copies it. Works offline. Unit tests + e2e.
+- **supabase-js 2.119 (item 51)** — patch bump. Its changelog says a default (global) `signOut()` now keeps the
+  local session when the server request fails, so an offline till could no longer sign out. `signOut()` now falls
+  back to the `local` scope, which always clears this device's session. Unit tests; sync and owner e2e pass.
 - **A void stores 0, not -0 (item 49)** — reversals negate money and quantity with `negate()`, which returns 0 for 0,
   so a void of a sale with no discount stores `discount: 0` and a JSON round trip leaves it unchanged. Unit tests.
   [PR #79](https://github.com/Alphaguyasa/Suq/pull/79) · tag `v2026-11-06-2` not pushed (refused) — commit `bf65a05`

@@ -7,20 +7,36 @@ Effort: **S** < 2 h · **M** half a day · **L** a day or more (split into sever
 Audit of 2026-10-14; replanned 2026-10-22 (items 27–41); replanned 2026-10-28
 (third audit, items 43–54); **replanned 2026-10-31** (fourth audit, items 55–66, evidence
 in the dev log 2026-10-31 second run); **replanned 2026-11-04** (fifth audit, items 67–80,
-evidence in the dev log 2026-11-04). This round's theme is a
+evidence in the dev log 2026-11-04); items 81–85 added 2026-11-18. This round's theme is a
 hostile or crowded mesh: what one modified phone, or a festival's worth of strangers,
 can make this phone hold, drop or show. Bugs and abuse resistance come before features.
+
+## Next milestone: cash the security work in
+
+Ordered; this milestone comes before the rest of the open list.
+
+- [ ] Decide the decision-log #3 question and keep chat data out of Google backup (restores panic wipe)
+- [x] #76 Build identity from CI: versionCode and versionName from the run number, commit in Settings
+- [x] #72 Retry `startAdvertising` each scan window through a testable scheduler
+- [ ] #78 part 1: README with screenshots, a mesh diagram and a threat-model link (README in #103; screenshots still to come)
+- [x] docs/SECURITY_DESIGN.md: the threat model and the hostile-mesh hardening series
+- [x] #79 Radar pulses attributed to bound peers only
+- [x] docs/FIELD_CHECK.md: a scripted two-phone check (pairing, relay, image, rate-limit counters)
+- [ ] A security case-study page on the portfolio that links the design doc
+
+Later: a cutoff for plaintext direct
+messages from older builds, #21 group channels, #22 voice notes, #54 Doze
+measurement, #23 route strip after its privacy call.
 
 ## Open
 
 | # | Item | Pri | Effort | Notes |
 |---|---|---|---|---|
-| 72 | **A failed `startAdvertising` is never retried** (`MeshForegroundService`), so one radio error leaves the phone invisible all session. Retry each scan window; move the loop into a testable scheduler. | P2 | S | Needs two-phone check |
-| 76 | **Builds cannot be told apart**: versionCode 1 / "1.0" forever. Derive from the CI run number and sha; show "Build …" in Settings, which phone checks need. | P2 | S | |
-| 77 | **Feature: tell me when this contact is in range**: a chat menu toggle and a one-shot local notification when the peer joins `boundPeers`, rate-limited. | P2 | M | No wire change |
-| 78 | **Naming and strings**: `app_name` is "NChat"; "searching for peers nearby" is lowercase and says "Mesh"; about 20 UI literals sit outside `strings.xml`. | P3 | M | |
-| 79 | **Radar pulses by advertised name**, so a stranger can make a contact's node pulse (`PeerListViewModel`). Attribute by bound peers only. | P3 | S | |
-| 80 | **APK carries about 80 dependency locales**; add `localeFilters`. | P3 | S | |
+| 84 | **Plaintext direct-message cutoff**: stop accepting unencrypted direct messages (the `openedBody` fallback for builds before #9); show the undecryptable placeholder instead. Every build since 2026-10-15 encrypts. | P2 | S | Waits on the decision log |
+| 81 | **In-range alert, part 2**: list watched contacts in Settings so they can be turned off in one place (the chat bar already says "in-range alert on"). | P3 | S | Follows #77 |
+| 82 | **Send failures as reason codes**: `SendResult.Rejected/Failed` carry English text from the mesh layer; give them codes the UI maps to strings.xml. | P3 | S | Follows #78 |
+| 83 | **Timer text from resources**: `DisappearingTimer.label` and the timer lines in `ThreadRows` as plurals in strings.xml. | P3 | S | Follows #78 |
+| 85 | **Large-font UI tests**: Compose tests at 200% font scale for the chat bar (subtitle with timer, mute and alert) and the peer row (long name plus badge). | P3 | S | |
 | 54 | **Duty cycle under Doze**: no wake lock or alarm, so `delay` in the duty cycle may stall when the phone dozes. Measure on a phone first; fix only with evidence. | P3 | S | Needs phone evidence |
 | 21 | **Group channels** with a shared key, invite by QR. | P3 | L | |
 | 22 | **Voice notes** (≤10 s Opus over Fragmenter). | P3 | L | |
@@ -32,7 +48,6 @@ change once decided.
 
 ### Tech debt (slot into light days)
 
-- Receiving side still accepts plaintext direct messages from older builds (`openedBody` fallback). Once every phone runs a build with #9, consider rejecting them.
 - `MeshCoordinator` is about 1200 lines. The send-side glue now has JVM tests (`sendHeld`, `markFlushed`, #72); an `OutboundSender` class split is still open if the file keeps growing.
 
 ## Done
@@ -119,3 +134,15 @@ change once decided.
 | 2026-11-06 | #70 Pairing camera released with the screen; one save per scan | #94 | see log |
 | 2026-11-06 | #74 Chat rows built on a background thread instead of the main thread | #95 | see log |
 | 2026-11-06 | #71 Seen cache holds 20 000 ids (was 1000), so images in flight no longer evict other packets and late copies are not relayed again | #96 | see log |
+| 2026-11-12 | #76 Builds carry the CI run number and commit; Settings shows "Build 1.0.N (N) · commit" | #98 | see log |
+| 2026-11-12 | #79 Radar pulses only for links that proved their peer id, so a stranger cannot make a contact pulse | #99 | see log |
+| 2026-11-12 | #72 A failed advertising start is retried each scan window (`ScanLoop`); "already advertising" counts as success (needs two-phone check) | #100 | see log |
+| 2026-11-12 | Field check: docs/FIELD_CHECK.md, a scripted 30-minute check for two or three phones | #101 | see log |
+| 2026-11-12 | Flaky unit test: a chat view model test no longer leaks into the next test | #102 | see log |
+| 2026-11-12 | README: what it does, the mesh, security in brief, build (screenshots to follow) | #103 | see log |
+| 2026-11-12 | docs/SECURITY_DESIGN.md: threat model, mechanisms with their pull requests, open gaps | #104 | see log |
+| 2026-11-12 | #80 APK ships only the English locale (`localeFilters`); dependencies brought about 80 | #105 | see log |
+| 2026-11-12 | #78 part 2: the app is called Null Chat everywhere; peer list, chat bar and composer text in strings.xml | #107 | see log |
+| 2026-11-12 | #78 part 2: radar description, signal bars and image viewer text in strings.xml | #108 | see log |
+| 2026-11-18 | #78 done: the "Everyone" label, chat subtitles, empty states and the attach button in strings.xml; previews use the same resources | #110 | see log |
+| 2026-11-18 | #77 "Tell me when they are in range": chat menu toggle, one notification when the contact's link proves its id, at most once per 30 minutes (needs two-phone check) | #111 | see log |

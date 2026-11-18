@@ -1,5 +1,30 @@
 # ROADMAP: Galmee Hotel
 
+Build order: M-next first, then M-after, then the remaining open items below.
+
+## M-next: Tier 1 close-out
+
+- [x] Checkout receipt layout (folio: nights, charges, payments)
+- [x] Print + Telegram receipt flow
+- [x] Telegram-to-reception message on each booking request (room type, Ethiopian dates, guest note, in the hotel's language)
+- [x] SMS confirmation to guest on confirm (queued in the hotel's language; delivered once the notifications sender is live)
+
+## M-after: Tier 2 and 3
+
+- [ ] Offline queue for stay payments and check-in
+- [ ] Rate plan management screen (seasonal prices)
+- [x] Monthly occupancy and revenue report, CSV (any past Ethiopian month, CSV carries Ethiopian dates)
+- [ ] Company/credit statements on the shared credit ledger
+- [ ] Staff invite and role gates
+- [ ] Export all tenant data to Excel
+
+## Front desk
+
+- [x] Night audit: close the hotel day, flag no-shows, guests past check-out and guests who owe, print the night report (58 mm)
+- [x] Website booking requests capped at 150 per hotel per day
+
+Not planned for now: bar/restaurant stock. Extra charges (food, laundry) cover it.
+
 ## M0: Foundation (shared pattern for all Galmee products)
 
 - [x] Next.js App Router + TS + Tailwind + shadcn/ui scaffold; `npm run build` passes
@@ -15,9 +40,8 @@
 ## M1: Core screens
 
 - [x] Customers: list, search by name/phone, detail with balance
-- [ ] Items and stock (if this product uses stock): list, add, receive stock
 - [ ] Payments and credit: record payment, credit statement
-- [ ] Reports: today / this week / this Ethiopian month; export CSV
+- [x] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Hotel features
@@ -41,7 +65,7 @@
 ## M3: Notifications
 
 - [ ] Telegram to reception for each website booking request
-- [ ] SMS confirmation to guest
+- [ ] SMS confirmation to guest (one template, sent on confirm; no scheduling)
 - [ ] Edge Function reads `notifications` queue and sends (needs AfroMessage/Telegram keys: ask in the decision log)
 
 ## M4: Demo ready
@@ -57,7 +81,7 @@
 - [ ] Data import from Excel/CSV
 - [ ] Export all tenant data to Excel
 - [ ] Error monitoring hook (Sentry, DSN via env)
-- [ ] README: setup, env vars, deploy steps
+- [x] README: setup, env vars, deploy steps
 
 ## Q: Quality and security baseline (do these inside M0 and M1, not after)
 

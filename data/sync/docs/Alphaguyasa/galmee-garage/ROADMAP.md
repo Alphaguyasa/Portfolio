@@ -1,5 +1,26 @@
 # ROADMAP: Galmee Garage
 
+Build order: M-next first, then M-after, then the remaining open items below.
+
+## M-next: Tier 1 close-out
+
+- [x] Job invoice/receipt layout (parts and labour lines, 80 mm)
+- [x] Print and reprint from the job card
+- [x] "Ready" SMS to the customer when the job status becomes ready (queued with the amount due; sent once the SMS sender is live)
+
+## M-after: Tier 2 and 3
+
+- [x] Reports screen (labour vs parts revenue, today / this Ethiopian month) with CSV
+- [ ] Offline queue for job payments
+- [ ] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
+- [x] Reorder-level low-stock list
+- [ ] Staff invite
+- [x] Per-mechanic labour report
+- [ ] Service-due reminders (by km or months) queued as SMS
+- [ ] Export all tenant data to Excel
+
+Not planned for now: vehicle photos, and a separate quotes module (a "quoted" job status covers estimates). The demo data loader is finished.
+
 ## M0: Foundation (shared pattern for all Galmee products)
 
 - [x] Next.js App Router + TS + Tailwind + shadcn/ui scaffold; `npm run build` passes
@@ -17,7 +38,7 @@
 - [x] Customers: list, search by name/phone, detail with balance
 - [x] Items and stock (if this product uses stock): list, add, receive stock
 - [x] Payments and credit: record payment, credit statement
-- [ ] Reports: today / this week / this Ethiopian month; export CSV
+- [x] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Garage features
@@ -49,7 +70,7 @@
 
 ## M5: Client ready
 
-- [ ] Receipt printing (58/80 mm thermal) and Telegram receipt
+- [ ] Receipt printing (58/80 mm thermal) and Telegram receipt (80 mm job invoice done; Telegram copy open)
 - [ ] Data import from Excel/CSV
 - [ ] Export all tenant data to Excel
 - [ ] Error monitoring hook (Sentry, DSN via env)

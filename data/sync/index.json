@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-09T07:02:21.444Z",
+  "syncedAt": "2026-11-18T06:43:55.786Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -21,20 +21,20 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-03-19T20:51:04Z",
-      "pushedAt": "2026-11-09T05:27:50Z",
-      "lastCommitAt": "2026-11-09T05:27:41Z",
+      "pushedAt": "2026-11-18T00:21:54Z",
+      "lastCommitAt": "2026-11-18T00:18:46Z",
       "latestRelease": null,
       "tags": [
+        "v2026-11-18-5",
+        "v2026-11-18-4",
+        "v2026-11-18-3",
+        "v2026-11-18-2",
+        "v2026-11-18-1",
         "v2026-11-09-11",
         "v2026-11-09-10",
         "v2026-11-09-9",
         "v2026-11-09-8",
-        "v2026-11-09-7",
-        "v2026-11-09-6",
-        "v2026-11-09-5",
-        "v2026-11-09-4",
-        "v2026-11-09-3",
-        "v2026-11-09-2"
+        "v2026-11-09-7"
       ],
       "ci": {
         "workflow": "CI, CodeQL, Release tag",
@@ -43,11 +43,13 @@
           "CodeQL",
           "Release tag"
         ],
-        "failing": [],
+        "failing": [
+          "CI"
+        ],
         "status": "completed",
-        "conclusion": "success",
-        "at": "2026-11-09T05:27:44Z",
-        "headSha": "69a62350d3e3a93d42b22c177747f91c8f03d1d3"
+        "conclusion": "failure",
+        "at": "2026-11-18T00:18:50Z",
+        "headSha": "b4c3489be1e13377377f7334e0bfd60ad0f9278b"
       },
       "mergedPulls": [
         {
@@ -128,6 +130,7 @@
         "components.json",
         "deps",
         "dfx.json",
+        "docs",
         "eslint.config.mjs",
         "hooks",
         "lib",
@@ -143,7 +146,8 @@
       ],
       "docs": [
         "README.md",
-        "ROADMAP.md"
+        "ROADMAP.md",
+        "docs/CASE_STUDY.md"
       ]
     },
     {
@@ -160,14 +164,14 @@
         "TypeScript",
         "CSS",
         "PLpgSQL",
-        "JavaScript",
         "Python",
+        "JavaScript",
         "HTML"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-11-09T02:33:22Z",
-      "lastCommitAt": "2026-11-09T02:33:22Z",
+      "pushedAt": "2026-11-14T07:20:31Z",
+      "lastCommitAt": "2026-11-14T07:20:30Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -177,20 +181,29 @@
         "v1-docsearch"
       ],
       "ci": {
-        "workflow": "ci, deploy-not-alone",
+        "workflow": "ingest-scripture",
         "workflows": [
-          "ci",
-          "deploy-not-alone"
+          "ingest-scripture"
         ],
-        "failing": [
-          "deploy-not-alone"
-        ],
+        "failing": [],
         "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-09T02:33:25Z",
-        "headSha": "2c347e084473c69d9249ae2928849d4d18dc38b6"
+        "conclusion": "success",
+        "at": "2026-11-14T07:16:09Z",
+        "headSha": "72f2e6088ebb96a47a55f93809d45df42b889d95"
       },
       "mergedPulls": [
+        {
+          "number": 165,
+          "title": "Plan the next milestone in the roadmap",
+          "mergedAt": "2026-11-14T07:15:33Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/165"
+        },
+        {
+          "number": 164,
+          "title": "Turn on the set-state-in-effect lint rule",
+          "mergedAt": "2026-11-14T07:12:59Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/164"
+        },
         {
           "number": 163,
           "title": "Apply in-range updates to the Anthropic SDK and Tailwind",
@@ -238,18 +251,6 @@
           "title": "Read a story aloud with the browser's own voice, only when it speaks the story's language",
           "mergedAt": "2026-11-05T03:45:01Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/156"
-        },
-        {
-          "number": 155,
-          "title": "Upgrade ESLint to 10 and the React hooks plugin to 7 (dev only)",
-          "mergedAt": "2026-11-04T03:46:57Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/155"
-        },
-        {
-          "number": 154,
-          "title": "Cap request bodies before parsing: 413 above a few KB on search and feedback",
-          "mergedAt": "2026-11-04T03:41:15Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/154"
         }
       ],
       "npm": null,
@@ -374,8 +375,7 @@
         "README.md",
         "docs/DESIGN.md",
         "docs/LINGUISTIC-REVIEW.md"
-      ],
-      "carriedOverFrom": "2026-11-06T06:41:32.810Z"
+      ]
     },
     {
       "name": "galmee-coffee",
@@ -395,23 +395,11 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:02Z",
-      "pushedAt": "2026-11-08T23:26:30Z",
-      "lastCommitAt": "2026-11-08T23:26:27Z",
+      "pushedAt": "2026-11-13T12:08:37Z",
+      "lastCommitAt": "2026-11-12T23:14:19Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "npm_and_yarn in /. - Update #1685258065",
-        "workflows": [
-          "npm_and_yarn in /. - Update #1685258065"
-        ],
-        "failing": [
-          "npm_and_yarn in /. - Update #1685258065"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T12:06:41Z",
-        "headSha": "42012430b47bce0eb0815be2e0df7a9b10a97e51"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -459,23 +447,11 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:14Z",
-      "pushedAt": "2026-11-09T00:23:47Z",
-      "lastCommitAt": "2026-11-09T00:23:45Z",
+      "pushedAt": "2026-11-18T06:10:23Z",
+      "lastCommitAt": "2026-11-18T06:10:22Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "npm_and_yarn in /. - Update #1686161086",
-        "workflows": [
-          "npm_and_yarn in /. - Update #1686161086"
-        ],
-        "failing": [
-          "npm_and_yarn in /. - Update #1686161086"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T22:54:33Z",
-        "headSha": "e74e8dfd6f14b06f4d01057f0173453500f948bf"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -524,23 +500,11 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:18Z",
-      "pushedAt": "2026-11-08T21:28:38Z",
-      "lastCommitAt": "2026-11-08T21:28:35Z",
+      "pushedAt": "2026-11-13T00:45:48Z",
+      "lastCommitAt": "2026-11-12T18:25:10Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "github_actions in /. - Update #1684918551",
-        "workflows": [
-          "github_actions in /. - Update #1684918551"
-        ],
-        "failing": [
-          "github_actions in /. - Update #1684918551"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T08:51:58Z",
-        "headSha": "b961ec13fdd3d1bb09681aa913fb9aed65c6b331"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -583,28 +547,16 @@
       "languages": [
         "TypeScript",
         "PLpgSQL",
-        "JavaScript",
-        "CSS"
+        "CSS",
+        "JavaScript"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:09Z",
-      "pushedAt": "2026-11-08T15:44:40Z",
-      "lastCommitAt": "2026-11-08T15:44:38Z",
+      "pushedAt": "2026-11-18T06:12:01Z",
+      "lastCommitAt": "2026-11-18T06:11:58Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "github_actions in /. - Update #1684918624",
-        "workflows": [
-          "github_actions in /. - Update #1684918624"
-        ],
-        "failing": [
-          "github_actions in /. - Update #1684918624"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T08:52:00Z",
-        "headSha": "cb02cba50a8201e47cf9cd7341510a9e2128899a"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -653,22 +605,19 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:38:41Z",
-      "pushedAt": "2026-11-08T19:29:45Z",
-      "lastCommitAt": "2026-11-08T19:29:44Z",
+      "pushedAt": "2026-11-17T18:22:20Z",
+      "lastCommitAt": "2026-11-17T18:22:18Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "npm_and_yarn in /. - Update #1685755651",
-        "workflows": [
-          "npm_and_yarn in /. - Update #1685755651"
-        ],
-        "failing": [],
-        "status": "completed",
-        "conclusion": "success",
-        "at": "2026-11-06T17:54:25Z",
-        "headSha": "7bc446a1b40a79c08a8a7b22b119db710bc26ae5"
-      },
-      "mergedPulls": [],
+      "ci": null,
+      "mergedPulls": [
+        {
+          "number": 6,
+          "title": "Galmee design system and reference redesign",
+          "mergedAt": "2026-11-11T11:46:34Z",
+          "url": "https://github.com/Alphaguyasa/galmee-pharmacy/pull/6"
+        }
+      ],
       "npm": null,
       "rootFiles": [
         ".env.example",
@@ -715,23 +664,11 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:26Z",
-      "pushedAt": "2026-11-09T01:25:16Z",
-      "lastCommitAt": "2026-11-09T01:25:14Z",
+      "pushedAt": "2026-11-13T14:36:15Z",
+      "lastCommitAt": "2026-11-13T04:20:27Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "github_actions in /. - Update #1685470672",
-        "workflows": [
-          "github_actions in /. - Update #1685470672"
-        ],
-        "failing": [
-          "github_actions in /. - Update #1685470672"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T14:34:38Z",
-        "headSha": "07e72b68fcd5cc2d1cb26fc8868247236d168fd4"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -774,29 +711,24 @@
       "languages": [
         "TypeScript",
         "PLpgSQL",
-        "JavaScript",
-        "CSS"
+        "CSS",
+        "JavaScript"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:00Z",
-      "pushedAt": "2026-11-08T18:30:01Z",
-      "lastCommitAt": "2026-11-08T18:29:20Z",
+      "pushedAt": "2026-11-17T22:21:11Z",
+      "lastCommitAt": "2026-11-17T22:21:09Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "github_actions in /. - Update #1685409604",
-        "workflows": [
-          "github_actions in /. - Update #1685409604"
-        ],
-        "failing": [
-          "github_actions in /. - Update #1685409604"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T13:54:36Z",
-        "headSha": "135ad0e33bc5c314c5bd40e50eed1627bbc70702"
-      },
-      "mergedPulls": [],
+      "ci": null,
+      "mergedPulls": [
+        {
+          "number": 6,
+          "title": "Only owners and managers change saved marks, attendance and the register",
+          "mergedAt": "2026-11-17T13:30:34Z",
+          "url": "https://github.com/Alphaguyasa/galmee-school/pull/6"
+        }
+      ],
       "npm": null,
       "rootFiles": [
         ".env.example",
@@ -843,23 +775,11 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:37Z",
-      "pushedAt": "2026-11-08T22:25:11Z",
-      "lastCommitAt": "2026-11-08T22:25:09Z",
+      "pushedAt": "2026-11-18T06:11:11Z",
+      "lastCommitAt": "2026-11-18T06:11:10Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "github_actions in /. - Update #1686136220",
-        "workflows": [
-          "github_actions in /. - Update #1686136220"
-        ],
-        "failing": [
-          "github_actions in /. - Update #1686136220"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T22:34:24Z",
-        "headSha": "fa99701933b6234a2bbae514c1ab933b3192836d"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -902,29 +822,17 @@
       "languages": [
         "TypeScript",
         "PLpgSQL",
-        "JavaScript",
         "CSS",
+        "JavaScript",
         "HTML"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:39:31Z",
-      "pushedAt": "2026-11-08T20:26:01Z",
-      "lastCommitAt": "2026-11-08T20:25:58Z",
+      "pushedAt": "2026-11-17T19:20:45Z",
+      "lastCommitAt": "2026-11-17T19:20:43Z",
       "latestRelease": null,
       "tags": [],
-      "ci": {
-        "workflow": "github_actions in /. - Update #1684918991",
-        "workflows": [
-          "github_actions in /. - Update #1684918991"
-        ],
-        "failing": [
-          "github_actions in /. - Update #1684918991"
-        ],
-        "status": "completed",
-        "conclusion": "failure",
-        "at": "2026-11-06T08:52:07Z",
-        "headSha": "174985b8aa179c350c7ad4f21272c39edc3688f0"
-      },
+      "ci": null,
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -1002,8 +910,7 @@
       ],
       "docs": [
         "README.md"
-      ],
-      "carriedOverFrom": "2026-11-06T06:41:32.810Z"
+      ]
     },
     {
       "name": "Meret",
@@ -1024,8 +931,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-11-09T06:26:50Z",
-      "lastCommitAt": "2026-11-09T04:49:10Z",
+      "pushedAt": "2026-11-17T23:30:32Z",
+      "lastCommitAt": "2026-11-17T23:30:31Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -1040,10 +947,22 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-09T04:49:13Z",
-        "headSha": "f992d1044c19dcff2100fa3f483869eef3008a96"
+        "at": "2026-11-17T23:30:07Z",
+        "headSha": "0809037ae5f49910fb526ba454ffc7eb4a4997dc"
       },
       "mergedPulls": [
+        {
+          "number": 95,
+          "title": "Roadmap: record the merge of item 40a",
+          "mergedAt": "2026-11-17T23:30:32Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/95"
+        },
+        {
+          "number": 94,
+          "title": "Walk the perimeter: vertex rules and the walked-rectangle test (roadmap item 40a)",
+          "mergedAt": "2026-11-17T23:30:04Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/94"
+        },
         {
           "number": 93,
           "title": "Measure a plot by tapping its corners on the map (39)",
@@ -1081,12 +1000,6 @@
           "url": "https://github.com/Alphaguyasa/Meret/pull/84"
         },
         {
-          "number": 82,
-          "title": "Photos on the waypoint sheet through the phone's camera app (roadmap item 33b-2, Phase 8e-2)",
-          "mergedAt": "2026-11-04T05:00:51Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/82"
-        },
-        {
           "number": 79,
           "title": "Photo pipeline: 1600 px q80, GPS EXIF kept, SHA-256 (roadmap item 33a, Phase 8e-1)",
           "mergedAt": "2026-11-03T05:13:24Z",
@@ -1097,12 +1010,6 @@
           "title": "Waypoint sheet draft autosave to Room (roadmap item 32b, Phase 8d)",
           "mergedAt": "2026-11-03T05:00:49Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/78"
-        },
-        {
-          "number": 72,
-          "title": "List waypoints; a tap centres the map (roadmap item 29b, Phase 8b)",
-          "mergedAt": "2026-11-02T04:51:47Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/72"
         }
       ],
       "npm": null,
@@ -1158,8 +1065,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-11-08T14:24:36Z",
-      "lastCommitAt": "2026-11-08T13:03:08Z",
+      "pushedAt": "2026-11-18T02:19:53Z",
+      "lastCommitAt": "2026-11-18T02:19:52Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -1169,16 +1076,15 @@
         "v2026-10-14-1"
       ],
       "ci": {
-        "workflow": "CI, gradle in / for gradle-wrapper, androidx.core:core-ktx, androidx.compose:compose-bom, androidx.navigation:navigation-compose, androidx.paging:paging-runtime, androidx.paging:paging-compose, androidx.paging:paging-compose, androidx.room:room-runtime, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.work:work-runtime-ktx, androidx.wo...",
+        "workflow": "CI",
         "workflows": [
-          "CI",
-          "gradle in / for gradle-wrapper, androidx.core:core-ktx, androidx.compose:compose-bom, androidx.navigation:navigation-compose, androidx.paging:paging-runtime, androidx.paging:paging-compose, androidx.paging:paging-compose, androidx.room:room-runtime, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.room:room-ktx, androidx.room:room-paging, androidx.room:room-compiler, androidx.room:room-testing, androidx.work:work-runtime-ktx, androidx.wo..."
+          "CI"
         ],
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-09T04:17:47Z",
-        "headSha": "eaa6b298deb5c0c9a07b76a09f06657686abff4b"
+        "at": "2026-11-18T02:19:55Z",
+        "headSha": "b44ca7134eabab39711d86cce85c91e67fe85a89"
       },
       "mergedPulls": [
         {
@@ -1224,12 +1130,6 @@
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/61"
         },
         {
-          "number": 59,
-          "title": "feat: export the closed reconciliation periods as CSV (R22)",
-          "mergedAt": "2026-10-29T17:27:51Z",
-          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/59"
-        },
-        {
           "number": 56,
           "title": "fix: time the PIN lockout and the auto-lock on uptime, not the wall clock (R32)",
           "mergedAt": "2026-10-29T05:24:15Z",
@@ -1240,6 +1140,12 @@
           "title": "fix: Reconcile opens one period at a time, and failed writes are reported (R31)",
           "mergedAt": "2026-10-29T05:19:33Z",
           "url": "https://github.com/Alphaguyasa/Mezgeb/pull/55"
+        },
+        {
+          "number": 53,
+          "title": "fix: one raw message becomes at most one transaction (R30)",
+          "mergedAt": "2026-10-28T09:47:57Z",
+          "url": "https://github.com/Alphaguyasa/Mezgeb/pull/53"
         }
       ],
       "npm": null,
@@ -1294,94 +1200,93 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-11-08T14:24:37Z",
-      "lastCommitAt": "2026-11-08T13:03:15Z",
+      "pushedAt": "2026-11-18T05:36:19Z",
+      "lastCommitAt": "2026-11-18T05:36:05Z",
       "latestRelease": null,
       "tags": [
-        "v2026-11-08-1",
-        "v2026-11-06-3",
-        "v2026-11-06-2",
-        "v2026-11-06-1",
-        "v2026-11-05-3",
-        "v2026-11-05-2",
-        "v2026-11-05-1",
-        "v2026-11-04-3",
-        "v2026-11-04-2",
-        "v2026-11-04-1"
+        "v2026-11-18-4",
+        "v2026-11-18-3",
+        "v2026-11-18-2",
+        "v2026-11-18-1",
+        "v2026-11-12-11",
+        "v2026-11-12-10",
+        "v2026-11-12-9",
+        "v2026-11-12-8",
+        "v2026-11-12-7",
+        "v2026-11-12-6"
       ],
       "ci": {
-        "workflow": "Android CI, Release tag, gradle in / for com.android.application, com.google.devtools.ksp - Update #1688197104",
+        "workflow": "Android CI, Release tag",
         "workflows": [
           "Android CI",
-          "Release tag",
-          "gradle in / for com.android.application, com.google.devtools.ksp - Update #1688197104"
+          "Release tag"
         ],
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-09T01:11:39Z",
-        "headSha": "df1a429f7138cf0d99aa36c8ff7351e57543104b"
+        "at": "2026-11-18T05:36:13Z",
+        "headSha": "03420a6916249db3dd4af314f5a2812d129533e4"
       },
       "mergedPulls": [
         {
-          "number": 96,
-          "title": "Seen cache holds 20 000 ids; log 2026-11-06",
-          "mergedAt": "2026-11-06T03:41:29Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/96"
+          "number": 114,
+          "title": "Show the in-range alert in the chat bar; roadmap items 81 to 85",
+          "mergedAt": "2026-11-18T05:36:05Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/114"
         },
         {
-          "number": 95,
-          "title": "Chat rows are built off the main thread",
-          "mergedAt": "2026-11-06T03:31:10Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/95"
+          "number": 113,
+          "title": "Chat snackbar messages from resources",
+          "mergedAt": "2026-11-18T05:26:35Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/113"
         },
         {
-          "number": 94,
-          "title": "Pairing camera stops when the screen closes; one save per scan",
-          "mergedAt": "2026-11-06T03:22:01Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/94"
+          "number": 111,
+          "title": "Tell me when this contact is in range",
+          "mergedAt": "2026-11-18T05:26:28Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/111"
         },
         {
-          "number": 93,
-          "title": "One sender holds at most 4 part-assembled messages; log 2026-11-05",
-          "mergedAt": "2026-11-05T03:38:54Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/93"
+          "number": 110,
+          "title": "Move the Everyone label, chat subtitles and empty states into resources",
+          "mergedAt": "2026-11-18T05:17:00Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/110"
         },
         {
-          "number": 92,
-          "title": "Switching chats keeps each thread's draft",
-          "mergedAt": "2026-11-05T03:30:31Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/92"
+          "number": 106,
+          "title": "Roadmap: items 72 and 79 and the field check are done",
+          "mergedAt": "2026-11-12T17:33:10Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/106"
         },
         {
-          "number": 91,
-          "title": "Pairing QR no longer supplies the agreement key",
-          "mergedAt": "2026-11-05T03:22:40Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/91"
+          "number": 108,
+          "title": "Move the radar, signal bars and image viewer text into resources",
+          "mergedAt": "2026-11-12T17:27:43Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/108"
         },
         {
-          "number": 90,
-          "title": "Drop reassembled text over twice the send limit; log 2026-11-04",
-          "mergedAt": "2026-11-04T03:42:35Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/90"
+          "number": 107,
+          "title": "Name the app Null Chat and move the main screens' text into resources",
+          "mergedAt": "2026-11-12T17:24:29Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/107"
         },
         {
-          "number": 89,
-          "title": "App lock turns itself off when the phone can no longer unlock; replan items 67–80",
-          "mergedAt": "2026-11-04T03:33:50Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/89"
+          "number": 105,
+          "title": "Ship only the locales the app is translated into",
+          "mergedAt": "2026-11-12T17:24:26Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/105"
         },
         {
-          "number": 88,
-          "title": "Greetings stop flooding on reconnect (roadmap #58)",
-          "mergedAt": "2026-11-04T03:23:34Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/88"
+          "number": 104,
+          "title": "Add the security design",
+          "mergedAt": "2026-11-12T17:21:54Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/104"
         },
         {
-          "number": 87,
-          "title": "Mesh health in Settings: the router's drop counters; \"Open settings\"",
-          "mergedAt": "2026-11-03T03:34:32Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/87"
+          "number": 103,
+          "title": "Add a README",
+          "mergedAt": "2026-11-12T17:21:46Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/103"
         }
       ],
       "npm": null,
@@ -1389,9 +1294,11 @@
         ".github",
         ".gitignore",
         ".idea",
+        "README.md",
         "ROADMAP.md",
         "app",
         "build.gradle.kts",
+        "docs",
         "gradle",
         "gradle.properties",
         "gradlew",
@@ -1400,7 +1307,10 @@
         "settings.gradle.kts"
       ],
       "docs": [
-        "ROADMAP.md"
+        "README.md",
+        "ROADMAP.md",
+        "docs/FIELD_CHECK.md",
+        "docs/SECURITY_DESIGN.md"
       ]
     },
     {
@@ -1422,8 +1332,8 @@
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-11-08T14:26:08Z",
-      "lastCommitAt": "2026-11-08T13:03:10Z",
+      "pushedAt": "2026-11-18T03:24:43Z",
+      "lastCommitAt": "2026-11-18T03:24:36Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -1437,8 +1347,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-08T13:03:13Z",
-        "headSha": "668d313a82628bf5924840b92fc85c1b4d4b899e"
+        "at": "2026-11-18T03:24:44Z",
+        "headSha": "6d652aae1461d90a151ea969b47722217736d402"
       },
       "mergedPulls": [
         {
@@ -1648,8 +1558,7 @@
       ],
       "docs": [
         "README.md"
-      ],
-      "carriedOverFrom": "2026-11-06T06:41:32.810Z"
+      ]
     },
     {
       "name": "erko",

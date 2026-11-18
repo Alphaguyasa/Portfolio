@@ -23,7 +23,37 @@ and R38 and R39 were checked by hand against the code. R38 and R39 part 1 were d
 the list then fell to 4 (all blocked), so the same run replanned: R45 to R53 come from a
 fresh code audit. R45 was done the same run. R45, R46 and R47 were checked by hand against the code; the others
 carry the audit's file and line evidence and are re-checked when picked up. R46 and R47 were done on
-2026-11-05. R48 and R49 were done on 2026-11-06.
+2026-11-05. R48 and R49 were done on 2026-11-06. On 2026-11-12 the "Make Mezgeb sellable" milestone was added at the top, and R53, R51 and R52 were done. On 2026-11-18 R50, the weekly card and the demo tour were done, and the "Daily habit" milestone was added after it.
+
+## M-next: Make Mezgeb sellable
+
+The next milestone. Its items come before the rest of the open list.
+
+- [ ] Decide what capture does during a demo (decision log A9), then finish R39 part 2 with tests
+- [x] R53: ledger and customer search treat `%` and `_` literally, with DAO tests (2026-11-12)
+- [x] R51: the privacy purge runs once per app version and after a restore (2026-11-12)
+- [x] R50: built-in category names shown in the app's language (2026-11-18)
+- [x] R52: "Not a payment" dismisses a message in the review queue (2026-11-12)
+- [ ] Decide who holds the release keystore, then add a signed release workflow
+- [x] A weekly "money you may have missed" card built from the reconcile results (2026-11-18)
+- [x] A guided demo tour over demo mode, Amharic first (2026-11-18)
+- [ ] A one-page sales sheet (problem, promise, price), for approval: drafted, waiting on the decision log A10
+
+## M-after: Daily habit
+
+After "Make Mezgeb sellable". Small features that make the app something a shop opens every evening.
+
+- [x] Share a credit reminder through the share sheet (Telegram or any app), no phone number needed (2026-11-18)
+- [ ] A nightly check at closing time: "messages say +3,200; you recorded 3,000; 200 birr unexplained", built on the weekly card
+- [ ] Print a receipt or a customer statement through the share sheet, to the cheap thermal printers shops already have
+- [ ] A short voice note on a ledger entry (needs the microphone permission: decision log first)
+
+### Later
+
+Encryption at rest (R10, decision log A1) · corpus growth as real samples arrive (R11) ·
+a monthly statement export per customer · a nudge to send the encrypted backup to
+Telegram Saved Messages · rule packs exported and imported as a file · the SMS parser
+as a library other apps can embed.
 
 ## Open
 
@@ -39,29 +69,6 @@ and is deleted the same way. Part 1 (no approval needed): refuse a restore while
 mode is on, with a message. Part 2 waits on **the decision log A9** (what capture
 does during a demo). Tests: restore in demo mode is refused and nothing is written;
 part 2 per the decision.
-
-### R50 · P2 · S: Built-in category names show in English in the Amharic UI
-`DatabaseSeeder.SYSTEM_CATEGORIES` stores "Sales", "Rent" and the rest as literals, and
-every screen and the report show `category.name` as stored. Fix: map the system ids
-(`cat_*`) to string resources at display time. Names the shop typed stay. No migration.
-Tests: the resolver in the `am` locale.
-
-### R51 · P2 · S: The privacy purge reads every stored message on every launch
-`PrivacyPurge.run()` runs on each `onCreate` and pages through all of `raw_messages`.
-Fix: store a purge-rules version and run only when it changes or after a restore.
-Tests: runs once per version, again after a restore.
-
-### R52 · P3 · S: A message in the review queue can never be dismissed
-`ReviewEvent` has only `Reprocess`. Promotions from an allowed sender stay forever and
-reconcile counts their sniffed amounts as possible explanations
-(`ReconcilePeriodUseCase.kt:183-191`). Fix: "Not a payment" marks an `UNMATCHED` row
-`IGNORED`. Strings in both languages. Tests: the event, reconcile no longer counts it,
-a parsed row is refused.
-
-### R53 · P2 · S: Ledger search treats `%` and `_` as wildcards
-`TransactionDao.kt:146-149` uses `LIKE '%' || :query || '%'` with no `ESCAPE`, so a
-search for `%` matches every row. Fix: escape the query and add `ESCAPE '\'`. Tests:
-a DAO test for `%`, `_` and a backslash.
 
 ### R10 · P1 · L: Encrypt the database at rest
 **Blocked: see the decision log A1.** This needs a new native dependency
@@ -82,6 +89,31 @@ versioned as `<kotlin>-<ksp>`. The comment in `libs.versions.toml` and the
 26 updates, Gradle 9.8.2 and Compose BOM 2026.09.00. CI is green on it.)
 
 ## Done
+
+- 2026-11-18 · Share the reminder: the customer screen can share the filled-in credit
+  reminder through the share sheet (Telegram or any app), without a phone number, only
+  when money is owed. A person still picks the app and presses send. Tests.
+- 2026-11-18 · Demo tour: demo mode opens a five-stop guided tour (Today, ledger, credit
+  book, Reconcile, Reports), Amharic first. Each stop moves the app to its screen; Back,
+  Next, Finish and Close. Tests for the order and the card in Amharic.
+- 2026-11-18 · Weekly "money you may have missed" card on Today, from the reconcile
+  explanations for the last seven days: balance jumps and unread amounts lead, a possible
+  double count is its own line and never added. Hidden on a clean week. Tests.
+- 2026-11-18 · R50: built-in category names follow the app's language on every screen,
+  in the report and in the PDF. Renamed and custom categories show as typed; CSV keeps
+  stored names. Tests in the Amharic configuration.
+- 2026-11-12 · R52: A waiting message can be dismissed as "Not a payment" from the rule
+  screen, in English and Amharic. It is marked `IGNORED`, leaves the review queue and is
+  no longer counted by reconcile. One message at a time, not the whole sender; a message
+  parsed or recorded by hand meanwhile is left alone. DAO and view model tests.
+- 2026-11-12 · R53: Ledger and customer search treat `%`, `_` and `\` literally. Both
+  searches use `instr(lower(column), lower(query)) > 0` instead of `LIKE`, which keeps
+  the same ASCII case folding. DAO tests for each character and for case.
+- 2026-11-12 · R51: The privacy purge no longer scans every stored message on every
+  launch. `PrivacyPurgeGate` keeps the installed version code per database file and
+  scans only when it changes, so the demo file and the real ledger are tracked apart. A
+  restore purges the restored rows inside its own transaction. Tests for the gate and
+  for a restore of a backup holding a PIN and a text from a person.
 
 - 2026-11-06 · R48: A background failure no longer crashes the app. The application
   scope carries a `CoroutineExceptionHandler` from the new `BackgroundFailureLog`, which

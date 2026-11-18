@@ -15,10 +15,9 @@
 ## M1: Core screens
 
 - [ ] Customers: list, search by name/phone, detail with balance
-- [ ] Items and stock (if this product uses stock): list, add, receive stock
 - [ ] Payments and credit: record payment, credit statement
 - [ ] Reports: today / this week / this Ethiopian month; export CSV
-- [ ] Offline queue for the main money action with sync status indicator
+- [ ] Offline queue for fee payments only, with sync status indicator
 
 ## M2: Galmee School features
 
@@ -26,7 +25,7 @@
 - [x] Fee plans per grade
 - [x] Fee collection with receipt
 - [x] Unpaid fees by class
-- [ ] Grade entry and report card print
+- [x] Grade entry and report card print
 - [x] Attendance
 - [x] Parent contact list
 - [x] Migration: sc_students
@@ -41,6 +40,28 @@
 - [x] Generate monthly/term invoices for all students in one click
 - [x] `sc_record_fee_payment` RPC (writes core `payments`)
 - [x] Rank calculation per class
+
+## M-next: Tier 1 close-out
+
+- [x] Thermal receipt layout (Amharic) for fee receipts
+- [x] Print + reprint from the receipt screen
+- [x] Payment-received SMS row queued by `sc_record_fee_payment`
+
+## Student ID cards
+
+- [x] ID card per student: photo, QR code, school name, class and year; printed ten to an A4 sheet per class
+- [x] Photo taken or picked on the phone, cropped and shrunk before upload; private storage, owner/manager only
+
+## M-after: Tier 2 and 3
+
+- [x] Fee-due SMS generator per class/period into notifications
+- [x] Absence SMS on attendance save
+- [x] Collections report screen (today / Ethiopian month) + CSV
+- [ ] Offline queue for fee payment with client_ref
+- [ ] Report-card-ready Telegram batch
+- [ ] Teacher role: restrict mark entry to own subjects (with audit log)
+- [ ] Academic-year roll-over (promote classes, close year)
+- [ ] Excel import of students; export everything
 
 ## M3: Notifications
 

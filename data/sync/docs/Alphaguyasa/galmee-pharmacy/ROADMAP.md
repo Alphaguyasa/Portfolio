@@ -17,20 +17,21 @@
 - [x] Customers: list, search by name/phone, detail with balance
 - [x] Items and stock (if this product uses stock): list, add, receive stock
 - [x] Payments and credit: record payment, credit statement
-- [ ] Reports: today / this week / this Ethiopian month; export CSV
+- [x] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Pharmacy features
 
-- [ ] POS sale screen with search and phone-camera barcode scan
+- [x] POS sale screen with search and phone-camera barcode scan
 - [x] Stock list with expiry colours (red < 30 days, amber < 90 days)
 - [x] Receive-stock form (supplier, batch, expiry, cost) using `receive_stock`
 - [x] Credit customers list and statement (uses `customer_balances`)
-- [ ] Daily closing report (cash vs Telebirr vs credit)
+- [x] Remove expired stock from the stock list (owner and manager)
+- [x] Daily closing report (cash vs Telebirr vs credit)
 - [x] Migration: ph_suppliers
 - [x] Migration: ph_purchase_orders
 - [x] Migration: ph_purchase_lines
-- [ ] Sales go through core `record_sale` (already FEFO: earliest expiry leaves first)
+- [x] Sales go through core `record_sale` (already FEFO: earliest expiry leaves first)
 - [x] Nightly report query: items expiring in 30/60/90 days and items below reorder level
 - [ ] Purchase order -> receive goods -> `receive_stock` per line
 
@@ -48,11 +49,38 @@
 
 ## M5: Client ready
 
-- [ ] Receipt printing (58/80 mm thermal) and Telegram receipt
-- [ ] Data import from Excel/CSV
-- [ ] Export all tenant data to Excel
+- [ ] Receipt printing (58/80 mm thermal) and Telegram receipt (see M-next)
+- [ ] Data import from Excel/CSV (see M-after)
+- [ ] Export all tenant data to Excel (see M-after)
+
+## Later (after the first paying pharmacy)
+
 - [ ] Error monitoring hook (Sentry, DSN via env)
 - [ ] README: setup, env vars, deploy steps
+
+## M-next: close out the essentials
+
+- [x] Daily closing screen reading `ph_daily_closing` (cash/Telebirr/credit tiles + per-method list)
+- [x] Credit limit at the till: owners and managers can go over it with a reason; each one is listed on the daily closing
+- [ ] Receipt layout component (58 mm CSS print) for one sale, EN/AM
+- [ ] Print flow from sale success screen + reprint from sale detail
+- [ ] Telegram receipt: queue `notifications` row with receipt text on sale
+
+## M-after: keep them paying, then grow
+
+- [ ] Offline queue: IndexedDB queue for `record_sale` with client_ref
+- [ ] Sync status chip + retry on reconnect
+- [ ] Evening Telegram summary generator (SQL + notifications row)
+- [x] Reports screen: today / this week / Ethiopian month from existing views
+- [x] CSV export of reports
+- [ ] Staff invite (owner-only) + role select
+- [x] Per-staff sales column in daily closing
+- [ ] Excel import of items (template + parser)
+- [ ] Export-all to Excel
+
+## M-stars: features no notebook can do
+
+- [x] Walk-out log: one tap "asked for it, not in stock" at the till + weekly ranked restock list with missed sales, CSV download
 
 ## Q: Quality and security baseline (do these inside M0 and M1, not after)
 
