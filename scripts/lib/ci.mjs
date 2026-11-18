@@ -79,3 +79,36 @@ export function summariseCi(runs) {
   }
   return null;
 }
+
+/**
+ * Dependabot names its update jobs "<ecosystem> in <dir> [for <deps>] - Update #<n>";
+ * GitHub cuts a long dependency list short with "...", dropping the "- Update" part.
+ */
+const DEPENDABOT_JOB = /^\S+ in \S+( for .+)? - Update #\d+$|^\S+ in \S+ for .+(\.\.\.|…)$/;
+
+export function isDependabotJobName(name) {
+  return DEPENDABOT_JOB.test(name);
+}
+
+/**
+ * A saved CI summary without Dependabot's update jobs, for snapshots taken before
+ * summariseCi ignored them (only the job names were saved, so the name is the test).
+ * Null when nothing else ran on that commit: the snapshot then has no build result.
+ * When only Dependabot jobs had failed, every other run on the commit passed.
+ *
+ * @param {{ workflow: string, workflows?: string[], failing?: string[], conclusion: string | null } | null | undefined} ci
+ */
+export function withoutDependabot(ci) {
+  if (!ci) return null;
+  const workflows = (ci.workflows ?? [ci.workflow]).filter((n) => !isDependabotJobName(n));
+  if (!workflows.length) return null;
+  const failing = (ci.failing ?? []).filter((n) => !isDependabotJobName(n));
+  const droppedOnlyDependabot = (ci.failing ?? []).length > 0 && failing.length === 0;
+  return {
+    ...ci,
+    workflow: workflows.join(", "),
+    workflows,
+    failing,
+    conclusion: failing.length ? "failure" : droppedOnlyDependabot ? "success" : ci.conclusion,
+  };
+}

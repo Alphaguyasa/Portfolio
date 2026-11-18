@@ -5,8 +5,9 @@ import sitemap from "@/app/sitemap";
 import About from "@/components/About";
 import Footer from "@/components/Footer";
 import { aboutPage, bioStats, site } from "@/data/site";
-import { formatDate, methodEvidence, projectPath, projects, syncedAt } from "@/lib/projects";
+import { ciWall, formatDate, methodEvidence, projectPath, projects, syncedAt } from "@/lib/projects";
 import { methodEvidence as copyMethodEvidence } from "../scripts/lib/copy.mjs";
+import { isDependabotJobName, withoutDependabot } from "../scripts/lib/ci.mjs";
 import projectsData from "../data/projects.json";
 import syncData from "../data/sync/index.json";
 
@@ -15,6 +16,32 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").repl
 const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
 
 describe("about page", () => {
+  it("shows every project with CI on the wall, read from the snapshot", () => {
+    const repos = syncData.repos as { fullName: string; ci?: Parameters<typeof withoutDependabot>[0] }[];
+    const rows = ciWall();
+    expect(rows.map((r) => r.project.slug).sort()).toEqual(methodEvidence().withCi.map((p) => p.slug).sort());
+    for (const row of rows) {
+      const ci = withoutDependabot(repos.find((r) => r.fullName === row.project.repo)?.ci);
+      expect(row.state).toBe(!ci ? "unknown" : ci.conclusion === "success" ? "passing" : "failing");
+      expect(row.failing).toEqual(ci?.failing ?? []);
+      for (const name of row.workflows) expect(isDependabotJobName(name)).toBe(false);
+      expect(row.runsUrl).toMatch(new RegExp(`^https://github\\.com/${row.project.repo}/actions`));
+      expect(html).toContain(`href="${esc(row.runsUrl)}"`);
+      for (const name of row.failing) expect(html).toContain(esc(name));
+    }
+  });
+
+  it("lists failing builds first, unknown ones last, and says how many fail", () => {
+    const rows = ciWall();
+    const rank = { failing: 0, passing: 1, unknown: 2 };
+    for (let i = 1; i < rows.length; i++) expect(rank[rows[i].state]).toBeGreaterThanOrEqual(rank[rows[i - 1].state]);
+    const failing = rows.filter((r) => r.state === "failing").length;
+    const known = rows.filter((r) => r.state !== "unknown").length;
+    expect(text).toContain(failing ? `Failing: ${failing} of ${known}, listed first` : `All ${known} with a result are passing`);
+    expect((html.match(/data-ci="failing"/g) ?? []).length).toBe(failing);
+    expect((html.match(/data-ci="unknown"/g) ?? []).length).toBe(rows.length - known);
+  });
+
   it("counts the method evidence the same way as PORTFOLIO_COPY.md", () => {
     const site = methodEvidence();
     const copy = copyMethodEvidence(projectsData.projects, syncData);

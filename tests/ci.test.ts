@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { summariseCi } from "../scripts/lib/ci.mjs";
+import { isDependabotJobName, summariseCi, withoutDependabot } from "../scripts/lib/ci.mjs";
 
 let id = 0;
 const run = (
@@ -94,5 +94,35 @@ describe("summariseCi", () => {
       run("CI", "a", "success"),
     ]);
     expect(ci).toMatchObject({ conclusion: "success", headSha: "a" });
+  });
+});
+
+describe("withoutDependabot", () => {
+  const base = { status: "completed", at: "2026-11-06T00:00:00Z", headSha: "b" };
+
+  it("recognises Dependabot's job names and nothing else", () => {
+    expect(isDependabotJobName("npm_and_yarn in /. - Update #1685258065")).toBe(true);
+    expect(isDependabotJobName("github_actions in /. - Update #1684918551")).toBe(true);
+    expect(isDependabotJobName("gradle in / for com.google.devtools.ksp - Update #1688197104")).toBe(true);
+    expect(isDependabotJobName("gradle in / for gradle-wrapper, androidx.core:core-ktx, androidx.wo...")).toBe(true);
+    for (const name of ["CI", "Android CI", "Release tag", "deploy-not-alone", "CodeQL"]) {
+      expect(isDependabotJobName(name)).toBe(false);
+    }
+  });
+
+  it("is null when only Dependabot ran on the commit", () => {
+    const only = { ...base, workflow: "x", workflows: ["npm_and_yarn in /. - Update #1"], failing: ["npm_and_yarn in /. - Update #1"], conclusion: "failure" };
+    expect(withoutDependabot(only)).toBeNull();
+    expect(withoutDependabot(null)).toBeNull();
+  });
+
+  it("passes when only a Dependabot job had failed", () => {
+    const ci = withoutDependabot({ ...base, workflow: "x", workflows: ["CI", "pip in / - Update #2"], failing: ["pip in / - Update #2"], conclusion: "failure" });
+    expect(ci).toMatchObject({ conclusion: "success", failing: [], workflows: ["CI"], workflow: "CI" });
+  });
+
+  it("keeps a real failure failing", () => {
+    const ci = withoutDependabot({ ...base, workflow: "x", workflows: ["ci", "deploy", "pip in / - Update #2"], failing: ["deploy", "pip in / - Update #2"], conclusion: "failure" });
+    expect(ci).toMatchObject({ conclusion: "failure", failing: ["deploy"], workflows: ["ci", "deploy"] });
   });
 });

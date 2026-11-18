@@ -7,7 +7,7 @@ import { StatusBadge } from "@/components/Portfolio";
 import { Accent, Container, Eyebrow, Logo } from "@/components/ui";
 import { aboutPage } from "@/data/site";
 import { personJsonLd } from "@/lib/structured-data";
-import { formatDate, methodEvidence, projectPath, projects, syncedAt, type Project } from "@/lib/projects";
+import { ciWall, formatDate, methodEvidence, projectPath, projects, syncedAt, type Project } from "@/lib/projects";
 
 const description =
   "Alpha Guyasa, full-stack and Android developer in Addis Ababa: what he builds and how: written plans, documented rules, tested changes and CI.";
@@ -47,6 +47,66 @@ function ProjectList({ items }: { items: Project[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+function CiWall() {
+  const rows = ciWall();
+  const failing = rows.filter((row) => row.state === "failing").length;
+  const known = rows.filter((row) => row.state !== "unknown").length;
+  const label = { passing: "Passing", failing: "Failing", unknown: "No result" };
+  return (
+    <section className="mt-14" aria-labelledby="ci-wall">
+      <h2 id="ci-wall" className="font-display text-2xl font-bold tracking-[-0.4px] xl:text-[30px]">
+        Every build, as it stands
+      </h2>
+      <p className={`mt-4 max-w-[760px] ${prose}`}>
+        The newest settled CI result on each repo&apos;s default branch, from the same sync.{" "}
+        {failing ? `Failing: ${failing} of ${known}, listed first.` : `All ${known} with a result are passing.`}
+        {known < rows.length &&
+          ` ${rows.length - known} had only dependency-update jobs on their newest commit in the sync, so no build result is shown for them.`}
+      </p>
+      <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {rows.map((row) => (
+          <li
+            key={row.project.slug}
+            data-ci={row.state}
+            className={`flex flex-col gap-1.5 rounded-2xl bg-surface-alt p-4 ring-1 ${row.state === "failing" ? "ring-accent" : "ring-hairline"}`}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <Link href={projectPath(row.project)} className="font-display text-base font-bold hover:text-accent">
+                {row.project.name}
+              </Link>
+              <span
+                className={`shrink-0 rounded-[40px] px-3 py-1 font-sans text-[13px] font-semibold ${
+                  row.state === "passing"
+                    ? "bg-ink text-white"
+                    : row.state === "failing"
+                      ? "bg-accent text-white"
+                      : "bg-white text-muted ring-1 ring-hairline"
+                }`}
+              >
+                {label[row.state]}
+              </span>
+            </div>
+            <p className="font-sans text-sm leading-[1.5] text-muted">
+              {row.branch ? `${row.branch}, ` : ""}
+              {formatDate(row.at)}
+              {row.workflows.length > 0 && ` · ${row.workflows.join(", ")}`}
+            </p>
+            {row.failing.length > 0 && (
+              <p className="font-sans text-sm leading-[1.5] text-body">Failing: {row.failing.join(", ")}</p>
+            )}
+            <a
+              href={row.runsUrl}
+              className="w-fit font-sans text-sm font-medium text-accent underline-offset-2 hover:underline"
+            >
+              See the runs<span className="sr-only"> for {row.project.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
@@ -151,6 +211,8 @@ export default function AboutPage() {
               </div>
             </div>
           </section>
+
+          <CiWall />
 
           <section className="mt-14" aria-labelledby="this-site">
             <h2 id="this-site" className="font-display text-2xl font-bold tracking-[-0.4px] xl:text-[30px]">

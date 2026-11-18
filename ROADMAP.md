@@ -36,10 +36,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 Clients reading the site can see the work but not what they can hire Alpha for, what
 it costs, or the outcome a project produced. These items come before the older ones below.
 
-### 54. [P1 · S] CI wall on /about
-A grid of every listed repo with its CI state on the default branch, read from the sync
-snapshot at build time. Failing repos show as failing; nothing is hand-written.
-
 ### 55. [P1 · M] Services page copy and three packages
 Draft the wording for three packages (business web app, offline Android app, security
 review): scope and timeline. Prices only once Alpha has written them (the decision log).
@@ -119,6 +115,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P1] CI wall on /about** (item 54), 2026-11-18. Every listed repo with its newest settled CI result on the default branch, from the sync; failing builds first. Dependabot's update jobs no longer count as failing CI (in the sync, and in older snapshots by job name); repos whose newest synced commit ran only those jobs show "No result" until the next sync.
 - **[P1] Alpha Coin case study linked** (item 53), 2026-11-18. The project page links the written case study and the one-command local demo.
 
 - **[P1] Real app screens for the other Galmee projects** (item 52), 2026-11-09. Every deployed Galmee app now shows its main working screens, rendered from its own code with sample data and committed to its repo (`docs/screenshots`). They are not captures of the live sites, which this environment cannot open.

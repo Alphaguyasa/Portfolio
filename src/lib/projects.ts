@@ -4,6 +4,7 @@
  */
 import projectsData from "../../data/projects.json";
 import syncData from "../../data/sync/index.json";
+import { withoutDependabot } from "../../scripts/lib/ci.mjs";
 
 export type Status = "idea" | "building" | "shipped" | "maintained" | "completed" | "paused";
 
@@ -57,12 +58,15 @@ type SyncRepo = {
   } | null;
   npm?: { name: string; latest: string | null; publishedAt: string | null } | null;
   rootFiles?: string[];
+  /** `ci` without Dependabot's update jobs; set below, not stored in the snapshot. */
+  buildCi?: SyncRepo["ci"];
   /** Private repos only: the summary Alpha wrote in portfolio.config.json "include". */
   publicSummary?: { name: string; status: Status; summary: string };
 };
 
 export const projects = projectsData.projects as Project[];
-const repos = syncData.repos as SyncRepo[];
+// Dependabot's update jobs say nothing about whether the code builds (scripts/lib/ci.mjs).
+const repos: SyncRepo[] = (syncData.repos as SyncRepo[]).map((r) => ({ ...r, buildCi: withoutDependabot(r.ci) as SyncRepo["ci"] }));
 export const syncedAt: string = syncData.syncedAt;
 
 /**
@@ -94,8 +98,8 @@ export function liveFacts(project: Project): LiveFacts {
   return {
     lastCommitAt: repo?.lastCommitAt ?? null,
     latestTag: repo?.latestRelease?.tag ?? repo?.tags?.[0] ?? null,
-    ciPassing: repo?.ci ? repo.ci.conclusion === "success" : null,
-    ciAt: repo?.ci?.at ?? null,
+    ciPassing: repo?.buildCi ? repo.buildCi.conclusion === "success" : null,
+    ciAt: repo?.buildCi?.at ?? null,
     defaultBranch: repo?.defaultBranch ?? null,
     npmVersion: repo?.npm?.latest ?? null,
   };
@@ -143,4 +147,45 @@ export function methodEvidence() {
     withRoadmap: listed.filter(({ repo }) => (repo.rootFiles ?? []).includes("ROADMAP.md")).map(({ project }) => project),
     withCi: listed.filter(({ repo }) => repo.ci).map(({ project }) => project),
   };
+}
+
+export type CiWallRow = {
+  project: Project;
+  /** "unknown": only Dependabot ran on the newest settled commit in the snapshot. */
+  state: "passing" | "failing" | "unknown";
+  branch: string | null;
+  at: string;
+  workflows: string[];
+  failing: string[];
+  /** The repo's Actions runs on its default branch. */
+  runsUrl: string;
+};
+
+/**
+ * Every listed project's CI on its default branch, read from the sync snapshot:
+ * failing ones first, so a red build is never buried, and repos with no build
+ * result last. Projects without CI are left out (methodEvidence counts them).
+ */
+export function ciWall(): CiWallRow[] {
+  const rows = projects.flatMap((project) => {
+    const repo = repos.find((r) => r.fullName === project.repo);
+    if (!repo?.ci) return [];
+    const branch = repo.defaultBranch ?? null;
+    const query = branch ? `?query=${encodeURIComponent(`branch:${branch}`)}` : "";
+    const ci = repo.buildCi;
+    const state: CiWallRow["state"] = !ci ? "unknown" : ci.conclusion === "success" ? "passing" : "failing";
+    return [
+      {
+        project,
+        state,
+        branch,
+        at: (ci ?? repo.ci).at,
+        workflows: ci ? (ci.workflows ?? [ci.workflow]) : [],
+        failing: ci?.failing ?? [],
+        runsUrl: `https://github.com/${repo.fullName}/actions${query}`,
+      },
+    ];
+  });
+  const order = { failing: 0, passing: 1, unknown: 2 };
+  return rows.sort((a, b) => order[a.state] - order[b.state] || a.project.name.localeCompare(b.project.name));
 }
