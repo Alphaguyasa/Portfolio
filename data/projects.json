@@ -128,7 +128,7 @@
         "100 instrumented tests run in CI on an API 34 emulator."
       ],
       "learned": [
-        "Closed a security gap: a direct message is now held until the peer's agreement key is known instead of being sent in plaintext. The receiving side still accepts plaintext from older builds, tracked on the roadmap."
+        "Closed a security gap: a direct message is now held until the peer's agreement key is known instead of being sent in plaintext. The receiving side still accepts plaintext from builds older than that fix; cutting that off is planned on the roadmap."
       ],
       "images": [],
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/NullChat" }],
@@ -136,7 +136,7 @@
         { "path": "@description", "quote": "Peer-to-peer Android messaging over Bluetooth LE and Wi-Fi Direct. Text and photos, no network connection required." },
         { "path": "ROADMAP.md", "quote": "#4 Instrumented tests in CI (API 34 emulator, 100 tests)" },
         { "path": "ROADMAP.md", "quote": "#6 No plaintext direct messages (held until keyed)" },
-        { "path": "ROADMAP.md", "quote": "Receiving side still accepts plaintext direct messages from older builds" }
+        { "path": "ROADMAP.md", "quote": "Plaintext direct-message cutoff" }
       ]
     },
     {
