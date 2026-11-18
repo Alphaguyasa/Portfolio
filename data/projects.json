@@ -1037,6 +1037,94 @@
           "quote": "Warehouse stock by grade"
         }
       ]
+    },
+    {
+      "slug": "galmee-clinic",
+      "name": "Galmee Clinic",
+      "tagline": "Patient records, queue and billing for small clinics",
+      "repo": "Alphaguyasa/galmee-clinic",
+      "status": "building",
+      "statusNote": "In development. A working version is deployed, and its roadmap still has open items.",
+      "featured": false,
+      "platform": "Web (installable PWA)",
+      "stack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Supabase",
+        "Postgres RLS"
+      ],
+      "problem": "Small clinics keep patient history in paper folders, so finding a returning patient's visits and lab results means searching the folder room.",
+      "approach": "Find any patient's history in 3 seconds instead of searching the folder room. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security.",
+      "results": [
+        "Reception registers patients and runs the day's queue from waiting to doctor to lab.",
+        "The lab enters results, and the doctor gets a Telegram message when they are ready.",
+        "A patient card shows visits, labs and balance, and every opening of it is logged."
+      ],
+      "learned": [],
+      "images": [
+        {
+          "src": "/assets/projects/galmee-clinic/queue-en-360.webp",
+          "alt": "Galmee Clinic reception queue with sample patients",
+          "source": "Alphaguyasa/galmee-clinic docs/screenshots/queue-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-clinic",
+            "path": "docs/screenshots/queue-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-clinic/patient-card-en-360.webp",
+          "alt": "Galmee Clinic patient card with visits, lab results and balance, sample data",
+          "source": "Alphaguyasa/galmee-clinic docs/screenshots/patient-card-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-clinic",
+            "path": "docs/screenshots/patient-card-en-360.png"
+          },
+          "shape": "phone"
+        },
+        {
+          "src": "/assets/projects/galmee-clinic/income-en-360.webp",
+          "alt": "Galmee Clinic daily income by service with sample data",
+          "source": "Alphaguyasa/galmee-clinic docs/screenshots/income-en-360.png, sample data",
+          "from": {
+            "repo": "Alphaguyasa/galmee-clinic",
+            "path": "docs/screenshots/income-en-360.png"
+          },
+          "shape": "phone"
+        }
+      ],
+      "links": [
+        {
+          "label": "Live app",
+          "href": "https://galmee-clinic.vercel.app"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/Alphaguyasa/galmee-clinic"
+        }
+      ],
+      "facts": [
+        {
+          "path": "README.md",
+          "quote": "Find any patient's history in 3 seconds instead of searching the folder room."
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Reception queue screen (cl_visits by status) + open visit"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Status transitions wired (waiting→doctor→lab; done comes from billing)"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Telegram-to-doctor on lab completion"
+        },
+        {
+          "path": "ROADMAP.md",
+          "quote": "Patient card (visits, labs, balance) screen, every opening logged"
+        }
+      ]
     }
   ]
 }

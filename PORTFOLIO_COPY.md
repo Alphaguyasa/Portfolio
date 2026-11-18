@@ -39,8 +39,9 @@ Selected work:
 - **Galmee Driving School** (In development): Students, lessons and payments for driving schools. Students register with a document checklist.
 - **Galmee Rentals** (In development): Rent tracking for landlords and brokers. Properties and units are listed as vacant or occupied.
 - **Galmee Coffee** (In development): Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances.
+- **Galmee Clinic** (In development): Patient records, queue and billing for small clinics. Reception registers patients and runs the day's queue from waiting to doctor to lab.
 
-How I work: 15 of my 18 listed projects keep a written roadmap and 7 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
+How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
 
 ### Portfolio entries
 
@@ -188,6 +189,14 @@ How I work: 15 of my 18 listed projects keep a written roadmap and 7 have CI on 
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-coffee.vercel.app
 
+#### Galmee Clinic: Patient records, queue and billing for small clinics
+
+- **Short:** Patient records, queue and billing for small clinics. Find any patient's history in 3 seconds instead of searching the folder room.
+- **Long:** Small clinics keep patient history in paper folders, so finding a returning patient's visits and lab results means searching the folder room. Find any patient's history in 3 seconds instead of searching the folder room. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. Reception registers patients and runs the day's queue from waiting to doctor to lab. The lab enters results, and the doctor gets a Telegram message when they are ready. A patient card shows visits, labs and balance, and every opening of it is logged.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
+- **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
+- **Link:** https://galmee-clinic.vercel.app
+
 ## LinkedIn
 
 ### About (short)
@@ -196,7 +205,7 @@ Full-stack and Android developer in Addis Ababa. Offline-first web apps (Next.js
 
 ### About (long)
 
-I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 15 of my 18 listed projects keep a written roadmap and 7 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
+I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 16 of my 19 listed projects keep a written roadmap and 7 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
 
 ### Projects section
 
@@ -218,6 +227,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Galmee Driving School**: Students, lessons and payments for driving schools. Students register with a document checklist. (In development · last commit 2026-11-18) https://galmee-driving.vercel.app
 - **Galmee Rentals**: Rent tracking for landlords and brokers. Properties and units are listed as vacant or occupied. (In development · last commit 2026-11-13) https://galmee-rentals.vercel.app
 - **Galmee Coffee**: Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances. (In development · last commit 2026-11-12) https://galmee-coffee.vercel.app
+- **Galmee Clinic**: Patient records, queue and billing for small clinics. Reception registers patients and runs the day's queue from waiting to doctor to lab. (In development · last commit 2026-11-18) https://galmee-clinic.vercel.app
 
 ## CV project list
 
@@ -239,6 +249,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Galmee Driving School** — Students, lessons and payments for driving schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 - **Galmee Rentals** — Rent tracking for landlords and brokers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-13.
 - **Galmee Coffee** — Farmer purchases and advances for coffee traders. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-12.
+- **Galmee Clinic** — Patient records, queue and billing for small clinics. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 
 ## Certificates
 

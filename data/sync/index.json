@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-18T06:43:55.786Z",
+  "syncedAt": "2026-11-18T06:58:17.635Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -375,6 +375,59 @@
         "README.md",
         "docs/DESIGN.md",
         "docs/LINGUISTIC-REVIEW.md"
+      ],
+      "carriedOverFrom": "2026-11-18T06:43:55.786Z"
+    },
+    {
+      "name": "galmee-clinic",
+      "fullName": "Alphaguyasa/galmee-clinic",
+      "url": "https://github.com/Alphaguyasa/galmee-clinic",
+      "private": false,
+      "description": "Galmee Clinic - patient records, appointments and lab for Ethiopian clinics",
+      "homepage": "https://galmee-clinic.vercel.app",
+      "topics": [],
+      "license": null,
+      "primaryLanguage": "TypeScript",
+      "languages": [
+        "TypeScript",
+        "PLpgSQL",
+        "CSS",
+        "JavaScript"
+      ],
+      "defaultBranch": "main",
+      "createdAt": "2026-11-06T08:39:51Z",
+      "pushedAt": "2026-11-18T04:21:33Z",
+      "lastCommitAt": "2026-11-18T04:21:31Z",
+      "latestRelease": null,
+      "tags": [],
+      "ci": null,
+      "mergedPulls": [],
+      "npm": null,
+      "rootFiles": [
+        ".env.example",
+        ".github",
+        ".gitignore",
+        "README.md",
+        "ROADMAP.md",
+        "components.json",
+        "docs",
+        "eslint.config.mjs",
+        "messages",
+        "next-env.d.ts",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "public",
+        "scripts",
+        "src",
+        "supabase",
+        "tsconfig.json",
+        "vitest.config.ts"
+      ],
+      "docs": [
+        "README.md",
+        "ROADMAP.md",
+        "docs/DESIGN.md"
       ]
     },
     {
@@ -910,7 +963,8 @@
       ],
       "docs": [
         "README.md"
-      ]
+      ],
+      "carriedOverFrom": "2026-11-18T06:43:55.786Z"
     },
     {
       "name": "Meret",
@@ -1558,7 +1612,8 @@
       ],
       "docs": [
         "README.md"
-      ]
+      ],
+      "carriedOverFrom": "2026-11-18T06:43:55.786Z"
     },
     {
       "name": "erko",
