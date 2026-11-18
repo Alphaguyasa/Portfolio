@@ -31,6 +31,46 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 
 ## Open
 
+## Milestone: from portfolio to storefront
+
+Clients reading the site can see the work but not what they can hire Alpha for, what
+it costs, or the outcome a project produced. These items come before the older ones below.
+
+### 53. [P1 · S] Link the Alpha Coin case study
+The project is frozen with a written case study and a one-command local demo. Link both
+from its project page.
+
+### 54. [P1 · S] CI wall on /about
+A grid of every listed repo with its CI state on the default branch, read from the sync
+snapshot at build time. Failing repos show as failing; nothing is hand-written.
+
+### 55. [P1 · M] Services page copy and three packages
+Draft the wording for three packages (business web app, offline Android app, security
+review): scope and timeline. Prices only once Alpha has written them (the decision log).
+
+### 56. [P1 · M] /services page behind the fact gates
+Build the page from the approved copy. Every number needs a quote source; the contact
+form opens prefilled with the chosen package.
+
+### 57. [P1 · M] Suq case study page
+Problem, the offline constraint, and what the demo shows, with the existing screenshots.
+
+### 58. [P1 · M] Mezgeb case study page
+Problem, the Play Store SMS constraint, and how teach-a-rule answers it.
+
+### 59. [P1 · M] Security track page
+One page that gathers the threat models and hardening work from NullChat, Mezgeb and
+Alpha Coin, for security-review clients.
+
+### 60. [P2 · S] Availability field and banner
+One data field (open or full, next free slot) drives a banner; verify:facts rejects a
+stale date.
+
+### 61. [P2 · S] Amharic wording for home and services
+Ask Alpha for the Amharic wording (blocks item 13).
+
+## Older open items
+
 ### 51. [P3 · S] Guard the site URL against the deployment
 Nothing ties `site.url` to the address the site is served from, which is how it went stale. Add a check that reads a recorded production host (`portfolio.config.json`) and compare it with the site URL.
 
