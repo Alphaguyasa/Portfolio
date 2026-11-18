@@ -36,10 +36,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 Clients reading the site can see the work but not what they can hire Alpha for, what
 it costs, or the outcome a project produced. These items come before the older ones below.
 
-### 53. [P1 · S] Link the Alpha Coin case study
-The project is frozen with a written case study and a one-command local demo. Link both
-from its project page.
-
 ### 54. [P1 · S] CI wall on /about
 A grid of every listed repo with its CI state on the default branch, read from the sync
 snapshot at build time. Failing repos show as failing; nothing is hand-written.
@@ -122,6 +118,8 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 - **docsearch:** `deploy-not-alone` failed on main's newest commit (2026-11-02 sync; still failing in the 2026-11-05 sync).
 
 ## Done
+
+- **[P1] Alpha Coin case study linked** (item 53), 2026-11-18. The project page links the written case study and the one-command local demo.
 
 - **[P1] Real app screens for the other Galmee projects** (item 52), 2026-11-09. Every deployed Galmee app now shows its main working screens, rendered from its own code with sample data and committed to its repo (`docs/screenshots`). They are not captures of the live sites, which this environment cannot open.
 - **[P1] Galmee projects on the site** (item 49), 2026-11-09. Eight Galmee apps added (Pharmacy, Wholesale, Hotel, School, Garage, Transport, Driving School, Rentals), each with its live link and every claim quoted from its own repo. Only Wholesale has app screenshots so far. Coffee was added the same day with its own screens; Clinic stays out until it is deployed. The sync now keeps a repo's last saved details when the token is refused, so one repo out of reach no longer stops it.

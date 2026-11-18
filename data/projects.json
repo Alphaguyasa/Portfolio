@@ -263,7 +263,11 @@
       "results": [],
       "learned": [],
       "images": [],
-      "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Alpha-digital-coin" }],
+      "links": [
+        { "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Alpha-digital-coin" },
+        { "label": "Case study", "href": "https://github.com/Alphaguyasa/Alpha-digital-coin/blob/main/docs/CASE_STUDY.md" },
+        { "label": "Try it locally (npm run demo)", "href": "https://github.com/Alphaguyasa/Alpha-digital-coin#quick-demo" }
+      ],
       "facts": [
         { "path": "README.md", "quote": "A token dashboard built on the Internet Computer Protocol (ICP) with Internet Identity authentication." },
         { "path": "README.md", "quote": "Experimental software, not financial advice." },
