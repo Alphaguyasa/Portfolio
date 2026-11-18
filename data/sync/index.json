@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-18T06:58:17.635Z",
+  "syncedAt": "2026-11-18T07:04:43.690Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -375,8 +375,7 @@
         "README.md",
         "docs/DESIGN.md",
         "docs/LINGUISTIC-REVIEW.md"
-      ],
-      "carriedOverFrom": "2026-11-18T06:43:55.786Z"
+      ]
     },
     {
       "name": "galmee-clinic",
@@ -396,11 +395,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:39:51Z",
-      "pushedAt": "2026-11-18T04:21:33Z",
-      "lastCommitAt": "2026-11-18T04:21:31Z",
+      "pushedAt": "2026-11-18T07:02:19Z",
+      "lastCommitAt": "2026-11-18T07:02:17Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:23Z",
+        "headSha": "a4d124397f2627607ea7d2e3e70398e5f285b1e1"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -448,11 +457,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:02Z",
-      "pushedAt": "2026-11-13T12:08:37Z",
-      "lastCommitAt": "2026-11-12T23:14:19Z",
+      "pushedAt": "2026-11-18T07:02:22Z",
+      "lastCommitAt": "2026-11-18T07:02:21Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:25Z",
+        "headSha": "28edace50a320f6166d0d8d739e9b9978747d3ec"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -500,11 +519,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:14Z",
-      "pushedAt": "2026-11-18T06:10:23Z",
-      "lastCommitAt": "2026-11-18T06:10:22Z",
+      "pushedAt": "2026-11-18T07:02:28Z",
+      "lastCommitAt": "2026-11-18T07:02:25Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:30Z",
+        "headSha": "ce80f957b25b907a06f46b8f072aed1fd62982d4"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -553,11 +582,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:18Z",
-      "pushedAt": "2026-11-13T00:45:48Z",
-      "lastCommitAt": "2026-11-12T18:25:10Z",
+      "pushedAt": "2026-11-18T07:02:33Z",
+      "lastCommitAt": "2026-11-18T07:02:30Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:36Z",
+        "headSha": "3c12805c04e7c6ab66d771108970eccda3dd2c6a"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -605,11 +644,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:09Z",
-      "pushedAt": "2026-11-18T06:12:01Z",
-      "lastCommitAt": "2026-11-18T06:11:58Z",
+      "pushedAt": "2026-11-18T07:02:41Z",
+      "lastCommitAt": "2026-11-18T07:02:36Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:44Z",
+        "headSha": "dc21676f2ee737dfe73e9750421ba93182c90fa5"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -658,11 +707,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:38:41Z",
-      "pushedAt": "2026-11-17T18:22:20Z",
-      "lastCommitAt": "2026-11-17T18:22:18Z",
+      "pushedAt": "2026-11-18T07:02:50Z",
+      "lastCommitAt": "2026-11-18T07:02:45Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:53Z",
+        "headSha": "70ab66ab611fd220def00bb5e587b9a1a96cf0e4"
+      },
       "mergedPulls": [
         {
           "number": 6,
@@ -717,11 +776,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:26Z",
-      "pushedAt": "2026-11-13T14:36:15Z",
-      "lastCommitAt": "2026-11-13T04:20:27Z",
+      "pushedAt": "2026-11-18T07:02:56Z",
+      "lastCommitAt": "2026-11-18T07:02:53Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:02:59Z",
+        "headSha": "cd1da25606c1c7b75872795b63436691d6f118dc"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -769,11 +838,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:00Z",
-      "pushedAt": "2026-11-17T22:21:11Z",
-      "lastCommitAt": "2026-11-17T22:21:09Z",
+      "pushedAt": "2026-11-18T07:03:01Z",
+      "lastCommitAt": "2026-11-18T07:02:58Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:03:04Z",
+        "headSha": "2fbf22ec724eaa4d00fe0b27e21f2f2a183ed798"
+      },
       "mergedPulls": [
         {
           "number": 6,
@@ -828,11 +907,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:37Z",
-      "pushedAt": "2026-11-18T06:11:11Z",
-      "lastCommitAt": "2026-11-18T06:11:10Z",
+      "pushedAt": "2026-11-18T07:03:06Z",
+      "lastCommitAt": "2026-11-18T07:03:03Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:03:08Z",
+        "headSha": "54a3aa24911b65c0db312f4a84411a5c51491737"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -881,11 +970,21 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:39:31Z",
-      "pushedAt": "2026-11-17T19:20:45Z",
-      "lastCommitAt": "2026-11-17T19:20:43Z",
+      "pushedAt": "2026-11-18T07:03:11Z",
+      "lastCommitAt": "2026-11-18T07:03:08Z",
       "latestRelease": null,
       "tags": [],
-      "ci": null,
+      "ci": {
+        "workflow": "CI",
+        "workflows": [
+          "CI"
+        ],
+        "failing": [],
+        "status": "completed",
+        "conclusion": "success",
+        "at": "2026-11-18T07:03:14Z",
+        "headSha": "fb6ea5563b1adea9e67cb3914451bd4ab0b96bb4"
+      },
       "mergedPulls": [],
       "npm": null,
       "rootFiles": [
@@ -963,8 +1062,7 @@
       ],
       "docs": [
         "README.md"
-      ],
-      "carriedOverFrom": "2026-11-18T06:43:55.786Z"
+      ]
     },
     {
       "name": "Meret",
@@ -1612,8 +1710,7 @@
       ],
       "docs": [
         "README.md"
-      ],
-      "carriedOverFrom": "2026-11-18T06:43:55.786Z"
+      ]
     },
     {
       "name": "erko",

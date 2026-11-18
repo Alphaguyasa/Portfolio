@@ -41,7 +41,7 @@ Selected work:
 - **Galmee Coffee** (In development): Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances.
 - **Galmee Clinic** (In development): Patient records, queue and billing for small clinics. Reception registers patients and runs the day's queue from waiting to doctor to lab.
 
-How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
+How I work: 16 of my 19 listed projects keep a written roadmap and 17 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass.
 
 ### Portfolio entries
 
@@ -121,7 +121,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on 
 
 - **Short:** Stock and expiry tracking for pharmacies. See which drugs expire next month and how much money is sitting in them.
 - **Long:** Pharmacies lose money on medicine that expires on the shelf, and on paper nobody can see what expires next or how much cash is tied up in it. See which drugs expire next month and how much money is sitting in them. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. Stock list colour-coded by how close each item is to expiry. Receiving stock records the supplier, batch, expiry and cost. Credit customers have a running list and statement.
-- **Status:** In development · last commit 2026-11-17. In development. A working version is deployed, and its roadmap still has open items.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-pharmacy.vercel.app
 
@@ -129,7 +129,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on 
 
 - **Short:** Customer debt tracking for wholesalers. Your notebook says people owe you money.
 - **Long:** Wholesalers sell on credit and keep the debts in a notebook, so it is hard to see who owes what and for how long. Your notebook says people owe you money. This shows exactly who, how much, and since when. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. Customers are sorted by the amount they owe. Each customer has a statement of every debt and repayment with a running balance. An overdue list groups debts by how old they are.
-- **Status:** In development · last commit 2026-11-17. In development. A working version is deployed, and its roadmap still has open items.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-wholesale.vercel.app
 
@@ -145,7 +145,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on 
 
 - **Short:** Fee collection and attendance for private schools. Know exactly which parents haven't paid this month, and remind them all with one tap.
 - **Long:** Private schools track fees by hand, so finding which parents have not paid this month takes hours. Know exactly which parents haven't paid this month, and remind them all with one tap. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. Student register by class and section. Fee collection with a receipt, and unpaid fees listed by class. Attendance is recorded in the app.
-- **Status:** In development · last commit 2026-11-17. In development. A working version is deployed, and its roadmap still has open items.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-school.vercel.app
 
@@ -153,7 +153,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on 
 
 - **Short:** Job cards and vehicle history for garages. Type a plate number and see every repair and part ever put on that car.
 - **Long:** Garages keep repairs on loose job cards, so a car’s history and the parts used on it are hard to find. Type a plate number and see every repair and part ever put on that car. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. Job cards hold the vehicle, plate, complaint, mechanic, parts and labour. Vehicle history can be found by plate number. Parts stock and sales are tracked.
-- **Status:** In development · last commit 2026-11-12. In development. A working version is deployed, and its roadmap still has open items.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-garage.vercel.app
 
@@ -177,7 +177,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on 
 
 - **Short:** Rent tracking for landlords and brokers. Stop chasing rent: tenants are reminded automatically and you see who is late.
 - **Long:** Landlords chase rent by hand and have no clear view of which tenants are late. Stop chasing rent: tenants are reminded automatically and you see who is late. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. Properties and units are listed as vacant or occupied. Each tenant has a rent schedule and an overdue list shows who is late. A broker mode covers listings and client matching.
-- **Status:** In development · last commit 2026-11-13. In development. A working version is deployed, and its roadmap still has open items.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-rentals.vercel.app
 
@@ -185,7 +185,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 7 have CI on 
 
 - **Short:** Farmer purchases and advances for coffee traders. Every kilo bought, every birr paid and every advance, per farmer, with no arguments.
 - **Long:** Coffee traders buy from many farmers and give advances, and disputes follow when weights, prices and advances are only on paper. Every kilo bought, every birr paid and every advance, per farmer, with no arguments. Built as a mobile-first installable web app in Amharic, Afaan Oromo and English, with each business’s data kept apart by row-level security. A farmer register holds each farmer’s purchases and advances. Purchases record the kilos, grade, price per kilo and a moisture note. Warehouse stock is tracked by grade.
-- **Status:** In development · last commit 2026-11-12. In development. A working version is deployed, and its roadmap still has open items.
+- **Status:** In development · last commit 2026-11-18. In development. A working version is deployed, and its roadmap still has open items.
 - **Skills:** Next.js, Tailwind CSS, Supabase, Postgres RLS
 - **Link:** https://galmee-coffee.vercel.app
 
@@ -205,7 +205,7 @@ Full-stack and Android developer in Addis Ababa. Offline-first web apps (Next.js
 
 ### About (long)
 
-I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 16 of my 19 listed projects keep a written roadmap and 7 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
+I build software for places where the network fails: point of sale that keeps selling through a blackout, a mobile-money ledger with no internet permission at all, peer-to-peer messaging with no network. 16 of my 19 listed projects keep a written roadmap and 17 have CI on GitHub Actions. I plan each change in writing before I build it, ship it with the tests that prove it, and treat CI as the gatekeeper: a change is done when its checks pass. Open to freelance and contract work.
 
 ### Projects section
 
@@ -218,15 +218,15 @@ I build software for places where the network fails: point of sale that keeps se
 - **HU News**: Haramaya University news app. Signed release APK committed to the repo. (Shipped · last commit 2026-05-02) https://github.com/Alphaguyasa/HUnews
 - **Security Scanner**: Automated web vulnerability scanner, similar to online pentesting platforms. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.. (Completed · last commit 2026-05-12) https://github.com/vulnerability-scanner-website/Final-year-project
 - **Alpha Coin**: Token dashboard on the Internet Computer. A Motoko token canister with Internet Identity sign-in: check a balance, claim tokens once per principal, and transfer to another principal.. (Completed · last commit 2026-11-18) https://github.com/Alphaguyasa/Alpha-digital-coin
-- **Galmee Pharmacy**: Stock and expiry tracking for pharmacies. Stock list colour-coded by how close each item is to expiry. (In development · last commit 2026-11-17) https://galmee-pharmacy.vercel.app
-- **Galmee Wholesale**: Customer debt tracking for wholesalers. Customers are sorted by the amount they owe. (In development · last commit 2026-11-17) https://galmee-wholesale.vercel.app
+- **Galmee Pharmacy**: Stock and expiry tracking for pharmacies. Stock list colour-coded by how close each item is to expiry. (In development · last commit 2026-11-18) https://galmee-pharmacy.vercel.app
+- **Galmee Wholesale**: Customer debt tracking for wholesalers. Customers are sorted by the amount they owe. (In development · last commit 2026-11-18) https://galmee-wholesale.vercel.app
 - **Galmee Hotel**: Room board and bookings for small hotels. A room board shows every room by day, coloured by status. (In development · last commit 2026-11-18) https://galmee-hotel.vercel.app
-- **Galmee School**: Fee collection and attendance for private schools. Student register by class and section. (In development · last commit 2026-11-17) https://galmee-school.vercel.app
-- **Galmee Garage**: Job cards and vehicle history for garages. Job cards hold the vehicle, plate, complaint, mechanic, parts and labour. (In development · last commit 2026-11-12) https://galmee-garage.vercel.app
+- **Galmee School**: Fee collection and attendance for private schools. Student register by class and section. (In development · last commit 2026-11-18) https://galmee-school.vercel.app
+- **Galmee Garage**: Job cards and vehicle history for garages. Job cards hold the vehicle, plate, complaint, mechanic, parts and labour. (In development · last commit 2026-11-18) https://galmee-garage.vercel.app
 - **Galmee Transport**: Ticketing and cash handover for bus operators. Tickets are sold by route, departure and seat. (In development · last commit 2026-11-18) https://galmee-transport.vercel.app
 - **Galmee Driving School**: Students, lessons and payments for driving schools. Students register with a document checklist. (In development · last commit 2026-11-18) https://galmee-driving.vercel.app
-- **Galmee Rentals**: Rent tracking for landlords and brokers. Properties and units are listed as vacant or occupied. (In development · last commit 2026-11-13) https://galmee-rentals.vercel.app
-- **Galmee Coffee**: Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances. (In development · last commit 2026-11-12) https://galmee-coffee.vercel.app
+- **Galmee Rentals**: Rent tracking for landlords and brokers. Properties and units are listed as vacant or occupied. (In development · last commit 2026-11-18) https://galmee-rentals.vercel.app
+- **Galmee Coffee**: Farmer purchases and advances for coffee traders. A farmer register holds each farmer’s purchases and advances. (In development · last commit 2026-11-18) https://galmee-coffee.vercel.app
 - **Galmee Clinic**: Patient records, queue and billing for small clinics. Reception registers patients and runs the day's queue from waiting to doctor to lab. (In development · last commit 2026-11-18) https://galmee-clinic.vercel.app
 
 ## CV project list
@@ -240,15 +240,15 @@ I build software for places where the network fails: point of sale that keeps se
 - **HU News** — Haramaya University news app. Flutter, Dart, WordPress REST API. Shipped · last commit 2026-05-02.
 - **Security Scanner** — Automated web vulnerability scanner, similar to online pentesting platforms. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Completed · last commit 2026-05-12.
 - **Alpha Coin** — Token dashboard on the Internet Computer. Motoko, Next.js, TypeScript, Internet Identity. Completed · last commit 2026-11-18.
-- **Galmee Pharmacy** — Stock and expiry tracking for pharmacies. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-17.
-- **Galmee Wholesale** — Customer debt tracking for wholesalers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-17.
+- **Galmee Pharmacy** — Stock and expiry tracking for pharmacies. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Wholesale** — Customer debt tracking for wholesalers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 - **Galmee Hotel** — Room board and bookings for small hotels. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee School** — Fee collection and attendance for private schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-17.
-- **Galmee Garage** — Job cards and vehicle history for garages. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-12.
+- **Galmee School** — Fee collection and attendance for private schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Garage** — Job cards and vehicle history for garages. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 - **Galmee Transport** — Ticketing and cash handover for bus operators. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 - **Galmee Driving School** — Students, lessons and payments for driving schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Rentals** — Rent tracking for landlords and brokers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-13.
-- **Galmee Coffee** — Farmer purchases and advances for coffee traders. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-12.
+- **Galmee Rentals** — Rent tracking for landlords and brokers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Coffee** — Farmer purchases and advances for coffee traders. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 - **Galmee Clinic** — Patient records, queue and billing for small clinics. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 
 ## Certificates
