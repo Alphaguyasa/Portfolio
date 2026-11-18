@@ -12,13 +12,24 @@
  * commit whose runs are still going is skipped for an older settled one, because
  * "in progress" would otherwise read as failing on the site; a run that has already
  * failed settles the commit as failing even while others still run.
+ *
+ * Dependabot's own update jobs ("npm_and_yarn in /. - Update #...") also run on the
+ * default branch. They report whether Dependabot could open a pull request, not
+ * whether the code builds, so they are not counted; their pull requests run the real
+ * CI on their own branches. Other GitHub-managed runs (CodeQL default setup) do check
+ * the code and still count.
  */
 
 const IGNORED = new Set(["cancelled", "skipped"]);
 
+/** Dependabot's update job: GitHub-managed, and it says nothing about the code. */
+export function isDependabotUpdate(run) {
+  return String(run?.path ?? "").startsWith("dynamic/dependabot/");
+}
+
 /**
  * @param {Array<{ name: string, workflow_id?: number, head_sha: string, status: string,
- *   conclusion: string | null, created_at: string }>} runs newest first, as the API lists them
+ *   conclusion: string | null, created_at: string, path?: string }>} runs newest first, as the API lists them
  * @returns {{ workflow: string, workflows: string[], failing: string[], status: "completed",
  *   conclusion: string, at: string, headSha: string } | null}
  */
@@ -26,7 +37,7 @@ export function summariseCi(runs) {
   const order = [];
   const bySha = new Map();
   for (const run of runs ?? []) {
-    if (!run?.head_sha) continue;
+    if (!run?.head_sha || isDependabotUpdate(run)) continue;
     if (!bySha.has(run.head_sha)) {
       bySha.set(run.head_sha, []);
       order.push(run.head_sha);

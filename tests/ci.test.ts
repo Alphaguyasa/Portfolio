@@ -70,4 +70,29 @@ describe("summariseCi", () => {
   it("is null when nothing has settled", () => {
     expect(summariseCi([run("ci", "b", null), run("ci", "a", "cancelled")])).toBeNull();
   });
+
+  it("ignores Dependabot's update jobs, which say nothing about the code", () => {
+    const dependabot = { path: "dynamic/dependabot/dependabot-updates" };
+    const ci = summariseCi([
+      run("npm_and_yarn in /. - Update #1685258065", "b", "failure", dependabot),
+      run("CI", "b", "success", { path: ".github/workflows/ci.yml" }),
+    ]);
+    expect(ci).toMatchObject({ conclusion: "success", failing: [], workflows: ["CI"], headSha: "b" });
+  });
+
+  it("still counts other GitHub-managed runs, such as CodeQL default setup", () => {
+    const ci = summariseCi([
+      run("CodeQL", "b", "failure", { path: "dynamic/github-code-scanning/codeql" }),
+      run("CI", "b", "success"),
+    ]);
+    expect(ci).toMatchObject({ conclusion: "failure", failing: ["CodeQL"] });
+  });
+
+  it("a commit with only a Dependabot job falls back to the older build", () => {
+    const ci = summariseCi([
+      run("pip in /. - Update #1", "b", "failure", { path: "dynamic/dependabot/dependabot-updates" }),
+      run("CI", "a", "success"),
+    ]);
+    expect(ci).toMatchObject({ conclusion: "success", headSha: "a" });
+  });
 });
