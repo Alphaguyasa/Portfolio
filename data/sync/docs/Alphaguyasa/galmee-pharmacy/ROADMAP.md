@@ -38,7 +38,7 @@
 ## M3: Notifications
 
 - [ ] Evening Telegram summary to owner: sales, cash vs Telebirr, expiring items, low stock
-- [ ] Edge Function reads `notifications` queue and sends (needs AfroMessage/Telegram keys: ask in the decision log)
+- [x] Edge Function reads `notifications` queue and sends (Telegram live; SMS switches on when AfroMessage credit is added)
 
 ## M4: Demo ready
 
@@ -62,15 +62,15 @@
 
 - [x] Daily closing screen reading `ph_daily_closing` (cash/Telebirr/credit tiles + per-method list)
 - [x] Credit limit at the till: owners and managers can go over it with a reason; each one is listed on the daily closing
-- [ ] Receipt layout component (58 mm CSS print) for one sale, EN/AM
-- [ ] Print flow from sale success screen + reprint from sale detail
+- [x] Receipt layout component (58 mm CSS print) for one sale, EN/AM (also Afaan Oromo and 80 mm)
+- [x] Print flow from sale success screen + reprint from sale detail (any day's sales on the daily closing)
 - [ ] Telegram receipt: queue `notifications` row with receipt text on sale
 
 ## M-after: keep them paying, then grow
 
 - [ ] Offline queue: IndexedDB queue for `record_sale` with client_ref
 - [ ] Sync status chip + retry on reconnect
-- [ ] Evening Telegram summary generator (SQL + notifications row)
+- [x] Evening Telegram summary generator (SQL + notifications row)
 - [x] Reports screen: today / this week / Ethiopian month from existing views
 - [x] CSV export of reports
 - [ ] Staff invite (owner-only) + role select
