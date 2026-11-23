@@ -23,6 +23,12 @@
         "RECEIVE_SMS was carried for several sessions and then removed, because nothing used it. A restricted permission has to be justified, not kept just in case.",
         "Coverage is 36.1% instruction / 46.1% line, reported rather than gated."
       ],
+      "caseStudy": [
+        { "heading": "The Play Store constraint", "body": "The obvious way to build a payment ledger is to read the SMS inbox, and Google Play will not allow it: it grants the SMS permissions only to apps whose core purpose needs to be the default SMS handler, and a finance app reading payment confirmations is explicitly not eligible. Declaring the permission anyway, even dormant, gets the app rejected with a policy strike." },
+        { "heading": "Capturing payments without SMS access", "body": "Mezgeb reads the notifications that telebirr, CBE Birr and bank apps post when money moves. That needs no restricted permission: the shopkeeper grants notification access in system settings, sees exactly what was granted, and can revoke it in the same place. The cost is that a notification only shows a payment while it exists, so the Play build cannot import past messages; a separate sideloaded build adds a one-time inbox import and asks for read access to SMS and nothing more." },
+        { "heading": "Teach a rule instead of shipping a regex", "body": "Payment messages have no documented format and change without notice. When no rule matches, the message goes to a review queue instead of being dropped. The shopkeeper highlights the amount and the sender in the message, the app builds a new rule from those spans, and the next message from that sender parses on its own." },
+        { "heading": "What the accuracy figure does and does not mean", "body": "The parser scores 100.00% on its holdout (23/23), and the README says plainly that this is worth less than it looks: both splits come from the same 3 senders and 13 message templates, from one person's account. A wrong value fails the build; a missed message is a different failure, because it goes to the review queue for the shopkeeper to fix." }
+      ],
       "images": [
         {
           "src": "/assets/mezgeb-showcase.png",
@@ -43,7 +49,10 @@
         { "path": "README.md", "quote": "Accuracy: 100.00% on the holdout (23/23)" },
         { "path": "README.md", "quote": "both splits come from the same 3 senders and 13 message templates, from one person's account" },
         { "path": "README.md", "quote": "Coverage is 36.1% instruction / 46.1% line, reported rather than gated" },
-        { "path": "README.md", "quote": "No `android.permission.INTERNET`, in either flavor." }
+        { "path": "README.md", "quote": "No `android.permission.INTERNET`, in either flavor." },
+        { "path": "README.md", "quote": "A finance app that wants to read payment confirmations is explicitly not an eligible use case" },
+        { "path": "README.md", "quote": "the user grants notification access in system settings, sees exactly what they granted, and can revoke it in the same place." },
+        { "path": "README.md", "quote": "A wrong value is treated as fatal and fails the build." }
       ]
     },
     {
