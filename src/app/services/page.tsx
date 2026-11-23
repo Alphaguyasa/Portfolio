@@ -104,6 +104,16 @@ export default function ServicesPage() {
                       ))}
                     </ul>
 
+                    {pkg.more && (
+                      <Link
+                        href={pkg.more.href}
+                        className="mt-4 flex w-fit items-center gap-2 px-2 font-sans text-sm font-semibold text-accent hover:text-ink"
+                      >
+                        {pkg.more.label}
+                        <ArrowRight size={14} />
+                      </Link>
+                    )}
+
                     <div className="mt-auto px-2 pt-7">
                       <p className="font-sans text-sm text-muted">{servicesPage.timeline}</p>
                       <Link

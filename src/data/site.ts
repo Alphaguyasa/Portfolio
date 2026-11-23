@@ -126,6 +126,8 @@ export type ServicePackage = {
   interest: (typeof interestOptions)[number];
   /** Project slugs from data/projects.json that show this kind of work. */
   proof: string[];
+  /** A page on this site with more of the proof. */
+  more?: { label: string; href: string };
 };
 
 /**
@@ -180,8 +182,94 @@ export const servicesPage = {
       ],
       interest: "Security Assessment",
       proof: ["security-scanner", "galmee-pharmacy", "nullchat"],
+      more: { label: "Threat models and hardening work", href: "/security" },
     },
   ] satisfies ServicePackage[],
+};
+
+export type SecurityCase = {
+  /** Project slug in data/projects.json; its repo's synced docs back the quotes. */
+  slug: string;
+  heading: string;
+  summary: string;
+  points: string[];
+  /** What is still open or deliberately out of scope, stated as plainly as the rest. */
+  limits: string;
+  /** The repo document the case comes from, relative to the repo root. */
+  doc: { label: string; path: string };
+  /** Verbatim quotes from the repo's synced docs; every number shown must be in one. */
+  facts: { path: string; quote: string }[];
+};
+
+/** The /security page: threat models and hardening work gathered from three repos. */
+export const securityPage = {
+  intro:
+    "Security work from my own projects, each with what it protects, from whom, and what is still open. The full write-ups are in the repos, linked below.",
+  cases: [
+    {
+      slug: "nullchat",
+      heading: "A mesh of phones that do not trust each other",
+      summary:
+        "Any phone in range can send anything, relay or drop anything, and lie about its name. The security design says what the app protects, against whom, and what it does not.",
+      points: [
+        "Direct messages are protected from every phone that relays them, and anyone listening.",
+        "Who sent a packet is protected from forgery by any other phone.",
+        "Storage and battery are protected from floods and oversized or malformed packets from one modified phone.",
+      ],
+      limits:
+        "Written down as open gaps: no forward secrecy, chat history in Google backup, and sender and recipient ids visible to every phone in range.",
+      doc: { label: "Security design", path: "docs/SECURITY_DESIGN.md" },
+      facts: [
+        { path: "docs/SECURITY_DESIGN.md", quote: "Any phone in range can send anything, relay or drop anything, and lie about its name." },
+        { path: "docs/SECURITY_DESIGN.md", quote: "Every phone that relays them, and anyone listening" },
+        { path: "docs/SECURITY_DESIGN.md", quote: "Floods and oversized or malformed packets from one modified phone" },
+        { path: "docs/SECURITY_DESIGN.md", quote: "No forward secrecy." },
+      ],
+    },
+    {
+      slug: "mezgeb",
+      heading: "A finance app with no network access",
+      summary:
+        "Mezgeb handles payment messages, so it is built to keep them on the phone: no network permission at all, checked in the build rather than promised.",
+      points: [
+        "No INTERNET permission in either build, checked against the merged release manifest.",
+        "Raw message bodies never leave the device and are never logged.",
+        "Backups are AES-256-GCM with a PBKDF2-derived key. The passphrase is never stored.",
+      ],
+      limits:
+        "The sideloaded build asks for read access to SMS for a one-time import; the Play build is checked to contain no SMS permission.",
+      doc: { label: "README, privacy section", path: "README.md" },
+      facts: [
+        { path: "README.md", quote: "No `android.permission.INTERNET`, in either flavor." },
+        { path: "README.md", quote: "verified against the merged release manifest" },
+        { path: "README.md", quote: "Raw message bodies never leave the device and are never logged." },
+        { path: "README.md", quote: "Backups are AES-256-GCM with a PBKDF2-derived key. The passphrase is never stored." },
+        { path: "README.md", quote: "The merged `play` release manifest is checked to contain zero SMS permissions" },
+      ],
+    },
+    {
+      slug: "alpha-coin",
+      heading: "A toy token reviewed as if real value depended on it",
+      summary:
+        "A weekend token project, reviewed later as if it were real: every finding was fixed or written down as a decision, and the threats are tracked in a threat model.",
+      points: [
+        "A double spend in transfer: other messages could run between reading a balance and updating it.",
+        "A dashboard that showed the token as US dollars and advertised features that did not exist.",
+        "Amounts went through JavaScript Number, so large values lost digits.",
+      ],
+      limits:
+        "Frozen on purpose: it runs on a local replica only, has no price and is not an investment.",
+      doc: { label: "Case study", path: "docs/CASE_STUDY.md" },
+      facts: [
+        { path: "docs/CASE_STUDY.md", quote: "every finding was fixed or written down as a decision" },
+        { path: "docs/CASE_STUDY.md", quote: "Double spend in `transfer`" },
+        { path: "docs/CASE_STUDY.md", quote: "The dashboard showed the token balance as **US dollars**" },
+        { path: "docs/CASE_STUDY.md", quote: "None of it existed." },
+        { path: "docs/CASE_STUDY.md", quote: "Amounts went through JavaScript `Number`, so large values lost digits" },
+        { path: "docs/CASE_STUDY.md", quote: "It runs on a local replica only, has no price and is not an investment." },
+      ],
+    },
+  ] satisfies SecurityCase[],
 };
 
 /** The package a /?package=<id> link asks for, or undefined for anything else. */

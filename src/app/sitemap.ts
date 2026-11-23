@@ -5,7 +5,7 @@ import { liveFacts, projectPath, projects, syncedAt } from "@/lib/projects";
 /**
  * lastModified is a real change date, not the build time: with new Date() every deploy
  * told crawlers that every page had changed. A project page changes with its repo, so it
- * takes the synced last commit; /, /about and /services are rebuilt from each sync, so they take
+ * takes the synced last commit; /, /about, /services and /security are rebuilt from each sync, so they take
  * syncedAt (also the fallback when a repo has no commit date).
  */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${site.url}/services`,
+      lastModified: syncedAt,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/security`,
       lastModified: syncedAt,
       changeFrequency: "monthly",
       priority: 0.8,

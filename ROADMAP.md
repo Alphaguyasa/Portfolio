@@ -36,10 +36,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 Clients reading the site can see the work but not what they can hire Alpha for, what
 it costs, or the outcome a project produced. These items come before the older ones below.
 
-### 59. [P1 · M] Security track page
-One page that gathers the threat models and hardening work from NullChat, Mezgeb and
-Alpha Coin, for security-review clients.
-
 ### 60. [P2 · S] Availability field and banner
 One data field (open or full, next free slot) drives a banner; verify:facts rejects a
 stale date.
@@ -101,6 +97,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P1] Security track page** (item 59), 2026-11-23. `/security` gathers the security work from NullChat (what the mesh protects, from whom), Mezgeb (no network permission, encrypted backups) and Alpha Coin (the review and its fixes), each with what is still open and a link to the full write-up. Tests check every quote against the synced docs and every number against its quotes. Linked from the security review package.
 - **[P1] Mezgeb case study** (item 58), 2026-11-23. The Mezgeb page now explains the Play Store SMS restriction, how notification capture works around it (and what it cannot do), teach-a-rule, and what the parser's accuracy figure does and does not mean, all quoted from Mezgeb's README.
 - **[P1] Suq case study** (item 57), 2026-11-23. The Suq page now has a case study: why syncing stock counts loses sales, selling with no connection, the sync status pill, and what the demo shows, every number quoted from Suq's README. Suq's repo has no screenshots yet, so the page says so instead of showing any. Projects can carry a `caseStudy`, held to the same fact rules as every other field.
 - **[P1] /services page with three packages** (items 55 and 56), 2026-11-23. Business web app, offline Android app and security review, each with its scope, the projects that show the work, and "Ask for a quote" (no prices or fixed timelines, as decided). Each package links to the contact form with the interest preselected and an opening line; nothing the visitor typed is overwritten. A test keeps figures, currencies and durations off the page until they have a source. The home page's services section links to it.
