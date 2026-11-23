@@ -18,7 +18,7 @@
 - [x] Items and stock (if this product uses stock): list, add, receive stock
 - [x] Payments and credit: record payment, credit statement
 - [x] Reports: today / this week / this Ethiopian month; export CSV
-- [ ] Offline queue for the main money action with sync status indicator
+- [x] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Pharmacy features
 
@@ -68,14 +68,14 @@
 
 ## M-after: keep them paying, then grow
 
-- [ ] Offline queue: IndexedDB queue for `record_sale` with client_ref
-- [ ] Sync status chip + retry on reconnect
+- [x] Offline queue: IndexedDB queue for `record_sale` with client_ref, and offline search of a saved medicine list
+- [x] Sync status chip + retry on reconnect
 - [x] Evening Telegram summary generator (SQL + notifications row)
 - [x] Reports screen: today / this week / Ethiopian month from existing views
 - [x] CSV export of reports
 - [ ] Staff invite (owner-only) + role select
 - [x] Per-staff sales column in daily closing
-- [ ] Excel import of items (template + parser)
+- [x] Excel import of items (template + parser): CSV sheet saved from Excel, preview with skipped rows, one save
 - [ ] Export-all to Excel
 
 ## M-stars: features no notebook can do

@@ -3,8 +3,11 @@
 ## M-next: Tier 1 close-out
 
 - [ ] SMS sender wiring for queued farmer receipts (shared Edge Function)
-- [ ] Offline queue for `cf_record_purchase` (client_ref exists)
-- [ ] Sync status indicator on buy screen
+- [x] Offline queue for `cf_record_purchase` (client_ref exists)
+- [x] Sync status indicator on buy screen
+- [x] Logout warns before dropping unsent weighings, then clears the phone's queue
+- [ ] Buy screen opens offline from a cold start (farmers and grades kept on the phone)
+- [x] Waiting/refused weighings shown on the Today screen too
 
 ## M-after: Tier 2 and 3
 
@@ -14,6 +17,7 @@
 - [ ] Staff invite + per-clerk purchase report
 - [ ] Lot dispatch: buyer, price realized, margin per lot
 - [ ] Export-all to Excel
+- [x] Season opening letter per farmer (print): last season's kilos, bonus, advance available, opening day
 
 Out of scope: moisture-meter integrations and quality scoring beyond the free-text moisture note; a second calendar screen (the Ethiopian date is already shown everywhere).
 

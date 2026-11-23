@@ -1,5 +1,77 @@
 [
   {
+    "project": "DocSearch → Not Alone",
+    "slug": "docsearch",
+    "kind": "pr",
+    "title": "Add a \"Share this story\" button under bot answers",
+    "date": "2026-11-23T10:02:05Z",
+    "url": "https://github.com/Alphaguyasa/docsearch/pull/166"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "List in-range alerts in Settings, each with a way to turn it off",
+    "date": "2026-11-23T05:54:22Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/120"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Large-font tests for the chat bar and the peer row",
+    "date": "2026-11-23T05:41:20Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/119"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Send failures as codes, with their text in strings.xml",
+    "date": "2026-11-23T05:32:06Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/118"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Timer label and timer lines from strings.xml",
+    "date": "2026-11-23T05:23:37Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/117"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "pr",
+    "title": "Stop showing unsealed direct messages from old builds",
+    "date": "2026-11-23T05:16:51Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/pull/116"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Roadmap: record the merge of item 40b (#96)",
+    "date": "2026-11-23T01:18:23Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/97"
+  },
+  {
+    "project": "Meret",
+    "slug": "meret",
+    "kind": "pr",
+    "title": "Walk the perimeter: feed the recording's fixes into the ring draft (roadmap item 40b)",
+    "date": "2026-11-23T01:17:56Z",
+    "url": "https://github.com/Alphaguyasa/Meret/pull/96"
+  },
+  {
+    "project": "NullChat",
+    "slug": "nullchat",
+    "kind": "tag",
+    "title": "v2026-11-23-5",
+    "date": "2026-11-23T00:00:00Z",
+    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-23-5"
+  },
+  {
     "project": "NullChat",
     "slug": "nullchat",
     "kind": "pr",
@@ -86,77 +158,5 @@
     "title": "Turn on the set-state-in-effect lint rule",
     "date": "2026-11-14T07:12:59Z",
     "url": "https://github.com/Alphaguyasa/docsearch/pull/164"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Roadmap: items 72 and 79 and the field check are done",
-    "date": "2026-11-12T17:33:10Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/106"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Move the radar, signal bars and image viewer text into resources",
-    "date": "2026-11-12T17:27:43Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/108"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Name the app Null Chat and move the main screens' text into resources",
-    "date": "2026-11-12T17:24:29Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/107"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Ship only the locales the app is translated into",
-    "date": "2026-11-12T17:24:26Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/105"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Add the security design",
-    "date": "2026-11-12T17:21:54Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/104"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "pr",
-    "title": "Add a README",
-    "date": "2026-11-12T17:21:46Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/pull/103"
-  },
-  {
-    "project": "NullChat",
-    "slug": "nullchat",
-    "kind": "tag",
-    "title": "v2026-11-12-11",
-    "date": "2026-11-12T00:00:00Z",
-    "url": "https://github.com/Alphaguyasa/NullChat/tree/v2026-11-12-11"
-  },
-  {
-    "project": "Galmee Pharmacy",
-    "slug": "galmee-pharmacy",
-    "kind": "pr",
-    "title": "Galmee design system and reference redesign",
-    "date": "2026-11-11T11:46:34Z",
-    "url": "https://github.com/Alphaguyasa/galmee-pharmacy/pull/6"
-  },
-  {
-    "project": "Meret",
-    "slug": "meret",
-    "kind": "pr",
-    "title": "Measure a plot by tapping its corners on the map (39)",
-    "date": "2026-11-09T04:49:11Z",
-    "url": "https://github.com/Alphaguyasa/Meret/pull/93"
   }
 ]

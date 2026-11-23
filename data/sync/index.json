@@ -1,6 +1,6 @@
 {
   "owner": "Alphaguyasa",
-  "syncedAt": "2026-11-22T11:28:05.461Z",
+  "syncedAt": "2026-11-23T12:44:29.552Z",
   "repos": [
     {
       "name": "Alpha-digital-coin",
@@ -170,8 +170,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T21:55:03Z",
-      "pushedAt": "2026-11-14T07:20:31Z",
-      "lastCommitAt": "2026-11-14T07:20:30Z",
+      "pushedAt": "2026-11-23T10:02:04Z",
+      "lastCommitAt": "2026-11-23T10:02:04Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-4",
@@ -181,17 +181,26 @@
         "v1-docsearch"
       ],
       "ci": {
-        "workflow": "ingest-scripture",
+        "workflow": "ci, deploy-not-alone",
         "workflows": [
-          "ingest-scripture"
+          "ci",
+          "deploy-not-alone"
         ],
-        "failing": [],
+        "failing": [
+          "deploy-not-alone"
+        ],
         "status": "completed",
-        "conclusion": "success",
-        "at": "2026-11-14T07:16:09Z",
-        "headSha": "72f2e6088ebb96a47a55f93809d45df42b889d95"
+        "conclusion": "failure",
+        "at": "2026-11-23T10:02:08Z",
+        "headSha": "0965f0d2e7450ac314eb41949e7ccf1c6c9100ce"
       },
       "mergedPulls": [
+        {
+          "number": 166,
+          "title": "Add a \"Share this story\" button under bot answers",
+          "mergedAt": "2026-11-23T10:02:05Z",
+          "url": "https://github.com/Alphaguyasa/docsearch/pull/166"
+        },
         {
           "number": 165,
           "title": "Plan the next milestone in the roadmap",
@@ -245,12 +254,6 @@
           "title": "Upgrade Next.js to 16.4.5 for seven moderate security fixes, plus in-range patch updates",
           "mergedAt": "2026-11-05T03:53:55Z",
           "url": "https://github.com/Alphaguyasa/docsearch/pull/157"
-        },
-        {
-          "number": 156,
-          "title": "Read a story aloud with the browser's own voice, only when it speaks the story's language",
-          "mergedAt": "2026-11-05T03:45:01Z",
-          "url": "https://github.com/Alphaguyasa/docsearch/pull/156"
         }
       ],
       "npm": null,
@@ -395,8 +398,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:39:51Z",
-      "pushedAt": "2026-11-20T03:25:12Z",
-      "lastCommitAt": "2026-11-18T07:02:17Z",
+      "pushedAt": "2026-11-22T18:22:34Z",
+      "lastCommitAt": "2026-11-22T18:22:33Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -407,8 +410,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:02:23Z",
-        "headSha": "a4d124397f2627607ea7d2e3e70398e5f285b1e1"
+        "at": "2026-11-22T18:22:36Z",
+        "headSha": "9d4f5f45e412e07ac569cedd7eed6a4b8bd4c195"
       },
       "mergedPulls": [],
       "npm": null,
@@ -452,13 +455,13 @@
       "languages": [
         "TypeScript",
         "PLpgSQL",
-        "JavaScript",
-        "CSS"
+        "CSS",
+        "JavaScript"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:02Z",
-      "pushedAt": "2026-11-20T12:07:26Z",
-      "lastCommitAt": "2026-11-18T07:02:21Z",
+      "pushedAt": "2026-11-22T21:23:03Z",
+      "lastCommitAt": "2026-11-22T21:23:01Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -469,8 +472,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:02:25Z",
-        "headSha": "28edace50a320f6166d0d8d739e9b9978747d3ec"
+        "at": "2026-11-22T21:23:05Z",
+        "headSha": "5af15f781e91ca99d3a1a9a05cdb8a927412bdca"
       },
       "mergedPulls": [],
       "npm": null,
@@ -519,8 +522,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:14Z",
-      "pushedAt": "2026-11-20T22:54:58Z",
-      "lastCommitAt": "2026-11-18T07:02:25Z",
+      "pushedAt": "2026-11-23T09:58:30Z",
+      "lastCommitAt": "2026-11-23T09:58:28Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -531,8 +534,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:02:30Z",
-        "headSha": "ce80f957b25b907a06f46b8f072aed1fd62982d4"
+        "at": "2026-11-23T09:58:33Z",
+        "headSha": "065485a31a70535d9d150a55f3591950b139899c"
       },
       "mergedPulls": [],
       "npm": null,
@@ -582,8 +585,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:18Z",
-      "pushedAt": "2026-11-20T00:44:58Z",
-      "lastCommitAt": "2026-11-18T07:02:30Z",
+      "pushedAt": "2026-11-22T19:21:46Z",
+      "lastCommitAt": "2026-11-22T19:21:45Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -594,8 +597,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:02:36Z",
-        "headSha": "3c12805c04e7c6ab66d771108970eccda3dd2c6a"
+        "at": "2026-11-22T19:21:48Z",
+        "headSha": "7b6c5d11321d1aeeddd9b1dd2265080a5c1a6194"
       },
       "mergedPulls": [],
       "npm": null,
@@ -644,8 +647,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:09Z",
-      "pushedAt": "2026-11-20T07:45:03Z",
-      "lastCommitAt": "2026-11-18T07:02:36Z",
+      "pushedAt": "2026-11-22T16:23:49Z",
+      "lastCommitAt": "2026-11-22T16:23:48Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -656,8 +659,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:02:44Z",
-        "headSha": "dc21676f2ee737dfe73e9750421ba93182c90fa5"
+        "at": "2026-11-22T16:23:51Z",
+        "headSha": "d1d178f60f586b55584d8956eecd19954fd2ca49"
       },
       "mergedPulls": [],
       "npm": null,
@@ -707,8 +710,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:38:41Z",
-      "pushedAt": "2026-11-21T14:20:58Z",
-      "lastCommitAt": "2026-11-21T14:20:57Z",
+      "pushedAt": "2026-11-23T09:58:32Z",
+      "lastCommitAt": "2026-11-23T09:58:30Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -719,8 +722,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-21T14:21:00Z",
-        "headSha": "c86dabb0280160d857173a9640979659b35c8673"
+        "at": "2026-11-23T09:58:34Z",
+        "headSha": "20d9267cd492350057f6fac3bec98dada916f8d1"
       },
       "mergedPulls": [
         {
@@ -771,13 +774,13 @@
       "languages": [
         "TypeScript",
         "PLpgSQL",
-        "JavaScript",
-        "CSS"
+        "CSS",
+        "JavaScript"
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:41:26Z",
-      "pushedAt": "2026-11-20T14:35:19Z",
-      "lastCommitAt": "2026-11-18T07:02:53Z",
+      "pushedAt": "2026-11-23T09:58:33Z",
+      "lastCommitAt": "2026-11-23T09:58:32Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -788,8 +791,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:02:59Z",
-        "headSha": "cd1da25606c1c7b75872795b63436691d6f118dc"
+        "at": "2026-11-23T09:58:36Z",
+        "headSha": "1d1b0f7e95c0114f8f8eef54f4c11d7575acdaf2"
       },
       "mergedPulls": [],
       "npm": null,
@@ -838,8 +841,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:00Z",
-      "pushedAt": "2026-11-20T13:55:09Z",
-      "lastCommitAt": "2026-11-18T07:02:58Z",
+      "pushedAt": "2026-11-22T17:23:28Z",
+      "lastCommitAt": "2026-11-22T17:23:26Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -850,8 +853,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:03:04Z",
-        "headSha": "2fbf22ec724eaa4d00fe0b27e21f2f2a183ed798"
+        "at": "2026-11-22T17:23:30Z",
+        "headSha": "5b555054911cee4d49abc04cb5f3778a047b4b40"
       },
       "mergedPulls": [
         {
@@ -907,8 +910,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:40:37Z",
-      "pushedAt": "2026-11-20T22:35:01Z",
-      "lastCommitAt": "2026-11-18T07:03:03Z",
+      "pushedAt": "2026-11-22T20:20:30Z",
+      "lastCommitAt": "2026-11-22T20:18:06Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -919,8 +922,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:03:08Z",
-        "headSha": "54a3aa24911b65c0db312f4a84411a5c51491737"
+        "at": "2026-11-22T20:18:09Z",
+        "headSha": "69d8dd261f27e5d928cc64e42c5e4b40bfdc4224"
       },
       "mergedPulls": [],
       "npm": null,
@@ -970,8 +973,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-11-06T08:39:31Z",
-      "pushedAt": "2026-11-20T07:45:09Z",
-      "lastCommitAt": "2026-11-18T07:03:08Z",
+      "pushedAt": "2026-11-22T15:21:57Z",
+      "lastCommitAt": "2026-11-22T15:21:56Z",
       "latestRelease": null,
       "tags": [],
       "ci": {
@@ -982,8 +985,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T07:03:14Z",
-        "headSha": "fb6ea5563b1adea9e67cb3914451bd4ab0b96bb4"
+        "at": "2026-11-22T15:21:59Z",
+        "headSha": "50151ec7eea08c64474f322faa67177acca1c838"
       },
       "mergedPulls": [],
       "npm": null,
@@ -1005,7 +1008,8 @@
         "scripts",
         "src",
         "supabase",
-        "tsconfig.json"
+        "tsconfig.json",
+        "vitest.config.ts"
       ],
       "docs": [
         "README.md",
@@ -1083,8 +1087,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-09T13:40:40Z",
-      "pushedAt": "2026-11-17T23:30:32Z",
-      "lastCommitAt": "2026-11-17T23:30:31Z",
+      "pushedAt": "2026-11-23T01:18:23Z",
+      "lastCommitAt": "2026-11-23T01:18:22Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-3",
@@ -1099,10 +1103,22 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-17T23:30:07Z",
-        "headSha": "0809037ae5f49910fb526ba454ffc7eb4a4997dc"
+        "at": "2026-11-23T01:17:59Z",
+        "headSha": "744053c4f73a0f1d9071f7f8b62f0b594ba7d462"
       },
       "mergedPulls": [
+        {
+          "number": 97,
+          "title": "Roadmap: record the merge of item 40b (#96)",
+          "mergedAt": "2026-11-23T01:18:23Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/97"
+        },
+        {
+          "number": 96,
+          "title": "Walk the perimeter: feed the recording's fixes into the ring draft (roadmap item 40b)",
+          "mergedAt": "2026-11-23T01:17:56Z",
+          "url": "https://github.com/Alphaguyasa/Meret/pull/96"
+        },
         {
           "number": 95,
           "title": "Roadmap: record the merge of item 40a",
@@ -1150,18 +1166,6 @@
           "title": "«Show on map» from track detail (roadmap item 34)",
           "mergedAt": "2026-11-05T04:52:08Z",
           "url": "https://github.com/Alphaguyasa/Meret/pull/84"
-        },
-        {
-          "number": 79,
-          "title": "Photo pipeline: 1600 px q80, GPS EXIF kept, SHA-256 (roadmap item 33a, Phase 8e-1)",
-          "mergedAt": "2026-11-03T05:13:24Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/79"
-        },
-        {
-          "number": 78,
-          "title": "Waypoint sheet draft autosave to Room (roadmap item 32b, Phase 8d)",
-          "mergedAt": "2026-11-03T05:00:49Z",
-          "url": "https://github.com/Alphaguyasa/Meret/pull/78"
         }
       ],
       "npm": null,
@@ -1217,8 +1221,8 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-08-02T20:15:54Z",
-      "pushedAt": "2026-11-18T02:19:53Z",
-      "lastCommitAt": "2026-11-18T02:19:52Z",
+      "pushedAt": "2026-11-23T04:33:11Z",
+      "lastCommitAt": "2026-11-23T03:19:28Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-5",
@@ -1235,8 +1239,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T02:19:55Z",
-        "headSha": "b44ca7134eabab39711d86cce85c91e67fe85a89"
+        "at": "2026-11-23T03:19:32Z",
+        "headSha": "029690e41aba033c36216aab9d1bfecdaec37670"
       },
       "mergedPulls": [
         {
@@ -1352,20 +1356,20 @@
       ],
       "defaultBranch": "main",
       "createdAt": "2026-07-24T08:47:54Z",
-      "pushedAt": "2026-11-18T05:36:19Z",
-      "lastCommitAt": "2026-11-18T05:36:05Z",
+      "pushedAt": "2026-11-23T05:54:30Z",
+      "lastCommitAt": "2026-11-23T05:54:22Z",
       "latestRelease": null,
       "tags": [
+        "v2026-11-23-5",
+        "v2026-11-23-4",
+        "v2026-11-23-3",
+        "v2026-11-23-2",
+        "v2026-11-23-1",
         "v2026-11-18-4",
         "v2026-11-18-3",
         "v2026-11-18-2",
         "v2026-11-18-1",
-        "v2026-11-12-11",
-        "v2026-11-12-10",
-        "v2026-11-12-9",
-        "v2026-11-12-8",
-        "v2026-11-12-7",
-        "v2026-11-12-6"
+        "v2026-11-12-11"
       ],
       "ci": {
         "workflow": "Android CI, Release tag",
@@ -1376,10 +1380,40 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T05:36:13Z",
-        "headSha": "03420a6916249db3dd4af314f5a2812d129533e4"
+        "at": "2026-11-23T05:54:25Z",
+        "headSha": "71f22c6887127e314b5bb9217011396b4b0f5f43"
       },
       "mergedPulls": [
+        {
+          "number": 120,
+          "title": "List in-range alerts in Settings, each with a way to turn it off",
+          "mergedAt": "2026-11-23T05:54:22Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/120"
+        },
+        {
+          "number": 119,
+          "title": "Large-font tests for the chat bar and the peer row",
+          "mergedAt": "2026-11-23T05:41:20Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/119"
+        },
+        {
+          "number": 118,
+          "title": "Send failures as codes, with their text in strings.xml",
+          "mergedAt": "2026-11-23T05:32:06Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/118"
+        },
+        {
+          "number": 117,
+          "title": "Timer label and timer lines from strings.xml",
+          "mergedAt": "2026-11-23T05:23:37Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/117"
+        },
+        {
+          "number": 116,
+          "title": "Stop showing unsealed direct messages from old builds",
+          "mergedAt": "2026-11-23T05:16:51Z",
+          "url": "https://github.com/Alphaguyasa/NullChat/pull/116"
+        },
         {
           "number": 114,
           "title": "Show the in-range alert in the chat bar; roadmap items 81 to 85",
@@ -1409,36 +1443,6 @@
           "title": "Roadmap: items 72 and 79 and the field check are done",
           "mergedAt": "2026-11-12T17:33:10Z",
           "url": "https://github.com/Alphaguyasa/NullChat/pull/106"
-        },
-        {
-          "number": 108,
-          "title": "Move the radar, signal bars and image viewer text into resources",
-          "mergedAt": "2026-11-12T17:27:43Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/108"
-        },
-        {
-          "number": 107,
-          "title": "Name the app Null Chat and move the main screens' text into resources",
-          "mergedAt": "2026-11-12T17:24:29Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/107"
-        },
-        {
-          "number": 105,
-          "title": "Ship only the locales the app is translated into",
-          "mergedAt": "2026-11-12T17:24:26Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/105"
-        },
-        {
-          "number": 104,
-          "title": "Add the security design",
-          "mergedAt": "2026-11-12T17:21:54Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/104"
-        },
-        {
-          "number": 103,
-          "title": "Add a README",
-          "mergedAt": "2026-11-12T17:21:46Z",
-          "url": "https://github.com/Alphaguyasa/NullChat/pull/103"
         }
       ],
       "npm": null,
@@ -1484,8 +1488,8 @@
       ],
       "defaultBranch": "master",
       "createdAt": "2026-08-01T09:14:12Z",
-      "pushedAt": "2026-11-18T03:24:43Z",
-      "lastCommitAt": "2026-11-18T03:24:36Z",
+      "pushedAt": "2026-11-23T04:22:22Z",
+      "lastCommitAt": "2026-11-23T04:22:21Z",
       "latestRelease": null,
       "tags": [
         "v2026-10-14-2",
@@ -1499,8 +1503,8 @@
         "failing": [],
         "status": "completed",
         "conclusion": "success",
-        "at": "2026-11-18T03:24:44Z",
-        "headSha": "6d652aae1461d90a151ea969b47722217736d402"
+        "at": "2026-11-23T04:22:24Z",
+        "headSha": "1bf2fd7a3afba6fb3f07eef1a88be4e9092acb27"
       },
       "mergedPulls": [
         {

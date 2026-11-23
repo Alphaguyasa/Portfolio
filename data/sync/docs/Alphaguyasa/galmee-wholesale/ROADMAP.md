@@ -11,12 +11,14 @@
 - [ ] Weekly balance SMS: SQL generator that writes notifications rows (one scheduled query)
 - [x] Simple stock: item qty in/out screens on core tables (RPC path)
 - [x] Daily cash report screen
-- [ ] Offline queue for the credit sale + repayment with client_ref
-- [ ] Sync status indicator
+- [x] Offline queue for the credit sale + repayment with client_ref
+- [x] Sync status indicator
 - [ ] Retail/wholesale dual price on item + per-customer flag
 - [ ] Evening owner Telegram summary
 - [ ] Staff invite + per-staff collections view
 - [ ] Excel import customers + opening balances (export everything: done)
+- [x] Promise to pay: log a promised day (and amount) on a shop's debt; kept / broken worked out from real repayments
+- [x] Broken and due-today promises as their own list on the Overdue screen
 
 ## M0: Foundation (shared pattern for all Galmee products)
 
@@ -36,7 +38,7 @@
 - [x] Items and stock (if this product uses stock): list, add, receive stock
 - [x] Payments and credit: record payment, credit statement
 - [ ] Reports: today / this week / this Ethiopian month; export CSV
-- [ ] Offline queue for the main money action with sync status indicator
+- [x] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Wholesale features
 

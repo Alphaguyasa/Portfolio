@@ -12,7 +12,7 @@
 
 - [ ] Offline queue for `tr_sell_ticket` (`client_ref` already idempotent)
 - [ ] Parcel arrival SMS wiring
-- [ ] Route and bus report by Ethiopian month, with CSV export
+- [x] Route and bus report by Ethiopian month, with CSV export
 - [ ] Owner evening Telegram: takings and shorts per bus
 - [ ] Staff invite and per-seller shortage history
 - [x] Departure manifest print (passenger list for the driver and road checks)
@@ -37,7 +37,7 @@ Out of scope: online seat booking for passengers (sales stay at the window), GPS
 - [ ] Customers: list, search by name/phone, detail with balance
 - [x] ~~Items and stock~~ (not used by this product)
 - [ ] Payments and credit: record payment, credit statement
-- [ ] Reports: today / this week / this Ethiopian month; export CSV
+- [x] Reports: today / this week / this Ethiopian month; export CSV
 - [ ] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Transport features
