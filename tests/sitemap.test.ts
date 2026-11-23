@@ -55,7 +55,7 @@ describe("sitemapProblems", () => {
   it("matches what the built sitemap.ts produces for every project", async () => {
     const { default: sitemap } = await import("../src/app/sitemap");
     const { projectPath, projects } = await import("../src/lib/projects");
-    const expected = ["/", "/about", ...projects.map((p) => projectPath(p))];
+    const expected = ["/", "/about", "/services", ...projects.map((p) => projectPath(p))];
     expect(sitemapProblems(sitemap().map((e) => e.url), expected, SITE)).toEqual([]);
   });
   it("dates / and /about by the sync and each project page by its last commit, never the build time", async () => {
@@ -64,6 +64,7 @@ describe("sitemapProblems", () => {
     const byPath = new Map(sitemap().map((e) => [e.url.slice(SITE.length) || "/", e.lastModified]));
     expect(byPath.get("/")).toBe(syncedAt);
     expect(byPath.get("/about")).toBe(syncedAt);
+    expect(byPath.get("/services")).toBe(syncedAt);
     for (const p of projects) {
       const expected = liveFacts(p).lastCommitAt ?? syncedAt;
       expect(byPath.get(projectPath(p)), p.slug).toBe(expected);

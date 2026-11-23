@@ -97,7 +97,7 @@ export default function Services() {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <CtaPill href="#contact" label="View All Services" />
+          <CtaPill href="/services" label="Packages and Quotes" />
         </div>
       </Container>
     </section>

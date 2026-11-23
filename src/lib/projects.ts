@@ -113,6 +113,11 @@ export function projectPath(project: Project): string {
   return `/projects/${project.slug}`;
 }
 
+/** The project entries a service package cites, in the order its copy lists them. */
+export function proofProjects(slugs: readonly string[]): Project[] {
+  return slugs.flatMap((slug) => projects.filter((project) => project.slug === slug));
+}
+
 /** "14 Oct 2026", in UTC so the build machine's timezone cannot shift the day. */
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-GB", {

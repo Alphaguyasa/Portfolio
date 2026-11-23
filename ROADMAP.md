@@ -36,14 +36,6 @@ Last replan: 2026-10-19 (4 items were left after items 9 and 10; added 15–18).
 Clients reading the site can see the work but not what they can hire Alpha for, what
 it costs, or the outcome a project produced. These items come before the older ones below.
 
-### 55. [P1 · M] Services page copy and three packages
-Draft the wording for three packages (business web app, offline Android app, security
-review): scope and timeline. Prices only once Alpha has written them (the decision log).
-
-### 56. [P1 · M] /services page behind the fact gates
-Build the page from the approved copy. Every number needs a quote source; the contact
-form opens prefilled with the chosen package.
-
 ### 57. [P1 · M] Suq case study page
 Problem, the offline constraint, and what the demo shows, with the existing screenshots.
 
@@ -115,6 +107,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P1] /services page with three packages** (items 55 and 56), 2026-11-23. Business web app, offline Android app and security review, each with its scope, the projects that show the work, and "Ask for a quote" (no prices or fixed timelines, as decided). Each package links to the contact form with the interest preselected and an opening line; nothing the visitor typed is overwritten. A test keeps figures, currencies and durations off the page until they have a source. The home page's services section links to it.
 - **[P1] CI wall on /about** (item 54), 2026-11-18. Every listed repo with its newest settled CI result on the default branch, from the sync; failing builds first. Dependabot's update jobs no longer count as failing CI (in the sync, and in older snapshots by job name); repos whose newest synced commit ran only those jobs show "No result" until the next sync.
 - **[P1] Alpha Coin case study linked** (item 53), 2026-11-18. The project page links the written case study and the one-command local demo.
 

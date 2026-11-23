@@ -1,9 +1,10 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { budgetOptions, interestOptions, site } from "@/data/site";
 import {
   emptyContact,
+  prefillFromPackage,
   validateContact,
   type ContactErrors,
   type ContactFields,
@@ -33,6 +34,16 @@ export default function ContactForm() {
   const [notice, setNotice] = useState("");
   // Honeypot: people never see or reach this field, form-filling bots usually fill it.
   const [company, setCompany] = useState("");
+
+  // "Ask for a quote" on /services links here as /?package=<id>#contact. Read once on
+  // mount (not with useSearchParams) so the home page stays fully static.
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("package");
+    // The URL is only readable after hydration; this runs once and changes nothing
+    // unless a package link brought the visitor here.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setValues((prev) => prefillFromPackage(prev, id));
+  }, []);
 
   const set = (key: keyof ContactFields) => (value: string) => {
     setValues((prev) => ({ ...prev, [key]: value }));

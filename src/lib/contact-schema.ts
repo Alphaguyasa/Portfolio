@@ -1,4 +1,4 @@
-import { budgetOptions, interestOptions } from "@/data/site";
+import { budgetOptions, interestOptions, packageById } from "@/data/site";
 
 export type ContactFields = {
   name: string;
@@ -71,4 +71,18 @@ export function formatContactBody(values: ContactFields) {
     "",
     values.message,
   ].join("\n");
+}
+
+/**
+ * Fills the interest and an opening line for the package a /services link names.
+ * Never overwrites what the visitor has already typed or picked; unknown ids change nothing.
+ */
+export function prefillFromPackage(values: ContactFields, id: string | null): ContactFields {
+  const pkg = packageById(id);
+  if (!pkg) return values;
+  return {
+    ...values,
+    interest: values.interest || pkg.interest,
+    message: values.message || `I'd like a quote: ${pkg.title}. `,
+  };
 }

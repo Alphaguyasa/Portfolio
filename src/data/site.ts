@@ -116,6 +116,79 @@ export const services: Service[] = [
   },
 ];
 
+export type ServicePackage = {
+  /** Used in /?package=<id>#contact to prefill the contact form. */
+  id: "web-app" | "android-app" | "security-review";
+  title: string;
+  summary: string;
+  scope: string[];
+  /** Must be one of interestOptions: the contact form preselects it. */
+  interest: (typeof interestOptions)[number];
+  /** Project slugs from data/projects.json that show this kind of work. */
+  proof: string[];
+};
+
+/**
+ * The /services page. Alpha's wording (decision log A20, 2026-11-18): every package is
+ * "Ask for a quote", with no prices and no fixed timelines. No numbers here: a figure
+ * on this page would need a quote source like every project claim.
+ */
+export const servicesPage = {
+  intro:
+    "Three kinds of work I take on, each backed by projects you can open and check. Every project is quoted after a short call, so the price fits what you actually need.",
+  price: "Ask for a quote",
+  timeline: "Agreed per project after a short call.",
+  packages: [
+    {
+      id: "web-app",
+      title: "Business web app",
+      summary:
+        "A web app your staff use every day to run the business, built for cheap phones and unreliable internet.",
+      scope: [
+        "Login and staff roles",
+        "Sales, stock and credit records",
+        "Receipts",
+        "Reports with CSV export",
+        "Amharic, Afaan Oromo and English",
+        "Works on cheap phones and offline",
+      ],
+      interest: "Full-Stack Web Development",
+      proof: ["galmee-pharmacy", "galmee-wholesale", "galmee-clinic", "suq"],
+    },
+    {
+      id: "android-app",
+      title: "Offline Android app",
+      summary:
+        "An Android app that keeps working without internet and syncs when the connection comes back.",
+      scope: [
+        "Works without internet",
+        "Syncs later, when a connection is available",
+        "In the local language",
+      ],
+      interest: "Mobile App Development",
+      proof: ["mezgeb", "meret", "nullchat"],
+    },
+    {
+      id: "security-review",
+      title: "Security review",
+      summary:
+        "A review of who can read and change what in your app, with tested fixes rather than a list of warnings.",
+      scope: [
+        "Database access rules (RLS) and permission checks",
+        "Web app security testing",
+        "A written report with fixes",
+      ],
+      interest: "Security Assessment",
+      proof: ["security-scanner", "galmee-pharmacy", "nullchat"],
+    },
+  ] satisfies ServicePackage[],
+};
+
+/** The package a /?package=<id> link asks for, or undefined for anything else. */
+export function packageById(id: string | null | undefined) {
+  return servicesPage.packages.find((pkg) => pkg.id === id);
+}
+
 /** Biographical figures GitHub cannot verify; confirmed by Alpha on 2026-10-18. */
 export const bioStats = [
   { value: "2+", label: "Years Full-Stack" },
