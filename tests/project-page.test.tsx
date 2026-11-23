@@ -30,6 +30,11 @@ describe("project pages", () => {
     }
     for (const link of p.links) expect(html).toContain(link.href);
     expect(html.match(/<h1/g)?.length).toBe(1);
+    for (const part of p.caseStudy ?? []) {
+      expect(html).toContain(esc(part.heading));
+      expect(html).toContain(esc(part.body));
+    }
+    expect(html.includes(">Case study</h2>")).toBe(Boolean(p.caseStudy?.length));
   });
 
   it.each(projects.map((p) => [p.slug, p] as const))("%s shows live facts from the sync, not typed copies", async (slug, p) => {

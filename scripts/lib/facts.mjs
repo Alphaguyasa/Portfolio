@@ -75,6 +75,10 @@ export function proseOf(project) {
     ...project.results.map((s, i) => [`results[${i}]`, s]),
     ...project.learned.map((s, i) => [`learned[${i}]`, s]),
     ...project.images.map((img, i) => [`images[${i}].alt`, img.alt]),
+    ...(project.caseStudy ?? []).flatMap((part, i) => [
+      [`caseStudy[${i}].heading`, part.heading],
+      [`caseStudy[${i}].body`, part.body],
+    ]),
   ].filter(([, v]) => typeof v === "string");
 }
 

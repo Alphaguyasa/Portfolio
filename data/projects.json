@@ -67,13 +67,22 @@
         "Last-write-wins silently destroys a sale when two devices sync absolute quantities. Append-only rows avoid the conflict instead of resolving it.",
         "Free hosting tiers have limits that matter for a live shop: Supabase free projects pause after 7 days of inactivity."
       ],
+      "caseStudy": [
+        { "heading": "Why the obvious sync loses sales", "body": "Picture two tablets, both offline, both selling the last case of water. If each later sends its new stock count, whichever arrives second overwrites the first, and a real sale disappears from the books. Sending each change as its own row keeps both sales, in either order, and the total still comes out right." },
+        { "heading": "Selling with no connection", "body": "After the first load the app runs entirely from the service worker and IndexedDB. Cashiers unlock the till with their PIN, which also ties each sale to a person for the cash-up sheet, and sales wait on the device until a connection returns. The till works whether or not anyone has signed in; signing in is only needed to sync." },
+        { "heading": "A sync status the cashier can trust", "body": "A pill at the top of the screen always shows one of four states: synced, syncing, offline with the number of sales waiting, or blocked. It is never red, because a stalled sync has destroyed nothing; red is kept for destructive actions." },
+        { "heading": "What the demo shows", "body": "Ring up three items, turn the wifi off in the middle of a sale and keep selling: the screen does not change and the pill turns ochre. After two more offline sales the pill counts to 3. Turn the wifi back on and it drains to zero within about 15 seconds, and the owner dashboard on a second device shows all five sales. The repo has no screenshots yet, so none are shown here." }
+      ],
       "images": [],
       "links": [{ "label": "Source on GitHub", "href": "https://github.com/Alphaguyasa/Suq" }],
       "facts": [
         { "path": "README.md", "quote": "Completing a sale never touches the network. It writes to IndexedDB in one transaction" },
         { "path": "README.md", "quote": "covers the five failure modes that only appear across multiple devices" },
         { "path": "README.md", "quote": "Amharic-first UI, ETB pricing, 80mm thermal receipts" },
-        { "path": "README.md", "quote": "Supabase free projects pause after 7 days of inactivity." }
+        { "path": "README.md", "quote": "Supabase free projects pause after 7 days of inactivity." },
+        { "path": "README.md", "quote": "Complete two more sales offline — the pill counts to 3" },
+        { "path": "README.md", "quote": "Restore the wifi — the pill drains to zero within about 15 seconds" },
+        { "path": "README.md", "quote": "The pill is never red. A stalled sync has destroyed nothing, and red is reserved for destructive actions." }
       ]
     },
     {

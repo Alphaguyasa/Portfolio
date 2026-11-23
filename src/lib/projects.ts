@@ -35,6 +35,8 @@ export type Project = {
   images: ProjectImage[];
   links: { label: string; href: string }[];
   facts: { path: string; quote: string }[];
+  /** A longer write-up shown on the project page; held to the same fact rules as the rest. */
+  caseStudy?: { heading: string; body: string }[];
   /** "Alpha, YYYY-MM-DD": required for statuses a repo cannot show, such as completed. */
   statusConfirmed?: string;
 };

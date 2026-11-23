@@ -163,6 +163,18 @@ export default async function ProjectPage({ params }: Params) {
             <Section title="The approach">
               <p className={prose}>{project.approach}</p>
             </Section>
+            {project.caseStudy && project.caseStudy.length > 0 && (
+              <Section title="Case study">
+                <div className="flex flex-col gap-6">
+                  {project.caseStudy.map((part) => (
+                    <div key={part.heading}>
+                      <h3 className="font-display text-lg font-bold xl:text-xl">{part.heading}</h3>
+                      <p className={`mt-2 ${prose}`}>{part.body}</p>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            )}
             {project.results.length > 0 && (
               <Section title="Results">
                 <CheckList items={project.results} />

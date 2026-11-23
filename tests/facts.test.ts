@@ -77,6 +77,14 @@ describe("verifyProjects (honesty rules)", () => {
     expect(run(p).join()).toMatch(/stack\[1\] states "99"/);
   });
 
+  it("checks numbers in case study headings and bodies", () => {
+    const p = fixture().project();
+    Object.assign(p, { caseStudy: [{ heading: "Top 10 lessons", body: "Synced in 2 seconds." }] });
+    const out = run(p).join();
+    expect(out).toMatch(/caseStudy\[0\]\.heading states "10"/);
+    expect(out).toMatch(/caseStudy\[0\]\.body states "2"/);
+  });
+
   it("can quote the repo description", () => {
     const p = fixture().project();
     p.facts.push({ path: "@description", quote: "12 screens" });
