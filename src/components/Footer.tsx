@@ -43,7 +43,7 @@ export default function Footer({ basePath = "" }: { basePath?: string }) {
               {footerNav.map((link) => (
                 <li key={link.href}>
                   <a
-                    href={`${basePath}${link.href}`}
+                    href={link.href.startsWith("#") ? `${basePath}${link.href}` : link.href}
                     className="text-muted2 transition-colors duration-200 hover:text-accent"
                   >
                     {link.label}

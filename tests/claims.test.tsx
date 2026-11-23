@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
+import Footer from "@/components/Footer";
 import Notes from "@/components/Notes";
 import Recognitions from "@/components/Recognitions";
 import Testimonials from "@/components/Testimonials";
@@ -62,6 +63,13 @@ describe("navigation", () => {
     const hrefs = navLinks.map((l) => l.href);
     expect(hrefs).toContain("/services");
     expect(hrefs).toContain("/security");
+  });
+
+  it("keeps page links intact in the footer of inner pages", () => {
+    const html = renderToStaticMarkup(<Footer basePath="/" />);
+    expect(html).not.toContain('href="//');
+    expect(html).toContain('href="/services"');
+    expect(html).toContain('href="/#about"');
   });
 });
 
