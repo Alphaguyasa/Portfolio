@@ -15,7 +15,7 @@ function HireBadge() {
   return (
     <a
       href="#contact"
-      aria-label="Hire me — go to contact"
+      aria-label="Hire me: go to contact"
       className="absolute right-6 top-2 hidden size-[100px] items-center justify-center rounded-full bg-white shadow-[0_6px_24px_rgba(0,0,0,.06)] lg:flex xl:size-[124px]"
     >
       <svg

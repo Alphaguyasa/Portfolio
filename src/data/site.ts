@@ -90,7 +90,7 @@ export const services: Service[] = [
       "Room & WorkManager",
       "Progressive Web Apps",
     ],
-    body: "Android apps built to Play policy, with signed, R8-minified release builds — including one that reads mobile-money notifications with no network permission at all.",
+    body: "Android apps built to Play policy, with signed, R8-minified release builds, including one that reads mobile-money notifications with no network permission at all.",
     image: {
       src: "/assets/mobile-service.png",
       alt: "Two Mezgeb Android screens: the teach-a-rule flow and the daily ledger view",
@@ -103,17 +103,17 @@ export const services: Service[] = [
       "Grounded citations",
       "Eval harnesses",
     ],
-    body: "Systems that cite their sources and refuse when the documents don’t cover the question — measured against a human-reviewed golden set, not a vibe check.",
+    body: "Systems that cite their sources and refuse when the documents don’t cover the question, measured against a human-reviewed golden set, not a vibe check.",
   },
   {
     title: "Offline-First & Sync Architecture",
     tags: ["IndexedDB / Dexie", "Append-only movements", "Conflict-free merge"],
-    body: "Never sync quantities, sync movements. Two tills, both offline, both selling the last unit — and the arithmetic still comes out right.",
+    body: "Never sync quantities, sync movements. Two tills, both offline, both selling the last unit, and the arithmetic still comes out right.",
   },
   {
     title: "Security & Vulnerability Assessment",
     tags: ["OWASP ZAP", "Nuclei & Nikto", "Dockerised scanners"],
-    body: "Automated scanning with a dashboard your team will actually read — findings tracked, categorised and reported.",
+    body: "Automated scanning with a dashboard your team will actually read: findings tracked, categorised and reported.",
   },
 ];
 
@@ -339,7 +339,7 @@ export const education: TimelineRow[] = [
   {
     title: "Haramaya University",
     subtitle: "BSc in Computer Science",
-    pill: "2023 – 2026",
+    pill: "2023 to 2026",
   },
   {
     title: "Final Year Project",
@@ -396,7 +396,7 @@ export const recognitions: {
   {
     icon: "star",
     tone: "accent",
-    title: "1st Place — University CTF",
+    title: "1st Place: University CTF",
     body: "First at university level in the capture-the-flag competition run by Haramaya University in collaboration with INSA.",
     sources: [
       { label: "INSA post: Cyber Security Month at Haramaya University", href: "https://t.me/insagovet/3068" },
@@ -413,7 +413,7 @@ export const recognitions: {
   {
     icon: "person",
     tone: "ink",
-    title: "Focal Person — Leyu",
+    title: "Focal Person at Leyu",
     body: "Focal person for data contribution at Leyu as a contractor, for over a year and ongoing, owning quality and throughput for the contributor pipeline.",
   },
   {
@@ -440,8 +440,8 @@ export const interestOptions = [
 
 export const budgetOptions = [
   "Under $1,000",
-  "$1,000 – $3,000",
-  "$3,000 – $5,000",
+  "$1,000 to $3,000",
+  "$3,000 to $5,000",
   "$5,000+",
 ] as const;
 
@@ -522,7 +522,7 @@ export const faqs = [
   },
   {
     q: "How do you handle testing and quality?",
-    a: "Tests on the parts where a bug costs money — 375 unit tests on Mezgeb, a multi-device sync suite on Suq, and an eval harness with a validated judge on DocSearch.",
+    a: "Tests on the parts where a bug costs money: 375 unit tests on Mezgeb, a multi-device sync suite on Suq, and an eval harness with a validated judge on DocSearch.",
   },
   {
     q: "Can I download your CV?",

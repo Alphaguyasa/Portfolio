@@ -91,7 +91,7 @@ export default async function ProjectPage({ params }: Params) {
       <JsonLd data={projectJsonLd(project)} />
       <header className="bg-surface-alt pb-14 pt-[18px] xl:pb-20">
         <Container>
-          <Link href="/" aria-label="Alpha Guyasa — home" className="inline-block">
+          <Link href="/" aria-label="Alpha Guyasa, home" className="inline-block">
             <Logo />
           </Link>
           <Link
@@ -105,7 +105,7 @@ export default async function ProjectPage({ params }: Params) {
             <StatusBadge status={project.status} />
           </div>
           <h1 className="mt-4 font-display text-[34px] font-bold leading-[1.15] tracking-[-0.8px] sm:text-[44px] xl:text-[58px] xl:tracking-[-1.4px]">
-            {project.name} – <Accent>{project.tagline}</Accent>
+            {project.name}: <Accent>{project.tagline}</Accent>
           </h1>
           <p className="mt-4 max-w-[760px] font-sans text-base leading-[1.6] text-muted2 xl:text-[17px]">
             {project.statusNote}

@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     description,
     url: "/about",
     // An openGraph object on a page replaces the root one, and with it the root image.
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Alpha Guyasa — Full Stack Engineer" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Alpha Guyasa · Full Stack Engineer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "About Alpha Guyasa and how he works",
     description,
-    images: [{ url: "/opengraph-image", alt: "Alpha Guyasa — Full Stack Engineer" }],
+    images: [{ url: "/opengraph-image", alt: "Alpha Guyasa · Full Stack Engineer" }],
   },
 };
 
@@ -118,7 +118,7 @@ export default function AboutPage() {
       <JsonLd data={personJsonLd()} />
       <header className="bg-surface-alt pb-14 pt-[18px] xl:pb-20">
         <Container>
-          <Link href="/" aria-label="Alpha Guyasa — home" className="inline-block">
+          <Link href="/" aria-label="Alpha Guyasa, home" className="inline-block">
             <Logo />
           </Link>
           <Link

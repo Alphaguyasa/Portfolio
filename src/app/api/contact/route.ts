@@ -102,7 +102,7 @@ export async function POST(request: Request) {
         from: process.env.CONTACT_FROM ?? "Portfolio <onboarding@resend.dev>",
         to: [site.email],
         reply_to: values.email,
-        subject: `Portfolio enquiry — ${values.name} (${values.interest})`,
+        subject: `Portfolio enquiry from ${values.name} (${values.interest})`,
         text: body,
       }),
     });

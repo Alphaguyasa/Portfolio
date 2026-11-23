@@ -3,11 +3,14 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import Footer from "@/components/Footer";
 import Notes from "@/components/Notes";
+import { plainDashes } from "@/components/RecentlyShipped";
 import Recognitions from "@/components/Recognitions";
 import Testimonials from "@/components/Testimonials";
 import Tools, { projectsUsing } from "@/components/Tools";
 import { confirmedTestimonials, footerNav, navLinks, notes, publishedNotes, recognitions, testimonials, tools } from "@/data/site";
 import AboutPage from "@/app/about/page";
+import SecurityPage from "@/app/security/page";
+import ServicesPage from "@/app/services/page";
 import Home from "@/app/page";
 import { projects } from "@/lib/projects";
 import { buildCopy } from "../scripts/lib/copy.mjs";
@@ -91,6 +94,26 @@ describe("how Alpha works", () => {
 
   it("still allows AI retrieval as a skill", () => {
     expect("AI retrieval that cites its sources").not.toMatch(AI_CODING);
+  });
+});
+
+// Alpha's decision (2026-11-23): no long dashes between words in the site copy. Names and
+// taglines use a colon, titles a middle dot, ranges "to", sentences a comma or a colon.
+describe("punctuation", () => {
+  const visible = (html: string) => html.replace(/<[^>]+>/g, " ");
+  const LONG_DASH = /[—–]/;
+
+  it("uses no en or em dashes in the visible text of the main pages or the copy", () => {
+    for (const page of [<Home key="h" />, <AboutPage key="a" />, <ServicesPage key="s" />, <SecurityPage key="x" />]) {
+      expect(visible(renderToStaticMarkup(page))).not.toMatch(LONG_DASH);
+    }
+    expect(readFileSync("PORTFOLIO_COPY.md", "utf8")).not.toMatch(LONG_DASH);
+  });
+
+  it("cleans long dashes out of titles that come from GitHub", () => {
+    expect(plainDashes("Meret — walk the perimeter")).toBe("Meret: walk the perimeter");
+    expect(plainDashes("Roadmap items 81–85")).toBe("Roadmap items 81 to 85");
+    expect(plainDashes("Plain title")).toBe("Plain title");
   });
 });
 

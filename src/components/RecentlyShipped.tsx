@@ -5,6 +5,11 @@ import { KIND_LABEL, shipped } from "@/lib/shipped";
 
 const SHOWN = 8;
 
+/** Titles come from GitHub as written; show long dashes between words as a colon, ranges as "to". */
+export function plainDashes(text: string) {
+  return text.replace(/\s+[—–]\s+/g, ": ").replace(/(\d)[—–](\d)/g, "$1 to $2").replace(/[—–]/g, "-");
+}
+
 export default function RecentlyShipped() {
   const items = shipped.slice(0, SHOWN);
   if (items.length === 0) return null;
@@ -47,7 +52,7 @@ export default function RecentlyShipped() {
                 <span className="mr-2 inline-block rounded-[40px] bg-white px-2.5 py-0.5 text-xs font-semibold text-muted2 ring-1 ring-hairline">
                   {KIND_LABEL[item.kind]}
                 </span>
-                {item.title}
+                {plainDashes(item.title)}
               </a>
             </li>
           ))}

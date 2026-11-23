@@ -54,7 +54,7 @@ export function validateContact(values: ContactFields): ContactErrors {
   else if (values.message.trim().length < 10)
     errors.message = "A sentence or two would help.";
   else if (values.message.length > 5000)
-    errors.message = "That message is too long — please trim it a little.";
+    errors.message = "That message is too long. Please trim it a little.";
 
   return errors;
 }

@@ -25,7 +25,7 @@ Selected work:
 - **Suq** (In development): Offline-first point of sale and inventory. A sale writes to IndexedDB in one transaction and never touches the network.
 - **DocSearch → Not Alone** (In development): Cited answers from documents, now pivoting to a scripture app. 91 human-reviewed evaluation questions.
 - **NullChat** (In development): Peer-to-peer messaging with no network. 100 instrumented tests run in CI on an API 34 emulator.
-- **Meret** (In development): Offline maps and GPS logging for field teams. Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending.
+- **Meret** (In development): Offline maps and GPS logging for field teams. Phases 1 to 8 of the build plan are built: 1 to 4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending.
 - **ethiopic-text** (Shipped): Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped.
 - **HU News** (Shipped): Haramaya University news app. Signed release APK committed to the repo.
 - **Security Scanner** (Completed): Automated web vulnerability scanner, similar to online pentesting platforms.
@@ -80,7 +80,7 @@ How I work: 16 of my 19 listed projects keep a written roadmap and 17 have CI on
 #### Meret: Offline maps and GPS logging for field teams
 
 - **Short:** Offline maps and GPS logging for field teams. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved..
-- **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending. Built so far: skeleton, core model, database, location engine, tracking service, offline map, tracking screens, and waypoints with forms and photos.
+- **Long:** Field teams in low-connectivity regions run on paper forms, separate GPS units and map apps that degrade off-network, and supervisors cannot see where a team went or what it recorded. An Android app built to work all day in aeroplane mode: offline vector base maps from a local tile pack, and GPS tracks that survive screen-off and aggressive task killers, with raw points preserved. Phases 1 to 8 of the build plan are built: 1 to 4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending. Built so far: skeleton, core model, database, location engine, tracking service, offline map, tracking screens, and waypoints with forms and photos.
 - **Status:** In development · last commit 2026-11-17. Early. The project skeleton, core model, database, location engine, tracking service, offline map, tracking screens, waypoint forms, draft autosave and waypoint photos are done in CI; their checks on a real phone are pending, and sync is next.
 - **Skills:** Kotlin, Jetpack Compose, Room, multi-module Gradle
 - **Link:** https://github.com/Alphaguyasa/Meret
@@ -213,7 +213,7 @@ I build software for places where the network fails: point of sale that keeps se
 - **Suq**: Offline-first point of sale and inventory. A sale writes to IndexedDB in one transaction and never touches the network. (In development · last commit 2026-11-18) https://github.com/Alphaguyasa/Suq
 - **DocSearch → Not Alone**: Cited answers from documents, now pivoting to a scripture app. 91 human-reviewed evaluation questions. (In development · last commit 2026-11-14) https://github.com/Alphaguyasa/docsearch
 - **NullChat**: Peer-to-peer messaging with no network. 100 instrumented tests run in CI on an API 34 emulator. (In development · last commit 2026-11-18) https://github.com/Alphaguyasa/NullChat
-- **Meret**: Offline maps and GPS logging for field teams. Phases 1–8 of the build plan are built: 1–4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending. (In development · last commit 2026-11-17) https://github.com/Alphaguyasa/Meret
+- **Meret**: Offline maps and GPS logging for field teams. Phases 1 to 8 of the build plan are built: 1 to 4 are done, and 5, 6, 7 and 8 are done in CI with their device checks still pending. (In development · last commit 2026-11-17) https://github.com/Alphaguyasa/Meret
 - **ethiopic-text**: Search and normalization for Ethiopic script. Zero runtime dependencies; the core is 0.49 KB gzipped. (Shipped · npm 0.1.0 · last commit 2026-08-05) https://github.com/Alphaguyasa/ethiopic-text
 - **HU News**: Haramaya University news app. Signed release APK committed to the repo. (Shipped · last commit 2026-05-02) https://github.com/Alphaguyasa/HUnews
 - **Security Scanner**: Automated web vulnerability scanner, similar to online pentesting platforms. OWASP ZAP, Nuclei and Nikto behind one dashboard with JWT authentication and vulnerability tracking, deployed with Docker Compose.. (Completed · last commit 2026-05-12) https://github.com/vulnerability-scanner-website/Final-year-project
@@ -231,27 +231,27 @@ I build software for places where the network fails: point of sale that keeps se
 
 ## CV project list
 
-- **Mezgeb** — Offline mobile-money ledger for Ethiopian shops. Kotlin, Jetpack Compose, Room, Hilt, WorkManager. In development · last commit 2026-11-18.
-- **Suq** — Offline-first point of sale and inventory. Next.js, TypeScript, Dexie (IndexedDB), Supabase, Serwist. In development · last commit 2026-11-18.
-- **DocSearch → Not Alone** — Cited answers from documents, now pivoting to a scripture app. Next.js, TypeScript, Postgres + pgvector, Voyage embeddings, Anthropic / Gemini. In development · last commit 2026-11-14.
-- **NullChat** — Peer-to-peer messaging with no network. Kotlin, Jetpack Compose, Bluetooth LE, Wi-Fi Direct, Room. In development · last commit 2026-11-18.
-- **Meret** — Offline maps and GPS logging for field teams. Kotlin, Jetpack Compose, Room, multi-module Gradle. In development · last commit 2026-11-17.
-- **ethiopic-text** — Search and normalization for Ethiopic script. TypeScript. Shipped · npm 0.1.0 · last commit 2026-08-05.
-- **HU News** — Haramaya University news app. Flutter, Dart, WordPress REST API. Shipped · last commit 2026-05-02.
-- **Security Scanner** — Automated web vulnerability scanner, similar to online pentesting platforms. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Completed · last commit 2026-05-12.
-- **Alpha Coin** — Token dashboard on the Internet Computer. Motoko, Next.js, TypeScript, Internet Identity. Completed · last commit 2026-11-18.
-- **Galmee Pharmacy** — Stock and expiry tracking for pharmacies. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-21.
-- **Galmee Wholesale** — Customer debt tracking for wholesalers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Hotel** — Room board and bookings for small hotels. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee School** — Fee collection and attendance for private schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Garage** — Job cards and vehicle history for garages. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Transport** — Ticketing and cash handover for bus operators. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Driving School** — Students, lessons and payments for driving schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Rentals** — Rent tracking for landlords and brokers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Coffee** — Farmer purchases and advances for coffee traders. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
-- **Galmee Clinic** — Patient records, queue and billing for small clinics. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Mezgeb**: Offline mobile-money ledger for Ethiopian shops. Kotlin, Jetpack Compose, Room, Hilt, WorkManager. In development · last commit 2026-11-18.
+- **Suq**: Offline-first point of sale and inventory. Next.js, TypeScript, Dexie (IndexedDB), Supabase, Serwist. In development · last commit 2026-11-18.
+- **DocSearch → Not Alone**: Cited answers from documents, now pivoting to a scripture app. Next.js, TypeScript, Postgres + pgvector, Voyage embeddings, Anthropic / Gemini. In development · last commit 2026-11-14.
+- **NullChat**: Peer-to-peer messaging with no network. Kotlin, Jetpack Compose, Bluetooth LE, Wi-Fi Direct, Room. In development · last commit 2026-11-18.
+- **Meret**: Offline maps and GPS logging for field teams. Kotlin, Jetpack Compose, Room, multi-module Gradle. In development · last commit 2026-11-17.
+- **ethiopic-text**: Search and normalization for Ethiopic script. TypeScript. Shipped · npm 0.1.0 · last commit 2026-08-05.
+- **HU News**: Haramaya University news app. Flutter, Dart, WordPress REST API. Shipped · last commit 2026-05-02.
+- **Security Scanner**: Automated web vulnerability scanner, similar to online pentesting platforms. Next.js, Fastify, PostgreSQL, Docker, OWASP ZAP, Nuclei, Nikto. Completed · last commit 2026-05-12.
+- **Alpha Coin**: Token dashboard on the Internet Computer. Motoko, Next.js, TypeScript, Internet Identity. Completed · last commit 2026-11-18.
+- **Galmee Pharmacy**: Stock and expiry tracking for pharmacies. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-21.
+- **Galmee Wholesale**: Customer debt tracking for wholesalers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Hotel**: Room board and bookings for small hotels. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee School**: Fee collection and attendance for private schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Garage**: Job cards and vehicle history for garages. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Transport**: Ticketing and cash handover for bus operators. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Driving School**: Students, lessons and payments for driving schools. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Rentals**: Rent tracking for landlords and brokers. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Coffee**: Farmer purchases and advances for coffee traders. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
+- **Galmee Clinic**: Patient records, queue and billing for small clinics. Next.js, Tailwind CSS, Supabase, Postgres RLS. In development · last commit 2026-11-18.
 
 ## Certificates
 
-- **Artificial Intelligence Fundamentals** — Udacity Nanodegree program, issued 2025-08-22. https://www.udacity.com/certificate/e/7ef7f212-7f2c-11f0-b260-ff6010499aa0
-- **Android Developer Fundamentals** — Udacity Nanodegree program, issued 2025-08-22. https://www.udacity.com/certificate/e/ea344350-32ec-11f0-89da-1bae85159fc4
+- **Artificial Intelligence Fundamentals**: Udacity Nanodegree program, issued 2025-08-22. https://www.udacity.com/certificate/e/7ef7f212-7f2c-11f0-b260-ff6010499aa0
+- **Android Developer Fundamentals**: Udacity Nanodegree program, issued 2025-08-22. https://www.udacity.com/certificate/e/ea344350-32ec-11f0-89da-1bae85159fc4

@@ -8,9 +8,9 @@ export type ContactOutcome =
 
 type ContactResponseBody = { errors?: ContactErrors; error?: string; delivery?: string };
 
-export const sentNotice = "Thanks — your message is on its way. I usually reply the same day.";
+export const sentNotice = "Thanks, your message is on its way. I usually reply the same day.";
 export const mailtoNotice = "Your mail app should be opening with the message ready to send.";
-export const rateLimitedNotice = "Too many messages just now — please try again shortly.";
+export const rateLimitedNotice = "Too many messages just now. Please try again shortly.";
 
 export function failureNotice(email: string) {
   return `Something went wrong sending that. Email me directly at ${email}.`;
@@ -34,7 +34,7 @@ export function contactOutcome(status: number, body: unknown, email: string): Co
 }
 
 export function contactMailto(values: ContactFields, email: string) {
-  const subject = `Portfolio enquiry — ${values.name}`;
+  const subject = `Portfolio enquiry from ${values.name}`;
   return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
     formatContactBody(values),
   )}`;

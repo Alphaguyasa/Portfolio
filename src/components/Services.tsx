@@ -21,7 +21,7 @@ export default function Services() {
             </SectionTitle>
           </div>
           <p className="max-w-[460px] font-sans text-base leading-[1.5] text-muted xl:pb-2 xl:text-lg">
-            Five things I get asked for most — from a first Flutter build to a
+            Five things I get asked for most, from a first Flutter build to a
             sync layer that survives a week offline.
           </p>
         </div>

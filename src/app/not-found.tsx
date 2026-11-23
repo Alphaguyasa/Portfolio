@@ -16,7 +16,7 @@ export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col bg-surface-alt">
       <Container className="pt-[18px]">
-        <Link href="/" aria-label="Alpha Guyasa — home" className="inline-block">
+        <Link href="/" aria-label="Alpha Guyasa, home" className="inline-block">
           <Logo />
         </Link>
       </Container>

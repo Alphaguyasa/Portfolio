@@ -124,7 +124,7 @@ export function buildCopy(projects, sync, certificates = []) {
   out("## CV project list");
   out();
   for (const p of ordered) {
-    out(`- **${p.name}** — ${p.tagline}. ${p.stack.join(", ")}. ${statusLine(p, sync)}.`);
+    out(`- **${p.name}**: ${p.tagline}. ${p.stack.join(", ")}. ${statusLine(p, sync)}.`);
   }
   out();
 
@@ -133,7 +133,7 @@ export function buildCopy(projects, sync, certificates = []) {
     out("## Certificates");
     out();
     for (const c of certificates) {
-      out(`- **${c.title}** — ${c.issuer} ${c.kind}, issued ${c.issued}. ${c.href}`);
+      out(`- **${c.title}**: ${c.issuer} ${c.kind}, issued ${c.issued}. ${c.href}`);
     }
     out();
   }

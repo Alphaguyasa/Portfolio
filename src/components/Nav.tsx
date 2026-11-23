@@ -66,7 +66,7 @@ export default function Nav() {
           aria-label="Primary"
           className="flex items-center justify-between rounded-[60px] bg-white p-3.5 shadow-[0_2px_18px_rgba(0,0,0,.05)]"
         >
-          <a href="#home" className="pl-1.5" aria-label="Alpha Guyasa — home">
+          <a href="#home" className="pl-1.5" aria-label="Alpha Guyasa, home">
             <Logo />
           </a>
 

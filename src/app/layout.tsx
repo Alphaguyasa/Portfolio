@@ -30,7 +30,7 @@ const description =
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Alpha Guyasa — Full Stack Engineer",
+    default: "Alpha Guyasa · Full Stack Engineer",
     template: "%s · Alpha Guyasa",
   },
   description,
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     type: "website",
     url: site.url,
     siteName: "Alpha Guyasa",
-    title: "Alpha Guyasa — Full Stack Engineer",
+    title: "Alpha Guyasa · Full Stack Engineer",
     description,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alpha Guyasa — Full Stack Engineer",
+    title: "Alpha Guyasa · Full Stack Engineer",
     description,
   },
   robots: { index: true, follow: true },

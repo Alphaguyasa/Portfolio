@@ -90,7 +90,7 @@ function Heading({ project, large }: { project: Project; large: boolean }) {
           large ? "text-2xl xl:text-[30px]" : "text-xl xl:text-[26px]"
         }`}
       >
-        {project.name} – <Accent>{project.tagline}</Accent>
+        {project.name}: <Accent>{project.tagline}</Accent>
       </h3>
       <p className="mt-3 font-sans text-base leading-[1.6] text-body xl:text-[17px]">{project.problem}</p>
     </>

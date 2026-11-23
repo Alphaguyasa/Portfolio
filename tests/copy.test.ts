@@ -74,6 +74,6 @@ describe("certificates", () => {
 
   it("are listed in the copy with their links", () => {
     const copy = buildCopy(data.projects, sync, certificates);
-    for (const c of certificates) expect(copy).toContain(`**${c.title}** — ${c.issuer} ${c.kind}, issued ${c.issued}. ${c.href}`);
+    for (const c of certificates) expect(copy).toContain(`**${c.title}**: ${c.issuer} ${c.kind}, issued ${c.issued}. ${c.href}`);
   });
 });

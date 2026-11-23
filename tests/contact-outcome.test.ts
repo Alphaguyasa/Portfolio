@@ -73,7 +73,7 @@ describe("contactMailto", () => {
     const url = new URL(href);
     expect(url.protocol).toBe("mailto:");
     expect(url.pathname).toBe(EMAIL);
-    expect(url.searchParams.get("subject")).toBe("Portfolio enquiry — Abebe & Sons");
+    expect(url.searchParams.get("subject")).toBe("Portfolio enquiry from Abebe & Sons");
     expect(url.searchParams.get("body")).toBe(formatContactBody(values));
     // A raw "&" or "?" in the fields must not split the query.
     expect([...url.searchParams.keys()]).toEqual(["subject", "body"]);

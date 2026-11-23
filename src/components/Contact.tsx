@@ -59,8 +59,8 @@ export default function Contact() {
                 Availability
               </h3>
               <div className="mt-3 font-sans text-[17px] leading-[1.8] text-on-dark2">
-                <p>Monday – Friday&nbsp;: 09:00 – 20:00</p>
-                <p>Saturday – Sunday : 11:00 – 18:00</p>
+                <p>Monday to Friday&nbsp;: 09:00 to 20:00</p>
+                <p>Saturday to Sunday : 11:00 to 18:00</p>
               </div>
             </div>
 
