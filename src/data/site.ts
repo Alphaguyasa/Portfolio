@@ -19,9 +19,10 @@ export const site = {
 // file, once the testimonials and notes data are known.
 const baseNavLinks = [
   { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "/services" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
+  { label: "Security", href: "/security" },
 ];
 
 export const heroChips = [
@@ -429,22 +430,6 @@ export const recognitions: {
   },
 ];
 
-export const pricingFeatures = [
-  "Full-stack web development",
-  "Mobile app development",
-  "Code review & debugging",
-  "Offline-first sync architecture",
-  "AI retrieval integration",
-  "Security assessment",
-  "Ongoing maintenance",
-] as const;
-
-export const pricingTiers = [
-  { tier: "Hourly", price: "$20", unit: "/ Hour", included: 3 },
-  { tier: "Monthly", price: "$1,500", unit: "/ Month", included: 5 },
-  { tier: "Quarterly", price: "$4,000", unit: "/ Qtr.", included: 7 },
-] as const;
-
 export const interestOptions = [
   "Full-Stack Web Development",
   "Mobile App Development",
@@ -521,7 +506,7 @@ export const notes: { tags: string[]; title: string; excerpt: string; href: stri
 export const faqs = [
   {
     q: "Are you available for freelance or contract work?",
-    a: "Yes. I take on hourly, monthly and quarterly engagements, remote or in Addis Ababa.",
+    a: "Yes, remote or in Addis Ababa. Every project is quoted after a short call, so the price fits what you actually need.",
   },
   {
     q: "What kind of projects do you specialise in?",

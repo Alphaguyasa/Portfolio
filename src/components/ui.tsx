@@ -65,7 +65,7 @@ export function Accent({ children }: { children: ReactNode }) {
 
 /**
  * The repeating CTA: black shell, orange inner pill, white arrow circle.
- * Used in Services, Portfolio, Pricing, Notes and the Footer with different labels.
+ * Used in Services, Portfolio, Notes and the Footer with different labels.
  */
 export function CtaPill({
   href,

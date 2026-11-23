@@ -57,6 +57,12 @@ describe("navigation", () => {
     if (publishedNotes.length === 0) expect(hrefs).not.toContain("#blogs");
     if (confirmedTestimonials.length === 0) expect(hrefs).not.toContain("#testimonials");
   });
+
+  it("opens the services and security pages from the menu", () => {
+    const hrefs = navLinks.map((l) => l.href);
+    expect(hrefs).toContain("/services");
+    expect(hrefs).toContain("/security");
+  });
 });
 
 // Alpha's decision (2026-10-18): the site and the copy describe how he plans, tests

@@ -10,7 +10,6 @@ import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
 import Notes from "@/components/Notes";
 import Portfolio from "@/components/Portfolio";
-import Pricing from "@/components/Pricing";
 import RecentlyShipped from "@/components/RecentlyShipped";
 import Recognitions from "@/components/Recognitions";
 import Services from "@/components/Services";
@@ -39,7 +38,6 @@ export default function Home() {
         <Suspense><Portfolio /></Suspense>
         <Suspense><RecentlyShipped /></Suspense>
         <Suspense><Recognitions /></Suspense>
-        <Suspense><Pricing /></Suspense>
         <Suspense><Marquee items={marquees.availability} /></Suspense>
         <Suspense><Contact /></Suspense>
         <Suspense><Marquee items={marquees.disciplinesShort} /></Suspense>
