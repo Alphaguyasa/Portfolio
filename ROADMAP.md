@@ -45,9 +45,6 @@ Ask Alpha for the Amharic wording (blocks item 13).
 
 ## Older open items
 
-### 51. [P3 · S] Guard the site URL against the deployment
-Nothing ties `site.url` to the address the site is served from, which is how it went stale. Add a check that reads a recorded production host (`portfolio.config.json`) and compare it with the site URL.
-
 ### 44. [P3 · S] HU News project page shifts more than the others
 check:site's new CLS gate (item 41) scores `/projects/hu-news` at 0.034 desktop and
 0.035 phone (`main#main` moved); every other page is at 0.005 or less. Under the 0.1
@@ -97,6 +94,7 @@ project pages would show that. Needs Alpha to review wording (the decision log).
 
 ## Done
 
+- **[P3] Site URL guarded** (item 51), 2026-11-23. `portfolio.config.json` records the production host the site is served from; a test requires `site.url` to be exactly that host over https, and fails if the host is typed anywhere else in the code, so it can only change in one place.
 - **[P1] Security track page** (item 59), 2026-11-23. `/security` gathers the security work from NullChat (what the mesh protects, from whom), Mezgeb (no network permission, encrypted backups) and Alpha Coin (the review and its fixes), each with what is still open and a link to the full write-up. Tests check every quote against the synced docs and every number against its quotes. Linked from the security review package.
 - **[P1] Mezgeb case study** (item 58), 2026-11-23. The Mezgeb page now explains the Play Store SMS restriction, how notification capture works around it (and what it cannot do), teach-a-rule, and what the parser's accuracy figure does and does not mean, all quoted from Mezgeb's README.
 - **[P1] Suq case study** (item 57), 2026-11-23. The Suq page now has a case study: why syncing stock counts loses sales, selling with no connection, the sync status pill, and what the demo shows, every number quoted from Suq's README. Suq's repo has no screenshots yet, so the page says so instead of showing any. Projects can carry a `caseStudy`, held to the same fact rules as every other field.
