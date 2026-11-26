@@ -9,7 +9,7 @@
 - [x] next-intl with `am`, `om`, `en`; language switcher; Ethiopic-friendly font (Noto Sans Ethiopic)
 - [x] Ethiopian calendar date display helper + tests
 - [x] App shell: bottom navigation on mobile, sidebar on desktop, tenant name and logo
-- [ ] Staff management (owner only): invite staff, set role
+- [x] Staff management (owner only): invite staff, set role
 - [x] Generated Supabase TypeScript types committed
 
 ## M1: Core screens
@@ -51,7 +51,7 @@
 
 - [ ] Receipt printing (58/80 mm thermal) and Telegram receipt (see M-next)
 - [ ] Data import from Excel/CSV (see M-after)
-- [ ] Export all tenant data to Excel (see M-after)
+- [x] Export all tenant data to Excel (see M-after)
 
 ## Later (after the first paying pharmacy)
 
@@ -73,16 +73,16 @@
 - [x] Evening Telegram summary generator (SQL + notifications row)
 - [x] Reports screen: today / this week / Ethiopian month from existing views
 - [x] CSV export of reports
-- [ ] Staff invite (owner-only) + role select
+- [x] Staff invite + role select: owner invites managers and staff, manager invites staff, one-time code with QR and share link, /join page, owner changes roles and deactivates
 - [x] Per-staff sales column in daily closing
 - [x] Excel import of items (template + parser): CSV sheet saved from Excel, preview with skipped rows, one save
-- [ ] Export-all to Excel
+- [x] Export-all to Excel: one workbook (medicines, batches, customers with balances, sales with receipt numbers, payments, credit ledger, suppliers, purchase orders, walk-outs), owner only
 
 ## M-stars: features no notebook can do
 
 - [x] Walk-out log: one tap "asked for it, not in stock" at the till + weekly ranked restock list with missed sales, CSV download
 - [x] Receipts that cannot be forged, part 1: each business gets its own signing key (private half kept in the database vault, owner can rotate or revoke); compact signed receipt code (CBOR, fits a QR) with offline check that catches altered amounts and forged codes
-- [ ] Receipts that cannot be forged, part 2: sign each sale receipt at issue and print the code as a QR
+- [x] Receipts that cannot be forged, part 2: sign each sale receipt at issue and print the code as a captioned QR (checked before printing; any failure prints the receipt without it). Printing is switched on with `GALMEE_SIGNED_RECEIPTS=on` together with part 3
 - [ ] Receipts that cannot be forged, part 3: public verify page that checks a scanned code on the phone, with no server call
 
 ## Q: Quality and security baseline (do these inside M0 and M1, not after)
