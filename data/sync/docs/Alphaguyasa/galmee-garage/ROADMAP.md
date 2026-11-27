@@ -18,10 +18,10 @@ Build order: M-next first, then M-after, then the remaining open items below.
 - [x] Offline queue for job payments
 - [x] Parts stock on the shared items and stock (receive, deduct when a part is added to a job)
 - [x] Reorder-level low-stock list
-- [ ] Staff invite
+- [x] Staff invite
 - [x] Per-mechanic labour report
 - [ ] Service-due reminders (by km or months) queued as SMS
-- [ ] Export all tenant data to Excel
+- [x] Export all tenant data to Excel
 
 Not planned for now: vehicle photos, and a separate quotes module (a "quoted" job status covers estimates). The demo data loader is finished.
 
@@ -34,7 +34,7 @@ Not planned for now: vehicle photos, and a separate quotes module (a "quoted" jo
 - [x] next-intl with `am`, `om`, `en`; language switcher; Ethiopic-friendly font (Noto Sans Ethiopic)
 - [x] Ethiopian calendar date display helper + tests
 - [x] App shell: bottom navigation on mobile, sidebar on desktop, tenant name and logo
-- [ ] Staff management (owner only): invite staff, set role
+- [x] Staff management (owner only): invite staff, set role
 - [x] Generated Supabase TypeScript types committed
 
 ## M1: Core screens
@@ -76,7 +76,7 @@ Not planned for now: vehicle photos, and a separate quotes module (a "quoted" jo
 
 - [ ] Receipt printing (58/80 mm thermal) and Telegram receipt (80 mm job invoice done; Telegram copy open)
 - [ ] Data import from Excel/CSV
-- [ ] Export all tenant data to Excel
+- [x] Export all tenant data to Excel
 - [ ] Error monitoring hook (Sentry, DSN via env)
 - [x] README: setup, env vars, deploy steps
 

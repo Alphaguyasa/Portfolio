@@ -11,7 +11,8 @@ Build order: M-next first, then M-after, then the remaining open items below.
 
 ## M-after: Tier 2 and 3
 
-- [ ] Offline queue for stay payments and check-in
+- [x] Offline queue for stay payments and extra charges (wait on the phone, sync chip, sent once when back online)
+- [ ] Offline check-in
 - [ ] Rate plan management screen (seasonal prices)
 - [x] Monthly occupancy and revenue report, CSV (any past Ethiopian month, CSV carries Ethiopian dates)
 - [ ] Company/credit statements on the shared credit ledger
@@ -46,7 +47,7 @@ Not planned for now: bar/restaurant stock. Extra charges (food, laundry) cover i
 - [x] Customers: list, search by name/phone, detail with balance
 - [ ] Payments and credit: record payment, credit statement
 - [x] Reports: today / this week / this Ethiopian month; export CSV
-- [ ] Offline queue for the main money action with sync status indicator
+- [x] Offline queue for the main money action with sync status indicator
 
 ## M2: Galmee Hotel features
 
